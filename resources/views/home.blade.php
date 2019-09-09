@@ -13,8 +13,7 @@
                 </button>
             </div>
             <div class="bg-light rounded p-4" style="width: 100%; height: 300px;">
-
-            </div>
+            <div id="account-deck"></div>
         </div>
     </div>
 </div>
