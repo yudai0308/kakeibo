@@ -29,13 +29,13 @@ class CreateUsersTable extends Migration
             $table->string('email', 45);
             $table->string('password');
             $table->rememberToken();
-            $table->timestamp('created_at');
 
             $table->index(["role_id"], 'fk_users_roles1_idx');
 
             $table->unique(["id"], 'id_UNIQUE');
 
             $table->unique(["email"], 'email_UNIQUE');
+            $table->nullableTimestamps();
 
 
             $table->foreign('role_id', 'fk_users_roles1_idx')
