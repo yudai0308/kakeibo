@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::middleware(['api'])->group(function () {
-    Route::get('/user/{id}/accounts', 'UserController@getAccounts');
+Route::group(["prefix" => "api", "middleware" => "api"], function () {
+    Route::get('/auth_user', 'UserController@getAuthUser');
+    Route::get('/user/{id}/accounts', 'UserController@getMyAccounts');
 });

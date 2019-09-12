@@ -12,7 +12,12 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
-    public function getAccounts ($id) {
+    public function getAuthUser () {
+        $user = \Auth::user();
+        return $user;
+    }
+
+    public function getMyAccounts ($id) {
         $user = User::find($id);
         return $user->accounts;
     }
