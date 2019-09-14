@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Button, Modal} from 'react-bootstrap';
 import ReactDOM from 'react-dom';
+import AccountForm from './Account-form';
 
 function AccountFormModal() {
     const [show, setShow] = useState(false);
@@ -10,25 +11,17 @@ function AccountFormModal() {
     return (
         <div>
             <Button variant="primary" onClick={handleShow}>
-                <i class="text-right fas fa-plus-circle">
-                </i> NEW KAKE-BO!
+                <i className="text-right fas fa-plus-circle">
+                </i> 新しい家計簿
             </Button>
 
             <Modal show={show} onHide={handleClose} centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>新しい KAKE-BO を作る</Modal.Title>
+                    <Modal.Title>新しい家計簿を作る</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    ここにフォームを作ります。
+                    <AccountForm />
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        閉じる
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        作成
-                    </Button>
-                </Modal.Footer>
             </Modal>
         </div>
     );

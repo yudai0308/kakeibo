@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 function AccountCard(props) {
-    // console.log(props)
     return (
         <div className="card text-center">
             <a className="text-dark text-decoration-none" href="#">

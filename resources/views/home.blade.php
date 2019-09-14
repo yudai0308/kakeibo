@@ -8,8 +8,9 @@
                 <p class="font-weight-bold">あなたとシェアされている{{ env("KAKEIBO") }}</p>
             </div>
             <div id="account-form" class="mb-4"></div>
-            <div class="bg-light rounded p-4" style="width: 100%; height: 300px;">
-            <div id="account-deck"></div>
+            <div class="bg-light rounded p-4">
+                <div id="account-deck"></div>
+            </div>
         </div>
     </div>
 </div>

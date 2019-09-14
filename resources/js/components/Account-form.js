@@ -1,42 +1,28 @@
 import React, {useState} from 'react';
-import ReactDOM from 'react-dom';
+import {Form, Button} from 'react-bootstrap';
+import ShareForm from './Account-form-share';
 
-function Example() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+function AccountForm () {
   return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        <i class="text-right fas fa-plus-circle">
-        </i> NEW KAKE-BO!
+    <Form>
+      <Form.Group controlId="formAccoutName">
+        <Form.Label>家計簿に名前をつけましょう！</Form.Label>
+        <Form.Control type="text" placeholder="○○家計簿" className="mb-2" />
+        <Form.Text className="text-muted">
+          家計簿は個人用だけでなく、複数人でシェアしながらご利用できます。<br/>
+          最大３つまで作成することができますので、区別できるように名前をつけてください。
+        </Form.Text>
+      </Form.Group>
+
+      {/* <Form.Group controlId="formAccountSharing">
+        <Form.Label>共有する（任意）</Form.Label>
+        <ShareForm />
+      </Form.Group> */}
+      <Button variant="primary" type="submit">
+        作成
       </Button>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+    </Form>
   );
 }
 
-render(<Example />);
-
-if (document.getElementById('example')) {
-  ReactDOM.render(
-      <Example />,
-      document.getElementById('example')
-  );
-}
+export default AccountForm;
