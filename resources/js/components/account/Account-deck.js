@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AccountCard from './Account-card';
-import User from '../User.js';
-import {axios} from "../axios";
+import User from '../../User.js';
+import {axios} from "../../axios";
 
 class AccountDeck extends React.Component {
     constructor (props) {
@@ -21,6 +21,7 @@ class AccountDeck extends React.Component {
                  axios.get(`/api/user/${user.id}/accounts`)
                       .then(res => {
                           const accounts = res.data;
+                          console.log(accounts)
                           const titles = accounts.map(a => a.name);
                           this.setState({titles: titles});
                       })

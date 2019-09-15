@@ -18,6 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/account', 'AccountController@store')->name('account.store');
+Route::get('/account/{id}/{hash}', 'AccountController@show')->name('account.show');
 
 Route::group(["prefix" => "api", "middleware" => "api"], function () {
     Route::get('/auth_user', 'UserController@getAuthUser');

@@ -7,14 +7,14 @@ class AccountsTableSheeder extends Seeder
     /**
      * Run the database seeds.
      *
-     * @return void
+     * @return voids
      */
     public function run()
     {
         DB::table("accounts")->insert([
-            ["name" => "家計簿"],
-            ["name" => "おこづかい帳"],
-            ["name" => "サークル収支"],
+            ["name" => "家計簿", "hash" => md5(uniqid(rand(), true))],
+            ["name" => "おこづかい帳", "hash" => md5(uniqid(rand(), true))],
+            ["name" => "サークル収支", "hash" => md5(uniqid(rand(), true))],
         ]);
     }
 }

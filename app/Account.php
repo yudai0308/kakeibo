@@ -11,13 +11,14 @@ class Account extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'name'
+        'name',
+        'hash',
     ];
 
     // リレーション定義
     public function users()
     {
-        return $this->belogsToMany("App\User");
+        return $this->belongsToMany("App\User");
     }
     public function item()
     {

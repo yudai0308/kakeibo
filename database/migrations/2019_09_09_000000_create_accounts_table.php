@@ -25,6 +25,9 @@ class CreateAccountsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name', 45);
+            $table->string('hash');
+
+            $table->unique(["hash"], 'hash_UNIQUE');
 
             $table->unique(["id"], 'id_UNIQUE');
         });
