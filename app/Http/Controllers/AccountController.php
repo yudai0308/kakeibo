@@ -14,8 +14,8 @@ class AccountController extends Controller
         // ユーザーが持っている家計簿が最大数を超えた場合はエラーを返す。
         $cnt = count(Auth::user()->accounts);
         $max = env("MAX_ACCOUNT");
-        if ($cnt > $max) {
-            $errorMsg = env("KAKEIBO") . "は 1 ユーザー最大 " . $max . " つまでとなっています。";
+        if ($cnt > env("MAX_ACCOUNT")) {
+            $errorMsg = env("KAKEIBO") . "は 1 ユーザー最大 " . env("MAX_ACCOUNT") . " つまでとなっています。";
             return json_encode(["error" => $errorMsg]);
         }
 

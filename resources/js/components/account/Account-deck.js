@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Row} from 'react-bootstrap';
 import AccountCard from './Account-card';
 import User from '../../User.js';
 import {axios} from "../../axios";
@@ -57,9 +58,9 @@ class AccountDeck extends React.Component {
         }
 
         return (
-            <div className="card-deck">
+            <Row>
                 {cards}
-            </div>
+            </Row>
         )
     }
 }

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Form, Button} from 'react-bootstrap';
+import {Form, Button, Alert} from 'react-bootstrap';
 // import ShareForm from './Account-form-share';
 import {axios} from '../../axios';
 import GetUser from '../../User';
@@ -46,16 +46,18 @@ function AccountForm () {
           最大３つまで作成することができますので、区別できるように名前をつけてください。
         </Form.Text>
       </Form.Group>
-      { errorMsg ? <p>{errorMsg}</p> : null }
+      { errorMsg ? <Alert variant="danger">{errorMsg}</Alert> : null }
 
       {/* <Form.Group controlId="formAccountSharing">
         <Form.Label>共有する（任意）</Form.Label>
         <ShareForm />
       </Form.Group> */}
 
-      <Button variant="primary" type="submit">
-        作成
-      </Button>
+      <div className="text-right">
+        <Button variant="primary" type="submit">
+          作成
+        </Button>
+      </div>
     </Form>
   );
 }
