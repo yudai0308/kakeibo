@@ -58,18 +58,13 @@ class AccountDeck extends React.Component {
         }
 
         return (
-            <Row>
-                {cards}
-            </Row>
+            <div className="bg-light rounded p-4">
+                <Row>
+                    {cards}
+                </Row>
+            </div>
         )
     }
 }
 
 export default AccountDeck;
-
-if (document.getElementById('account-deck')) {
-    ReactDOM.render(
-        <AccountDeck />,
-        document.getElementById('account-deck')
-    );
-}

@@ -3,17 +3,19 @@ import {Button, Modal} from 'react-bootstrap';
 import ReactDOM from 'react-dom';
 import AccountForm from './Account-form';
 
-function AccountFormModal() {
+function AccountFormModal () {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     return (
-        <div>
-            <Button variant="primary" onClick={handleShow}>
-                <i className="text-right fas fa-plus-circle">
-                </i> 新しい家計簿
-            </Button>
+        <>
+            <div className="mb-4">
+                <Button variant="primary" onClick={handleShow}>
+                    <i className="text-right fas fa-plus-circle">
+                    </i> 新しい家計簿
+                </Button>
+            </div>
 
             <Modal show={show} onHide={handleClose} centered>
                 <Modal.Header closeButton>
@@ -23,15 +25,8 @@ function AccountFormModal() {
                     <AccountForm />
                 </Modal.Body>
             </Modal>
-        </div>
+        </>
     );
 }
 
-// render(<Example />);
-
-if (document.getElementById('account-form')) {
-    ReactDOM.render(
-        <AccountFormModal />,
-        document.getElementById('account-form')
-    );
-}
+export default AccountFormModal;
