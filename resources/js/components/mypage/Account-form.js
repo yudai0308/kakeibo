@@ -5,12 +5,13 @@ import {axios} from '../../axios';
 import GetUser from '../../User';
 
 function AccountForm () {
-  const [accountName, setAccountName] = useState("");
-  const [errorMsg, setErrorMsg] = useState("")
+  const [title, setTitle] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [created, setCreated] = useState(false);
 
   const handleChange = (e) => {
     const name = e.target.value;
-    setAccountName(name);
+    setTitle(name);
     return;
   }
 
@@ -18,16 +19,31 @@ function AccountForm () {
     e.preventDefault();
     // const user = await GetUser();
     axios.post("/account", {
-      name: accountName,
+      name: title,
     })
     .then(res => {
-      if (res.data.error) {
+      if (!res.data.error) {
+        setCreated(true);
+      } else {
         setErrorMsg(res.data.error);
       }
     })
     .catch(err => {
       console.log(err)
     });
+  }
+
+  const body = () => {
+    if (created) {
+      return (
+        <>
+          <p>家計簿を作成しました！</p>
+          <p>URL</p>
+        </>
+      )
+    } else {
+      //
+    }
   }
 
   return (

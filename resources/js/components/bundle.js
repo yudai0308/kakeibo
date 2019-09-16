@@ -1,1 +1,1 @@
-require("./mypage");
+require("./mypage/mypage");

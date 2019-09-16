@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import ReactDOM from 'react-dom';
-import { axios } from "../axios";
+import { axios } from "../../axios";
 import { Container, Row, Col } from 'react-bootstrap';
-import AccountForm from './account/Account-form-modal';
-import AccountDeck from './account/Account-deck';
+import AccountForm from './Account-form-modal';
+import AccountDeck from './Account-deck';
 
 function Mypage() {
   const [accounts, setAccounts] = useState(null);
+  const AccountContext = createContext();
   const fetchAccounts = async () => {
     let res = await axios.get(`/api/user/accounts`)
     const accounts = res.data;
@@ -24,8 +25,10 @@ function Mypage() {
           <div className="mb-4 border-bottom">
             <p className="font-weight-bold">あなたが作成した家計簿</p>
           </div>
-          <AccountForm />
-          <AccountDeck accounts={accounts} />
+          <AccountContext.Provider value={accounts}>
+            <AccountForm />
+            <AccountDeck />
+          </AccountContext.Provider>
         </Col>
       </Row>
     </Container>
