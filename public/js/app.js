@@ -64502,7 +64502,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 /* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../axios */ "./resources/js/axios.js");
-/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../User */ "./resources/js/User.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -64513,7 +64512,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
  // import ShareForm from './Account-form-share';
-
 
 
 
@@ -64528,10 +64526,10 @@ function AccountForm() {
       errorMsg = _useState4[0],
       setErrorMsg = _useState4[1];
 
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
       _useState6 = _slicedToArray(_useState5, 2),
-      created = _useState6[0],
-      setCreated = _useState6[1];
+      createdAccount = _useState6[0],
+      setCreatedAccount = _useState6[1];
 
   var handleChange = function handleChange(e) {
     var name = e.target.value;
@@ -64540,13 +64538,12 @@ function AccountForm() {
   };
 
   var handleSubmit = function handleSubmit(e) {
-    e.preventDefault(); // const user = await GetUser();
-
+    e.preventDefault();
     _axios__WEBPACK_IMPORTED_MODULE_2__["axios"].post("/account", {
       name: title
     }).then(function (res) {
       if (!res.data.error) {
-        setCreated(true);
+        setCreatedAccount(res.data);
       } else {
         setErrorMsg(res.data.error);
       }
@@ -64555,33 +64552,34 @@ function AccountForm() {
     });
   };
 
-  var body = function body() {
-    if (created) {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u5BB6\u8A08\u7C3F\u3092\u4F5C\u6210\u3057\u307E\u3057\u305F\uFF01"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "URL"));
-    } else {//
+  var getBody = function getBody() {
+    if (createdAccount) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u5BB6\u8A08\u7C3F\u3092\u4F5C\u6210\u3057\u307E\u3057\u305F\uFF01"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, createdAccount.url));
+    } else {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+        onSubmit: handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        controlId: "formAccoutName"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u5BB6\u8A08\u7C3F\u306B\u540D\u524D\u3092\u3064\u3051\u307E\u3057\u3087\u3046\uFF01"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        type: "text",
+        placeholder: "\u25CB\u25CB\u306E\u5BB6\u8A08\u7C3F",
+        className: "mb-2",
+        onChange: handleChange,
+        required: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Text, {
+        className: "text-muted"
+      }, "\u5BB6\u8A08\u7C3F\u306F\u500B\u4EBA\u7528\u3060\u3051\u3067\u306A\u304F\u3001\u8907\u6570\u4EBA\u3067\u30B7\u30A7\u30A2\u3057\u306A\u304C\u3089\u3054\u5229\u7528\u3067\u304D\u307E\u3059\u3002", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u6700\u5927\uFF13\u3064\u307E\u3067\u4F5C\u6210\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059\u306E\u3067\u3001\u533A\u5225\u3067\u304D\u308B\u3088\u3046\u306B\u540D\u524D\u3092\u3064\u3051\u3066\u304F\u3060\u3055\u3044\u3002")), errorMsg ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
+        variant: "danger"
+      }, errorMsg) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-right"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        variant: "primary",
+        type: "submit"
+      }, "\u4F5C\u6210")));
     }
   };
 
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
-    onSubmit: handleSubmit
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-    controlId: "formAccoutName"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u5BB6\u8A08\u7C3F\u306B\u540D\u524D\u3092\u3064\u3051\u307E\u3057\u3087\u3046\uFF01"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-    type: "text",
-    placeholder: "\u25CB\u25CB\u306E\u5BB6\u8A08\u7C3F",
-    className: "mb-2",
-    onChange: handleChange,
-    required: true
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Text, {
-    className: "text-muted"
-  }, "\u5BB6\u8A08\u7C3F\u306F\u500B\u4EBA\u7528\u3060\u3051\u3067\u306A\u304F\u3001\u8907\u6570\u4EBA\u3067\u30B7\u30A7\u30A2\u3057\u306A\u304C\u3089\u3054\u5229\u7528\u3067\u304D\u307E\u3059\u3002", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u6700\u5927\uFF13\u3064\u307E\u3067\u4F5C\u6210\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059\u306E\u3067\u3001\u533A\u5225\u3067\u304D\u308B\u3088\u3046\u306B\u540D\u524D\u3092\u3064\u3051\u3066\u304F\u3060\u3055\u3044\u3002")), errorMsg ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
-    variant: "danger"
-  }, errorMsg) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-right"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-    variant: "primary",
-    type: "submit"
-  }, "\u4F5C\u6210")));
+  return getBody();
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (AccountForm);
