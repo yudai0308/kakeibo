@@ -6,23 +6,16 @@ import AccountForm from './account/Account-form-modal';
 import AccountDeck from './account/Account-deck';
 
 function Mypage () {
-  const [titles, setTitles] = useState(null);
+  const [accounts, setAccounts] = useState(null);
+  const fetchAccounts = async () => {
+    let res = await axios.get(`/api/user/accounts`)
+    const accounts = res.data;
+    setAccounts(accounts);
+  }
 
   useEffect(() => {
-    const fetchTitles = async () =>{
-      let res;
-      res = await axios.get("/api/auth_user");
-      const user = res.data;
-      res = await axios.get(`/api/user/${user.id}/accounts`)
-      const accounts = res.data;
-      const titles = accounts.map(a => a.name);
-      setTitles(titles);
-    }
-    fetchTitles();
-  // 第２引数にこの副作用が依存している値の配列を渡すことができる。
-  // 空の配列を渡すとコンポーネント内のどの値にも依存してないことを示すことができる
-  // この場合、マウント時に実行、アンマウント時にクリーンアップされるが、アップデート時は実行されない。
-  }, []);
+    fetchAccounts();
+  }, [setAccounts]);
 
   return (
     <Container>
@@ -32,7 +25,7 @@ function Mypage () {
             <p className="font-weight-bold">あなたが作成した家計簿</p>
           </div>
           <AccountForm />
-          <AccountDeck titles={titles} />
+          <AccountDeck accounts={accounts} />
         </Col>
       </Row>
     </Container>

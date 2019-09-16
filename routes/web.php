@@ -23,5 +23,5 @@ Route::get('/account/{id}/{hash}', 'AccountController@show')->name('account.show
 
 Route::group(["prefix" => "api", "middleware" => "api"], function () {
     Route::get('/auth_user', 'UserController@getAuthUser');
-    Route::get('/user/{id}/accounts', 'UserController@getMyAccounts');
+    Route::get('/user/accounts', 'UserController@getMyAccounts');
 });

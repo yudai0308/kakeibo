@@ -9,14 +9,20 @@ use \Auth;
 
 class AccountController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function store (Request $req)
     {
         // ユーザーが持っている家計簿が最大数を超えた場合はエラーを返す。
         $cnt = count(Auth::user()->accounts);
+        $kakeibo = env("KAKEIBO");
         $max = env("MAX_ACCOUNT");
         if ($cnt > env("MAX_ACCOUNT")) {
-            $errorMsg = env("KAKEIBO") . "は 1 ユーザー最大 " . env("MAX_ACCOUNT") . " つまでとなっています。";
-            return json_encode(["error" => $errorMsg]);
+            $errorMsg = "${kakeibo}は 1 ユーザー最大 ${max} つまでとなっています。";
+            return ["error" => $errorMsg];
         }
 
         $account = Account::create([
@@ -25,7 +31,10 @@ class AccountController extends Controller
         ]);
         $account->users()->attach(Auth::user());
         $url = $this->getAccountURL($account);
-        return json_encode(["url" => $url]);
+        return [
+            "title" => $account->name,
+            "url" => $url
+        ];
     }
 
     public function getAccountURL ($account) {

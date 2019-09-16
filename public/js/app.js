@@ -64362,7 +64362,7 @@ function AccountCard(props) {
     className: "card-body"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "card-title"
-  }, props.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+  }, props.account.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "img-fluid",
     src: "https://img.icons8.com/bubbles/100/000000/money.png"
   })))));
@@ -64400,49 +64400,29 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function AccountDeck(props) {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.titles),
-      _useState2 = _slicedToArray(_useState, 2),
-      titles = _useState2[0],
-      setTitles = _useState2[1];
+  console.log(props);
 
-  var cards = titles ? titles.map(function (title, i) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.accounts),
+      _useState2 = _slicedToArray(_useState, 2),
+      accounts = _useState2[0],
+      setAccounts = _useState2[1];
+
+  var cards = accounts ? accounts.map(function (account, i) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Account_card__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      title: title,
+      account: account,
       key: i
     });
   }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "m-0 text-center"
-  }, "\u307E\u305A\u306F\u65B0\u3057\u3044\u5BB6\u8A08\u7C3F\u3092\u4F5C\u6210\u3057\u307E\u3057\u3087\u3046\uFF01");
+  }, "\u307E\u305A\u306F\u65B0\u3057\u3044\u5BB6\u8A08\u7C3F\u3092\u4F5C\u6210\u3057\u307E\u3057\u3087\u3046\uFF01"); //   console.log("1", (accounts) ? true : false)
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    setAccounts(props.accounts); // console.log("aaa")
+  }, [props.accounts]);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "bg-light rounded p-4"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, cards));
-} // class AccountDeck extends React.Component {
-//     constructor (props) {
-//         super(props);
-//         this.state = {
-//             titles: null,
-//         }
-//         // 一番最初に render() が呼ばれるタイミングでは titles はセットされてない。
-//         // 同期処理が完了し、titles に値がセットされたタイミングで再度 render() が呼ばれる。
-//     }
-//     render () {
-//         const titles = this.state.titles;
-//         let cards;
-//         if (titles) {
-//             cards = titles.map((title, i) => {
-//                 return <AccountCard title={title} key={i} />
-//             });
-//         }
-//         return (
-//             <div className="bg-light rounded p-4">
-//                 <Row>
-//                     {cards}
-//                 </Row>
-//             </div>
-//         )
-//     }
-// }
-
+}
 
 /* harmony default export */ __webpack_exports__["default"] = (AccountDeck);
 
@@ -64602,9 +64582,6 @@ function AccountForm() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-// require("./account/Account-form-modal");
-// require("./account/Account-deck");
-// require("./Account-form");
 __webpack_require__(/*! ./mypage */ "./resources/js/components/mypage.js");
 
 /***/ }),
@@ -64652,55 +64629,44 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function Mypage() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
       _useState2 = _slicedToArray(_useState, 2),
-      titles = _useState2[0],
-      setTitles = _useState2[1];
+      accounts = _useState2[0],
+      setAccounts = _useState2[1];
+
+  var fetchAccounts =
+  /*#__PURE__*/
+  function () {
+    var _ref = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var res, accounts;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _axios__WEBPACK_IMPORTED_MODULE_3__["axios"].get("/api/user/accounts");
+
+            case 2:
+              res = _context.sent;
+              accounts = res.data;
+              setAccounts(accounts);
+
+            case 5:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function fetchAccounts() {
+      return _ref.apply(this, arguments);
+    };
+  }();
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    var fetchTitles =
-    /*#__PURE__*/
-    function () {
-      var _ref = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var res, user, accounts, titles;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return _axios__WEBPACK_IMPORTED_MODULE_3__["axios"].get("/api/auth_user");
-
-              case 2:
-                res = _context.sent;
-                user = res.data;
-                _context.next = 6;
-                return _axios__WEBPACK_IMPORTED_MODULE_3__["axios"].get("/api/user/".concat(user.id, "/accounts"));
-
-              case 6:
-                res = _context.sent;
-                accounts = res.data;
-                titles = accounts.map(function (a) {
-                  return a.name;
-                });
-                setTitles(titles);
-
-              case 10:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }));
-
-      return function fetchTitles() {
-        return _ref.apply(this, arguments);
-      };
-    }();
-
-    fetchTitles(); // 第２引数にこの副作用が依存している値の配列を渡すことができる。
-    // 空の配列を渡すとコンポーネント内のどの値にも依存してないことを示すことができる
-    // この場合、マウント時に実行、アンマウント時にクリーンアップされるが、アップデート時は実行されない。
-  }, []);
+    fetchAccounts();
+  }, [setAccounts]);
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Container"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Row"], {
     className: "justify-content-center"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["Col"], {
@@ -64710,7 +64676,7 @@ function Mypage() {
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
     className: "font-weight-bold"
   }, "\u3042\u306A\u305F\u304C\u4F5C\u6210\u3057\u305F\u5BB6\u8A08\u7C3F")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_account_Account_form_modal__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_account_Account_deck__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    titles: titles
+    accounts: accounts
   }))));
 }
 
