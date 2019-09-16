@@ -5,9 +5,10 @@ import { Container, Row, Col } from 'react-bootstrap';
 import AccountForm from './Account-form-modal';
 import AccountDeck from './Account-deck';
 
+export const AccountContext = createContext();
+
 function Mypage() {
   const [accounts, setAccounts] = useState(null);
-  const AccountContext = createContext();
   const fetchAccounts = async () => {
     let res = await axios.get(`/api/user/accounts`)
     const accounts = res.data;
