@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Account;
 use App\User;
 use \Auth;
+use \DB;
 
 class AccountController extends Controller
 {
@@ -25,12 +26,15 @@ class AccountController extends Controller
             return ["error" => $errorMsg];
         }
 
-        $account = Account::create([
-            "name" => $req->name,
-            "hash" => md5(uniqid(rand(), true)),
-        ]);
+        $account = new Account();
+        DB::transaction(function () use ($req, &$account) {
+            $account->fill([
+                "name" => $req->name,
+                "hash" => md5(uniqid(rand(), true)),
+            ])->save();
+            $account->users()->attach(Auth::user());
+        });
         $url = Account::getURL($account);
-        $account->users()->attach(Auth::user());
         return [
             "title" => $account->name,
             "url" => $url,

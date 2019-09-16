@@ -33,7 +33,7 @@ class UserController extends Controller
                 }
             return $returnVal;
         } catch(Exception $e) {
-            dd($e->getMessage());
+            // dd($e->getMessage());
         }
     }
 }
