@@ -64389,10 +64389,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ // (props) ではなく ({accounts}) とすることで、props 内部の欲しい値を直接受け取れる。
 
-
-function AccountDeck(props) {
-  var accounts = props.accounts;
+function AccountDeck(_ref) {
+  var accounts = _ref.accounts;
   var cards = accounts ? accounts.map(function (account, i) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Account_card__WEBPACK_IMPORTED_MODULE_2__["default"], {
       account: account,

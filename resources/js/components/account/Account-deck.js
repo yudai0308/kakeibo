@@ -3,8 +3,8 @@ import {Row} from 'react-bootstrap';
 import AccountCard from './Account-card';
 import User from '../../User.js';
 
-function AccountDeck (props) {
-  const accounts = props.accounts;
+// (props) ではなく ({accounts}) とすることで、props 内部の欲しい値を直接受け取れる。
+function AccountDeck ({accounts}) {
   const cards = (accounts)
     ? accounts.map((account, i) => <AccountCard account={account} key={i} />)
     : <p className="m-0 text-center">まずは新しい家計簿を作成しましょう！</p>
