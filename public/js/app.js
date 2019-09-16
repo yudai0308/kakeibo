@@ -64386,27 +64386,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 /* harmony import */ var _Account_card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Account-card */ "./resources/js/components/account/Account-card.js");
 /* harmony import */ var _User_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../User.js */ "./resources/js/User.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
 
 
 function AccountDeck(props) {
-  console.log(props);
-
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.accounts),
-      _useState2 = _slicedToArray(_useState, 2),
-      accounts = _useState2[0],
-      setAccounts = _useState2[1];
-
+  var accounts = props.accounts;
   var cards = accounts ? accounts.map(function (account, i) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Account_card__WEBPACK_IMPORTED_MODULE_2__["default"], {
       account: account,
@@ -64414,11 +64400,7 @@ function AccountDeck(props) {
     });
   }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "m-0 text-center"
-  }, "\u307E\u305A\u306F\u65B0\u3057\u3044\u5BB6\u8A08\u7C3F\u3092\u4F5C\u6210\u3057\u307E\u3057\u3087\u3046\uFF01"); //   console.log("1", (accounts) ? true : false)
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    setAccounts(props.accounts); // console.log("aaa")
-  }, [props.accounts]);
+  }, "\u307E\u305A\u306F\u65B0\u3057\u3044\u5BB6\u8A08\u7C3F\u3092\u4F5C\u6210\u3057\u307E\u3057\u3087\u3046\uFF01");
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "bg-light rounded p-4"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, cards));
