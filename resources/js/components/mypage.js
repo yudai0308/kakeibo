@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import {axios} from "../axios";
-import {Container, Row, Col} from 'react-bootstrap';
+import { axios } from "../axios";
+import { Container, Row, Col } from 'react-bootstrap';
 import AccountForm from './account/Account-form-modal';
 import AccountDeck from './account/Account-deck';
 
-function Mypage () {
+function Mypage() {
   const [accounts, setAccounts] = useState(null);
   const fetchAccounts = async () => {
     let res = await axios.get(`/api/user/accounts`)
@@ -34,7 +34,7 @@ function Mypage () {
 
 if (document.getElementById("mypage")) {
   ReactDOM.render(
-      <Mypage />,
-      document.getElementById("mypage")
+    <Mypage />,
+    document.getElementById("mypage")
   );
 }
