@@ -20,10 +20,10 @@ class Account_UserTableSheeder extends Seeder
                 "account_id" => 2,
                 "user_id" => 1,
             ],
-            [
-                "account_id" => 3,
-                "user_id" => 1,
-            ],
+            // [
+            //     "account_id" => 3,
+            //     "user_id" => 1,
+            // ],
         ]);
     }
 }

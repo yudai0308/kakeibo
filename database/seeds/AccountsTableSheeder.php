@@ -14,7 +14,7 @@ class AccountsTableSheeder extends Seeder
         DB::table("accounts")->insert([
             ["name" => "家計簿", "hash" => md5(uniqid(rand(), true))],
             ["name" => "おこづかい帳", "hash" => md5(uniqid(rand(), true))],
-            ["name" => "サークル収支", "hash" => md5(uniqid(rand(), true))],
+            // ["name" => "サークル収支", "hash" => md5(uniqid(rand(), true))],
         ]);
     }
 }
