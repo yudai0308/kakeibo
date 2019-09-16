@@ -13,14 +13,14 @@ class AccountController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function store (Request $req)
     {
         // ユーザーが持っている家計簿が最大数を超えた場合はエラーを返す。
         $cnt = count(Auth::user()->accounts);
         $kakeibo = env("KAKEIBO");
         $max = env("MAX_ACCOUNT");
-        if ($cnt > env("MAX_ACCOUNT")) {
+        if ($cnt >= env("MAX_ACCOUNT")) {
             $errorMsg = "${kakeibo}は 1 ユーザー最大 ${max} つまでとなっています。";
             return ["error" => $errorMsg];
         }
@@ -29,19 +29,11 @@ class AccountController extends Controller
             "name" => $req->name,
             "hash" => md5(uniqid(rand(), true)),
         ]);
+        $url = Account::getURL($account);
         $account->users()->attach(Auth::user());
-        $url = $this->getAccountURL($account);
         return [
             "title" => $account->name,
-            "url" => $url
+            "url" => $url,
         ];
-    }
-
-    public function getAccountURL ($account) {
-        $url = route("account.show", [
-            "id" => $account->id,
-            "hash" => $account->hash,
-        ]);
-        return $url;
     }
 }

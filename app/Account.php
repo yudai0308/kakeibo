@@ -24,4 +24,14 @@ class Account extends Model
     {
         return $this->hasMany("App\Item");
     }
+
+    // ライブラリー
+    static public function getURL(Account $account)
+    {
+        $url = route("account.show", [
+            "id" => $account->id,
+            "hash" => $account->hash,
+        ]);
+        return $url;
+    }
 }
