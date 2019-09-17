@@ -22,11 +22,11 @@ class AccountsTableSheeder extends Seeder
                 "hash" => md5(uniqid(rand(), true)),
                 "isPublic" => false,
             ],
-            [
-                "title" => "サークル収支",
-                "hash" => md5(uniqid(rand(), true)),
-                "isPublic" => false,
-            ],
+            // [
+            //     "title" => "サークル収支",
+            //     "hash" => md5(uniqid(rand(), true)),
+            //     "isPublic" => false,
+            // ],
         ]);
     }
 }
