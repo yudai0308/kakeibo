@@ -22,7 +22,7 @@ class UserController extends Controller
     public function getAccounts () {
         try {
             $user = Auth::user();
-            $accounts = $user->accounts;
+            $accounts = $user->accounts()->orderBy("id", "desc")->get();
             $returnVal = [];
             foreach($accounts as $a) {
                 $url = Account::getURL($a);
