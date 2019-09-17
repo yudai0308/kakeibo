@@ -12,9 +12,8 @@ function AccountFormModal() {
     <>
       <div className="mb-4">
         <Button variant="primary" onClick={handleShow}>
-          <i className="text-right fas fa-plus-circle">
-          </i> 新しい家計簿
-                </Button>
+          <i className="text-right fas fa-plus-circle"></i> 新しい家計簿
+        </Button>
       </div>
 
       <Modal show={show} onHide={handleClose} centered>

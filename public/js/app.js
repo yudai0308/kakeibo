@@ -64535,16 +64535,16 @@ function AccountForm() {
       setCreatedAccount = _useState6[1];
 
   var handleChange = function handleChange(e) {
-    var name = e.target.value;
-    setNewAccount(name);
-    return;
+    var key = e.target.name;
+    var val = key === "isPublic" ? e.target.checked : e.target.value;
+    var setVals = newAccount;
+    setVals[key] = val;
+    setNewAccount(setVals);
   };
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-    _axios__WEBPACK_IMPORTED_MODULE_2__["axios"].post("/account", {
-      name: newAccount.title
-    }).then(function (res) {
+    _axios__WEBPACK_IMPORTED_MODULE_2__["axios"].post("/account", newAccount).then(function (res) {
       if (!res.data.error) {
         setCreatedAccount(res.data);
       } else {
@@ -64582,19 +64582,26 @@ function AccountForm() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
         onSubmit: handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-        controlId: "formAccoutName"
+        controlId: "form-accout-name"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u5BB6\u8A08\u7C3F\u306B\u540D\u524D\u3092\u3064\u3051\u307E\u3057\u3087\u3046\uFF01"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
         type: "text",
+        name: "title",
         placeholder: "\u25CB\u25CB\u306E\u5BB6\u8A08\u7C3F",
         className: "mb-2",
         onChange: handleChange,
         required: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Text, {
         className: "text-muted mb-2"
-      }, "\u5BB6\u8A08\u7C3F\u306F\u500B\u4EBA\u7528\u3060\u3051\u3067\u306A\u304F\u3001\u8907\u6570\u4EBA\u3067\u30B7\u30A7\u30A2\u3057\u306A\u304C\u3089\u3054\u5229\u7528\u3067\u304D\u307E\u3059\u3002", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u6700\u5927\uFF13\u3064\u307E\u3067\u4F5C\u6210\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059\u306E\u3067\u3001\u533A\u5225\u3067\u304D\u308B\u3088\u3046\u306B\u540D\u524D\u3092\u3064\u3051\u3066\u304F\u3060\u3055\u3044\u3002"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+      }, "\u5BB6\u8A08\u7C3F\u306F\u500B\u4EBA\u7528\u3060\u3051\u3067\u306A\u304F\u3001\u8907\u6570\u4EBA\u3067\u30B7\u30A7\u30A2\u3057\u306A\u304C\u3089\u3054\u5229\u7528\u3067\u304D\u307E\u3059\u3002", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u6700\u5927\uFF13\u3064\u307E\u3067\u4F5C\u6210\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059\u306E\u3067\u3001\u533A\u5225\u3067\u304D\u308B\u3088\u3046\u306B\u540D\u524D\u3092\u3064\u3051\u3066\u304F\u3060\u3055\u3044\u3002")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+        controlId: "form-accout-isPublic"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
         type: "checkbox",
-        label: "\u5BB6\u8A08\u7C3F\u3092\u5171\u6709\u3059\u308B"
-      })), errorMsg ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
+        name: "isPublic",
+        label: "\u5BB6\u8A08\u7C3F\u3092\u5171\u6709\u3059\u308B",
+        onChange: handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Text, {
+        className: "text-muted mb-2"
+      }, "\u5BB6\u8A08\u7C3F\u306F\u3092\u5171\u6709\u3057\u305F\u3044\u5834\u5408\u306F\u30C1\u30A7\u30C3\u30AF\u3057\u3066\u304F\u3060\u3055\u3044\u3002")), errorMsg ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
         variant: "danger"
       }, errorMsg) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "text-right"

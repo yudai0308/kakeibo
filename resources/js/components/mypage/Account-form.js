@@ -7,21 +7,22 @@ import {
 import { axios } from '../../axios';
 
 function AccountForm() {
-  const [newAccount, setNewAccount] = useState({title: "", isPublic: false});
+  const [newAccount, setNewAccount] = useState({ title: "", isPublic: false });
   const [errorMsg, setErrorMsg] = useState("");
   const [createdAccount, setCreatedAccount] = useState(null);
 
   const handleChange = (e) => {
-    const name = e.target.value;
-    setNewAccount(name);
-    return;
+    const key = e.target.name;
+    const val = (key === "isPublic") ? e.target.checked : e.target.value;
+    let setVals = newAccount;
+    setVals[key] = val;
+    setNewAccount(setVals);
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("/account", {
-      name: newAccount.title,
-    }).then(res => {
+    axios.post("/account", newAccount)
+      .then(res => {
       if (!res.data.error) {
         setCreatedAccount(res.data);
       } else {
@@ -58,10 +59,11 @@ function AccountForm() {
     } else {
       return (
         <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="formAccoutName">
+          <Form.Group controlId="form-accout-name">
             <Form.Label>家計簿に名前をつけましょう！</Form.Label>
             <Form.Control
               type="text"
+              name="title"
               placeholder="○○の家計簿"
               className="mb-2"
               onChange={handleChange}
@@ -71,11 +73,19 @@ function AccountForm() {
               家計簿は個人用だけでなく、複数人でシェアしながらご利用できます。<br />
               最大３つまで作成することができますので、区別できるように名前をつけてください。
             </Form.Text>
+          </Form.Group>
+          <Form.Group controlId="form-accout-isPublic">
             <Form.Check
               type="checkbox"
+              name="isPublic"
               label="家計簿を共有する"
+              onChange={handleChange}
             />
+            <Form.Text className="text-muted mb-2">
+              家計簿はを共有したい場合はチェックしてください。
+            </Form.Text>
           </Form.Group>
+
           {errorMsg ? <Alert variant="danger">{errorMsg}</Alert> : null}
 
           {/* <Form.Group controlId="formAccountSharing">
