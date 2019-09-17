@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import {
+  Form, FormControl, InputGroup,
+  Button, Alert, OverlayTrigger, Tooltip,
+} from 'react-bootstrap';
 // import ShareForm from './Account-form-share';
 import { axios } from '../../axios';
 
@@ -29,12 +32,27 @@ function AccountForm() {
     });
   }
 
+  const copyURL = () => {
+    const textarea = document.getElementById("new-account-url");
+    textarea.select();
+    document.execCommand('copy');
+  }
+
   const getBody = () => {
     if (createdAccount) {
       return (
         <>
           <p>家計簿を作成しました！</p>
-          <p>{createdAccount.url}</p>
+          <InputGroup className="mb-3">
+            <FormControl id="new-account-url" readOnly defaultValue={createdAccount.url} />
+            <InputGroup.Append>
+              <OverlayTrigger placement="top" overlay={<Tooltip>コピー</Tooltip>}>
+                <Button variant="outline-secondary" onClick={copyURL}>
+                  <i className="far fa-copy"></i>
+                </Button>
+              </OverlayTrigger>
+            </InputGroup.Append>
+          </InputGroup>
         </>
       )
     } else {
