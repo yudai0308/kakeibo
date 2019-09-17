@@ -26,6 +26,7 @@ class CreateAccountsTable extends Migration
             $table->increments('id');
             $table->string('name', 45);
             $table->string('hash');
+            $table->tinyInteger('isPrivate')->default('1');
 
             $table->unique(["hash"], 'hash_UNIQUE');
 
@@ -38,8 +39,8 @@ class CreateAccountsTable extends Migration
      *
      * @return void
      */
-     public function down()
-     {
-       Schema::dropIfExists($this->set_schema_table);
-     }
+    public function down()
+    {
+        Schema::dropIfExists($this->set_schema_table);
+    }
 }
