@@ -7,20 +7,20 @@ import {
 import { axios } from '../../axios';
 
 function AccountForm() {
-  const [title, setTitle] = useState("");
+  const [newAccount, setNewAccount] = useState({title: "", isPublic: false});
   const [errorMsg, setErrorMsg] = useState("");
   const [createdAccount, setCreatedAccount] = useState(null);
 
   const handleChange = (e) => {
     const name = e.target.value;
-    setTitle(name);
+    setNewAccount(name);
     return;
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post("/account", {
-      name: title,
+      name: newAccount.title,
     }).then(res => {
       if (!res.data.error) {
         setCreatedAccount(res.data);
@@ -67,10 +67,14 @@ function AccountForm() {
               onChange={handleChange}
               required
             />
-            <Form.Text className="text-muted">
+            <Form.Text className="text-muted mb-2">
               家計簿は個人用だけでなく、複数人でシェアしながらご利用できます。<br />
               最大３つまで作成することができますので、区別できるように名前をつけてください。
             </Form.Text>
+            <Form.Check
+              type="checkbox"
+              label="家計簿を共有する"
+            />
           </Form.Group>
           {errorMsg ? <Alert variant="danger">{errorMsg}</Alert> : null}
 

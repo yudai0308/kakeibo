@@ -26,7 +26,7 @@ class CreateAccountsTable extends Migration
             $table->increments('id');
             $table->string('name', 45);
             $table->string('hash');
-            $table->tinyInteger('isPrivate')->default('1');
+            $table->tinyInteger('isPublic')->default('0');
 
             $table->unique(["hash"], 'hash_UNIQUE');
 

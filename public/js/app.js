@@ -64516,10 +64516,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function AccountForm() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    title: "",
+    isPublic: false
+  }),
       _useState2 = _slicedToArray(_useState, 2),
-      title = _useState2[0],
-      setTitle = _useState2[1];
+      newAccount = _useState2[0],
+      setNewAccount = _useState2[1];
 
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState4 = _slicedToArray(_useState3, 2),
@@ -64533,14 +64536,14 @@ function AccountForm() {
 
   var handleChange = function handleChange(e) {
     var name = e.target.value;
-    setTitle(name);
+    setNewAccount(name);
     return;
   };
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     _axios__WEBPACK_IMPORTED_MODULE_2__["axios"].post("/account", {
-      name: title
+      name: newAccount.title
     }).then(function (res) {
       if (!res.data.error) {
         setCreatedAccount(res.data);
@@ -64587,8 +64590,11 @@ function AccountForm() {
         onChange: handleChange,
         required: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Text, {
-        className: "text-muted"
-      }, "\u5BB6\u8A08\u7C3F\u306F\u500B\u4EBA\u7528\u3060\u3051\u3067\u306A\u304F\u3001\u8907\u6570\u4EBA\u3067\u30B7\u30A7\u30A2\u3057\u306A\u304C\u3089\u3054\u5229\u7528\u3067\u304D\u307E\u3059\u3002", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u6700\u5927\uFF13\u3064\u307E\u3067\u4F5C\u6210\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059\u306E\u3067\u3001\u533A\u5225\u3067\u304D\u308B\u3088\u3046\u306B\u540D\u524D\u3092\u3064\u3051\u3066\u304F\u3060\u3055\u3044\u3002")), errorMsg ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
+        className: "text-muted mb-2"
+      }, "\u5BB6\u8A08\u7C3F\u306F\u500B\u4EBA\u7528\u3060\u3051\u3067\u306A\u304F\u3001\u8907\u6570\u4EBA\u3067\u30B7\u30A7\u30A2\u3057\u306A\u304C\u3089\u3054\u5229\u7528\u3067\u304D\u307E\u3059\u3002", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u6700\u5927\uFF13\u3064\u307E\u3067\u4F5C\u6210\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059\u306E\u3067\u3001\u533A\u5225\u3067\u304D\u308B\u3088\u3046\u306B\u540D\u524D\u3092\u3064\u3051\u3066\u304F\u3060\u3055\u3044\u3002"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
+        type: "checkbox",
+        label: "\u5BB6\u8A08\u7C3F\u3092\u5171\u6709\u3059\u308B"
+      })), errorMsg ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
         variant: "danger"
       }, errorMsg) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "text-right"

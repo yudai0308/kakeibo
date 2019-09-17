@@ -15,12 +15,12 @@ class AccountsTableSheeder extends Seeder
             [
                 "name" => "家計簿",
                 "hash" => md5(uniqid(rand(), true)),
-                "isPrivate" => true
+                "isPublic" => true
             ],
             [
                 "name" => "おこづかい帳",
                 "hash" => md5(uniqid(rand(), true)),
-                "isPrivate" => false,
+                "isPublic" => false,
             ],
             // ["name" => "サークル収支", "hash" => md5(uniqid(rand(), true))],
         ]);
