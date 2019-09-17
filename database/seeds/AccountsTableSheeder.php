@@ -13,16 +13,20 @@ class AccountsTableSheeder extends Seeder
     {
         DB::table("accounts")->insert([
             [
-                "name" => "家計簿",
+                "title" => "家計簿",
                 "hash" => md5(uniqid(rand(), true)),
                 "isPublic" => true
             ],
             [
-                "name" => "おこづかい帳",
+                "title" => "おこづかい帳",
                 "hash" => md5(uniqid(rand(), true)),
                 "isPublic" => false,
             ],
-            // ["name" => "サークル収支", "hash" => md5(uniqid(rand(), true))],
+            [
+                "title" => "サークル収支",
+                "hash" => md5(uniqid(rand(), true)),
+                "isPublic" => false,
+            ],
         ]);
     }
 }
