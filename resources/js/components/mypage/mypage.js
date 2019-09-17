@@ -26,7 +26,11 @@ function Mypage() {
           <div className="mb-4 border-bottom">
             <p className="font-weight-bold">あなたが作成した家計簿</p>
           </div>
-          <AccountContext.Provider value={accounts}>
+          <AccountContext.Provider
+            value={{
+              accounts: accounts,
+              changeHandler: fetchAccounts,
+            }}>
             <AccountForm />
             <AccountDeck />
           </AccountContext.Provider>
