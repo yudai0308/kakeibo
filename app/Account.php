@@ -11,8 +11,9 @@ class Account extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'name',
+        'title',
         'hash',
+        'isPublic'
     ];
 
     // リレーション定義

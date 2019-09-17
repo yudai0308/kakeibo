@@ -15,7 +15,7 @@ class AccountController extends Controller
         $this->middleware('auth');
     }
 
-    public function store (Request $req)
+    public function store(Request $req)
     {
         // ユーザーが持っている家計簿が最大数を超えた場合はエラーを返す。
         $cnt = count(Auth::user()->accounts);
@@ -29,15 +29,17 @@ class AccountController extends Controller
         $account = new Account();
         DB::transaction(function () use ($req, &$account) {
             $account->fill([
-                "name" => $req->name,
+                "title" => $req->title,
                 "hash" => md5(uniqid(rand(), true)),
+                "isPublic" => $req->isPublic,
             ])->save();
             $account->users()->attach(Auth::user());
         });
         $url = Account::getURL($account);
         return [
-            "title" => $account->name,
+            "title" => $account->title,
             "url" => $url,
+            "isPublic" => $account->isPublic,
         ];
     }
 }

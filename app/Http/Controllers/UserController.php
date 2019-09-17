@@ -27,8 +27,9 @@ class UserController extends Controller
             foreach($accounts as $a) {
                 $url = Account::getURL($a);
                 array_push($returnVal, [
-                    "title" => $a->name,
-                    "url" => $url,
+                        "title" => $a->title,
+                        "url" => $url,
+                        "isPublic" => $a->isPublic,
                     ]);
                 }
             return $returnVal;
