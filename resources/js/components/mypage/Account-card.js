@@ -7,9 +7,9 @@ function AccountCard(props) {
   }
   return (
     <Col md="4">
-      <div className="card text-center">
-        <a href="#" onClick={test} className="edit-account text-secondary position-absolute" style={{ top: 2, right: 2, width: 20, height: 26 }}>
-          <i className="fas fa-ellipsis-v position-absolute" style={{ top: 5, right: 8 }}></i>
+      <div className="card text-center mb-4 mb-md-0">
+        <a href="#" onClick={test} className="edit-account text-secondary position-absolute" style={{ top: 2, right: 2, width: 24, height: 24 }}>
+          <i className="fas fa-ellipsis-v position-absolute" style={{ top: 4, right: 9 }}></i>
         </a>
         <a className="text-dark text-decoration-none" href="#">
           <div className="card-body">

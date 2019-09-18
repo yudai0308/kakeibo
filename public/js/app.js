@@ -64369,7 +64369,7 @@ function AccountCard(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     md: "4"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card text-center"
+    className: "card text-center mb-4 mb-md-0"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "#",
     onClick: test,
@@ -64377,14 +64377,14 @@ function AccountCard(props) {
     style: {
       top: 2,
       right: 2,
-      width: 20,
-      height: 26
+      width: 24,
+      height: 24
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fas fa-ellipsis-v position-absolute",
     style: {
-      top: 5,
-      right: 8
+      top: 4,
+      right: 9
     }
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "text-dark text-decoration-none",
