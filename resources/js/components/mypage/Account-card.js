@@ -15,7 +15,7 @@ function AccountCard(props) {
         >
           <i className="fas fa-ellipsis-v position-absolute" style={{ top: 4, right: 9 }}></i>
         </a>
-        <a className="text-dark text-decoration-none" href="#">
+        <a className="text-dark text-decoration-none" href={props.account.url}>
           <div className="card-body">
             <h5 className="card-title">{props.account.title}</h5>
             <img className="img-fluid" src="https://img.icons8.com/bubbles/100/000000/money.png" />

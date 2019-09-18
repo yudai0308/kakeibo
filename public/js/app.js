@@ -64371,14 +64371,14 @@ function AccountCard(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card text-center mb-4 mb-md-0"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#",
     onClick: test,
     className: "edit-account text-secondary position-absolute",
     style: {
       top: 2,
       right: 2,
       width: 24,
-      height: 24
+      height: 24,
+      cursor: "pointer"
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fas fa-ellipsis-v position-absolute",
@@ -64388,7 +64388,7 @@ function AccountCard(props) {
     }
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "text-dark text-decoration-none",
-    href: "#"
+    href: props.account.url
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-body"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {

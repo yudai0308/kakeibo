@@ -15,6 +15,12 @@ class AccountController extends Controller
         $this->middleware('auth');
     }
 
+    public function show($id, $hash) {
+        $account = Account::find($id);
+        if($account->hash != $hash) abort(404);
+        return view("account");
+    }
+
     public function store(Request $req)
     {
         // ユーザーが持っている家計簿が最大数を超えた場合はエラーを返す。
