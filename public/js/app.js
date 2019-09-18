@@ -69041,8 +69041,6 @@ function MyCalendar() {
     window.alert("test");
   };
 
-  var tileClass = "custom-tile";
-  var tileContent = "";
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_calendar__WEBPACK_IMPORTED_MODULE_2___default.a, {
     locale: "ja-JP",
     calendarType: "US",
@@ -69050,8 +69048,7 @@ function MyCalendar() {
     onChange: onChange,
     onClickDay: onClickDay,
     value: date,
-    tileClassName: tileClass,
-    tileContent: tileContent
+    tileContent: ""
   }));
 }
 

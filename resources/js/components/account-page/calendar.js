@@ -8,8 +8,6 @@ function MyCalendar() {
   const onClickDay = () => {
     window.alert("test")
   }
-  const tileClass = "custom-tile";
-  const tileContent = "";
 
   return (
     <div>
@@ -20,8 +18,7 @@ function MyCalendar() {
         onChange={onChange}
         onClickDay={onClickDay}
         value={date}
-        tileClassName={tileClass}
-        tileContent={tileContent}
+        tileContent=""
       >
       </Calendar>
     </div>
