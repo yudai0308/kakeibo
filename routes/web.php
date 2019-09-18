@@ -18,7 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/account', 'AccountController@store')->name('account.store');
+Route::get('/account/{id}/{hash}', 'AccountController@show')->name('account.show');
 
-Route::middleware(['api'])->group(function () {
-    Route::get('/user/{id}/accounts', 'UserController@getAccounts');
+Route::group(["prefix" => "api", "middleware" => "api"], function () {
+    Route::get('/auth_user', 'UserController@getAuthUser');
+    Route::get('/user/accounts', 'UserController@getAccounts');
 });

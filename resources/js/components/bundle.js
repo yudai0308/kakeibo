@@ -1,2 +1,1 @@
-require("./Example");
-require("./Account-deck");
+require("./mypage/mypage");

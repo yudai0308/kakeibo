@@ -11,16 +11,28 @@ class Account extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'name'
+        'title',
+        'hash',
+        'isPublic'
     ];
 
     // リレーション定義
     public function users()
     {
-        return $this->belogsToMany("App\User");
+        return $this->belongsToMany("App\User");
     }
     public function item()
     {
         return $this->hasMany("App\Item");
+    }
+
+    // ライブラリー
+    static public function getURL(Account $account)
+    {
+        $url = route("account.show", [
+            "id" => $account->id,
+            "hash" => $account->hash,
+        ]);
+        return $url;
     }
 }

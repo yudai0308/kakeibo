@@ -24,7 +24,11 @@ class CreateAccountsTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name', 45);
+            $table->string('title', 45);
+            $table->string('hash');
+            $table->tinyInteger('isPublic')->default('0');
+
+            $table->unique(["hash"], 'hash_UNIQUE');
 
             $table->unique(["id"], 'id_UNIQUE');
         });
@@ -35,8 +39,8 @@ class CreateAccountsTable extends Migration
      *
      * @return void
      */
-     public function down()
-     {
-       Schema::dropIfExists($this->set_schema_table);
-     }
+    public function down()
+    {
+        Schema::dropIfExists($this->set_schema_table);
+    }
 }
