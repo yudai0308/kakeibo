@@ -8,7 +8,11 @@ function AccountCard(props) {
   return (
     <Col md="4">
       <div className="card text-center mb-4 mb-md-0">
-        <a href="#" onClick={test} className="edit-account text-secondary position-absolute" style={{ top: 2, right: 2, width: 24, height: 24 }}>
+        <a
+          onClick={test}
+          className="edit-account text-secondary position-absolute"
+          style={{ top: 2, right: 2, width: 24, height: 24, cursor: "pointer" }}
+        >
           <i className="fas fa-ellipsis-v position-absolute" style={{ top: 4, right: 9 }}></i>
         </a>
         <a className="text-dark text-decoration-none" href="#">
