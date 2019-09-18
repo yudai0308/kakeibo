@@ -30,6 +30,7 @@ class CreateItemsTable extends Migration
             $table->string('name', 45);
             $table->integer('amount');
             $table->dateTime('date');
+            $table->tinyInteger('isIncome');
 
             $table->index(["account_id"], 'fk_items_accounts1_idx');
 
@@ -62,8 +63,8 @@ class CreateItemsTable extends Migration
      *
      * @return void
      */
-     public function down()
-     {
-       Schema::dropIfExists($this->set_schema_table);
-     }
+    public function down()
+    {
+        Schema::dropIfExists($this->set_schema_table);
+    }
 }
