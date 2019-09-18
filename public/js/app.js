@@ -64335,6 +64335,32 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
+/***/ "./resources/js/components/account-page/account-page.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/account-page/account-page.js ***!
+  \**************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+function AccountPage() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "\u5BB6\u8A08\u7C3F\u30DA\u30FC\u30B8");
+}
+
+if (document.getElementById("account-page")) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AccountPage, null), document.getElementById("account-page"));
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/bundle.js":
 /*!*******************************************!*\
   !*** ./resources/js/components/bundle.js ***!
@@ -64343,6 +64369,8 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! ./mypage/mypage */ "./resources/js/components/mypage/mypage.js");
+
+__webpack_require__(/*! ./account-page/account-page */ "./resources/js/components/account-page/account-page.js");
 
 /***/ }),
 
