@@ -68958,9 +68958,9 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
-/***/ "./resources/js/components/account-page/account-page.js":
+/***/ "./resources/js/components/account-page/Account-page.js":
 /*!**************************************************************!*\
-  !*** ./resources/js/components/account-page/account-page.js ***!
+  !*** ./resources/js/components/account-page/Account-page.js ***!
   \**************************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -68972,8 +68972,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-/* harmony import */ var _calendar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./calendar */ "./resources/js/components/account-page/calendar.js");
-/* harmony import */ var _overview__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./overview */ "./resources/js/components/account-page/overview.js");
+/* harmony import */ var _Calendar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Calendar */ "./resources/js/components/account-page/Calendar.js");
+/* harmony import */ var _Overview__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Overview */ "./resources/js/components/account-page/Overview.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -69016,11 +69016,11 @@ function AccountPage() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
     md: "8",
     className: "mb-4"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_overview__WEBPACK_IMPORTED_MODULE_4__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Overview__WEBPACK_IMPORTED_MODULE_4__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
     className: "justify-content-center"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
     md: "8"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_calendar__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Calendar__WEBPACK_IMPORTED_MODULE_3__["default"], {
     date: date,
     onDateChange: onDateChange,
     onClickDay: onClickDay,
@@ -69034,9 +69034,9 @@ if (document.getElementById("account-page")) {
 
 /***/ }),
 
-/***/ "./resources/js/components/account-page/calendar.js":
+/***/ "./resources/js/components/account-page/Calendar.js":
 /*!**********************************************************!*\
-  !*** ./resources/js/components/account-page/calendar.js ***!
+  !*** ./resources/js/components/account-page/Calendar.js ***!
   \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -69073,9 +69073,9 @@ function MyCalendar(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/account-page/overview.js":
+/***/ "./resources/js/components/account-page/Overview.js":
 /*!**********************************************************!*\
-  !*** ./resources/js/components/account-page/overview.js ***!
+  !*** ./resources/js/components/account-page/Overview.js ***!
   \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -69101,9 +69101,9 @@ function Overview(props) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./mypage/mypage */ "./resources/js/components/mypage/mypage.js");
+__webpack_require__(/*! ./mypage/Mypage */ "./resources/js/components/mypage/Mypage.js");
 
-__webpack_require__(/*! ./account-page/account-page */ "./resources/js/components/account-page/account-page.js");
+__webpack_require__(/*! ./account-page/Account-page */ "./resources/js/components/account-page/Account-page.js");
 
 /***/ }),
 
@@ -69176,7 +69176,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-/* harmony import */ var _mypage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mypage */ "./resources/js/components/mypage/mypage.js");
+/* harmony import */ var _Mypage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Mypage */ "./resources/js/components/mypage/Mypage.js");
 /* harmony import */ var _Account_card__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Account-card */ "./resources/js/components/mypage/Account-card.js");
 /* harmony import */ var _User_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../User.js */ "./resources/js/User.js");
 
@@ -69199,7 +69199,7 @@ function AccountDeck() {
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "bg-light rounded p-4"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_mypage__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Mypage__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
     var accounts = _ref.accounts;
     return getCards(accounts);
   })));
@@ -69283,7 +69283,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-/* harmony import */ var _mypage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mypage */ "./resources/js/components/mypage/mypage.js");
+/* harmony import */ var _Mypage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Mypage */ "./resources/js/components/mypage/Mypage.js");
 /* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../axios */ "./resources/js/axios.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -69364,7 +69364,7 @@ function AccountForm() {
         className: "far fa-copy"
       }))))));
     } else {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_mypage__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Mypage__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
         var changeHandler = _ref.changeHandler;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
           onSubmit: function onSubmit(e) {
@@ -69409,9 +69409,9 @@ function AccountForm() {
 
 /***/ }),
 
-/***/ "./resources/js/components/mypage/mypage.js":
+/***/ "./resources/js/components/mypage/Mypage.js":
 /*!**************************************************!*\
-  !*** ./resources/js/components/mypage/mypage.js ***!
+  !*** ./resources/js/components/mypage/Mypage.js ***!
   \**************************************************/
 /*! exports provided: AccountContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {

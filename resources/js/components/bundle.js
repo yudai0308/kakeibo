@@ -1,2 +1,2 @@
-require("./mypage/mypage");
-require("./account-page/account-page");
+require("./mypage/Mypage");
+require("./account-page/Account-page");

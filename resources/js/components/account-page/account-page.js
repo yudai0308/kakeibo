@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { Container, Row, Col } from "react-bootstrap";
-import MyCalendar from "./calendar";
-import Overview from "./overview";
+import MyCalendar from "./Calendar";
+import Overview from "./Overview";
 
 function AccountPage() {
   const [date, setDate] = useState(new Date());
