@@ -2,18 +2,13 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import Calendar from "react-calendar";
 
-function MyCalendar() {
-  const [date, setDate] = useState(new Date());
-  const onChange = date => setDate(date);
-  const onClickDay = () => {
-    window.alert("test")
-  }
-  const tileContent = (
-    <>
-      <br />
-      <span></span>
-    </>
-  )
+function MyCalendar(props) {
+  const {
+    date,
+    onDateChange,
+    onClickDay,
+    tileContent
+  } = props;
 
   return (
     <div>
@@ -21,7 +16,7 @@ function MyCalendar() {
         locale="ja-JP"
         calendarType="US"
         className="color-primary"
-        onChange={onChange}
+        onChange={onDateChange(date)}
         onClickDay={onClickDay}
         value={date}
         tileContent={tileContent}

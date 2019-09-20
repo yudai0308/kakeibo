@@ -4,6 +4,18 @@ import { Container, Row, Col } from "react-bootstrap";
 import MyCalendar from "./calendar";
 
 function AccountPage() {
+  const [date, setDate] = useState(new Date());
+  const onDateChange = date => setDate(date);
+  const onClickDay = () => {
+    window.alert("test")
+  }
+  const tileContent = (
+    <>
+      <br />
+      <span></span>
+    </>
+  )
+
   return (
     <Container>
       <Row className="justify-content-center">
@@ -15,7 +27,12 @@ function AccountPage() {
       </Row>
       <Row className="justify-content-center">
         <Col md="8">
-          <MyCalendar />
+          <MyCalendar
+            date={date}
+            onDateChange={onDateChange}
+            onClickDay={onClickDay}
+            tileContent={tileContent}
+          />
         </Col>
       </Row>
     </Container>
