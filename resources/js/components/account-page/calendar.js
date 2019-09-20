@@ -6,9 +6,11 @@ function MyCalendar(props) {
   const {
     date,
     onDateChange,
-    onClickDay,
-    tileContent
+    tileContent,
+    showModal,
   } = props;
+  // console.log(props)
+  // const handleShow = () => window.alert();
 
   return (
     <div>
@@ -17,7 +19,7 @@ function MyCalendar(props) {
         calendarType="US"
         className="color-primary"
         onChange={onDateChange(date)}
-        onClickDay={onClickDay}
+        onClickDay={showModal}
         value={date}
         tileContent={tileContent}
       >

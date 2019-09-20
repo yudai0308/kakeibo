@@ -68974,6 +68974,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 /* harmony import */ var _Calendar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Calendar */ "./resources/js/components/account-page/Calendar.js");
 /* harmony import */ var _Overview__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Overview */ "./resources/js/components/account-page/Overview.js");
+/* harmony import */ var _Input_item_modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Input-item-modal */ "./resources/js/components/account-page/Input-item-modal.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -68981,6 +68982,7 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -68998,11 +69000,13 @@ function AccountPage() {
     return setDate(date);
   };
 
-  var onClickDay = function onClickDay() {
-    window.alert("test");
-  };
-
   var tileContent = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null));
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isShown = _useState4[0],
+      setModalState = _useState4[1];
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], {
     className: "justify-content-center"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], {
@@ -69023,8 +69027,15 @@ function AccountPage() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Calendar__WEBPACK_IMPORTED_MODULE_3__["default"], {
     date: date,
     onDateChange: onDateChange,
-    onClickDay: onClickDay,
-    tileContent: tileContent
+    tileContent: tileContent,
+    showModal: function showModal() {
+      return setModalState(true);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Input_item_modal__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    isShown: isShown,
+    closeModal: function closeModal() {
+      return setModalState(false);
+    }
   }))));
 }
 
@@ -69056,20 +69067,100 @@ __webpack_require__.r(__webpack_exports__);
 function MyCalendar(props) {
   var date = props.date,
       onDateChange = props.onDateChange,
-      onClickDay = props.onClickDay,
-      tileContent = props.tileContent;
+      tileContent = props.tileContent,
+      showModal = props.showModal; // console.log(props)
+  // const handleShow = () => window.alert();
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_calendar__WEBPACK_IMPORTED_MODULE_2___default.a, {
     locale: "ja-JP",
     calendarType: "US",
     className: "color-primary",
     onChange: onDateChange(date),
-    onClickDay: onClickDay,
+    onClickDay: showModal,
     value: date,
     tileContent: tileContent
   }));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (MyCalendar);
+
+/***/ }),
+
+/***/ "./resources/js/components/account-page/Input-item-modal.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/account-page/Input-item-modal.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+/* harmony import */ var _Item_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Item-form */ "./resources/js/components/account-page/Item-form.js");
+
+
+
+
+function InputItemModal(props) {
+  var isShown = props.isShown,
+      closeModal = props.closeModal;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
+    show: isShown,
+    onHide: closeModal,
+    centered: true
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Header, {
+    closeButton: true
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Title, null, "\u53CE\u652F\u306E\u5165\u529B")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Item_form__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (InputItemModal);
+
+/***/ }),
+
+/***/ "./resources/js/components/account-page/Item-form.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/account-page/Item-form.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+
+
+
+function ItemForm() {
+  var handleChange = function handleChange() {
+    return;
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+    onSubmit: function onSubmit(e) {
+      return handleSubmit(e, changeHandler);
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+    controlId: "form-accout-name"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u53CE\u652F\u306E\u5165\u529B"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+    type: "text",
+    name: "title",
+    placeholder: "test",
+    className: "mb-2",
+    onChange: handleChange,
+    required: true
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-right"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    variant: "primary",
+    type: "submit"
+  }, "\u5B8C\u4E86")));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (ItemForm);
 
 /***/ }),
 

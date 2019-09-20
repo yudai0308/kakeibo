@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Modal } from "react-bootstrap";
 import MyCalendar from "./Calendar";
 import Overview from "./Overview";
+import InputItemModal from "./Input-item-modal"
 
 function AccountPage() {
   const [date, setDate] = useState(new Date());
   const onDateChange = date => setDate(date);
-  const onClickDay = () => {
-    window.alert("test")
-  }
   const tileContent = (
     <>
       <br />
       <span></span>
     </>
   )
+
+  const [isShown, setModalState] = useState(false);
 
   return (
     <Container>
@@ -36,8 +36,12 @@ function AccountPage() {
           <MyCalendar
             date={date}
             onDateChange={onDateChange}
-            onClickDay={onClickDay}
             tileContent={tileContent}
+            showModal={() => setModalState(true)}
+          />
+          <InputItemModal
+            isShown={isShown}
+            closeModal={() => setModalState(false)}
           />
         </Col>
       </Row>
