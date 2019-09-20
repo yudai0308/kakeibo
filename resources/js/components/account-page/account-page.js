@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import MyCalendar from "./calendar";
+import Overview from "./overview";
 
 function AccountPage() {
   const [date, setDate] = useState(new Date());
@@ -23,6 +24,11 @@ function AccountPage() {
           <div className="mb-4 border-bottom">
             <p className="font-weight-bold">家計簿タイトル</p>
           </div>
+        </Col>
+      </Row>
+      <Row className="justify-content-center">
+        <Col md="8" className="mb-4">
+          <Overview />
         </Col>
       </Row>
       <Row className="justify-content-center">
