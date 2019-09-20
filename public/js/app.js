@@ -69041,6 +69041,7 @@ function MyCalendar() {
     window.alert("test");
   };
 
+  var tileContent = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null));
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_calendar__WEBPACK_IMPORTED_MODULE_2___default.a, {
     locale: "ja-JP",
     calendarType: "US",
@@ -69048,7 +69049,7 @@ function MyCalendar() {
     onChange: onChange,
     onClickDay: onClickDay,
     value: date,
-    tileContent: ""
+    tileContent: tileContent
   }));
 }
 
