@@ -69278,6 +69278,7 @@ function ItemForm(props) {
     }
   });
   var nameTemplates = ["食費", "外食費", "日用品", "交際費"];
+  console.log(newItem);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
     onSubmit: function onSubmit(e) {
       return handleSubmit(e, changeHandler);
@@ -69320,13 +69321,19 @@ function ItemForm(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ButtonToolbar"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ToggleButtonGroup"], {
     type: "radio",
     name: "isIncome",
-    defaultValue: false
+    defaultValue: newItem.isIncome
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ToggleButton"], {
     value: false,
-    variant: "info"
+    variant: "info",
+    onClick: function onClick() {
+      return handleNewItemChange("isIncome", false);
+    }
   }, "\u8CBB\u7528"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ToggleButton"], {
     value: true,
-    variant: "info"
+    variant: "info",
+    onClick: function onClick() {
+      return handleNewItemChange("isIncome", true);
+    }
   }, "\u53CE\u5165")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-right"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {

@@ -16,7 +16,7 @@ function ItemForm(props) {
     }
   })
   const nameTemplates = ["食費", "外食費", "日用品", "交際費"];
-
+  console.log(newItem)
   return (
     <Form onSubmit={e => handleSubmit(e, changeHandler)}>
       <Form.Group controlId="form-item-name">
@@ -56,9 +56,9 @@ function ItemForm(props) {
       </Form.Group>
       <Form.Group controlId="form-item-isIncome">
         <ButtonToolbar>
-          <ToggleButtonGroup type="radio" name="isIncome" defaultValue={false}>
-            <ToggleButton value={false} variant="info">費用</ToggleButton>
-            <ToggleButton value={true} variant="info">収入</ToggleButton>
+          <ToggleButtonGroup type="radio" name="isIncome" defaultValue={newItem.isIncome}>
+            <ToggleButton value={false} variant="info" onClick={() => handleNewItemChange("isIncome", false)}>費用</ToggleButton>
+            <ToggleButton value={true} variant="info" onClick={() => handleNewItemChange("isIncome", true)}>収入</ToggleButton>
           </ToggleButtonGroup>
         </ButtonToolbar>
       </Form.Group>
