@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Container, Row, Col, Modal } from "react-bootstrap";
 import MyCalendar from "./Calendar";
 import Overview from "./Overview";
 import InputItemModal from "./Input-item-modal"
+import { networkInterfaces } from "os";
 
 function AccountPage() {
   const [date, setDate] = useState(new Date());
@@ -16,6 +17,21 @@ function AccountPage() {
   )
 
   const [isShown, setModalState] = useState(false);
+
+  const [items, setItems] = useState(null);
+  const fetchItems = async () => {
+    // Items を取得
+  }
+  useEffect(() => {
+    fetchItems();
+  }, [])
+
+  const [newItem, setNewItem] = useState({
+    name: "",
+    ammount: 0,
+    date: null,
+    isIncome: false,
+  });
 
   return (
     <Container>
@@ -38,10 +54,13 @@ function AccountPage() {
             onDateChange={onDateChange}
             tileContent={tileContent}
             showModal={() => setModalState(true)}
+            items={items}
           />
           <InputItemModal
             isShown={isShown}
             closeModal={() => setModalState(false)}
+            newItem={newItem}
+            setNewItem={setNewItem}
           />
         </Col>
       </Row>

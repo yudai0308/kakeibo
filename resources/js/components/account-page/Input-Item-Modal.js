@@ -3,7 +3,10 @@ import { Modal } from 'react-bootstrap';
 import ItemForm from './Item-form';
 
 function InputItemModal(props) {
-  const { isShown, closeModal } = props;
+  const {
+    isShown, closeModal,
+    newItem, setNewItem,
+  } = props;
 
   return (
     <>
@@ -12,7 +15,10 @@ function InputItemModal(props) {
           <Modal.Title>収支の入力</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ItemForm />
+          <ItemForm
+            newItem={newItem}
+            setNewItem={setNewItem}
+          />
         </Modal.Body>
       </Modal>
     </>

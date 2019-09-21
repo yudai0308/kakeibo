@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Form, Button, ButtonToolbar,
   ToggleButtonGroup, ToggleButton,
 } from 'react-bootstrap';
 
-function ItemForm() {
-  const handleChange = () => {
-    return;
+function ItemForm(props) {
+  const { newItem, setNewItem } = props;
+  const handleNewItemChange = (key, val) => {
+    setNewItem(newItem => ({ ...newItem, [key]: val }));
   }
+  useEffect(() => {
+    const newItemNameEle = document.getElementById("form-item-name");
+    if (newItem.name !== newItemNameEle.value) {
+      newItemNameEle.value = newItem.name
+    }
+  })
 
   return (
     <Form onSubmit={e => handleSubmit(e, changeHandler)}>
@@ -16,10 +23,17 @@ function ItemForm() {
         <Form.Control
           type="text"
           name="title"
-          placeholder="食費、日用品、交際費 etc"
+          placeholder="食費、外食費、日用品 etc"
           className="mb-2"
           required
+          onChange={e => handleNewItemChange("name", e.target.value)}
         />
+        <ButtonToolbar>
+          <Button variant="secondary" size="sm" className="mr-2" onClick={e => handleNewItemChange("name", e.target.innerText)}>食費</Button>
+          <Button variant="secondary" size="sm" className="mr-2" onClick={e => handleNewItemChange("name", e.target.innerText)}>外食費</Button>
+          <Button variant="secondary" size="sm" className="mr-2" onClick={e => handleNewItemChange("name", e.target.innerText)}>日用品</Button>
+          <Button variant="secondary" size="sm" className="mr-2" onClick={e => handleNewItemChange("name", e.target.innerText)}>交際費</Button>
+        </ButtonToolbar>
       </Form.Group>
       <Form.Group controlId="form-item-amount">
         <Form.Label>金額（円）</Form.Label>
@@ -30,13 +44,14 @@ function ItemForm() {
           className="mb-2"
           min="1"
           required
+          onChange={e => handleNewItemChange("amount", e.target.value)}
         />
       </Form.Group>
       <Form.Group controlId="form-item-isIncome">
         <ButtonToolbar>
-          <ToggleButtonGroup type="radio" name="isIncome" defaultValue={1}>
-            <ToggleButton value={1} variant="info">費用</ToggleButton>
-            <ToggleButton value={2} variant="info">収入</ToggleButton>
+          <ToggleButtonGroup type="radio" name="isIncome" defaultValue={false}>
+            <ToggleButton value={false} variant="info">費用</ToggleButton>
+            <ToggleButton value={true} variant="info">収入</ToggleButton>
           </ToggleButtonGroup>
         </ButtonToolbar>
       </Form.Group>
