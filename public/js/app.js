@@ -69277,6 +69277,7 @@ function ItemForm(props) {
       newItemNameEle.value = newItem.name;
     }
   });
+  var nameTemplates = ["食費", "外食費", "日用品", "交際費"];
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
     onSubmit: function onSubmit(e) {
       return handleSubmit(e, changeHandler);
@@ -69292,35 +69293,17 @@ function ItemForm(props) {
     onChange: function onChange(e) {
       return handleNewItemChange("name", e.target.value);
     }
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ButtonToolbar"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-    variant: "secondary",
-    size: "sm",
-    className: "mr-2",
-    onClick: function onClick(e) {
-      return handleNewItemChange("name", e.target.innerText);
-    }
-  }, "\u98DF\u8CBB"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-    variant: "secondary",
-    size: "sm",
-    className: "mr-2",
-    onClick: function onClick(e) {
-      return handleNewItemChange("name", e.target.innerText);
-    }
-  }, "\u5916\u98DF\u8CBB"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-    variant: "secondary",
-    size: "sm",
-    className: "mr-2",
-    onClick: function onClick(e) {
-      return handleNewItemChange("name", e.target.innerText);
-    }
-  }, "\u65E5\u7528\u54C1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-    variant: "secondary",
-    size: "sm",
-    className: "mr-2",
-    onClick: function onClick(e) {
-      return handleNewItemChange("name", e.target.innerText);
-    }
-  }, "\u4EA4\u969B\u8CBB"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ButtonToolbar"], null, nameTemplates.map(function (name, i) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      variant: "secondary",
+      size: "sm",
+      className: "mr-2",
+      key: i,
+      onClick: function onClick(e) {
+        return handleNewItemChange("name", e.target.innerText);
+      }
+    }, name);
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
     controlId: "form-item-amount"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u91D1\u984D\uFF08\u5186\uFF09"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
     type: "number",

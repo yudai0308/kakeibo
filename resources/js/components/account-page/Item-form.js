@@ -15,6 +15,7 @@ function ItemForm(props) {
       newItemNameEle.value = newItem.name
     }
   })
+  const nameTemplates = ["食費", "外食費", "日用品", "交際費"];
 
   return (
     <Form onSubmit={e => handleSubmit(e, changeHandler)}>
@@ -29,10 +30,16 @@ function ItemForm(props) {
           onChange={e => handleNewItemChange("name", e.target.value)}
         />
         <ButtonToolbar>
-          <Button variant="secondary" size="sm" className="mr-2" onClick={e => handleNewItemChange("name", e.target.innerText)}>食費</Button>
-          <Button variant="secondary" size="sm" className="mr-2" onClick={e => handleNewItemChange("name", e.target.innerText)}>外食費</Button>
-          <Button variant="secondary" size="sm" className="mr-2" onClick={e => handleNewItemChange("name", e.target.innerText)}>日用品</Button>
-          <Button variant="secondary" size="sm" className="mr-2" onClick={e => handleNewItemChange("name", e.target.innerText)}>交際費</Button>
+          {nameTemplates.map((name, i) => {
+            return (
+              <Button
+                variant="secondary" size="sm" className="mr-2" key={i}
+                onClick={e => handleNewItemChange("name", e.target.innerText)}
+              >
+                {name}
+              </Button>
+            )
+          })}
         </ButtonToolbar>
       </Form.Group>
       <Form.Group controlId="form-item-amount">
