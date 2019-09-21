@@ -69143,6 +69143,8 @@ function AccountPage() {
     showModal: function showModal() {
       return setModalState(true);
     },
+    newItem: newItem,
+    setNewItem: setNewItem,
     items: items
   }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Input_item_modal__WEBPACK_IMPORTED_MODULE_6__["default"], {
     isShown: isShown,
@@ -69175,6 +69177,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_calendar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-calendar */ "./node_modules/react-calendar/dist/entry.js");
 /* harmony import */ var react_calendar__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_calendar__WEBPACK_IMPORTED_MODULE_2__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -69183,15 +69191,26 @@ function MyCalendar(props) {
   var date = props.date,
       onDateChange = props.onDateChange,
       tileContent = props.tileContent,
-      showModal = props.showModal; // console.log(props)
-  // const handleShow = () => window.alert();
+      newItem = props.newItem,
+      setNewItem = props.setNewItem,
+      showModal = props.showModal;
+
+  var handleClickDay = function handleClickDay(e) {
+    showModal();
+    var clickedDate = new Date(e).toLocaleString('ja-JP');
+    setNewItem(function (newItem) {
+      return _objectSpread({}, newItem, {
+        date: clickedDate
+      });
+    });
+  };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_calendar__WEBPACK_IMPORTED_MODULE_2___default.a, {
     locale: "ja-JP",
     calendarType: "US",
     className: "color-primary",
     onChange: onDateChange(date),
-    onClickDay: showModal,
+    onClickDay: handleClickDay,
     value: date,
     tileContent: tileContent
   }));
@@ -69268,7 +69287,8 @@ function ItemForm(props) {
     setNewItem(function (newItem) {
       return _objectSpread({}, newItem, _defineProperty({}, key, val));
     });
-  };
+  }; // 項目名をボタンで入力した場合に input の中身も state と同じ値にする。
+
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var newItemNameEle = document.getElementById("form-item-name");
@@ -69278,7 +69298,6 @@ function ItemForm(props) {
     }
   });
   var nameTemplates = ["食費", "外食費", "日用品", "交際費"];
-  console.log(newItem);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
     onSubmit: function onSubmit(e) {
       return handleSubmit(e, changeHandler);

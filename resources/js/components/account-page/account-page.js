@@ -54,6 +54,8 @@ function AccountPage() {
             onDateChange={onDateChange}
             tileContent={tileContent}
             showModal={() => setModalState(true)}
+            newItem={newItem}
+            setNewItem={setNewItem}
             items={items}
           />
           <InputItemModal

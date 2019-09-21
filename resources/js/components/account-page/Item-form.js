@@ -9,14 +9,17 @@ function ItemForm(props) {
   const handleNewItemChange = (key, val) => {
     setNewItem(newItem => ({ ...newItem, [key]: val }));
   }
+
+  // 項目名をボタンで入力した場合に input の中身も state と同じ値にする。
   useEffect(() => {
     const newItemNameEle = document.getElementById("form-item-name");
     if (newItem.name !== newItemNameEle.value) {
       newItemNameEle.value = newItem.name
     }
   })
+
   const nameTemplates = ["食費", "外食費", "日用品", "交際費"];
-  console.log(newItem)
+
   return (
     <Form onSubmit={e => handleSubmit(e, changeHandler)}>
       <Form.Group controlId="form-item-name">
