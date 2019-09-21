@@ -37,7 +37,7 @@ function AccountPage() {
     name: "",
     ammount: 0,
     date: null,
-    isIncome: false,
+    isIncome: 0,
   });
 
   return (

@@ -69120,7 +69120,7 @@ function AccountPage() {
     name: "",
     ammount: 0,
     date: null,
-    isIncome: false
+    isIncome: 0
   }),
       _useState8 = _slicedToArray(_useState7, 2),
       newItem = _useState8[0],
@@ -69257,7 +69257,8 @@ function InputItemModal(props) {
     closeButton: true
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Title, null, "\u53CE\u652F\u306E\u5165\u529B")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Item_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
     newItem: newItem,
-    setNewItem: setNewItem
+    setNewItem: setNewItem,
+    closeModal: closeModal
   }))));
 }
 
@@ -69290,7 +69291,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 function ItemForm(props) {
   var newItem = props.newItem,
-      setNewItem = props.setNewItem;
+      setNewItem = props.setNewItem,
+      closeModal = props.closeModal;
 
   var handleNewItemChange = function handleNewItemChange(key, val) {
     setNewItem(function (newItem) {
@@ -69300,7 +69302,8 @@ function ItemForm(props) {
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-    _axios__WEBPACK_IMPORTED_MODULE_2__["axios"].post("/api/item", newItem).then(function (res) {// callBack();
+    _axios__WEBPACK_IMPORTED_MODULE_2__["axios"].post("/api/item", newItem).then(function (res) {
+      closeModal(); // callBack();
     });
   }; // 項目名をボタンで入力した場合に input の中身も state と同じ値にする。
 

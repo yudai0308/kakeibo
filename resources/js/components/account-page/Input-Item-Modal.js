@@ -18,6 +18,7 @@ function InputItemModal(props) {
           <ItemForm
             newItem={newItem}
             setNewItem={setNewItem}
+            closeModal={closeModal}
           />
         </Modal.Body>
       </Modal>

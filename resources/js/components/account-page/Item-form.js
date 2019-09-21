@@ -6,7 +6,7 @@ import {
 import { axios } from '../../axios';
 
 function ItemForm(props) {
-  const { newItem, setNewItem } = props;
+  const { newItem, setNewItem, closeModal } = props;
   const handleNewItemChange = (key, val) => {
     setNewItem(newItem => ({ ...newItem, [key]: val }));
   }
@@ -14,6 +14,7 @@ function ItemForm(props) {
     e.preventDefault();
     axios.post("/api/item", newItem)
       .then(res => {
+        closeModal();
         // callBack();
       });
   }
