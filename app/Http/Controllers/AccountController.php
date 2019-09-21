@@ -18,7 +18,7 @@ class AccountController extends Controller
     public function show($id, $hash) {
         $account = Account::find($id);
         if($account->hash != $hash) abort(404);
-        return view("account");
+        return view("account")->with("id", $id);
     }
 
     public function store(Request $req)

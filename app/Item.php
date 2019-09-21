@@ -11,7 +11,7 @@ class Item extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'name', 'amount', 'data',
+        'name', 'amount', 'date', 'isIncome',
         'account_id', 'user_id', 'category_id'
     ];
 

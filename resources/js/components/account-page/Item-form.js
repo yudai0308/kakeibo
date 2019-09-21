@@ -3,11 +3,19 @@ import {
   Form, Button, ButtonToolbar,
   ToggleButtonGroup, ToggleButton,
 } from 'react-bootstrap';
+import { axios } from '../../axios';
 
 function ItemForm(props) {
   const { newItem, setNewItem } = props;
   const handleNewItemChange = (key, val) => {
     setNewItem(newItem => ({ ...newItem, [key]: val }));
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post("/api/item", newItem)
+      .then(res => {
+        // callBack();
+      });
   }
 
   // 項目名をボタンで入力した場合に input の中身も state と同じ値にする。
@@ -21,7 +29,7 @@ function ItemForm(props) {
   const nameTemplates = ["食費", "外食費", "日用品", "交際費"];
 
   return (
-    <Form onSubmit={e => handleSubmit(e, changeHandler)}>
+    <Form onSubmit={e => handleSubmit(e)}>
       <Form.Group controlId="form-item-name">
         <Form.Label>項目</Form.Label>
         <Form.Control
@@ -49,7 +57,7 @@ function ItemForm(props) {
         <Form.Label>金額（円）</Form.Label>
         <Form.Control
           type="number"
-          name="title"
+          name="amount"
           placeholder="半角数字のみ"
           className="mb-2"
           min="1"
@@ -60,8 +68,8 @@ function ItemForm(props) {
       <Form.Group controlId="form-item-isIncome">
         <ButtonToolbar>
           <ToggleButtonGroup type="radio" name="isIncome" defaultValue={newItem.isIncome}>
-            <ToggleButton value={false} variant="info" onClick={() => handleNewItemChange("isIncome", false)}>費用</ToggleButton>
-            <ToggleButton value={true} variant="info" onClick={() => handleNewItemChange("isIncome", true)}>収入</ToggleButton>
+            <ToggleButton value={0} variant="info" onClick={() => handleNewItemChange("isIncome", 0)}>費用</ToggleButton>
+            <ToggleButton value={1} variant="info" onClick={() => handleNewItemChange("isIncome", 1)}>収入</ToggleButton>
           </ToggleButtonGroup>
         </ButtonToolbar>
       </Form.Group>

@@ -69109,7 +69109,14 @@ function AccountPage() {
     fetchItems();
   }, []);
 
+  var getAccountId = function getAccountId() {
+    var div = document.getElementById("account-page");
+    var id = div.getAttribute("data-account-id");
+    return Number(id);
+  };
+
   var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+    id: getAccountId(),
     name: "",
     ammount: 0,
     date: null,
@@ -69270,11 +69277,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+/* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../axios */ "./resources/js/axios.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -69286,6 +69295,12 @@ function ItemForm(props) {
   var handleNewItemChange = function handleNewItemChange(key, val) {
     setNewItem(function (newItem) {
       return _objectSpread({}, newItem, _defineProperty({}, key, val));
+    });
+  };
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    _axios__WEBPACK_IMPORTED_MODULE_2__["axios"].post("/api/item", newItem).then(function (res) {// callBack();
     });
   }; // 項目名をボタンで入力した場合に input の中身も state と同じ値にする。
 
@@ -69300,7 +69315,7 @@ function ItemForm(props) {
   var nameTemplates = ["食費", "外食費", "日用品", "交際費"];
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
     onSubmit: function onSubmit(e) {
-      return handleSubmit(e, changeHandler);
+      return handleSubmit(e);
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
     controlId: "form-item-name"
@@ -69327,7 +69342,7 @@ function ItemForm(props) {
     controlId: "form-item-amount"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u91D1\u984D\uFF08\u5186\uFF09"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
     type: "number",
-    name: "title",
+    name: "amount",
     placeholder: "\u534A\u89D2\u6570\u5B57\u306E\u307F",
     className: "mb-2",
     min: "1",
@@ -69342,16 +69357,16 @@ function ItemForm(props) {
     name: "isIncome",
     defaultValue: newItem.isIncome
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ToggleButton"], {
-    value: false,
+    value: 0,
     variant: "info",
     onClick: function onClick() {
-      return handleNewItemChange("isIncome", false);
+      return handleNewItemChange("isIncome", 0);
     }
   }, "\u8CBB\u7528"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ToggleButton"], {
-    value: true,
+    value: 1,
     variant: "info",
     onClick: function onClick() {
-      return handleNewItemChange("isIncome", true);
+      return handleNewItemChange("isIncome", 1);
     }
   }, "\u53CE\u5165")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-right"

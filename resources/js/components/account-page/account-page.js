@@ -26,7 +26,14 @@ function AccountPage() {
     fetchItems();
   }, [])
 
+  const getAccountId = () => {
+    const div = document.getElementById("account-page");
+    const id = div.getAttribute("data-account-id");
+    return Number(id);
+  }
+
   const [newItem, setNewItem] = useState({
+    id: getAccountId(),
     name: "",
     ammount: 0,
     date: null,
