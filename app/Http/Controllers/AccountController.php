@@ -17,6 +17,7 @@ class AccountController extends Controller
 
     public function show($id, $hash) {
         $account = Account::find($id);
+        // TODO: account の作成者が自分、もしくは公開されている account であることを確認。
         if($account->hash != $hash) abort(404);
         return view("account")->with("id", $id);
     }
