@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+use Request;
+use Exception;
+use \Auth;
 use App\Item;
 use App\User;
 use App\Account;
-use \Auth;
+use Carbon\Carbon;
 
 class ItemController extends Controller
 {
@@ -25,14 +28,27 @@ class ItemController extends Controller
         return;
     }
 
-    public function getItemsByMonth($id, $month)
+    public function getItemsByMonth($id)
     {
         $account = Account::find($id);
         // TODO: account の作成者が自分、もしくは公開されている account であることを確認。
 
-        if (!is_numeric($month)) return ["error" => "不正なパラメータです。"];
-        if ($month < 0 || 12 < $month) return ["error" => "不正なパラメータです。"];
-        $items = Item::whereMonth("date", $month)->get();
+        $query = Request::query();
+        try {
+            $year = $query["year"];
+            $month = $query["month"];
+            // TODO: year、month のバリデーション
+        } catch (Exception $e) {
+            // TODO: パラメータが取得できなかった場合の処理。
+        }
+
+        $from = new Carbon("${year}-${month}-01");
+        $to = new Carbon("${year}-${month}-01");
+        $to->addMonth()->subDay();
+        $items = Item::where("date", ">=", $from->format("Y-m-d"))
+            ->where("date", "<", $to->format("Y-m-d"))
+            ->get();
+        // $items = Item::whereMonth("date", $params->month)->get();
         $itemGrp = $items->groupBy("date");
         return $itemGrp;
     }
