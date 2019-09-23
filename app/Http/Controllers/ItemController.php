@@ -10,7 +10,7 @@ use \Auth;
 
 class ItemController extends Controller
 {
-    function store(Request $req)
+    public function store(Request $req)
     {
         $user = Auth::user();
         Item::create([
@@ -23,5 +23,17 @@ class ItemController extends Controller
             "isIncome"    => $req->isIncome,
         ]);
         return;
+    }
+
+    public function getItemsByMonth($id, $month)
+    {
+        $account = Account::find($id);
+        // TODO: account の作成者が自分、もしくは公開されている account であることを確認。
+
+        if (!is_numeric($month)) return ["error" => "不正なパラメータです。"];
+        if ($month < 0 || 12 < $month) return ["error" => "不正なパラメータです。"];
+        $items = Item::whereMonth("date", $month)->get();
+        $itemGrp = $items->groupBy("date");
+        return $itemGrp;
     }
 }

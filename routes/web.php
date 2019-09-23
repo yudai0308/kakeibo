@@ -24,5 +24,6 @@ Route::get('/account/{id}/{hash}', 'AccountController@show')->name('account.show
 Route::group(["prefix" => "api", "middleware" => "api"], function () {
     Route::get('/auth_user', 'UserController@getAuthUser');
     Route::get('/user/accounts', 'UserController@getAccounts');
+    Route::get('/account/{id}/{month}', 'ItemController@getItemsByMonth');
     Route::post('/item', 'ItemController@store')->name('item.store');
 });
