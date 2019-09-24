@@ -40,10 +40,8 @@ function AccountPage() {
   }
 
   useEffect(() => {
-    async () => {
-      const items = await fetchItems();
-      setItems(items);
-    }
+    const setItemsState =　async () => setItems(await fetchItems());
+    setItemsState();
   }, [])
 
   const getAccountId = () => {

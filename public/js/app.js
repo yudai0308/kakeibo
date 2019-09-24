@@ -69147,29 +69147,38 @@ function AccountPage() {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    var setItemsState =
     /*#__PURE__*/
-    _asyncToGenerator(
-    /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-      var items;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.next = 2;
-              return fetchItems();
+    function () {
+      var _ref2 = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.t0 = setItems;
+                _context2.next = 3;
+                return fetchItems();
 
-            case 2:
-              items = _context2.sent;
-              setItems(items);
+              case 3:
+                _context2.t1 = _context2.sent;
+                return _context2.abrupt("return", (0, _context2.t0)(_context2.t1));
 
-            case 4:
-            case "end":
-              return _context2.stop();
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
           }
-        }
-      }, _callee2);
-    }));
+        }, _callee2);
+      }));
+
+      return function setItemsState() {
+        return _ref2.apply(this, arguments);
+      };
+    }();
+
+    setItemsState();
   }, []);
 
   var getAccountId = function getAccountId() {
