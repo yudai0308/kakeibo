@@ -4,6 +4,7 @@ import { Container, Row, Col, Modal } from "react-bootstrap";
 import MyCalendar from "./Calendar";
 import Overview from "./Overview";
 import InputItemModal from "./Input-item-modal"
+import { axios } from '../../axios';
 import { networkInterfaces } from "os";
 
 function AccountPage() {
@@ -20,10 +21,29 @@ function AccountPage() {
 
   const [items, setItems] = useState(null);
   const fetchItems = async () => {
-    // Items を取得
+    if (!document.getElementsByClassName("react-calendar__navigation__label")) return null;
+    const { year, month } = getYearAndMonth();
+    const id = newItem.id;
+    const url = `/api/account/${id}/items?year=${year}&month=${month}`;
+    // TODO: エラーハンドリング
+    const res = await axios.get(url);
+    return res.data;
   }
+
+  // 無理やりなやり方のため、年月の取得方法については要検討。
+  const getYearAndMonth = () => {
+    const elem = document.getElementsByClassName("react-calendar__navigation__label");
+    let text = elem[0].innerText;
+    text = text.replace("月", "");
+    const [year, month] = text.split("年");
+    return { year: year, month: month };
+  }
+
   useEffect(() => {
-    fetchItems();
+    async () => {
+      const items = await fetchItems();
+      setItems(items);
+    }
   }, [])
 
   const getAccountId = () => {
@@ -51,7 +71,7 @@ function AccountPage() {
       </Row>
       <Row className="justify-content-center">
         <Col md="8" className="mb-4">
-          <Overview />
+          <Overview items={items} />
         </Col>
       </Row>
       <Row className="justify-content-center">
