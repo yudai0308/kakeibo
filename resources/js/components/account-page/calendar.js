@@ -22,17 +22,16 @@ function MyCalendar(props) {
 
   useEffect(() => {
     if (!document.getElementsByClassName("react-calendar__navigation__label")) return null;
-    const getItems = async () => {
-      const {year, month} = getYearAndMonth();
-      const id = newItem.id;
-      // const year = date.getYear();
-      // const month = date.getMonth() + 1;
-      const url = `/api/account/${id}/items?year=${year}&month=${month}`;
-      const res = await axios.get(url);
-      console.log(res.data);
-    }
     getItems();
   });
+
+  const getItems = async () => {
+    const { year, month } = getYearAndMonth();
+    const id = newItem.id;
+    const url = `/api/account/${id}/items?year=${year}&month=${month}`;
+    // TODO: エラーハンドリング
+    const res = await axios.get(url);
+  }
 
   // 無理やりなやり方のため、年月の取得方法については要検討。
   const getYearAndMonth = () => {

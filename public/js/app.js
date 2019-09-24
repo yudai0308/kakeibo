@@ -69233,46 +69233,44 @@ function MyCalendar(props) {
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     if (!document.getElementsByClassName("react-calendar__navigation__label")) return null;
-
-    var getItems =
-    /*#__PURE__*/
-    function () {
-      var _ref = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _getYearAndMonth, year, month, id, url, res;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _getYearAndMonth = getYearAndMonth(), year = _getYearAndMonth.year, month = _getYearAndMonth.month;
-                id = newItem.id; // const year = date.getYear();
-                // const month = date.getMonth() + 1;
-
-                url = "/api/account/".concat(id, "/items?year=").concat(year, "&month=").concat(month);
-                _context.next = 5;
-                return _axios__WEBPACK_IMPORTED_MODULE_4__["axios"].get(url);
-
-              case 5:
-                res = _context.sent;
-                console.log(res.data);
-
-              case 7:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }));
-
-      return function getItems() {
-        return _ref.apply(this, arguments);
-      };
-    }();
-
     getItems();
-  }); // 無理やりなやり方のため、年月の取得方法については要検討。
+  });
+
+  var getItems =
+  /*#__PURE__*/
+  function () {
+    var _ref = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var _getYearAndMonth, year, month, id, url, res;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _getYearAndMonth = getYearAndMonth(), year = _getYearAndMonth.year, month = _getYearAndMonth.month;
+              id = newItem.id;
+              url = "/api/account/".concat(id, "/items?year=").concat(year, "&month=").concat(month); // TODO: エラーハンドリング
+
+              _context.next = 5;
+              return _axios__WEBPACK_IMPORTED_MODULE_4__["axios"].get(url);
+
+            case 5:
+              res = _context.sent;
+
+            case 6:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function getItems() {
+      return _ref.apply(this, arguments);
+    };
+  }(); // 無理やりなやり方のため、年月の取得方法については要検討。
+
 
   var getYearAndMonth = function getYearAndMonth() {
     var elem = document.getElementsByClassName("react-calendar__navigation__label");
