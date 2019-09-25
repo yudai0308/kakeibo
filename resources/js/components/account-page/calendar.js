@@ -23,7 +23,6 @@ function MyCalendar(props) {
     //
   });
 
-
   const test = async ({ date, view }) => {
     // 今月の item を取得する
     const month = date.getMonth() + 1;

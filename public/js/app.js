@@ -69114,7 +69114,7 @@ function AccountPage() {
 
             case 7:
               res = _context.sent;
-              return _context.abrupt("return", res.data);
+              setItems(res.data);
 
             case 9:
             case "end":
@@ -69147,39 +69147,15 @@ function AccountPage() {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    var setItemsState =
-    /*#__PURE__*/
-    function () {
-      var _ref2 = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.t0 = setItems;
-                _context2.next = 3;
-                return fetchItems();
-
-              case 3:
-                _context2.t1 = _context2.sent;
-                return _context2.abrupt("return", (0, _context2.t0)(_context2.t1));
-
-              case 5:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }));
-
-      return function setItemsState() {
-        return _ref2.apply(this, arguments);
-      };
-    }();
-
-    setItemsState();
-  }, []);
+    // const setItemsState =　async () => {
+    //   const items = await fetchItems();
+    //   // console.log(items)
+    //   setItems(items);
+    //   getSumThisMonth();
+    // }
+    // setItemsState();
+    fetchItems();
+  }, [setItems]);
 
   var getAccountId = function getAccountId() {
     var div = document.getElementById("account-page");
@@ -69514,7 +69490,39 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Overview(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "\u53CE\u652F\uFF1A - 12,345\u5186"));
+  var items = props.items;
+
+  var getSumThisMonth = function getSumThisMonth() {
+    if (items === null) return "-";
+    var sum = 0;
+
+    for (var date in items) {
+      for (var index in items[date]) {
+        var item = items[date][index];
+
+        if (item.isIncome) {
+          sum += item.amount;
+        } else {
+          sum -= item.amount;
+        }
+      }
+    }
+
+    return separate(sum);
+  };
+
+  var separate = function separate(num) {
+    num = String(num);
+    var len = num.length;
+
+    if (len > 3) {
+      return separate(num.substring(0, len - 3)) + ',' + num.substring(len - 3);
+    } else {
+      return num;
+    }
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "\u53CE\u652F\uFF1A ", getSumThisMonth(), "\u5186"));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Overview);

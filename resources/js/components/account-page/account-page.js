@@ -27,7 +27,7 @@ function AccountPage() {
     const url = `/api/account/${id}/items?year=${year}&month=${month}`;
     // TODO: エラーハンドリング
     const res = await axios.get(url);
-    return res.data;
+    setItems(res.data);
   }
 
   // 無理やりなやり方のため、年月の取得方法については要検討。
@@ -40,9 +40,15 @@ function AccountPage() {
   }
 
   useEffect(() => {
-    const setItemsState =　async () => setItems(await fetchItems());
-    setItemsState();
-  }, [])
+    // const setItemsState =　async () => {
+    //   const items = await fetchItems();
+    //   // console.log(items)
+    //   setItems(items);
+    //   getSumThisMonth();
+    // }
+    // setItemsState();
+    fetchItems();
+  }, [setItems])
 
   const getAccountId = () => {
     const div = document.getElementById("account-page");
