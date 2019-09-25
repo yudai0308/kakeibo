@@ -16,7 +16,16 @@ function MyCalendar(props) {
     showModal();
     const clickedDate = new Date(e).toLocaleString('ja-JP');
     const formated = formatDate(clickedDate);
+    console.log(formated)
     setNewItem(newItem => ({ ...newItem, date: formated }))
+  }
+
+  const formatDate = date => {
+    const dateObj = new Date(date);
+    const year = dateObj.getFullYear();
+    const month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+    const day = ("0" + dateObj.getDate()).slice(-2);
+    return `${year}-${month}-${day}`;
   }
 
   useEffect(() => {
