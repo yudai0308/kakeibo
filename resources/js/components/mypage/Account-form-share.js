@@ -1,11 +1,11 @@
 // 家計簿作成時に他ユーザーのメルアドを登録させることで招待、共有できる仕組み（未実装）
-import React, {useState} from 'react';
+import React, {useState} from "react";
 import {
   Button,
   InputGroup,
   FormControl,
   ListGroup,
-} from 'react-bootstrap';
+} from "react-bootstrap";
 
 function ShareForm () {
   const [emails, setEmail] = useState();

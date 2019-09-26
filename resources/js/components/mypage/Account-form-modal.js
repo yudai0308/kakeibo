@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Button, Modal } from 'react-bootstrap';
-import ReactDOM from 'react-dom';
-import AccountForm from './Account-form';
+import React, { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
+import ReactDOM from "react-dom";
+import AccountForm from "./Account-form";
 
 function AccountFormModal() {
   const [show, setShow] = useState(false);

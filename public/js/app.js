@@ -86874,11 +86874,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../axios */ "./resources/js/axios.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _libs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../libs */ "./resources/js/components/libs.js");
+/* harmony import */ var _libs__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_libs__WEBPACK_IMPORTED_MODULE_4__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -86896,7 +86899,7 @@ function MyCalendar(props) {
 
   var handleClickDay = function handleClickDay(e) {
     showModal();
-    var clickedDate = new Date(e).toLocaleString('ja-JP');
+    var clickedDate = new Date(e).toLocaleString("ja-JP");
     setNewItem(function (newItem) {
       return _objectSpread({}, newItem, {
         date: clickedDate
@@ -87150,7 +87153,7 @@ function Overview(props) {
     var len = num.length;
 
     if (len > 3) {
-      return separate(num.substring(0, len - 3)) + ',' + num.substring(len - 3);
+      return separate(num.substring(0, len - 3)) + "," + num.substring(len - 3);
     } else {
       return num;
     }
@@ -87173,6 +87176,26 @@ function Overview(props) {
 __webpack_require__(/*! ./mypage/Mypage */ "./resources/js/components/mypage/Mypage.js");
 
 __webpack_require__(/*! ./account-page/Account-page */ "./resources/js/components/account-page/Account-page.js");
+
+/***/ }),
+
+/***/ "./resources/js/components/libs.js":
+/*!*****************************************!*\
+  !*** ./resources/js/components/libs.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var separate = function separate(num) {
+  num = String(num);
+  var len = num.length;
+
+  if (len > 3) {
+    return separate(num.substring(0, len - 3)) + ',' + num.substring(len - 3);
+  } else {
+    return num;
+  }
+};
 
 /***/ }),
 
@@ -87364,7 +87387,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
- // import ShareForm from './Account-form-share';
+ // import ShareForm from "./Account-form-share";
 
 
 
@@ -87412,7 +87435,7 @@ function AccountForm() {
   var copyURL = function copyURL() {
     var textarea = document.getElementById("new-account-url");
     textarea.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
   };
 
   var getBody = function getBody() {

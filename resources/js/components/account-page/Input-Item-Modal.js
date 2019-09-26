@@ -1,6 +1,6 @@
-import React from 'react';
-import { Modal } from 'react-bootstrap';
-import ItemForm from './Item-form';
+import React from "react";
+import { Modal } from "react-bootstrap";
+import ItemForm from "./Item-form";
 
 function InputItemModal(props) {
   const {

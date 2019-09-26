@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import Calendar from "react-calendar";
-import { axios } from '../../axios';
-import moment from 'moment';
+import { axios } from "../../axios";
+import moment from "moment";
+import {separate} from "../libs";
 
 function MyCalendar(props) {
   const {
@@ -16,7 +17,7 @@ function MyCalendar(props) {
 
   const handleClickDay = e => {
     showModal();
-    const clickedDate = new Date(e).toLocaleString('ja-JP');
+    const clickedDate = new Date(e).toLocaleString("ja-JP");
     setNewItem(newItem => ({ ...newItem, date: clickedDate }))
   }
 

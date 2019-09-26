@@ -4,7 +4,7 @@ import { Container, Row, Col, Modal } from "react-bootstrap";
 import MyCalendar from "./Calendar";
 import Overview from "./Overview";
 import InputItemModal from "./Input-item-modal"
-import { axios } from '../../axios';
+import { axios } from "../../axios";
 import { networkInterfaces } from "os";
 
 function AccountPage() {
