@@ -94,6 +94,7 @@ function AccountPage() {
             closeModal={() => setModalState(false)}
             newItem={newItem}
             setNewItem={setNewItem}
+            fetchItems={fetchItems}
           />
         </Col>
       </Row>

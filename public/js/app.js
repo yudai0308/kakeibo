@@ -69209,7 +69209,8 @@ function AccountPage() {
       return setModalState(false);
     },
     newItem: newItem,
-    setNewItem: setNewItem
+    setNewItem: setNewItem,
+    fetchItems: fetchItems
   }))));
 }
 
@@ -69262,10 +69263,9 @@ function MyCalendar(props) {
   var handleClickDay = function handleClickDay(e) {
     showModal();
     var clickedDate = new Date(e).toLocaleString('ja-JP');
-    var formated = formatDate(clickedDate);
     setNewItem(function (newItem) {
       return _objectSpread({}, newItem, {
-        date: formated
+        date: clickedDate
       });
     });
   };
@@ -69341,7 +69341,8 @@ function InputItemModal(props) {
   var isShown = props.isShown,
       closeModal = props.closeModal,
       newItem = props.newItem,
-      setNewItem = props.setNewItem;
+      setNewItem = props.setNewItem,
+      fetchItems = props.fetchItems;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
     show: isShown,
     onHide: closeModal,
@@ -69351,7 +69352,8 @@ function InputItemModal(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Title, null, "\u53CE\u652F\u306E\u5165\u529B")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Item_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
     newItem: newItem,
     setNewItem: setNewItem,
-    closeModal: closeModal
+    closeModal: closeModal,
+    fetchItems: fetchItems
   }))));
 }
 
@@ -69385,7 +69387,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 function ItemForm(props) {
   var newItem = props.newItem,
       setNewItem = props.setNewItem,
-      closeModal = props.closeModal;
+      closeModal = props.closeModal,
+      fetchItems = props.fetchItems;
 
   var handleNewItemChange = function handleNewItemChange(key, val) {
     setNewItem(function (newItem) {
@@ -69396,7 +69399,8 @@ function ItemForm(props) {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     _axios__WEBPACK_IMPORTED_MODULE_2__["axios"].post("/api/item", newItem).then(function (res) {
-      closeModal(); // callBack();
+      closeModal();
+      fetchItems(); // callBack();
     });
   }; // 項目名をボタンで入力した場合に input の中身も state と同じ値にする。
 
@@ -69408,7 +69412,7 @@ function ItemForm(props) {
       newItemNameEle.value = newItem.name;
     }
   });
-  var nameTemplates = ["食費", "外食費", "日用品", "交際費"];
+  var nameTemplates = ["食費", "外食費", "日用品", "交際費", "給料"];
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
     onSubmit: function onSubmit(e) {
       return handleSubmit(e);

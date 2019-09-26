@@ -5,7 +5,7 @@ import ItemForm from './Item-form';
 function InputItemModal(props) {
   const {
     isShown, closeModal,
-    newItem, setNewItem,
+    newItem, setNewItem, fetchItems,
   } = props;
 
   return (
@@ -19,6 +19,7 @@ function InputItemModal(props) {
             newItem={newItem}
             setNewItem={setNewItem}
             closeModal={closeModal}
+            fetchItems={fetchItems}
           />
         </Modal.Body>
       </Modal>

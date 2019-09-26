@@ -6,15 +6,21 @@ import {
 import { axios } from '../../axios';
 
 function ItemForm(props) {
-  const { newItem, setNewItem, closeModal } = props;
+  const {
+    newItem, setNewItem,
+    closeModal, fetchItems
+  } = props;
+
   const handleNewItemChange = (key, val) => {
     setNewItem(newItem => ({ ...newItem, [key]: val }));
   }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post("/api/item", newItem)
       .then(res => {
         closeModal();
+        fetchItems();
         // callBack();
       });
   }
@@ -27,7 +33,7 @@ function ItemForm(props) {
     }
   })
 
-  const nameTemplates = ["食費", "外食費", "日用品", "交際費"];
+  const nameTemplates = ["食費", "外食費", "日用品", "交際費", "給料"];
 
   return (
     <Form onSubmit={e => handleSubmit(e)}>
