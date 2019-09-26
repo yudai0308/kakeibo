@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import Calendar from "react-calendar";
 import { axios } from '../../axios';
+import moment from 'moment';
 
 function MyCalendar(props) {
   const {
     date,
     onDateChange,
     tileContent,
+    items,
     newItem,
     setNewItem,
     showModal,
@@ -22,16 +24,28 @@ function MyCalendar(props) {
     //
   });
 
-  const test = async ({ date, view }) => {
-    // 今月の item を取得する
-    const month = date.getMonth() + 1;
-    const id = newItem.id;
-    // 同じ日の item は収支を計算して表示するコンポーネントを作る
-
-    // if (view === 'month' && date.getMonth() === 8) {
-    //   return <p>OK!</p>
-    // }
+  const test = ({ date, view }) => {
+    if (items === null) return;
+    const curDate = moment(date).format("YYYY-MM-DD");
+    const dates = Object.keys(items);
+    if (! dates.includes(curDate)) return;
+    let sum = 0;
+    for (let i = 0; i < items[curDate].length; ++i) {
+      const itemGrp = items[curDate];
+      if (itemGrp[i].isIncome) {
+        sum += itemGrp[i].amount;
+      } else {
+        sum -= itemGrp[i].amount
+      }
+    }
+    return <p>{sum}</p>;
   }
+  // const formatDate = date => {
+  //   const year = date.getFullYear();
+  //   const month = ("0" + (date.getMonth() + 1)).slice(-2);
+  //   const day = ("0" + date.getDate()).slice(-2);
+  //   return `${year}-${month}-${day}`;
+  // }
 
   return (
     <Calendar
@@ -41,7 +55,7 @@ function MyCalendar(props) {
       onChange={onDateChange(date)}
       onClickDay={handleClickDay}
       value={date}
-      tileContent=""
+      tileContent={test}
     >
     </Calendar>
   )
