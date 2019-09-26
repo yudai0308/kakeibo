@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-// use Illuminate\Http\Request;
-use Request;
-use Exception;
+use Illuminate\Http\Request;
+use Request as Request2;
+use \Exception;
 use \Auth;
 use App\Item;
 use App\User;
@@ -16,15 +16,19 @@ class ItemController extends Controller
     public function store(Request $req)
     {
         $user = Auth::user();
-        Item::create([
-            "account_id"  => $req->id,
-            "user_id"     => $user->id,
-            "category_id" => 1,
-            "name"        => $req->name,
-            "amount"      => $req->amount,
-            "date"        => $req->date,
-            "isIncome"    => $req->isIncome,
-        ]);
+        try {
+            Item::create([
+                "account_id"  => $req->id,
+                "user_id"     => $user->id,
+                "category_id" => 1,
+                "name"        => $req->name,
+                "amount"      => $req->amount,
+                "date"        => $req->date,
+                "isIncome"    => $req->isIncome,
+            ]);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
         return;
     }
 
@@ -33,7 +37,7 @@ class ItemController extends Controller
         $account = Account::find($id);
         // TODO: account の作成者が自分、もしくは公開されている account であることを確認。
 
-        $query = Request::query();
+        $query = Request2::query();
         try {
             $year = $query["year"];
             $month = $query["month"];
