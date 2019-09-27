@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Calendar from "react-calendar";
 import { axios } from "../../axios";
 import moment from "moment";
-import {separate} from "../libs";
+import { separate } from "../libs";
 
 function MyCalendar(props) {
   const {
@@ -29,7 +29,7 @@ function MyCalendar(props) {
     if (items === null) return;
     const curDate = moment(date).format("YYYY-MM-DD");
     const dates = Object.keys(items);
-    if (! dates.includes(curDate)) return;
+    if (!dates.includes(curDate)) return;
     let sum = 0;
     for (let i = 0; i < items[curDate].length; ++i) {
       const itemGrp = items[curDate];
@@ -39,7 +39,7 @@ function MyCalendar(props) {
         sum -= itemGrp[i].amount
       }
     }
-    return <p>{sum}</p>;
+    return <p>{separate(sum)}</p>;
   }
   // const formatDate = date => {
   //   const year = date.getFullYear();

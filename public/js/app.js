@@ -86875,7 +86875,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _libs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../libs */ "./resources/js/components/libs.js");
-/* harmony import */ var _libs__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_libs__WEBPACK_IMPORTED_MODULE_4__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -86929,7 +86928,7 @@ function MyCalendar(props) {
       }
     }
 
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, sum);
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Object(_libs__WEBPACK_IMPORTED_MODULE_4__["separate"])(sum));
   }; // const formatDate = date => {
   //   const year = date.getFullYear();
   //   const month = ("0" + (date.getMonth() + 1)).slice(-2);
@@ -87124,6 +87123,8 @@ function ItemForm(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _libs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../libs */ "./resources/js/components/libs.js");
+
 
 
 function Overview(props) {
@@ -87145,18 +87146,7 @@ function Overview(props) {
       }
     }
 
-    return separate(sum);
-  };
-
-  var separate = function separate(num) {
-    num = String(num);
-    var len = num.length;
-
-    if (len > 3) {
-      return separate(num.substring(0, len - 3)) + "," + num.substring(len - 3);
-    } else {
-      return num;
-    }
+    return Object(_libs__WEBPACK_IMPORTED_MODULE_1__["separate"])(sum);
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "\u53CE\u652F\uFF1A ", getSumThisMonth(), "\u5186"));
@@ -87183,18 +87173,31 @@ __webpack_require__(/*! ./account-page/Account-page */ "./resources/js/component
 /*!*****************************************!*\
   !*** ./resources/js/components/libs.js ***!
   \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: separate */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "separate", function() { return separate; });
 var separate = function separate(num) {
+  var isPlus = true;
+
+  if (num < 0) {
+    isPlus = false;
+    num = Math.abs(num);
+  }
+
   num = String(num);
   var len = num.length;
+  var val;
 
   if (len > 3) {
-    return separate(num.substring(0, len - 3)) + ',' + num.substring(len - 3);
+    val = separate(num.substring(0, len - 3)) + ',' + num.substring(len - 3);
   } else {
-    return num;
+    val = num;
   }
+
+  return isPlus ? val : "- ".concat(val);
 };
 
 /***/ }),
