@@ -86928,14 +86928,15 @@ function MyCalendar(props) {
       }
     }
 
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Object(_libs__WEBPACK_IMPORTED_MODULE_4__["separate"])(sum));
-  }; // const formatDate = date => {
-  //   const year = date.getFullYear();
-  //   const month = ("0" + (date.getMonth() + 1)).slice(-2);
-  //   const day = ("0" + date.getDate()).slice(-2);
-  //   return `${year}-${month}-${day}`;
-  // }
-
+    var style = {
+      fontSize: "1.2vw"
+    };
+    style.color = sum >= 0 ? "#212529" : "#b33e5c";
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "mt-2",
+      style: style
+    }, Object(_libs__WEBPACK_IMPORTED_MODULE_4__["separate"])(Math.abs(sum)));
+  };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_calendar__WEBPACK_IMPORTED_MODULE_1___default.a, {
     locale: "ja-JP",

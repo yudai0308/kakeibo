@@ -39,14 +39,10 @@ function MyCalendar(props) {
         sum -= itemGrp[i].amount
       }
     }
-    return <p>{separate(sum)}</p>;
+    let style = { fontSize: "1.2vw" }
+    style.color = sum >= 0 ? "#212529" : "#b33e5c";
+    return <p className="mt-2" style={style}>{separate(Math.abs(sum))}</p>;
   }
-  // const formatDate = date => {
-  //   const year = date.getFullYear();
-  //   const month = ("0" + (date.getMonth() + 1)).slice(-2);
-  //   const day = ("0" + date.getDate()).slice(-2);
-  //   return `${year}-${month}-${day}`;
-  // }
 
   return (
     <Calendar
