@@ -86702,26 +86702,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function AccountPage() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(new Date()),
+  // const [date, setDate] = useState(new Date());
+  // const onDateChange = date => setDate(date);
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
-      date = _useState2[0],
-      setDate = _useState2[1];
+      isShown = _useState2[0],
+      setModalState = _useState2[1];
 
-  var onDateChange = function onDateChange(date) {
-    return setDate(date);
-  };
-
-  var tileContent = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", null));
-
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
       _useState4 = _slicedToArray(_useState3, 2),
-      isShown = _useState4[0],
-      setModalState = _useState4[1];
-
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
-      _useState6 = _slicedToArray(_useState5, 2),
-      items = _useState6[0],
-      setItems = _useState6[1];
+      items = _useState4[0],
+      setItems = _useState4[1];
 
   var fetchItems =
   /*#__PURE__*/
@@ -86765,7 +86756,7 @@ function AccountPage() {
     return function fetchItems() {
       return _ref.apply(this, arguments);
     };
-  }(); // 無理やりなやり方のため、年月の取得方法については要検討。
+  }(); // FIXME: 無理やりなやり方のため、年月の取得方法については要検討。
 
 
   var getYearAndMonth = function getYearAndMonth() {
@@ -86784,34 +86775,26 @@ function AccountPage() {
     };
   };
 
-  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    // const setItemsState =　async () => {
-    //   const items = await fetchItems();
-    //   // console.log(items)
-    //   setItems(items);
-    //   getSumThisMonth();
-    // }
-    // setItemsState();
-    fetchItems();
-  }, [setItems]);
-
   var getAccountId = function getAccountId() {
     var div = document.getElementById("account-page");
     var id = div.getAttribute("data-account-id");
     return Number(id);
   };
 
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
     id: getAccountId(),
     name: "",
     ammount: 0,
     date: null,
     isIncome: 0
   }),
-      _useState8 = _slicedToArray(_useState7, 2),
-      newItem = _useState8[0],
-      setNewItem = _useState8[1];
+      _useState6 = _slicedToArray(_useState5, 2),
+      newItem = _useState6[0],
+      setNewItem = _useState6[1];
 
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    fetchItems();
+  }, [setItems]);
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     className: "justify-content-center"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
@@ -86831,10 +86814,10 @@ function AccountPage() {
     className: "justify-content-center"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     md: "8"
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Calendar__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    date: date,
-    onDateChange: onDateChange,
-    tileContent: tileContent,
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Calendar__WEBPACK_IMPORTED_MODULE_4__["default"] // date={date}
+  // onDateChange={onDateChange}
+  // tileContent={tileContent}
+  , {
     showModal: function showModal() {
       return setModalState(true);
     },
@@ -86888,9 +86871,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 function MyCalendar(props) {
-  var date = props.date,
-      onDateChange = props.onDateChange,
-      tileContent = props.tileContent,
+  var tileContent = props.tileContent,
       items = props.items,
       newItem = props.newItem,
       setNewItem = props.setNewItem,
@@ -86909,7 +86890,7 @@ function MyCalendar(props) {
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {//
   });
 
-  var test = function test(_ref) {
+  var setTileContent = function setTileContent(_ref) {
     var date = _ref.date,
         view = _ref.view;
     if (items === null) return;
@@ -86941,11 +86922,14 @@ function MyCalendar(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_calendar__WEBPACK_IMPORTED_MODULE_1___default.a, {
     locale: "ja-JP",
     calendarType: "US",
-    className: "color-primary",
-    onChange: onDateChange(date),
-    onClickDay: handleClickDay,
-    value: date,
-    tileContent: test
+    className: "color-primary" // onChange={onDateChange(date)}
+    ,
+    onChange: function onChange() {
+      return console.log("aaa");
+    },
+    onClickDay: handleClickDay // value={date}
+    ,
+    tileContent: setTileContent
   });
 }
 

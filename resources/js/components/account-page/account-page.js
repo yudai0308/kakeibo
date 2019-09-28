@@ -12,13 +12,6 @@ function AccountPage() {
   // const onDateChange = date => setDate(date);
   const [isShown, setModalState] = useState(false);
   const [items, setItems] = useState(null);
-  const [newItem, setNewItem] = useState({
-    id: getAccountId(),
-    name: "",
-    ammount: 0,
-    date: null,
-    isIncome: 0,
-  });
 
   const fetchItems = async () => {
     if (!document.getElementsByClassName("react-calendar__navigation__label")) return null;
@@ -45,6 +38,14 @@ function AccountPage() {
     return Number(id);
   }
 
+  const [newItem, setNewItem] = useState({
+    id: getAccountId(),
+    name: "",
+    ammount: 0,
+    date: null,
+    isIncome: 0,
+  });
+
   useEffect(() => {
     fetchItems();
   }, [setItems])
@@ -68,7 +69,7 @@ function AccountPage() {
           <MyCalendar
             // date={date}
             // onDateChange={onDateChange}
-            tileContent={tileContent}
+            // tileContent={tileContent}
             showModal={() => setModalState(true)}
             newItem={newItem}
             setNewItem={setNewItem}
