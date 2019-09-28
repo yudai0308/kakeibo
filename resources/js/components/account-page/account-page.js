@@ -10,16 +10,16 @@ import { networkInterfaces } from "os";
 function AccountPage() {
   const [date, setDate] = useState(new Date());
   const onDateChange = date => setDate(date);
-  const tileContent = (
-    <>
-      <br />
-      <span></span>
-    </>
-  )
-
   const [isShown, setModalState] = useState(false);
-
   const [items, setItems] = useState(null);
+  const [newItem, setNewItem] = useState({
+    id: getAccountId(),
+    name: "",
+    ammount: 0,
+    date: null,
+    isIncome: 0,
+  });
+
   const fetchItems = async () => {
     if (!document.getElementsByClassName("react-calendar__navigation__label")) return null;
     const { year, month } = getYearAndMonth();
@@ -30,7 +30,7 @@ function AccountPage() {
     setItems(res.data);
   }
 
-  // 無理やりなやり方のため、年月の取得方法については要検討。
+  // FIXME: 無理やりなやり方のため、年月の取得方法については要検討。
   const getYearAndMonth = () => {
     const elem = document.getElementsByClassName("react-calendar__navigation__label");
     let text = elem[0].innerText;
@@ -39,30 +39,15 @@ function AccountPage() {
     return { year: year, month: month };
   }
 
-  useEffect(() => {
-    // const setItemsState =　async () => {
-    //   const items = await fetchItems();
-    //   // console.log(items)
-    //   setItems(items);
-    //   getSumThisMonth();
-    // }
-    // setItemsState();
-    fetchItems();
-  }, [setItems])
-
   const getAccountId = () => {
     const div = document.getElementById("account-page");
     const id = div.getAttribute("data-account-id");
     return Number(id);
   }
 
-  const [newItem, setNewItem] = useState({
-    id: getAccountId(),
-    name: "",
-    ammount: 0,
-    date: null,
-    isIncome: 0,
-  });
+  useEffect(() => {
+    fetchItems();
+  }, [setItems])
 
   return (
     <Container>

@@ -25,7 +25,7 @@ function MyCalendar(props) {
     //
   });
 
-  const test = ({ date, view }) => {
+  const setTileContent = ({ date, view }) => {
     if (items === null) return;
     const curDate = moment(date).format("YYYY-MM-DD");
     const dates = Object.keys(items);
@@ -52,7 +52,7 @@ function MyCalendar(props) {
       onChange={onDateChange(date)}
       onClickDay={handleClickDay}
       value={date}
-      tileContent={test}
+      tileContent={setTileContent}
     >
     </Calendar>
   )
