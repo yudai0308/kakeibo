@@ -6,7 +6,7 @@ import { separate } from "../libs";
 
 function MyCalendar(props) {
   const {
-    date,
+    // date,
     // onDateChange,
     tileContent,
     items,
@@ -52,7 +52,7 @@ function MyCalendar(props) {
       // onChange={onDateChange(date)}
       onChange={() => console.log("aaa")}
       onClickDay={handleClickDay}
-      value={date}
+      // value={date}
       tileContent={setTileContent}
     >
     </Calendar>
