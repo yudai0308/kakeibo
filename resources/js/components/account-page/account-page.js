@@ -8,8 +8,8 @@ import { axios } from "../../axios";
 import { networkInterfaces } from "os";
 
 function AccountPage() {
-  const [date, setDate] = useState(new Date());
-  const onDateChange = date => setDate(date);
+  // const [date, setDate] = useState(new Date());
+  // const onDateChange = date => setDate(date);
   const [isShown, setModalState] = useState(false);
   const [items, setItems] = useState(null);
   const [newItem, setNewItem] = useState({
@@ -66,8 +66,8 @@ function AccountPage() {
       <Row className="justify-content-center">
         <Col md="8">
           <MyCalendar
-            date={date}
-            onDateChange={onDateChange}
+            // date={date}
+            // onDateChange={onDateChange}
             tileContent={tileContent}
             showModal={() => setModalState(true)}
             newItem={newItem}
