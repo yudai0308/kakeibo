@@ -87104,16 +87104,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-function ItemIndex(_ref) {
-  var items = _ref.items,
-      newItem = _ref.newItem,
-      fetchItems = _ref.fetchItems,
-      setShowItemForm = _ref.setShowItemForm;
+function ItemIndex(props) {
+  var items = props.items,
+      newItem = props.newItem,
+      fetchItems = props.fetchItems,
+      setShowItemForm = props.setShowItemForm;
 
   var deleteItem =
   /*#__PURE__*/
   function () {
-    var _ref2 = _asyncToGenerator(
+    var _ref = _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(item) {
       var params, url, res;
@@ -87146,7 +87146,7 @@ function ItemIndex(_ref) {
     }));
 
     return function deleteItem(_x) {
-      return _ref2.apply(this, arguments);
+      return _ref.apply(this, arguments);
     };
   }();
 

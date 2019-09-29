@@ -9,7 +9,11 @@ import {
   Alert,
 } from "react-bootstrap";
 
-function ItemIndex({ items, newItem, fetchItems, setShowItemForm }) {
+function ItemIndex(props) {
+  const {
+    items, newItem, fetchItems, setShowItemForm
+  } = props;
+
   const deleteItem = async item => {
     console.log(item)
     const params = {
