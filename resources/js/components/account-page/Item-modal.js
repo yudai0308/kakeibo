@@ -35,17 +35,6 @@ function ItemModal(props) {
               setShowItemForm={setShowItemForm}
             />
           }
-          {/* <ItemIndex
-            items={items}
-            newItem={newItem}
-            setModalTitle={setModalTitle}
-          />
-          <ItemForm
-            newItem={newItem}
-            setNewItem={setNewItem}
-            closeModal={closeModal}
-            fetchItems={fetchItems}
-          /> */}
         </Modal.Body>
       </Modal>
     </>
