@@ -11,9 +11,11 @@ function MyCalendar(props) {
     fetchItems,
     updateYearMonth,
     showModal,
+    setShowItemForm,
   } = props;
 
   const handleClickDay = e => {
+    setShowItemForm(false);
     showModal();
     const clickedDate = new Date(e).toLocaleString("ja-JP");
     setNewItem(newItem => ({ ...newItem, date: clickedDate }));

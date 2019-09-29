@@ -82,6 +82,7 @@ function AccountPage() {
             newItem={newItem}
             setNewItem={setNewItem}
             items={items}
+            setShowItemForm={setShowItemForm}
           />
           <ItemModal
             isShown={isShown}

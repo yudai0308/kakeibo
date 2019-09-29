@@ -86833,7 +86833,8 @@ function AccountPage() {
     updateYearMonth: updateYearMonth,
     newItem: newItem,
     setNewItem: setNewItem,
-    items: items
+    items: items,
+    setShowItemForm: setShowItemForm
   }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Item_modal__WEBPACK_IMPORTED_MODULE_6__["default"], {
     isShown: isShown,
     showItemForm: showItemForm,
@@ -86888,9 +86889,11 @@ function MyCalendar(props) {
       setNewItem = props.setNewItem,
       fetchItems = props.fetchItems,
       updateYearMonth = props.updateYearMonth,
-      showModal = props.showModal;
+      showModal = props.showModal,
+      setShowItemForm = props.setShowItemForm;
 
   var handleClickDay = function handleClickDay(e) {
+    setShowItemForm(false);
     showModal();
     var clickedDate = new Date(e).toLocaleString("ja-JP");
     setNewItem(function (newItem) {
