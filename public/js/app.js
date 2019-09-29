@@ -87169,9 +87169,20 @@ function ItemIndex(_ref) {
 
   var getTable = function getTable() {
     var trs = getTrs();
-    return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Table"], {
-      responsive: true
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u9805\u76EE"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u91D1\u984D"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, trs));
+    var component;
+
+    if (trs !== null) {
+      component = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Table"], {
+        responsive: true
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u9805\u76EE"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u91D1\u984D"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, trs));
+    } else {
+      component = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Alert"], {
+        variant: "info",
+        className: "text-center"
+      }, "\u300C\u8FFD\u52A0\u300D\u30DC\u30BF\u30F3\u304B\u3089\u9805\u76EE\u3092\u8FFD\u52A0\u3067\u304D\u307E\u3059\u3002");
+    }
+
+    return component;
   };
 
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {

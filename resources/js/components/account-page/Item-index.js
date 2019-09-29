@@ -2,7 +2,12 @@ import React from "react";
 import moment from "moment";
 import { axios } from "../../axios";
 import { separate } from "../libs";
-import { ListGroup, ButtonToolbar, Button, Table } from "react-bootstrap";
+import {
+  ButtonToolbar,
+  Button,
+  Table,
+  Alert,
+} from "react-bootstrap";
 
 function ItemIndex({ items, newItem, fetchItems, setShowItemForm }) {
   const deleteItem = async item => {
@@ -45,20 +50,30 @@ function ItemIndex({ items, newItem, fetchItems, setShowItemForm }) {
 
   const getTable = () => {
     const trs = getTrs();
-    return (
-      <Table responsive>
-        <thead>
-          <tr>
-            <th>項目</th>
-            <th>金額</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {trs}
-        </tbody>
-      </Table>
-    );
+    let component;
+    if (trs !== null) {
+      component = (
+        <Table responsive>
+          <thead>
+            <tr>
+              <th>項目</th>
+              <th>金額</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {trs}
+          </tbody>
+        </Table>
+      )
+    } else {
+      component = (
+        <Alert variant="info" className="text-center">
+          「追加」ボタンから項目を追加できます。
+        </Alert>
+      )
+    }
+    return component;
   }
 
   return (
