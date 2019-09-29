@@ -27,4 +27,5 @@ Route::group(["prefix" => "api", "middleware" => "api"], function () {
     // Route::get('/account/{id}/{year}/{month}', 'ItemController@getItemsByMonth');
     Route::get('/account/{id}/items', 'ItemController@getItemsByMonth');
     Route::post('/item', 'ItemController@store')->name('item.store');
+    Route::delete('/item', 'ItemController@delete')->name('item.delete');
 });

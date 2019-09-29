@@ -1,9 +1,22 @@
 import React from "react";
 import moment from "moment";
+import { axios } from "../../axios";
 import { separate } from "../libs";
 import { ListGroup, ButtonToolbar, Button, Table } from "react-bootstrap";
 
-function ItemIndex({ items, newItem, setShowItemForm }) {
+function ItemIndex({ items, newItem, fetchItems, setShowItemForm }) {
+  const deleteItem = async item => {
+    console.log(item)
+    const params = {
+      accountId: newItem.id,
+      itemId: item.id
+    };
+    const url = "/api/item";
+    const res = await axios.delete(url, { data: params });
+    fetchItems();
+    console.log(res.data)
+  }
+
   const getTrs = () => {
     const curDate = moment(newItem.date).format("YYYY-MM-DD");
     const dates = Object.keys(items);
@@ -16,7 +29,13 @@ function ItemIndex({ items, newItem, setShowItemForm }) {
             {separate(item.amount)}
           </td>
           <td>
-            <button type="button" className="close">×</button>
+            <button
+              type="button"
+              className="close"
+              onClick={() => deleteItem(item)}
+            >
+              ×
+            </button>
           </td>
         </tr>
       )

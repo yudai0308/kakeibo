@@ -21,6 +21,7 @@ function ItemModal(props) {
             <ItemIndex
               items={items}
               newItem={newItem}
+              fetchItems={fetchItems}
               setShowItemForm={setShowItemForm}
             />
           }

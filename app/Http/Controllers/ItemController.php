@@ -10,6 +10,7 @@ use App\Item;
 use App\User;
 use App\Account;
 use Carbon\Carbon;
+use Error;
 
 class ItemController extends Controller
 {
@@ -30,6 +31,23 @@ class ItemController extends Controller
             return $e->getMessage();
         }
         return;
+    }
+
+    public function delete(Request $req)
+    {
+        try {
+            $account = Account::find($req->accountId);
+            if (!$account->isPublic) {
+                $users = $account->users();
+                if ($users->count() != 1) throw new Exception();
+                if ($users->first()->id != Auth::user()->id) throw new Exception();
+            }
+            $item = Item::find($req->itemId);
+            $item->delete();
+            return;
+        } catch (Exception $e) {
+            return json_encode(["error" => "削除できませんでした。再度お試しください。"]);
+        }
     }
 
     public function getItemsByMonth($id)
