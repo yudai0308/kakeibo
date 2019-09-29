@@ -87189,8 +87189,10 @@ function ItemIndex(props) {
   };
 
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    className: "d-flex justify-content-end mb-4"
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["ButtonToolbar"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Button"], {
+    className: "d-flex justify-content-between mb-4"
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h6", {
+    className: "mt-2"
+  }, moment__WEBPACK_IMPORTED_MODULE_2___default()(newItem.date).format("YYYY年MM月DD日")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["ButtonToolbar"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Button"], {
     variant: "outline-primary",
     onClick: function onClick() {
       return setShowItemForm(true);

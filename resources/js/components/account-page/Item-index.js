@@ -82,7 +82,8 @@ function ItemIndex(props) {
 
   return (
     <>
-      <div className="d-flex justify-content-end mb-4">
+      <div className="d-flex justify-content-between mb-4">
+        <h6 className="mt-2">{moment(newItem.date).format("YYYY年MM月DD日")}</h6>
         <ButtonToolbar>
           <Button
             variant="outline-primary"
