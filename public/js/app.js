@@ -86985,8 +86985,8 @@ function ItemForm(props) {
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
+    setShowItemForm(false);
     _axios__WEBPACK_IMPORTED_MODULE_2__["axios"].post("/api/item", newItem).then(function (res) {
-      closeModal();
       fetchItems(); // callBack();
     });
   }; // 項目名をボタンで入力した場合に input の中身も state と同じ値にする。

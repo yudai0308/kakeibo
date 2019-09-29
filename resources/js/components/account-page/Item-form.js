@@ -17,9 +17,9 @@ function ItemForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setShowItemForm(false)
     axios.post("/api/item", newItem)
       .then(res => {
-        closeModal();
         fetchItems();
         // callBack();
       });
@@ -89,7 +89,10 @@ function ItemForm(props) {
         >
           戻る
         </Button>
-        <Button variant="primary" type="submit">
+        <Button
+          variant="primary"
+          type="submit"
+        >
           完了
         </Button>
       </div>
