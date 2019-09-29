@@ -8,30 +8,12 @@ import { axios } from "../../axios";
 import { networkInterfaces } from "os";
 
 function AccountPage() {
-  // const [date, setDate] = useState(new Date());
-  // const onDateChange = date => setDate(date);
   const [isShown, setModalState] = useState(false);
   const [items, setItems] = useState(null);
-
-  const fetchItems = async () => {
-    if (!document.getElementsByClassName("react-calendar__navigation__label")) return null;
-    const { year, month } = getYearAndMonth();
-    const id = newItem.id;
-    const url = `/api/account/${id}/items?year=${year}&month=${month}`;
-    // TODO: エラーハンドリング
-    const res = await axios.get(url);
-    setItems(res.data);
-  }
-
-  // FIXME: 無理やりなやり方のため、年月の取得方法については要検討。
-  const getYearAndMonth = () => {
-    const elem = document.getElementsByClassName("react-calendar__navigation__label");
-    let text = elem[0].innerText;
-    text = text.replace("月", "");
-    const [year, month] = text.split("年");
-    return { year: year, month: month };
-  }
-
+  const [yearMonth, setYearMonth] = useState({
+    year: (new Date()).getFullYear(),
+    month: (new Date()).getMonth() + 1,
+  })
   const getAccountId = () => {
     const div = document.getElementById("account-page");
     const id = div.getAttribute("data-account-id");
@@ -45,6 +27,33 @@ function AccountPage() {
     date: null,
     isIncome: 0,
   });
+
+  const fetchItems = async () => {
+    const id = newItem.id;
+    const url = `/api/account/${id}/items?year=${yearMonth.year}&month=${yearMonth.month}`;
+    // TODO: エラーハンドリング
+    const res = await axios.get(url);
+    setItems(res.data);
+  }
+
+  // FIXME: 無理やりなやり方のため、年月の取得方法については要検討。
+  const updateYearMonth = () => {
+    console.log("update")
+    const elem = document.getElementsByClassName("react-calendar__navigation__label");
+    if (!elem[0]) return null;
+    let text = elem[0].innerText;
+    if (!isYearMonth(text)) return null; // view = "month" が確認できるなら不要？
+    text = text.replace("月", "");
+    const [year, month] = text.split("年");
+    if (year !== yearMonth.year || month !== yearMonth.month) {
+      setYearMonth({ year: year, month: month });
+    }
+  }
+
+  const isYearMonth = text => {
+    const pattern = /^\d{4}年\d{1,2}月$/;
+    return pattern.test(text);
+  }
 
   useEffect(() => {
     fetchItems();
@@ -67,10 +76,9 @@ function AccountPage() {
       <Row className="justify-content-center">
         <Col md="8">
           <MyCalendar
-            // date={date}
-            // onDateChange={onDateChange}
-            // tileContent={tileContent}
             showModal={() => setModalState(true)}
+            fetchItems={fetchItems}
+            updateYearMonth={updateYearMonth}
             newItem={newItem}
             setNewItem={setNewItem}
             items={items}

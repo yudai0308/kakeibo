@@ -86702,8 +86702,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function AccountPage() {
-  // const [date, setDate] = useState(new Date());
-  // const onDateChange = date => setDate(date);
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
       isShown = _useState2[0],
@@ -86714,38 +86712,53 @@ function AccountPage() {
       items = _useState4[0],
       setItems = _useState4[1];
 
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+    year: new Date().getFullYear(),
+    month: new Date().getMonth() + 1
+  }),
+      _useState6 = _slicedToArray(_useState5, 2),
+      yearMonth = _useState6[0],
+      setYearMonth = _useState6[1];
+
+  var getAccountId = function getAccountId() {
+    var div = document.getElementById("account-page");
+    var id = div.getAttribute("data-account-id");
+    return Number(id);
+  };
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+    id: getAccountId(),
+    name: "",
+    ammount: 0,
+    date: null,
+    isIncome: 0
+  }),
+      _useState8 = _slicedToArray(_useState7, 2),
+      newItem = _useState8[0],
+      setNewItem = _useState8[1];
+
   var fetchItems =
   /*#__PURE__*/
   function () {
     var _ref = _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var _getYearAndMonth, year, month, id, url, res;
-
+      var id, url, res;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              if (document.getElementsByClassName("react-calendar__navigation__label")) {
-                _context.next = 2;
-                break;
-              }
-
-              return _context.abrupt("return", null);
-
-            case 2:
-              _getYearAndMonth = getYearAndMonth(), year = _getYearAndMonth.year, month = _getYearAndMonth.month;
               id = newItem.id;
-              url = "/api/account/".concat(id, "/items?year=").concat(year, "&month=").concat(month); // TODO: エラーハンドリング
+              url = "/api/account/".concat(id, "/items?year=").concat(yearMonth.year, "&month=").concat(yearMonth.month); // TODO: エラーハンドリング
 
-              _context.next = 7;
+              _context.next = 4;
               return _axios__WEBPACK_IMPORTED_MODULE_7__["axios"].get(url);
 
-            case 7:
+            case 4:
               res = _context.sent;
               setItems(res.data);
 
-            case 9:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -86759,9 +86772,13 @@ function AccountPage() {
   }(); // FIXME: 無理やりなやり方のため、年月の取得方法については要検討。
 
 
-  var getYearAndMonth = function getYearAndMonth() {
+  var updateYearMonth = function updateYearMonth() {
+    console.log("update");
     var elem = document.getElementsByClassName("react-calendar__navigation__label");
+    if (!elem[0]) return null;
     var text = elem[0].innerText;
+    if (!isYearMonth(text)) return null; // view = "month" が確認できるなら不要？
+
     text = text.replace("月", "");
 
     var _text$split = text.split("年"),
@@ -86769,28 +86786,18 @@ function AccountPage() {
         year = _text$split2[0],
         month = _text$split2[1];
 
-    return {
-      year: year,
-      month: month
-    };
+    if (year !== yearMonth.year || month !== yearMonth.month) {
+      setYearMonth({
+        year: year,
+        month: month
+      });
+    }
   };
 
-  var getAccountId = function getAccountId() {
-    var div = document.getElementById("account-page");
-    var id = div.getAttribute("data-account-id");
-    return Number(id);
+  var isYearMonth = function isYearMonth(text) {
+    var pattern = /^\d{4}年\d{1,2}月$/;
+    return pattern.test(text);
   };
-
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
-    id: getAccountId(),
-    name: "",
-    ammount: 0,
-    date: null,
-    isIncome: 0
-  }),
-      _useState6 = _slicedToArray(_useState5, 2),
-      newItem = _useState6[0],
-      setNewItem = _useState6[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     fetchItems();
@@ -86814,13 +86821,12 @@ function AccountPage() {
     className: "justify-content-center"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     md: "8"
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Calendar__WEBPACK_IMPORTED_MODULE_4__["default"] // date={date}
-  // onDateChange={onDateChange}
-  // tileContent={tileContent}
-  , {
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Calendar__WEBPACK_IMPORTED_MODULE_4__["default"], {
     showModal: function showModal() {
       return setModalState(true);
     },
+    fetchItems: fetchItems,
+    updateYearMonth: updateYearMonth,
     newItem: newItem,
     setNewItem: setNewItem,
     items: items
@@ -86871,10 +86877,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 function MyCalendar(props) {
-  var tileContent = props.tileContent,
-      items = props.items,
-      newItem = props.newItem,
+  var items = props.items,
       setNewItem = props.setNewItem,
+      fetchItems = props.fetchItems,
+      updateYearMonth = props.updateYearMonth,
       showModal = props.showModal;
 
   var handleClickDay = function handleClickDay(e) {
@@ -86922,13 +86928,8 @@ function MyCalendar(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_calendar__WEBPACK_IMPORTED_MODULE_1___default.a, {
     locale: "ja-JP",
     calendarType: "US",
-    className: "color-primary" // onChange={onDateChange(date)}
-    ,
-    onChange: function onChange() {
-      return console.log("aaa");
-    },
-    onClickDay: handleClickDay // value={date}
-    ,
+    className: "color-primary",
+    onClickDay: handleClickDay,
     tileContent: setTileContent
   });
 }
