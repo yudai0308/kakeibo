@@ -9,23 +9,17 @@ function ItemIndex({ items, newItem, setShowItemForm }) {
     const dates = Object.keys(items);
     if (!dates.includes(curDate)) return null;
     const trs = items[curDate].map((item, i) => {
-      if (item.isIncome) {
-        return (
-          <tr key={i}>
-            <td>{item.name}</td>
-            <td>{separate(item.amount)}</td>
-            <td><button type="button" className="close">×</button></td>
-          </tr>
-        );
-      } else {
-        return (
-          <tr key={i}>
-            <td>{item.name}</td>
-            <td className="text-danger">{separate(item.amount)}</td>
-            <td><button type="button" className="close">×</button></td>
-          </tr>
-        );
-      }
+      return (
+        <tr key={item.id}>
+          <td>{item.name}</td>
+          <td className={item.isIncome ? "" : "text-danger"}>
+            {separate(item.amount)}
+          </td>
+          <td>
+            <button type="button" className="close">×</button>
+          </td>
+        </tr>
+      )
     });
     return trs;
   }

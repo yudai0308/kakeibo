@@ -87101,23 +87101,14 @@ function ItemIndex(_ref) {
     var dates = Object.keys(items);
     if (!dates.includes(curDate)) return null;
     var trs = items[curDate].map(function (item, i) {
-      if (item.isIncome) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          key: i
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, Object(_libs__WEBPACK_IMPORTED_MODULE_2__["separate"])(item.amount)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          type: "button",
-          className: "close"
-        }, "\xD7")));
-      } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          key: i
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-          className: "text-danger"
-        }, Object(_libs__WEBPACK_IMPORTED_MODULE_2__["separate"])(item.amount)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          type: "button",
-          className: "close"
-        }, "\xD7")));
-      }
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+        key: item.id
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+        className: item.isIncome ? "" : "text-danger"
+      }, Object(_libs__WEBPACK_IMPORTED_MODULE_2__["separate"])(item.amount)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "close"
+      }, "\xD7")));
     });
     return trs;
   };
