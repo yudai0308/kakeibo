@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div id="account-page" data-account-id="{{$id}}"></div>
+<div id="account-page" data-account-id="{{$id}}" data-account-title="{{$title}}"></div>
 <!-- <form method="post" action="/api/item">
     @csrf
     <input type="hidden" name="id" value="1">

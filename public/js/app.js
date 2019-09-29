@@ -86729,6 +86729,13 @@ function AccountPage() {
     var div = document.getElementById("account-page");
     var id = div.getAttribute("data-account-id");
     return Number(id);
+  }; // FIXME: カスタムデータ属性を書き換えた状態で再レンダーすると表示が変わってしまう。
+
+
+  var getAccountTitle = function getAccountTitle() {
+    var div = document.getElementById("account-page");
+    var title = div.getAttribute("data-account-title");
+    return title;
   };
 
   var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
@@ -86814,7 +86821,7 @@ function AccountPage() {
     className: "mb-4 border-bottom"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
     className: "font-weight-bold"
-  }, "\u5BB6\u8A08\u7C3F\u30BF\u30A4\u30C8\u30EB")))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
+  }, getAccountTitle())))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     className: "justify-content-center"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     md: "8",

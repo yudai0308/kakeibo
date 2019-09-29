@@ -15,10 +15,18 @@ function AccountPage() {
     year: (new Date()).getFullYear(),
     month: (new Date()).getMonth() + 1,
   })
+
   const getAccountId = () => {
     const div = document.getElementById("account-page");
     const id = div.getAttribute("data-account-id");
     return Number(id);
+  }
+
+  // FIXME: カスタムデータ属性を書き換えた状態で再レンダーすると表示が変わってしまう。
+  const getAccountTitle = () => {
+    const div = document.getElementById("account-page");
+    const title = div.getAttribute("data-account-title");
+    return title;
   }
 
   const [newItem, setNewItem] = useState({
@@ -64,7 +72,7 @@ function AccountPage() {
       <Row className="justify-content-center">
         <Col md="8">
           <div className="mb-4 border-bottom">
-            <p className="font-weight-bold">家計簿タイトル</p>
+            <p className="font-weight-bold">{getAccountTitle()}</p>
           </div>
         </Col>
       </Row>
