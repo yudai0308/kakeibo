@@ -3,12 +3,14 @@ import ReactDOM from "react-dom";
 import { Container, Row, Col, Modal } from "react-bootstrap";
 import MyCalendar from "./Calendar";
 import Overview from "./Overview";
-import InputItemModal from "./Input-item-modal"
+import ItemModal from "./Item-modal"
 import { axios } from "../../axios";
 import { networkInterfaces } from "os";
 
 function AccountPage() {
   const [isShown, setModalState] = useState(false);
+  // const [modalTitle, setModalTitle] = useState("収支一覧");
+  const [showItemForm, setShowItemForm] = useState(false);
   const [items, setItems] = useState(null);
   const [yearMonth, setYearMonth] = useState({
     year: (new Date()).getFullYear(),
@@ -83,9 +85,12 @@ function AccountPage() {
             setNewItem={setNewItem}
             items={items}
           />
-          <InputItemModal
+          <ItemModal
             isShown={isShown}
+            showItemForm={showItemForm}
+            setShowItemForm={setShowItemForm}
             closeModal={() => setModalState(false)}
+            items={items}
             newItem={newItem}
             setNewItem={setNewItem}
             fetchItems={fetchItems}

@@ -7,8 +7,8 @@ import { axios } from "../../axios";
 
 function ItemForm(props) {
   const {
-    newItem, setNewItem,
-    closeModal, fetchItems
+    newItem, setNewItem, closeModal,
+    fetchItems, setShowItemForm,
   } = props;
 
   const handleNewItemChange = (key, val) => {
@@ -82,7 +82,16 @@ function ItemForm(props) {
       </Form.Group>
 
       <div className="text-right">
-        <Button variant="primary" type="submit">完了</Button>
+        <Button
+          variant="secondary"
+          className="mr-2"
+          onClick={() => setShowItemForm(false)}
+        >
+          戻る
+        </Button>
+        <Button variant="primary" type="submit">
+          完了
+        </Button>
       </div>
     </Form>
   )

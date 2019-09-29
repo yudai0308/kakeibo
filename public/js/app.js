@@ -86674,7 +86674,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 /* harmony import */ var _Calendar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Calendar */ "./resources/js/components/account-page/Calendar.js");
 /* harmony import */ var _Overview__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Overview */ "./resources/js/components/account-page/Overview.js");
-/* harmony import */ var _Input_item_modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Input-item-modal */ "./resources/js/components/account-page/Input-item-modal.js");
+/* harmony import */ var _Item_modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Item-modal */ "./resources/js/components/account-page/Item-modal.js");
 /* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../axios */ "./resources/js/axios.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_8__);
@@ -86705,20 +86705,26 @@ function AccountPage() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
       isShown = _useState2[0],
-      setModalState = _useState2[1];
+      setModalState = _useState2[1]; // const [modalTitle, setModalTitle] = useState("収支一覧");
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState4 = _slicedToArray(_useState3, 2),
-      items = _useState4[0],
-      setItems = _useState4[1];
+      showItemForm = _useState4[0],
+      setShowItemForm = _useState4[1];
 
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
+      _useState6 = _slicedToArray(_useState5, 2),
+      items = _useState6[0],
+      setItems = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
     year: new Date().getFullYear(),
     month: new Date().getMonth() + 1
   }),
-      _useState6 = _slicedToArray(_useState5, 2),
-      yearMonth = _useState6[0],
-      setYearMonth = _useState6[1];
+      _useState8 = _slicedToArray(_useState7, 2),
+      yearMonth = _useState8[0],
+      setYearMonth = _useState8[1];
 
   var getAccountId = function getAccountId() {
     var div = document.getElementById("account-page");
@@ -86726,16 +86732,16 @@ function AccountPage() {
     return Number(id);
   };
 
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
     id: getAccountId(),
     name: "",
     ammount: 0,
     date: null,
     isIncome: 0
   }),
-      _useState8 = _slicedToArray(_useState7, 2),
-      newItem = _useState8[0],
-      setNewItem = _useState8[1];
+      _useState10 = _slicedToArray(_useState9, 2),
+      newItem = _useState10[0],
+      setNewItem = _useState10[1];
 
   var fetchItems =
   /*#__PURE__*/
@@ -86830,11 +86836,14 @@ function AccountPage() {
     newItem: newItem,
     setNewItem: setNewItem,
     items: items
-  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Input_item_modal__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Item_modal__WEBPACK_IMPORTED_MODULE_6__["default"], {
     isShown: isShown,
+    showItemForm: showItemForm,
+    setShowItemForm: setShowItemForm,
     closeModal: function closeModal() {
       return setModalState(false);
     },
+    items: items,
     newItem: newItem,
     setNewItem: setNewItem,
     fetchItems: fetchItems
@@ -86938,47 +86947,6 @@ function MyCalendar(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/account-page/Input-item-modal.js":
-/*!******************************************************************!*\
-  !*** ./resources/js/components/account-page/Input-item-modal.js ***!
-  \******************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-/* harmony import */ var _Item_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Item-form */ "./resources/js/components/account-page/Item-form.js");
-
-
-
-
-function InputItemModal(props) {
-  var isShown = props.isShown,
-      closeModal = props.closeModal,
-      newItem = props.newItem,
-      setNewItem = props.setNewItem,
-      fetchItems = props.fetchItems;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
-    show: isShown,
-    onHide: closeModal,
-    centered: true
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Header, {
-    closeButton: true
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Title, null, "\u53CE\u652F\u306E\u5165\u529B")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Item_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    newItem: newItem,
-    setNewItem: setNewItem,
-    closeModal: closeModal,
-    fetchItems: fetchItems
-  }))));
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (InputItemModal);
-
-/***/ }),
-
 /***/ "./resources/js/components/account-page/Item-form.js":
 /*!***********************************************************!*\
   !*** ./resources/js/components/account-page/Item-form.js ***!
@@ -87006,7 +86974,8 @@ function ItemForm(props) {
   var newItem = props.newItem,
       setNewItem = props.setNewItem,
       closeModal = props.closeModal,
-      fetchItems = props.fetchItems;
+      fetchItems = props.fetchItems,
+      setShowItemForm = props.setShowItemForm;
 
   var handleNewItemChange = function handleNewItemChange(key, val) {
     setNewItem(function (newItem) {
@@ -87089,12 +87058,143 @@ function ItemForm(props) {
   }, "\u53CE\u5165")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-right"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    variant: "secondary",
+    className: "mr-2",
+    onClick: function onClick() {
+      return setShowItemForm(false);
+    }
+  }, "\u623B\u308B"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
     variant: "primary",
     type: "submit"
   }, "\u5B8C\u4E86")));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (ItemForm);
+
+/***/ }),
+
+/***/ "./resources/js/components/account-page/Item-index.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/account-page/Item-index.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _libs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../libs */ "./resources/js/components/libs.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+
+
+
+
+
+function ItemIndex(_ref) {
+  var items = _ref.items,
+      newItem = _ref.newItem,
+      setShowItemForm = _ref.setShowItemForm;
+  console.log(items);
+  console.log(newItem);
+
+  var getTrs = function getTrs() {
+    var curDate = moment__WEBPACK_IMPORTED_MODULE_1___default()(newItem.date).format("YYYY-MM-DD");
+    var dates = Object.keys(items);
+    if (!dates.includes(curDate)) return null;
+    var trs = items[curDate].map(function (item, i) {
+      if (item.isIncome) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: i
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, Object(_libs__WEBPACK_IMPORTED_MODULE_2__["separate"])(item.amount)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          className: "close"
+        }, "\xD7")));
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: i
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          className: "text-danger"
+        }, Object(_libs__WEBPACK_IMPORTED_MODULE_2__["separate"])(item.amount)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          className: "close"
+        }, "\xD7")));
+      }
+    });
+    return trs;
+  };
+
+  var getTable = function getTable() {
+    var trs = getTrs();
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Table"], {
+      responsive: true
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u9805\u76EE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "\u91D1\u984D"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, trs));
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-end mb-4"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["ButtonToolbar"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Button"], {
+    variant: "outline-primary",
+    onClick: function onClick() {
+      return setShowItemForm(true);
+    }
+  }, "\u8FFD\u52A0"))), getTable());
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (ItemIndex);
+
+/***/ }),
+
+/***/ "./resources/js/components/account-page/Item-modal.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/account-page/Item-modal.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+/* harmony import */ var _Item_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Item-form */ "./resources/js/components/account-page/Item-form.js");
+/* harmony import */ var _Item_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Item-index */ "./resources/js/components/account-page/Item-index.js");
+
+
+
+
+
+function ItemModal(props) {
+  var isShown = props.isShown,
+      closeModal = props.closeModal,
+      showItemForm = props.showItemForm,
+      setShowItemForm = props.setShowItemForm,
+      items = props.items,
+      newItem = props.newItem,
+      setNewItem = props.setNewItem,
+      fetchItems = props.fetchItems;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
+    show: isShown,
+    onHide: closeModal,
+    centered: true
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Header, {
+    closeButton: true
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Title, null, "\u9805\u76EE\u4E00\u89A7")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, null, !showItemForm && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Item_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    items: items,
+    newItem: newItem,
+    setShowItemForm: setShowItemForm
+  }), showItemForm && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Item_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    newItem: newItem,
+    setNewItem: setNewItem,
+    closeModal: closeModal,
+    fetchItems: fetchItems,
+    setShowItemForm: setShowItemForm
+  }))));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (ItemModal);
 
 /***/ }),
 

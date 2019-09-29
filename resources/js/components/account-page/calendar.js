@@ -16,7 +16,7 @@ function MyCalendar(props) {
   const handleClickDay = e => {
     showModal();
     const clickedDate = new Date(e).toLocaleString("ja-JP");
-    setNewItem(newItem => ({ ...newItem, date: clickedDate }))
+    setNewItem(newItem => ({ ...newItem, date: clickedDate }));
   }
 
   useEffect(() => {
