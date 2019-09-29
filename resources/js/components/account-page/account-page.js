@@ -9,7 +9,6 @@ import { networkInterfaces } from "os";
 
 function AccountPage() {
   const [isShown, setModalState] = useState(false);
-  // const [modalTitle, setModalTitle] = useState("収支一覧");
   const [showItemForm, setShowItemForm] = useState(false);
   const [items, setItems] = useState(null);
   const [yearMonth, setYearMonth] = useState({
@@ -40,7 +39,6 @@ function AccountPage() {
 
   // FIXME: 無理やりなやり方のため、年月の取得方法については要検討。
   const updateYearMonth = () => {
-    console.log("update")
     const elem = document.getElementsByClassName("react-calendar__navigation__label");
     if (!elem[0]) return null;
     let text = elem[0].innerText;

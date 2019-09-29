@@ -86705,8 +86705,7 @@ function AccountPage() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
       isShown = _useState2[0],
-      setModalState = _useState2[1]; // const [modalTitle, setModalTitle] = useState("収支一覧");
-
+      setModalState = _useState2[1];
 
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState4 = _slicedToArray(_useState3, 2),
@@ -86779,7 +86778,6 @@ function AccountPage() {
 
 
   var updateYearMonth = function updateYearMonth() {
-    console.log("update");
     var elem = document.getElementsByClassName("react-calendar__navigation__label");
     if (!elem[0]) return null;
     var text = elem[0].innerText;
@@ -87097,8 +87095,6 @@ function ItemIndex(_ref) {
   var items = _ref.items,
       newItem = _ref.newItem,
       setShowItemForm = _ref.setShowItemForm;
-  console.log(items);
-  console.log(newItem);
 
   var getTrs = function getTrs() {
     var curDate = moment__WEBPACK_IMPORTED_MODULE_1___default()(newItem.date).format("YYYY-MM-DD");

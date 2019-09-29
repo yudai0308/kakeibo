@@ -4,8 +4,6 @@ import { separate } from "../libs";
 import { ListGroup, ButtonToolbar, Button, Table } from "react-bootstrap";
 
 function ItemIndex({ items, newItem, setShowItemForm }) {
-  console.log(items)
-  console.log(newItem)
   const getTrs = () => {
     const curDate = moment(newItem.date).format("YYYY-MM-DD");
     const dates = Object.keys(items);
