@@ -29,7 +29,7 @@ class CreateItemsTable extends Migration
             $table->unsignedInteger('category_id');
             $table->string('name', 45);
             $table->integer('amount');
-            $table->dateTime('date');
+            $table->date('date');
             $table->tinyInteger('isIncome');
 
             $table->index(["account_id"], 'fk_items_accounts1_idx');
