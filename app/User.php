@@ -29,7 +29,7 @@ class User extends Authenticatable
     // リレーション定義
     public function accounts()
     {
-        return $this->belongsToMany("App\Account");
+        return $this->hasMany("App\Account");
     }
     public function items()
     {

@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
             AccountsTableSheeder::class,
             CategoriesTableSeeder::class,
             ItemsTableSheeder::class,
-            Account_UserTableSheeder::class,
         ]);
     }
 }
