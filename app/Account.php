@@ -17,7 +17,7 @@ class Account extends Model
     ];
 
     // リレーション定義
-    public function users()
+    public function user()
     {
         return $this->belongsTo("App\User");
     }
