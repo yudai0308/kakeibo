@@ -67,7 +67,8 @@ class ItemController extends Controller
         $from = new Carbon("${year}-${month}-01");
         $to = new Carbon("${year}-${month}-01");
         $to->addMonth()->subDay();
-        $items = Item::where("date", ">=", $from->format("Y-m-d"))
+        $items = Item::where("account_id", $id)
+            ->where("date", ">=", $from->format("Y-m-d"))
             ->where("date", "<", $to->format("Y-m-d"))
             ->get();
         // $items = Item::whereMonth("date", $params->month)->get();
