@@ -96,6 +96,7 @@ function MyCalendar(props) {
       className="color-primary"
       onClickDay={handleClickDay}
       tileContent={setTileContent}
+      showNeighboringMonth={false}
       minDetail="decade"
     >
     </Calendar>
