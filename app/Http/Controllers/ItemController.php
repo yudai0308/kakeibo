@@ -69,7 +69,7 @@ class ItemController extends Controller
         $to->addMonth()->subDay();
         $items = Item::where("account_id", $id)
             ->where("date", ">=", $from->format("Y-m-d"))
-            ->where("date", "<", $to->format("Y-m-d"))
+            ->where("date", "<=", $to->format("Y-m-d"))
             ->get();
         // $items = Item::whereMonth("date", $params->month)->get();
         $itemGrp = $items->groupBy("date");
