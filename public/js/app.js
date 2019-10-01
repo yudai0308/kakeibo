@@ -86813,7 +86813,6 @@ function AccountPage() {
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     fetchItems();
   }, [setItems, yearMonth]);
-  console.log(items);
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     className: "justify-content-center"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {

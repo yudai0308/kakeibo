@@ -66,7 +66,7 @@ function AccountPage() {
   useEffect(() => {
     fetchItems();
   }, [setItems, yearMonth])
-console.log(items)
+
   return (
     <Container>
       <Row className="justify-content-center">
