@@ -86915,7 +86915,7 @@ function MyCalendar(props) {
   var setTileContent = function setTileContent(_ref) {
     var date = _ref.date,
         view = _ref.view;
-    if (items === null) return;
+    if (items === null || view !== "month") return;
     var curDate = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format("YYYY-MM-DD");
     var dates = Object.keys(items);
     if (!dates.includes(curDate)) return;

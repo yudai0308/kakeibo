@@ -22,7 +22,7 @@ function MyCalendar(props) {
   }
 
   const setTileContent = ({ date, view }) => {
-    if (items === null) return;
+    if (items === null || view !== "month") return;
     const curDate = moment(date).format("YYYY-MM-DD");
     const dates = Object.keys(items);
     if (!dates.includes(curDate)) return;
