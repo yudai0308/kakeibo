@@ -56,38 +56,28 @@ function MyCalendar(props) {
     return yearMonth;
   }
 
-  (function () {
-    const prevButton = document.getElementsByClassName("react-calendar__navigation__prev-button")
-    const prev2Button = document.getElementsByClassName("react-calendar__navigation__prev2-button")
-    const nextButton = document.getElementsByClassName("react-calendar__navigation__next-button")
-    const next2Button = document.getElementsByClassName("react-calendar__navigation__next2-button")
+  const setYearMonthByClick = () => {
+    const prev = document.getElementsByClassName("react-calendar__navigation__prev-button")
+    const prev2 = document.getElementsByClassName("react-calendar__navigation__prev2-button")
+    const next = document.getElementsByClassName("react-calendar__navigation__next-button")
+    const next2 = document.getElementsByClassName("react-calendar__navigation__next2-button")
+    const buttons = [
+      { elem: prev[0], step: -1 },
+      { elem: prev2[0], step: -12 },
+      { elem: next[0], step: 1 },
+      { elem: next2[0], step: 12 },
+    ];
     let y = yearMonth.year;
     let m = yearMonth.month;
-    if (prevButton[0]) {
-      prevButton[0].onclick = () => {
-        const ym = addOrSubMonth(y, m, -1);
+    for (const button of buttons) {
+      if (!button.elem) continue;
+      button.elem.onclick = () => {
+        const ym = addOrSubMonth(y, m, button.step);
         setYearMonth(ym);
       }
     }
-    if (prev2Button[0]) {
-      prev2Button[0].onclick = () => {
-        const ym = addOrSubMonth(y, m, -12);
-        setYearMonth(ym);
-      }
-    }
-    if (nextButton[0]) {
-      nextButton[0].onclick = () => {
-        const ym = addOrSubMonth(y, m, 1);
-        setYearMonth(ym);
-      }
-    }
-    if (next2Button[0]) {
-      next2Button[0].onclick = () => {
-        const ym = addOrSubMonth(y, m, 12);
-        setYearMonth(ym);
-      }
-    }
-  })();
+  }
+  setYearMonthByClick();
 
   return (
     <Calendar

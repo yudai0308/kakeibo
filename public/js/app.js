@@ -86962,43 +86962,45 @@ function MyCalendar(props) {
     return yearMonth;
   };
 
-  (function () {
-    var prevButton = document.getElementsByClassName("react-calendar__navigation__prev-button");
-    var prev2Button = document.getElementsByClassName("react-calendar__navigation__prev2-button");
-    var nextButton = document.getElementsByClassName("react-calendar__navigation__next-button");
-    var next2Button = document.getElementsByClassName("react-calendar__navigation__next2-button");
+  var setYearMonthByClick = function setYearMonthByClick() {
+    var prev = document.getElementsByClassName("react-calendar__navigation__prev-button");
+    var prev2 = document.getElementsByClassName("react-calendar__navigation__prev2-button");
+    var next = document.getElementsByClassName("react-calendar__navigation__next-button");
+    var next2 = document.getElementsByClassName("react-calendar__navigation__next2-button");
+    var buttons = [{
+      elem: prev[0],
+      step: -1
+    }, {
+      elem: prev2[0],
+      step: -12
+    }, {
+      elem: next[0],
+      step: 1
+    }, {
+      elem: next2[0],
+      step: 12
+    }];
     var y = yearMonth.year;
     var m = yearMonth.month;
 
-    if (prevButton[0]) {
-      prevButton[0].onclick = function () {
-        var ym = addOrSubMonth(y, m, -1);
+    var _loop = function _loop() {
+      var button = _buttons[_i];
+      if (!button.elem) return "continue";
+
+      button.elem.onclick = function () {
+        var ym = addOrSubMonth(y, m, button.step);
         setYearMonth(ym);
       };
-    }
+    };
 
-    if (prev2Button[0]) {
-      prev2Button[0].onclick = function () {
-        var ym = addOrSubMonth(y, m, -12);
-        setYearMonth(ym);
-      };
-    }
+    for (var _i = 0, _buttons = buttons; _i < _buttons.length; _i++) {
+      var _ret = _loop();
 
-    if (nextButton[0]) {
-      nextButton[0].onclick = function () {
-        var ym = addOrSubMonth(y, m, 1);
-        setYearMonth(ym);
-      };
+      if (_ret === "continue") continue;
     }
+  };
 
-    if (next2Button[0]) {
-      next2Button[0].onclick = function () {
-        var ym = addOrSubMonth(y, m, 12);
-        setYearMonth(ym);
-      };
-    }
-  })();
-
+  setYearMonthByClick();
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_calendar__WEBPACK_IMPORTED_MODULE_1___default.a, {
     locale: "ja-JP",
     calendarType: "US",
