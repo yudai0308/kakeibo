@@ -53,8 +53,8 @@ function AccountPage() {
     if (!isYearMonth(text)) return null; // view = "month" が確認できるなら不要？
     text = text.replace("月", "");
     const [year, month] = text.split("年");
-    if (year !== yearMonth.year || month !== yearMonth.month) {
-      setYearMonth({ year: year, month: month });
+    if (Number(year) !== yearMonth.year || Number(month) !== yearMonth.month) {
+      setYearMonth({ year: Number(year), month: Number(month) });
     }
   }
 
@@ -65,8 +65,8 @@ function AccountPage() {
 
   useEffect(() => {
     fetchItems();
-  }, [setItems])
-
+  }, [setItems, yearMonth])
+console.log(items)
   return (
     <Container>
       <Row className="justify-content-center">
@@ -90,6 +90,8 @@ function AccountPage() {
             newItem={newItem}
             setNewItem={setNewItem}
             items={items}
+            yearMonth={yearMonth}
+            setYearMonth={setYearMonth}
             setShowItemForm={setShowItemForm}
           />
           <ItemModal

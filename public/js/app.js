@@ -86797,10 +86797,10 @@ function AccountPage() {
         year = _text$split2[0],
         month = _text$split2[1];
 
-    if (year !== yearMonth.year || month !== yearMonth.month) {
+    if (Number(year) !== yearMonth.year || Number(month) !== yearMonth.month) {
       setYearMonth({
-        year: year,
-        month: month
+        year: Number(year),
+        month: Number(month)
       });
     }
   };
@@ -86812,7 +86812,8 @@ function AccountPage() {
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     fetchItems();
-  }, [setItems]);
+  }, [setItems, yearMonth]);
+  console.log(items);
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     className: "justify-content-center"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
@@ -86841,6 +86842,8 @@ function AccountPage() {
     newItem: newItem,
     setNewItem: setNewItem,
     items: items,
+    yearMonth: yearMonth,
+    setYearMonth: setYearMonth,
     setShowItemForm: setShowItemForm
   }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Item_modal__WEBPACK_IMPORTED_MODULE_6__["default"], {
     isShown: isShown,
@@ -86894,9 +86897,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 function MyCalendar(props) {
   var items = props.items,
       setNewItem = props.setNewItem,
-      fetchItems = props.fetchItems,
-      updateYearMonth = props.updateYearMonth,
       showModal = props.showModal,
+      yearMonth = props.yearMonth,
+      setYearMonth = props.setYearMonth,
       setShowItemForm = props.setShowItemForm;
 
   var handleClickDay = function handleClickDay(e) {
@@ -86909,9 +86912,6 @@ function MyCalendar(props) {
       });
     });
   };
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {//
-  });
 
   var setTileContent = function setTileContent(_ref) {
     var date = _ref.date,
@@ -86942,12 +86942,71 @@ function MyCalendar(props) {
     }, Object(_libs__WEBPACK_IMPORTED_MODULE_4__["separate"])(Math.abs(sum)));
   };
 
+  var addOrSubMonth = function addOrSubMonth(year, month, step) {
+    var date = moment__WEBPACK_IMPORTED_MODULE_3___default()("".concat(year, "-").concat(month, "-01"));
+    var yearMonth = {
+      year: year,
+      month: month
+    };
+    if (step === 0) return yearMonth;
+
+    if (step > 0) {
+      var added = date.add(step, "M");
+      yearMonth.year = added.year();
+      yearMonth.month = added.month() + 1;
+    } else {
+      var subed = date.subtract(Math.abs(step), "M");
+      yearMonth.year = subed.year();
+      yearMonth.month = subed.month() + 1;
+    }
+
+    return yearMonth;
+  };
+
+  (function () {
+    var prevButton = document.getElementsByClassName("react-calendar__navigation__prev-button");
+    var prev2Button = document.getElementsByClassName("react-calendar__navigation__prev2-button");
+    var nextButton = document.getElementsByClassName("react-calendar__navigation__next-button");
+    var next2Button = document.getElementsByClassName("react-calendar__navigation__next2-button");
+    var y = yearMonth.year;
+    var m = yearMonth.month;
+
+    if (prevButton[0]) {
+      prevButton[0].onclick = function () {
+        var ym = addOrSubMonth(y, m, -1);
+        setYearMonth(ym);
+      };
+    }
+
+    if (prev2Button[0]) {
+      prev2Button[0].onclick = function () {
+        var ym = addOrSubMonth(y, m, -12);
+        setYearMonth(ym);
+      };
+    }
+
+    if (nextButton[0]) {
+      nextButton[0].onclick = function () {
+        var ym = addOrSubMonth(y, m, 1);
+        setYearMonth(ym);
+      };
+    }
+
+    if (next2Button[0]) {
+      next2Button[0].onclick = function () {
+        var ym = addOrSubMonth(y, m, 12);
+        setYearMonth(ym);
+      };
+    }
+  })();
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_calendar__WEBPACK_IMPORTED_MODULE_1___default.a, {
     locale: "ja-JP",
     calendarType: "US",
     className: "color-primary",
     onClickDay: handleClickDay,
-    tileContent: setTileContent
+    tileContent: setTileContent,
+    minDetail: "decade"
   });
 }
 
