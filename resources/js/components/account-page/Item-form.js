@@ -39,6 +39,28 @@ function ItemForm(props) {
 
   return (
     <Form onSubmit={e => handleSubmit(e)}>
+      <Form.Group controlId="form-item-isIncome">
+        <ButtonToolbar>
+          <ToggleButtonGroup type="radio" name="isIncome" defaultValue={newItem.isIncome}>
+            <ToggleButton
+              value={0}
+              variant="info"
+              variant="outline-info"
+              onClick={() => handleNewItemChange("isIncome", 0)}
+            >
+              支出
+            </ToggleButton>
+            <ToggleButton
+              value={1}
+              variant="info"
+              variant="outline-info"
+              onClick={() => handleNewItemChange("isIncome", 1)}
+            >
+              収入
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </ButtonToolbar>
+      </Form.Group>
       <Form.Group controlId="form-item-name">
         <Form.Label>項目</Form.Label>
         <Form.Control
@@ -73,14 +95,6 @@ function ItemForm(props) {
           required
           onChange={e => handleNewItemChange("amount", e.target.value)}
         />
-      </Form.Group>
-      <Form.Group controlId="form-item-isIncome">
-        <ButtonToolbar>
-          <ToggleButtonGroup type="radio" name="isIncome" defaultValue={newItem.isIncome}>
-            <ToggleButton value={0} variant="info" onClick={() => handleNewItemChange("isIncome", 0)}>費用</ToggleButton>
-            <ToggleButton value={1} variant="info" onClick={() => handleNewItemChange("isIncome", 1)}>収入</ToggleButton>
-          </ToggleButtonGroup>
-        </ButtonToolbar>
       </Form.Group>
 
       <div className="text-right">
