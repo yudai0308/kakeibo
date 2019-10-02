@@ -17,9 +17,9 @@ class Account extends Model
     ];
 
     // リレーション定義
-    public function users()
+    public function user()
     {
-        return $this->belongsToMany("App\User");
+        return $this->belongsTo("App\User");
     }
     public function item()
     {

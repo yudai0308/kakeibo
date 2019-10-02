@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Form, FormControl, InputGroup,
   Button, Alert, OverlayTrigger, Tooltip,
-} from 'react-bootstrap';
-import { AccountContext } from './mypage';
-// import ShareForm from './Account-form-share';
-import { axios } from '../../axios';
+} from "react-bootstrap";
+import { AccountContext } from "./Mypage";
+// import ShareForm from "./Account-form-share";
+import { axios } from "../../axios";
 
 function AccountForm() {
   const [newAccount, setNewAccount] = useState({ title: "", isPublic: false });
@@ -38,7 +38,7 @@ function AccountForm() {
   const copyURL = () => {
     const textarea = document.getElementById("new-account-url");
     textarea.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
   }
 
   const getBody = () => {

@@ -12,13 +12,20 @@ class AccountController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
-    public function show($id, $hash) {
+    public function show($id, $hash)
+    {
         $account = Account::find($id);
-        if($account->hash != $hash) abort(404);
-        return view("account");
+        if ($account->hash != $hash) abort(404);
+        // TODO: account の作成者が自分、もしくは公開されている account であることを確認。
+        if (!$account->isPublic) {
+            if (!Auth::check()) abort(403);
+            if ($account->user_id != Auth::user()->id) abort(403);
+        }
+        $title = $account->title;
+        return view("account")->with(["id" => $id, "title" => $title]);
     }
 
     public function store(Request $req)

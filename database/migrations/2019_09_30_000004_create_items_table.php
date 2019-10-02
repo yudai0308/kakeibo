@@ -25,11 +25,12 @@ class CreateItemsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->unsignedInteger('account_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id')->nullable();
             $table->unsignedInteger('category_id');
             $table->string('name', 45);
             $table->integer('amount');
-            $table->dateTime('date');
+            $table->date('date');
+            $table->tinyInteger('isIncome');
 
             $table->index(["account_id"], 'fk_items_accounts1_idx');
 
@@ -62,8 +63,8 @@ class CreateItemsTable extends Migration
      *
      * @return void
      */
-     public function down()
-     {
-       Schema::dropIfExists($this->set_schema_table);
-     }
+    public function down()
+    {
+        Schema::dropIfExists($this->set_schema_table);
+    }
 }

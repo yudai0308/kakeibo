@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-<h1>家計簿ページ</h1>
+<div id="account-page" data-account-id="{{$id}}" data-account-title="{{$title}}"></div>
 @endsection
