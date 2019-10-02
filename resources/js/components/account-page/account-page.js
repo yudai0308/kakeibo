@@ -32,7 +32,7 @@ function AccountPage() {
   const [newItem, setNewItem] = useState({
     id: getAccountId(),
     name: "",
-    ammount: 0,
+    amount: 0,
     date: null,
     isIncome: 0,
   });

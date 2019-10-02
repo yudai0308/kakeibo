@@ -86741,7 +86741,7 @@ function AccountPage() {
   var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
     id: getAccountId(),
     name: "",
-    ammount: 0,
+    amount: 0,
     date: null,
     isIncome: 0
   }),
@@ -87072,8 +87072,10 @@ function ItemForm(props) {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     setShowItemForm(false);
+    console.log(newItem);
     _axios__WEBPACK_IMPORTED_MODULE_2__["axios"].post("/api/item", newItem).then(function (res) {
-      fetchItems(); // callBack();
+      fetchItems();
+      console.log(res); // callBack();
     });
   }; // 項目名をボタンで入力した場合に input の中身も state と同じ値にする。
 

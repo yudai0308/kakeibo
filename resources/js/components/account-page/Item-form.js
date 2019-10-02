@@ -18,9 +18,11 @@ function ItemForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowItemForm(false)
+    console.log(newItem)
     axios.post("/api/item", newItem)
       .then(res => {
         fetchItems();
+        console.log(res)
         // callBack();
       });
   }
