@@ -16,11 +16,11 @@ class ItemController extends Controller
 {
     public function store(Request $req)
     {
-        $user = Auth::user();
+        $userId = Auth::check() ? Auth::user()->id : null;
         try {
             Item::create([
                 "account_id"  => $req->id,
-                "user_id"     => $user->id,
+                "user_id"     => $userId,
                 "category_id" => 1,
                 "name"        => $req->name,
                 "amount"      => $req->amount,
