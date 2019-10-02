@@ -21,7 +21,7 @@ function Overview(props) {
 
   return (
     <>
-      <h3>収支： {getSumThisMonth()}円</h3>
+      <h3>収支： <span id="sum-this-month">{getSumThisMonth()}</span>円</h3>
     </>
   )
 }

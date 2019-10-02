@@ -86962,6 +86962,21 @@ function MyCalendar(props) {
     return yearMonth;
   };
 
+  var clearTotalAmount = function clearTotalAmount() {
+    var sumElem = document.getElementById("sum-this-month");
+    if (sumElem) sumElem.innerText = "- ";
+  };
+
+  var setTotalAmount = function setTotalAmount(date) {
+    var y = date.getFullYear();
+    var m = date.getMonth() + 1;
+    setYearMonth({
+      year: y,
+      month: m
+    });
+  }; // month ビューページで月を前後に移動するボタンを押したときの処理
+
+
   var setYearMonthByClick = function setYearMonthByClick() {
     var prev = document.getElementsByClassName("react-calendar__navigation__prev-button");
     var prev2 = document.getElementsByClassName("react-calendar__navigation__prev2-button");
@@ -87006,6 +87021,8 @@ function MyCalendar(props) {
     calendarType: "US",
     className: "color-primary",
     onClickDay: handleClickDay,
+    onClickMonth: setTotalAmount,
+    onDrillUp: clearTotalAmount,
     tileContent: setTileContent,
     showNeighboringMonth: false,
     minDetail: "decade"
@@ -87361,7 +87378,9 @@ function Overview(props) {
     return Object(_libs__WEBPACK_IMPORTED_MODULE_1__["separate"])(sum);
   };
 
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "\u53CE\u652F\uFF1A ", getSumThisMonth(), "\u5186"));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "\u53CE\u652F\uFF1A ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    id: "sum-this-month"
+  }, getSumThisMonth()), "\u5186"));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Overview);

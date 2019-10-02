@@ -56,6 +56,18 @@ function MyCalendar(props) {
     return yearMonth;
   }
 
+  const clearTotalAmount = () => {
+    const sumElem = document.getElementById("sum-this-month");
+    if (sumElem) sumElem.innerText = "- ";
+  }
+
+  const setTotalAmount = date => {
+    const y = date.getFullYear();
+    const m = date.getMonth() + 1;
+    setYearMonth({ year: y, month: m });
+  }
+
+  // month ビューページで月を前後に移動するボタンを押したときの処理
   const setYearMonthByClick = () => {
     const prev = document.getElementsByClassName("react-calendar__navigation__prev-button")
     const prev2 = document.getElementsByClassName("react-calendar__navigation__prev2-button")
@@ -85,6 +97,8 @@ function MyCalendar(props) {
       calendarType="US"
       className="color-primary"
       onClickDay={handleClickDay}
+      onClickMonth={setTotalAmount}
+      onDrillUp={clearTotalAmount}
       tileContent={setTileContent}
       showNeighboringMonth={false}
       minDetail="decade"
