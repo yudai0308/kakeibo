@@ -87261,8 +87261,11 @@ function ItemIndex(props) {
 
     if (trs !== null) {
       component = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Table"], {
-        responsive: true
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u9805\u76EE"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u91D1\u984D"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, trs));
+        responsive: true,
+        hover: true
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
+        className: "bg-light"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u9805\u76EE"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u91D1\u984D"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, trs));
     } else {
       component = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Alert"], {
         variant: "info",

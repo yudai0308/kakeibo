@@ -57,9 +57,9 @@ function ItemIndex(props) {
     let component;
     if (trs !== null) {
       component = (
-        <Table responsive>
+        <Table responsive hover>
           <thead>
-            <tr>
+            <tr className="bg-light">
               <th>項目</th>
               <th>金額</th>
               <th></th>
