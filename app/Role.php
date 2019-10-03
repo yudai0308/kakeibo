@@ -15,7 +15,7 @@ class Role extends Model
     ];
 
     // リレーション定義
-    public function user()
+    public function users()
     {
         return $this->hasMany("App\User");
     }
