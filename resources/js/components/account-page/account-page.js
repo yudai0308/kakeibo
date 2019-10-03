@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import ReactDOM from "react-dom";
 import { Container, Row, Col, Modal } from "react-bootstrap";
 import MyCalendar from "./Calendar";
@@ -11,6 +11,7 @@ function AccountPage() {
   const [isShown, setModalState] = useState(false);
   const [showItemForm, setShowItemForm] = useState(false);
   const [items, setItems] = useState(null);
+  const [subCate, setSubCate] = useState(null);
   const [yearMonth, setYearMonth] = useState({
     year: (new Date()).getFullYear(),
     month: (new Date()).getMonth() + 1,
@@ -31,10 +32,11 @@ function AccountPage() {
 
   const [newItem, setNewItem] = useState({
     id: getAccountId(),
-    name: "",
+    memo: "",
     amount: 0,
     date: null,
     isIncome: 0,
+    subCateId: null,
   });
 
   const fetchItems = async () => {
@@ -66,6 +68,15 @@ function AccountPage() {
   useEffect(() => {
     fetchItems();
   }, [setItems, yearMonth])
+
+  useEffect(() => {
+    const fetchSubCategories = async () => {
+      const url = "/api/sub_category";
+      const res = await axios.get(url);
+      setSubCate(res.data);
+    }
+    fetchSubCategories();
+  },[setSubCate])
 
   return (
     <Container>
@@ -103,6 +114,7 @@ function AccountPage() {
             newItem={newItem}
             setNewItem={setNewItem}
             fetchItems={fetchItems}
+            subCate={subCate}
           />
         </Col>
       </Row>

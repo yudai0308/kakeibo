@@ -86717,13 +86717,18 @@ function AccountPage() {
       items = _useState6[0],
       setItems = _useState6[1];
 
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
+      _useState8 = _slicedToArray(_useState7, 2),
+      subCate = _useState8[0],
+      setSubCate = _useState8[1];
+
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
     year: new Date().getFullYear(),
     month: new Date().getMonth() + 1
   }),
-      _useState8 = _slicedToArray(_useState7, 2),
-      yearMonth = _useState8[0],
-      setYearMonth = _useState8[1];
+      _useState10 = _slicedToArray(_useState9, 2),
+      yearMonth = _useState10[0],
+      setYearMonth = _useState10[1];
 
   var getAccountId = function getAccountId() {
     var div = document.getElementById("account-page");
@@ -86738,16 +86743,17 @@ function AccountPage() {
     return title;
   };
 
-  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
     id: getAccountId(),
-    name: "",
+    memo: "",
     amount: 0,
     date: null,
-    isIncome: 0
+    isIncome: 0,
+    subCateId: null
   }),
-      _useState10 = _slicedToArray(_useState9, 2),
-      newItem = _useState10[0],
-      setNewItem = _useState10[1];
+      _useState12 = _slicedToArray(_useState11, 2),
+      newItem = _useState12[0],
+      setNewItem = _useState12[1];
 
   var fetchItems =
   /*#__PURE__*/
@@ -86813,6 +86819,41 @@ function AccountPage() {
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     fetchItems();
   }, [setItems, yearMonth]);
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    var fetchSubCategories =
+    /*#__PURE__*/
+    function () {
+      var _ref2 = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var url, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                url = "/api/sub_category";
+                _context2.next = 3;
+                return _axios__WEBPACK_IMPORTED_MODULE_7__["axios"].get(url);
+
+              case 3:
+                res = _context2.sent;
+                setSubCate(res.data);
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function fetchSubCategories() {
+        return _ref2.apply(this, arguments);
+      };
+    }();
+
+    fetchSubCategories();
+  }, [setSubCate]);
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     className: "justify-content-center"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
@@ -86854,7 +86895,8 @@ function AccountPage() {
     items: items,
     newItem: newItem,
     setNewItem: setNewItem,
-    fetchItems: fetchItems
+    fetchItems: fetchItems,
+    subCate: subCate
   }))));
 }
 
@@ -87063,7 +87105,8 @@ function ItemForm(props) {
       setNewItem = props.setNewItem,
       closeModal = props.closeModal,
       fetchItems = props.fetchItems,
-      setShowItemForm = props.setShowItemForm;
+      setShowItemForm = props.setShowItemForm,
+      subCate = props.subCate;
 
   var handleNewItemChange = function handleNewItemChange(key, val) {
     setNewItem(function (newItem) {
@@ -87079,6 +87122,32 @@ function ItemForm(props) {
       fetchItems();
       console.log(res); // callBack();
     });
+  };
+
+  var getSpendingOptions = function getSpendingOptions() {
+    var options = subCate.map(function (cate) {
+      // カテゴリーID 11 は生活費
+      if (cate.category_id === 11) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: cate.id,
+          value: cate.id
+        }, cate.name);
+      }
+    });
+    return options;
+  };
+
+  var getIncomeOptions = function getIncomeOptions() {
+    var options = subCate.map(function (cate) {
+      // カテゴリーID 10 以下は支出
+      if (cate.category_id <= 10) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: cate.id,
+          value: cate.id
+        }, cate.name);
+      }
+    });
+    return options;
   }; // 項目名をボタンで入力した場合に input の中身も state と同じ値にする。
 
 
@@ -87086,10 +87155,9 @@ function ItemForm(props) {
     var newItemNameEle = document.getElementById("form-item-name");
 
     if (newItem.name !== newItemNameEle.value) {
-      newItemNameEle.value = newItem.name;
+      newItemNameEle.value = newItem.memo;
     }
   });
-  var nameTemplates = ["食費", "外食費", "日用品", "交際費", "給料"];
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
     onSubmit: function onSubmit(e) {
       return handleSubmit(e);
@@ -87110,35 +87178,34 @@ function ItemForm(props) {
     variant: "info"
   }, _defineProperty(_React$createElement2, "variant", "outline-info"), _defineProperty(_React$createElement2, "onClick", function onClick() {
     return handleNewItemChange("isIncome", 1);
-  }), _React$createElement2), "\u53CE\u5165")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+  }), _React$createElement2), "\u53CE\u5165")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+    md: 4
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+    controlId: "form-item-subcategory"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u30AB\u30C6\u30B4\u30EA\u30FC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+    as: "select"
+  }, newItem.isIncome ? getIncomeOptions() : getSpendingOptions()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+    md: 8
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
     controlId: "form-item-name"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u9805\u76EE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u5099\u8003"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
     type: "text",
-    name: "title",
-    placeholder: "\u98DF\u8CBB\u3001\u5916\u98DF\u8CBB\u3001\u65E5\u7528\u54C1 etc",
+    name: "memo",
+    placeholder: "\u25CB\u25CB\u30B9\u30FC\u30D1\u30FC",
     className: "mb-2",
     required: true,
     onChange: function onChange(e) {
       return handleNewItemChange("name", e.target.value);
     }
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ButtonToolbar"], null, nameTemplates.map(function (name, i) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-      variant: "secondary",
-      size: "sm",
-      className: "mr-2",
-      key: i,
-      onClick: function onClick(e) {
-        return handleNewItemChange("name", e.target.innerText);
-      }
-    }, name);
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
     controlId: "form-item-amount"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u91D1\u984D\uFF08\u5186\uFF09"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
     type: "number",
     name: "amount",
     placeholder: "\u534A\u89D2\u6570\u5B57\u306E\u307F",
     className: "mb-2",
-    min: "1",
+    min: "0",
+    step: "100",
     required: true,
     onChange: function onChange(e) {
       return handleNewItemChange("amount", e.target.value);
@@ -87321,7 +87388,8 @@ function ItemModal(props) {
       items = props.items,
       newItem = props.newItem,
       setNewItem = props.setNewItem,
-      fetchItems = props.fetchItems;
+      fetchItems = props.fetchItems,
+      subCate = props.subCate;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
     show: isShown,
     onHide: closeModal,
@@ -87338,7 +87406,8 @@ function ItemModal(props) {
     setNewItem: setNewItem,
     closeModal: closeModal,
     fetchItems: fetchItems,
-    setShowItemForm: setShowItemForm
+    setShowItemForm: setShowItemForm,
+    subCate: subCate
   }))));
 }
 
