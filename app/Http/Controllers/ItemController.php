@@ -21,8 +21,8 @@ class ItemController extends Controller
             Item::create([
                 "account_id"  => $req->id,
                 "user_id"     => $userId,
-                "category_id" => 1,
-                "name"        => $req->name,
+                "sub_category_id" => $req->subCateId,
+                "memo"        => $req->memo,
                 "amount"      => $req->amount,
                 "date"        => $req->date,
                 "isIncome"    => $req->isIncome,
