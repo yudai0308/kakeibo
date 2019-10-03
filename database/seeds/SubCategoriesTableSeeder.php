@@ -24,7 +24,7 @@ class SubCategoriesTableSeeder extends Seeder
                     "image" => "sample.jpg"
                 ],
                 [
-                    "category_id" => 11,
+                    "category_id" => 1,
                     "name" => "その他",
                     "image" => "sample.jpg"
                 ],
