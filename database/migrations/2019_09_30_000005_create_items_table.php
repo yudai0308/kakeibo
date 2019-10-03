@@ -27,7 +27,7 @@ class CreateItemsTable extends Migration
             $table->unsignedInteger('user_id')->nullable();
             $table->unsignedInteger('account_id');
             $table->unsignedInteger('sub_category_id');
-            $table->string('memo', 45);
+            $table->string('memo')->nullable();
             $table->integer('amount');
             $table->date('date');
             $table->tinyInteger('isIncome');
