@@ -87124,23 +87124,12 @@ function ItemForm(props) {
     });
   };
 
-  var getSpendingOptions = function getSpendingOptions() {
+  var getOptions = function getOptions(isIncome) {
     var options = subCate.map(function (cate) {
-      // カテゴリーID 11 は生活費
-      if (cate.category_id === 11) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          key: cate.id,
-          value: cate.id
-        }, cate.name);
-      }
-    });
-    return options;
-  };
+      // カテゴリーID 10 以下は収入、11 は生活費
+      var isTarget = isIncome ? cate.category_id <= 10 : cate.category_id === 11;
 
-  var getIncomeOptions = function getIncomeOptions() {
-    var options = subCate.map(function (cate) {
-      // カテゴリーID 10 以下は支出
-      if (cate.category_id <= 10) {
+      if (isTarget) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: cate.id,
           value: cate.id
@@ -87184,7 +87173,7 @@ function ItemForm(props) {
     controlId: "form-item-subcategory"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u30AB\u30C6\u30B4\u30EA\u30FC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
     as: "select"
-  }, newItem.isIncome ? getIncomeOptions() : getSpendingOptions()))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+  }, getOptions(newItem.isIncome)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     md: 8
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
     controlId: "form-item-name"

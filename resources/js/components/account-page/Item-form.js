@@ -27,30 +27,15 @@ function ItemForm(props) {
       });
   }
 
-  const getSpendingOptions = () => {
+  const getOptions = isIncome => {
     const options = subCate.map(cate => {
-      // カテゴリーID 11 は生活費
-      if (cate.category_id === 11) {
+      // カテゴリーID 10 以下は収入、11 は生活費
+      const isTarget = isIncome
+        ? cate.category_id <= 10
+        : cate.category_id === 11;
+      if (isTarget) {
         return (
-          <option
-            key={cate.id}
-            value={cate.id}
-          >
-            {cate.name}
-          </option>)
-      }
-    })
-    return options;
-  }
-  const getIncomeOptions = () => {
-    const options = subCate.map(cate => {
-      // カテゴリーID 10 以下は支出
-      if (cate.category_id <= 10) {
-        return (
-          <option
-            key={cate.id}
-            value={cate.id}
-          >
+          <option key={cate.id} value={cate.id}>
             {cate.name}
           </option>
         )
@@ -96,11 +81,7 @@ function ItemForm(props) {
           <Form.Group controlId="form-item-subcategory">
             <Form.Label>カテゴリー</Form.Label>
             <Form.Control as="select">
-              {
-                newItem.isIncome
-                  ? getIncomeOptions()
-                  : getSpendingOptions()
-              }
+              {getOptions(newItem.isIncome)}
             </Form.Control>
           </Form.Group>
         </Col>
