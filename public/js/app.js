@@ -86749,7 +86749,8 @@ function AccountPage() {
     amount: 0,
     date: null,
     isIncome: 0,
-    subCateId: null
+    subCateId: 4 // 「食費」が初期値
+
   }),
       _useState12 = _slicedToArray(_useState11, 2),
       newItem = _useState12[0],
@@ -87114,11 +87115,17 @@ function ItemForm(props) {
     });
   };
 
+  var handleIsIncomeChange = function handleIsIncomeChange(isIncome) {
+    handleNewItemChange("subCateId", isIncome ? 1 : 4);
+    handleNewItemChange("isIncome", isIncome);
+  };
+
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     setShowItemForm(false);
     _axios__WEBPACK_IMPORTED_MODULE_2__["axios"].post("/api/item", newItem).then(function (res) {
-      fetchItems(); // callBack();
+      fetchItems();
+      console.log(res.data); // callBack();
     });
   };
 
@@ -87136,15 +87143,14 @@ function ItemForm(props) {
     });
     return options;
   }; // 項目名をボタンで入力した場合に input の中身も state と同じ値にする。
+  // useEffect(() => {
+  //   const newItemNameEle = document.getElementById("form-item-name");
+  //   if (newItem.name !== newItemNameEle.value) {
+  //     newItemNameEle.value = newItem.memo
+  //   }
+  // })
 
 
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    var newItemNameEle = document.getElementById("form-item-name");
-
-    if (newItem.name !== newItemNameEle.value) {
-      newItemNameEle.value = newItem.memo;
-    }
-  });
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
     onSubmit: function onSubmit(e) {
       return handleSubmit(e);
@@ -87159,18 +87165,21 @@ function ItemForm(props) {
     value: 0,
     variant: "info"
   }, _defineProperty(_React$createElement, "variant", "outline-info"), _defineProperty(_React$createElement, "onClick", function onClick() {
-    return handleNewItemChange("isIncome", 0);
+    return handleIsIncomeChange(0);
   }), _React$createElement), "\u652F\u51FA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ToggleButton"], (_React$createElement2 = {
     value: 1,
     variant: "info"
   }, _defineProperty(_React$createElement2, "variant", "outline-info"), _defineProperty(_React$createElement2, "onClick", function onClick() {
-    return handleNewItemChange("isIncome", 1);
+    return handleIsIncomeChange(1);
   }), _React$createElement2), "\u53CE\u5165")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     md: 4
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
     controlId: "form-item-subcategory"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u30AB\u30C6\u30B4\u30EA\u30FC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-    as: "select"
+    as: "select",
+    onChange: function onChange(e) {
+      return handleNewItemChange("subCateId", e.target.value);
+    }
   }, getOptions(newItem.isIncome)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     md: 8
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {

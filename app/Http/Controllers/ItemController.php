@@ -28,7 +28,7 @@ class ItemController extends Controller
                 "isIncome"    => $req->isIncome,
             ]);
         } catch (Exception $e) {
-            return $e->getMessage();
+            return json_encode(["error" => $e->getMessage()]);
         }
         return;
     }

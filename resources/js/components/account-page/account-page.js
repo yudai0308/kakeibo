@@ -36,7 +36,7 @@ function AccountPage() {
     amount: 0,
     date: null,
     isIncome: 0,
-    subCateId: null,
+    subCateId: 4, // 「食費」が初期値
   });
 
   const fetchItems = async () => {
@@ -76,7 +76,7 @@ function AccountPage() {
       setSubCate(res.data);
     }
     fetchSubCategories();
-  },[setSubCate])
+  }, [setSubCate])
 
   return (
     <Container>

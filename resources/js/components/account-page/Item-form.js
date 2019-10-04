@@ -15,12 +15,18 @@ function ItemForm(props) {
     setNewItem(newItem => ({ ...newItem, [key]: val }));
   }
 
+  const handleIsIncomeChange = isIncome => {
+    handleNewItemChange("subCateId", isIncome ? 1 : 4);
+    handleNewItemChange("isIncome", isIncome);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowItemForm(false)
     axios.post("/api/item", newItem)
       .then(res => {
         fetchItems();
+        console.log(res.data)
         // callBack();
       });
   }
@@ -43,12 +49,12 @@ function ItemForm(props) {
   }
 
   // 項目名をボタンで入力した場合に input の中身も state と同じ値にする。
-  useEffect(() => {
-    const newItemNameEle = document.getElementById("form-item-name");
-    if (newItem.name !== newItemNameEle.value) {
-      newItemNameEle.value = newItem.memo
-    }
-  })
+  // useEffect(() => {
+  //   const newItemNameEle = document.getElementById("form-item-name");
+  //   if (newItem.name !== newItemNameEle.value) {
+  //     newItemNameEle.value = newItem.memo
+  //   }
+  // })
 
   return (
     <Form onSubmit={e => handleSubmit(e)}>
@@ -59,7 +65,7 @@ function ItemForm(props) {
               value={0}
               variant="info"
               variant="outline-info"
-              onClick={() => handleNewItemChange("isIncome", 0)}
+              onClick={() => handleIsIncomeChange(0)}
             >
               支出
             </ToggleButton>
@@ -67,7 +73,7 @@ function ItemForm(props) {
               value={1}
               variant="info"
               variant="outline-info"
-              onClick={() => handleNewItemChange("isIncome", 1)}
+              onClick={() => handleIsIncomeChange(1)}
             >
               収入
             </ToggleButton>
@@ -78,7 +84,10 @@ function ItemForm(props) {
         <Col md={4}>
           <Form.Group controlId="form-item-subcategory">
             <Form.Label>カテゴリー</Form.Label>
-            <Form.Control as="select">
+            <Form.Control
+              as="select"
+              onChange={e => handleNewItemChange("subCateId", e.target.value)}
+            >
               {getOptions(newItem.isIncome)}
             </Form.Control>
           </Form.Group>
