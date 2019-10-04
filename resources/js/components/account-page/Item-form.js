@@ -115,18 +115,6 @@ function ItemForm(props) {
               required
               onChange={e => handleNewItemChange("name", e.target.value)}
             />
-            {/* <ButtonToolbar>
-              {nameTemplates.map((name, i) => {
-                return (
-                  <Button
-                    variant="secondary" size="sm" className="mr-2" key={i}
-                    onClick={e => handleNewItemChange("name", e.target.innerText)}
-                  >
-                    {name}
-                  </Button>
-                )
-              })}
-            </ButtonToolbar> */}
           </Form.Group>
         </Col>
       </Form.Row>
