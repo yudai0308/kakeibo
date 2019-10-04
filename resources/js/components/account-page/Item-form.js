@@ -112,7 +112,6 @@ function ItemForm(props) {
               name="memo"
               placeholder="○○スーパー"
               className="mb-2"
-              required
               onChange={e => handleNewItemChange("name", e.target.value)}
             />
           </Form.Group>

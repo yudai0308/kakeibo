@@ -87193,7 +87193,6 @@ function ItemForm(props) {
     name: "memo",
     placeholder: "\u25CB\u25CB\u30B9\u30FC\u30D1\u30FC",
     className: "mb-2",
-    required: true,
     onChange: function onChange(e) {
       return handleNewItemChange("name", e.target.value);
     }
