@@ -87117,10 +87117,8 @@ function ItemForm(props) {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     setShowItemForm(false);
-    console.log(newItem);
     _axios__WEBPACK_IMPORTED_MODULE_2__["axios"].post("/api/item", newItem).then(function (res) {
-      fetchItems();
-      console.log(res); // callBack();
+      fetchItems(); // callBack();
     });
   };
 
