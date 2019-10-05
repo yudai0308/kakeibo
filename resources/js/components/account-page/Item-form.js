@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import {
-  Form, Button, ButtonToolbar,
+  Form, Button, Col, ButtonToolbar,
   ToggleButtonGroup, ToggleButton,
 } from "react-bootstrap";
 import { axios } from "../../axios";
@@ -8,34 +8,44 @@ import { axios } from "../../axios";
 function ItemForm(props) {
   const {
     newItem, setNewItem, closeModal,
-    fetchItems, setShowItemForm,
+    fetchItems, setShowItemForm, subCate,
   } = props;
 
   const handleNewItemChange = (key, val) => {
     setNewItem(newItem => ({ ...newItem, [key]: val }));
   }
 
+  const handleIsIncomeChange = isIncome => {
+    handleNewItemChange("subCateId", isIncome ? 1 : 4);
+    handleNewItemChange("isIncome", isIncome);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowItemForm(false)
-    console.log(newItem)
     axios.post("/api/item", newItem)
       .then(res => {
         fetchItems();
-        console.log(res)
         // callBack();
       });
   }
 
-  // 項目名をボタンで入力した場合に input の中身も state と同じ値にする。
-  useEffect(() => {
-    const newItemNameEle = document.getElementById("form-item-name");
-    if (newItem.name !== newItemNameEle.value) {
-      newItemNameEle.value = newItem.name
-    }
-  })
-
-  const nameTemplates = ["食費", "外食費", "日用品", "交際費", "給料"];
+  const getOptions = isIncome => {
+    const options = subCate.map(cate => {
+      // カテゴリーID 10 以下は収入、11 は生活費
+      const isTarget = isIncome
+        ? cate.category_id <= 10
+        : cate.category_id === 11;
+      if (isTarget) {
+        return (
+          <option key={cate.id} value={cate.id}>
+            {cate.name}
+          </option>
+        )
+      }
+    })
+    return options;
+  }
 
   return (
     <Form onSubmit={e => handleSubmit(e)}>
@@ -46,7 +56,7 @@ function ItemForm(props) {
               value={0}
               variant="info"
               variant="outline-info"
-              onClick={() => handleNewItemChange("isIncome", 0)}
+              onClick={() => handleIsIncomeChange(0)}
             >
               支出
             </ToggleButton>
@@ -54,36 +64,38 @@ function ItemForm(props) {
               value={1}
               variant="info"
               variant="outline-info"
-              onClick={() => handleNewItemChange("isIncome", 1)}
+              onClick={() => handleIsIncomeChange(1)}
             >
               収入
             </ToggleButton>
           </ToggleButtonGroup>
         </ButtonToolbar>
       </Form.Group>
-      <Form.Group controlId="form-item-name">
-        <Form.Label>項目</Form.Label>
-        <Form.Control
-          type="text"
-          name="title"
-          placeholder="食費、外食費、日用品 etc"
-          className="mb-2"
-          required
-          onChange={e => handleNewItemChange("name", e.target.value)}
-        />
-        <ButtonToolbar>
-          {nameTemplates.map((name, i) => {
-            return (
-              <Button
-                variant="secondary" size="sm" className="mr-2" key={i}
-                onClick={e => handleNewItemChange("name", e.target.innerText)}
-              >
-                {name}
-              </Button>
-            )
-          })}
-        </ButtonToolbar>
-      </Form.Group>
+      <Form.Row>
+        <Col md={4}>
+          <Form.Group controlId="form-item-subcategory">
+            <Form.Label>カテゴリー</Form.Label>
+            <Form.Control
+              as="select"
+              onChange={e => handleNewItemChange("subCateId", e.target.value)}
+            >
+              {getOptions(newItem.isIncome)}
+            </Form.Control>
+          </Form.Group>
+        </Col>
+        <Col md={8}>
+          <Form.Group controlId="form-item-name">
+            <Form.Label>備考</Form.Label>
+            <Form.Control
+              type="text"
+              name="memo"
+              placeholder="○○スーパー"
+              className="mb-2"
+              onChange={e => handleNewItemChange("memo", e.target.value)}
+            />
+          </Form.Group>
+        </Col>
+      </Form.Row>
       <Form.Group controlId="form-item-amount">
         <Form.Label>金額（円）</Form.Label>
         <Form.Control
@@ -91,7 +103,8 @@ function ItemForm(props) {
           name="amount"
           placeholder="半角数字のみ"
           className="mb-2"
-          min="1"
+          min="0"
+          step="100"
           required
           onChange={e => handleNewItemChange("amount", e.target.value)}
         />

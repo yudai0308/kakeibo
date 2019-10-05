@@ -7,16 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     protected $table = 'categories';
-    public $timestamps = fasle;
+    public $timestamps = false;
     protected $primaryKey = 'id';
 
-    protected $fillable = [
-        'name', 'image'
-    ];
+    protected $fillable = ['name'];
 
     // リレーション定義
-    public function item()
+    public function sub_categories()
     {
-        return $this->hasMany("App\Item");
+        return $this->hasMany("App\SubCategory");
     }
 }

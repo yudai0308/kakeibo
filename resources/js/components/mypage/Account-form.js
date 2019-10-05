@@ -31,7 +31,7 @@ function AccountForm() {
           setErrorMsg(res.data.error);
         }
       }).catch(err => {
-        console.log(err)
+        // TODO: エラーハンドリング
       });
   }
 

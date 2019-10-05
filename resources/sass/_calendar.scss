@@ -7,3 +7,7 @@ button.react-calendar__tile {
   align-items: center;
   flex-direction: column;
 }
+
+button.react-calendar__month-view__days__day--weekend--sat abbr {
+  color: #0075c2;
+}

@@ -2428,7 +2428,7 @@ exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base
 
 
 // module
-exports.push([module.i, ".react-calendar {\n  width: 350px;\n  max-width: 100%;\n  background: white;\n  border: 1px solid #a0a096;\n  font-family: Arial, Helvetica, sans-serif;\n  line-height: 1.125em;\n}\n.react-calendar,\n.react-calendar *,\n.react-calendar *:before,\n.react-calendar *:after {\n  box-sizing: border-box;\n}\n.react-calendar button {\n  margin: 0;\n  border: 0;\n  outline: none;\n}\n.react-calendar button:enabled:hover {\n  cursor: pointer;\n}\n.react-calendar__navigation {\n  height: 44px;\n  margin-bottom: 1em;\n}\n.react-calendar__navigation button {\n  min-width: 44px;\n  background: none;\n}\n.react-calendar__navigation button:enabled:hover,\n.react-calendar__navigation button:enabled:focus {\n  background-color: #e6e6e6;\n}\n.react-calendar__navigation button[disabled] {\n  background-color: #f0f0f0;\n}\n.react-calendar__month-view__weekdays {\n  text-align: center;\n  text-transform: uppercase;\n  font-weight: bold;\n  font-size: 0.75em;\n}\n.react-calendar__month-view__weekdays__weekday {\n  padding: 0.5em;\n}\n.react-calendar__month-view__weekNumbers {\n  font-weight: bold;\n}\n.react-calendar__month-view__weekNumbers .react-calendar__tile {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 0.75em;\n  padding: calc(0.75em / 0.75) calc(0.5em / 0.75);\n}\n.react-calendar__month-view__days__day--weekend {\n  color: #d10000;\n}\n.react-calendar__month-view__days__day--neighboringMonth {\n  color: #757575;\n}\n.react-calendar__year-view .react-calendar__tile,\n.react-calendar__decade-view .react-calendar__tile,\n.react-calendar__century-view .react-calendar__tile {\n  padding: 2em 0.5em;\n}\n.react-calendar__tile {\n  max-width: 100%;\n  text-align: center;\n  padding: 0.75em 0.5em;\n  background: none;\n}\n.react-calendar__tile:disabled {\n  background-color: #f0f0f0;\n}\n.react-calendar__tile:enabled:hover,\n.react-calendar__tile:enabled:focus {\n  background-color: #e6e6e6;\n}\n.react-calendar__tile--hasActive {\n  background: #76baff;\n}\n.react-calendar__tile--hasActive:enabled:hover,\n.react-calendar__tile--hasActive:enabled:focus {\n  background: #a9d4ff;\n}\n.react-calendar__tile--active {\n  background: #006edc;\n  color: white;\n}\n.react-calendar__tile--active:enabled:hover,\n.react-calendar__tile--active:enabled:focus {\n  background: #1087ff;\n}\n.react-calendar--selectRange .react-calendar__tile--hover {\n  background-color: #e6e6e6;\n}\n", ""]);
+exports.push([module.i, ".react-calendar {\n  width: 350px;\n  max-width: 100%;\n  background: white;\n  border: 1px solid #a0a096;\n  font-family: Arial, Helvetica, sans-serif;\n  line-height: 1.125em;\n}\n.react-calendar,\n.react-calendar *,\n.react-calendar *:before,\n.react-calendar *:after {\n  box-sizing: border-box;\n}\n.react-calendar button {\n  margin: 0;\n  border: 0;\n  outline: none;\n}\n.react-calendar button:enabled:hover {\n  cursor: pointer;\n}\n.react-calendar__navigation {\n  height: 44px;\n  margin-bottom: 1em;\n}\n.react-calendar__navigation button {\n  min-width: 44px;\n  background: none;\n}\n.react-calendar__navigation button:enabled:hover,\n.react-calendar__navigation button:enabled:focus {\n  background-color: #e6e6e6;\n}\n.react-calendar__navigation button[disabled] {\n  background-color: #f0f0f0;\n}\n.react-calendar__month-view__weekdays {\n  text-align: center;\n  text-transform: uppercase;\n  font-weight: bold;\n  font-size: 0.75em;\n}\n.react-calendar__month-view__weekdays__weekday {\n  padding: 0.5em;\n}\n.react-calendar__month-view__weekNumbers {\n  font-weight: bold;\n}\n.react-calendar__month-view__weekNumbers .react-calendar__tile {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 0.75em;\n  padding: calc(0.75em / 0.75) calc(0.5em / 0.75);\n}\n.react-calendar__month-view__days__day--weekend {\n  color: #d10000;\n}\n.react-calendar__month-view__days__day--neighboringMonth {\n  color: #757575;\n}\n.react-calendar__year-view .react-calendar__tile,\n.react-calendar__decade-view .react-calendar__tile,\n.react-calendar__century-view .react-calendar__tile {\n  padding: 2em 0.5em;\n}\n.react-calendar__tile {\n  max-width: 100%;\n  text-align: center;\n  padding: 0.75em 0.5em;\n  background: none;\n}\n.react-calendar__tile:disabled {\n  background-color: #f0f0f0;\n}\n.react-calendar__tile:enabled:hover,\n.react-calendar__tile:enabled:focus {\n  background-color: #e6e6e6;\n}\n.react-calendar__tile--hasActive {\n  background: #76baff;\n}\n.react-calendar__tile--hasActive:enabled:hover,\n.react-calendar__tile--hasActive:enabled:focus {\n  background: #a9d4ff;\n}\n.react-calendar__tile--active {\n  background: #a9d4ff;\n  /* color: white; */\n}\n.react-calendar__tile--active:enabled:hover,\n.react-calendar__tile--active:enabled:focus {\n  background: #a9d4ff;\n}\n.react-calendar--selectRange .react-calendar__tile--hover {\n  background-color: #e6e6e6;\n}\n", ""]);
 
 // exports
 
@@ -86717,13 +86717,23 @@ function AccountPage() {
       items = _useState6[0],
       setItems = _useState6[1];
 
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
+      _useState8 = _slicedToArray(_useState7, 2),
+      sumThisMonth = _useState8[0],
+      setSumThisMonth = _useState8[1];
+
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
+      _useState10 = _slicedToArray(_useState9, 2),
+      subCate = _useState10[0],
+      setSubCate = _useState10[1];
+
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
     year: new Date().getFullYear(),
     month: new Date().getMonth() + 1
   }),
-      _useState8 = _slicedToArray(_useState7, 2),
-      yearMonth = _useState8[0],
-      setYearMonth = _useState8[1];
+      _useState12 = _slicedToArray(_useState11, 2),
+      yearMonth = _useState12[0],
+      setYearMonth = _useState12[1];
 
   var getAccountId = function getAccountId() {
     var div = document.getElementById("account-page");
@@ -86738,16 +86748,18 @@ function AccountPage() {
     return title;
   };
 
-  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
     id: getAccountId(),
-    name: "",
+    memo: "",
     amount: 0,
     date: null,
-    isIncome: 0
+    isIncome: 0,
+    subCateId: 4 // 「食費」が初期値
+
   }),
-      _useState10 = _slicedToArray(_useState9, 2),
-      newItem = _useState10[0],
-      setNewItem = _useState10[1];
+      _useState14 = _slicedToArray(_useState13, 2),
+      newItem = _useState14[0],
+      setNewItem = _useState14[1];
 
   var fetchItems =
   /*#__PURE__*/
@@ -86810,9 +86822,69 @@ function AccountPage() {
     return pattern.test(text);
   };
 
+  var getSumThisMonth = function getSumThisMonth() {
+    if (items !== null) {
+      var sum = 0;
+
+      for (var date in items) {
+        for (var index in items[date]) {
+          var item = items[date][index];
+
+          if (item.isIncome) {
+            sum += item.amount;
+          } else {
+            sum -= item.amount;
+          }
+        }
+      }
+
+      setSumThisMonth(sum);
+    } else {
+      setSumThisMonth(null);
+    }
+  };
+
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     fetchItems();
   }, [setItems, yearMonth]);
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    getSumThisMonth();
+  }, [items]);
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    var fetchSubCategories =
+    /*#__PURE__*/
+    function () {
+      var _ref2 = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var url, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                url = "/api/sub_category";
+                _context2.next = 3;
+                return _axios__WEBPACK_IMPORTED_MODULE_7__["axios"].get(url);
+
+              case 3:
+                res = _context2.sent;
+                setSubCate(res.data);
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function fetchSubCategories() {
+        return _ref2.apply(this, arguments);
+      };
+    }();
+
+    fetchSubCategories();
+  }, [setSubCate]);
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     className: "justify-content-center"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
@@ -86827,7 +86899,8 @@ function AccountPage() {
     md: "8",
     className: "mb-4"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Overview__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    items: items
+    items: items,
+    sumThisMonth: sumThisMonth
   }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     className: "justify-content-center"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
@@ -86841,6 +86914,7 @@ function AccountPage() {
     newItem: newItem,
     setNewItem: setNewItem,
     items: items,
+    setItems: setItems,
     yearMonth: yearMonth,
     setYearMonth: setYearMonth,
     setShowItemForm: setShowItemForm
@@ -86854,7 +86928,8 @@ function AccountPage() {
     items: items,
     newItem: newItem,
     setNewItem: setNewItem,
-    fetchItems: fetchItems
+    fetchItems: fetchItems,
+    subCate: subCate
   }))));
 }
 
@@ -86895,6 +86970,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 function MyCalendar(props) {
   var items = props.items,
+      setItems = props.setItems,
       setNewItem = props.setNewItem,
       showModal = props.showModal,
       yearMonth = props.yearMonth,
@@ -86912,9 +86988,16 @@ function MyCalendar(props) {
     });
   };
 
-  var setTileContent = function setTileContent(_ref) {
+  var setClassToSaturday = function setClassToSaturday(_ref) {
     var date = _ref.date,
         view = _ref.view;
+    var sat = "react-calendar__month-view__days__day--weekend--sat";
+    return view === 'month' && date.getDay() === 6 ? sat : null;
+  };
+
+  var setTileContent = function setTileContent(_ref2) {
+    var date = _ref2.date,
+        view = _ref2.view;
     if (items === null || view !== "month") return;
     var curDate = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format("YYYY-MM-DD");
     var dates = Object.keys(items);
@@ -86938,7 +87021,7 @@ function MyCalendar(props) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "mt-2",
       style: style
-    }, Object(_libs__WEBPACK_IMPORTED_MODULE_4__["separate"])(Math.abs(sum)));
+    }, "\xA5", Object(_libs__WEBPACK_IMPORTED_MODULE_4__["separate"])(Math.abs(sum)));
   };
 
   var addOrSubMonth = function addOrSubMonth(year, month, step) {
@@ -86960,11 +87043,11 @@ function MyCalendar(props) {
     }
 
     return yearMonth;
-  };
+  }; // FIXME: DOMを操作するのではなく、item の中身を空にする
+
 
   var clearTotalAmount = function clearTotalAmount() {
-    var sumElem = document.getElementById("sum-this-month");
-    if (sumElem) sumElem.innerText = "- ";
+    setItems(null);
   };
 
   var setTotalAmount = function setTotalAmount(date) {
@@ -86974,7 +87057,13 @@ function MyCalendar(props) {
       year: y,
       month: m
     });
-  }; // month ビューページで月を前後に移動するボタンを押したときの処理
+  }; // const handleDrillDown = (activeStartDate, view) => {
+  //   if (view !== "month") return;
+  //   const y = activeStartDate.getFullYear();
+  //   const m = activeStartDate.getMonth() + 1;
+  //   setYearMonth({ year: y, month: m });
+  // }
+  // month ビューページで月を前後に移動するボタンを押したときの処理
 
 
   var setYearMonthByClick = function setYearMonthByClick() {
@@ -87022,8 +87111,10 @@ function MyCalendar(props) {
     className: "color-primary",
     onClickDay: handleClickDay,
     onClickMonth: setTotalAmount,
-    onDrillUp: clearTotalAmount,
+    onDrillUp: clearTotalAmount // onDrillDown={handleDrillDown}
+    ,
     tileContent: setTileContent,
+    tileClassName: setClassToSaturday,
     showNeighboringMonth: false,
     minDetail: "decade"
   });
@@ -87063,7 +87154,8 @@ function ItemForm(props) {
       setNewItem = props.setNewItem,
       closeModal = props.closeModal,
       fetchItems = props.fetchItems,
-      setShowItemForm = props.setShowItemForm;
+      setShowItemForm = props.setShowItemForm,
+      subCate = props.subCate;
 
   var handleNewItemChange = function handleNewItemChange(key, val) {
     setNewItem(function (newItem) {
@@ -87071,25 +87163,34 @@ function ItemForm(props) {
     });
   };
 
+  var handleIsIncomeChange = function handleIsIncomeChange(isIncome) {
+    handleNewItemChange("subCateId", isIncome ? 1 : 4);
+    handleNewItemChange("isIncome", isIncome);
+  };
+
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     setShowItemForm(false);
-    console.log(newItem);
     _axios__WEBPACK_IMPORTED_MODULE_2__["axios"].post("/api/item", newItem).then(function (res) {
-      fetchItems();
-      console.log(res); // callBack();
+      fetchItems(); // callBack();
     });
-  }; // 項目名をボタンで入力した場合に input の中身も state と同じ値にする。
+  };
 
+  var getOptions = function getOptions(isIncome) {
+    var options = subCate.map(function (cate) {
+      // カテゴリーID 10 以下は収入、11 は生活費
+      var isTarget = isIncome ? cate.category_id <= 10 : cate.category_id === 11;
 
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    var newItemNameEle = document.getElementById("form-item-name");
+      if (isTarget) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: cate.id,
+          value: cate.id
+        }, cate.name);
+      }
+    });
+    return options;
+  };
 
-    if (newItem.name !== newItemNameEle.value) {
-      newItemNameEle.value = newItem.name;
-    }
-  });
-  var nameTemplates = ["食費", "外食費", "日用品", "交際費", "給料"];
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
     onSubmit: function onSubmit(e) {
       return handleSubmit(e);
@@ -87104,41 +87205,42 @@ function ItemForm(props) {
     value: 0,
     variant: "info"
   }, _defineProperty(_React$createElement, "variant", "outline-info"), _defineProperty(_React$createElement, "onClick", function onClick() {
-    return handleNewItemChange("isIncome", 0);
+    return handleIsIncomeChange(0);
   }), _React$createElement), "\u652F\u51FA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ToggleButton"], (_React$createElement2 = {
     value: 1,
     variant: "info"
   }, _defineProperty(_React$createElement2, "variant", "outline-info"), _defineProperty(_React$createElement2, "onClick", function onClick() {
-    return handleNewItemChange("isIncome", 1);
-  }), _React$createElement2), "\u53CE\u5165")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-    controlId: "form-item-name"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u9805\u76EE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-    type: "text",
-    name: "title",
-    placeholder: "\u98DF\u8CBB\u3001\u5916\u98DF\u8CBB\u3001\u65E5\u7528\u54C1 etc",
-    className: "mb-2",
-    required: true,
+    return handleIsIncomeChange(1);
+  }), _React$createElement2), "\u53CE\u5165")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Row, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+    md: 4
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+    controlId: "form-item-subcategory"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u30AB\u30C6\u30B4\u30EA\u30FC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+    as: "select",
     onChange: function onChange(e) {
-      return handleNewItemChange("name", e.target.value);
+      return handleNewItemChange("subCateId", e.target.value);
     }
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["ButtonToolbar"], null, nameTemplates.map(function (name, i) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-      variant: "secondary",
-      size: "sm",
-      className: "mr-2",
-      key: i,
-      onClick: function onClick(e) {
-        return handleNewItemChange("name", e.target.innerText);
-      }
-    }, name);
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+  }, getOptions(newItem.isIncome)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+    md: 8
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+    controlId: "form-item-name"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u5099\u8003"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+    type: "text",
+    name: "memo",
+    placeholder: "\u25CB\u25CB\u30B9\u30FC\u30D1\u30FC",
+    className: "mb-2",
+    onChange: function onChange(e) {
+      return handleNewItemChange("memo", e.target.value);
+    }
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
     controlId: "form-item-amount"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u91D1\u984D\uFF08\u5186\uFF09"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
     type: "number",
     name: "amount",
     placeholder: "\u534A\u89D2\u6570\u5B57\u306E\u307F",
     className: "mb-2",
-    min: "1",
+    min: "0",
+    step: "100",
     required: true,
     onChange: function onChange(e) {
       return handleNewItemChange("amount", e.target.value);
@@ -87208,23 +87310,21 @@ function ItemIndex(props) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              console.log(item);
               params = {
                 accountId: newItem.id,
                 itemId: item.id
               };
               url = "/api/item";
-              _context.next = 5;
+              _context.next = 4;
               return _axios__WEBPACK_IMPORTED_MODULE_3__["axios"]["delete"](url, {
                 data: params
               });
 
-            case 5:
+            case 4:
               res = _context.sent;
               fetchItems();
-              console.log(res.data);
 
-            case 8:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -87244,9 +87344,11 @@ function ItemIndex(props) {
     var trs = items[curDate].map(function (item, i) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
         key: item.id
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, item.name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
-        className: item.isIncome ? "" : "text-danger"
-      }, Object(_libs__WEBPACK_IMPORTED_MODULE_4__["separate"])(item.amount)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, item.sub_category), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+        style: item.isIncome ? "" : {
+          color: "#b33e5c"
+        }
+      }, "\xA5", Object(_libs__WEBPACK_IMPORTED_MODULE_4__["separate"])(item.amount)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, item.memo), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "button",
         className: "close",
         onClick: function onClick() {
@@ -87267,7 +87369,7 @@ function ItemIndex(props) {
         hover: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
         className: "bg-light"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u9805\u76EE"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u91D1\u984D"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, trs));
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u30AB\u30C6\u30B4\u30EA\u30FC"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u91D1\u984D"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u5099\u8003"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, trs));
     } else {
       component = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Alert"], {
         variant: "info",
@@ -87321,7 +87423,8 @@ function ItemModal(props) {
       items = props.items,
       newItem = props.newItem,
       setNewItem = props.setNewItem,
-      fetchItems = props.fetchItems;
+      fetchItems = props.fetchItems,
+      subCate = props.subCate;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
     show: isShown,
     onHide: closeModal,
@@ -87338,7 +87441,8 @@ function ItemModal(props) {
     setNewItem: setNewItem,
     closeModal: closeModal,
     fetchItems: fetchItems,
-    setShowItemForm: setShowItemForm
+    setShowItemForm: setShowItemForm,
+    subCate: subCate
   }))));
 }
 
@@ -87362,30 +87466,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Overview(props) {
-  var items = props.items;
+  var sumThisMonth = props.sumThisMonth;
 
-  var getSumThisMonth = function getSumThisMonth() {
-    if (items === null) return "-";
-    var sum = 0;
-
-    for (var date in items) {
-      for (var index in items[date]) {
-        var item = items[date][index];
-
-        if (item.isIncome) {
-          sum += item.amount;
-        } else {
-          sum -= item.amount;
-        }
-      }
-    }
-
-    return Object(_libs__WEBPACK_IMPORTED_MODULE_1__["separate"])(sum);
+  var sumOrHyphen = function sumOrHyphen() {
+    return sumThisMonth ? Object(_libs__WEBPACK_IMPORTED_MODULE_1__["separate"])(sumThisMonth) : "- ";
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "\u53CE\u652F\uFF1A ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     id: "sum-this-month"
-  }, getSumThisMonth()), "\u5186"));
+  }, sumOrHyphen()), "\u5186"));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Overview);
@@ -87666,8 +87755,7 @@ function AccountForm() {
       } else {
         setErrorMsg(res.data.error);
       }
-    })["catch"](function (err) {
-      console.log(err);
+    })["catch"](function (err) {// TODO: エラーハンドリング
     });
   };
 

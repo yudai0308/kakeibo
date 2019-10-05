@@ -21,7 +21,7 @@ class Account extends Model
     {
         return $this->belongsTo("App\User");
     }
-    public function item()
+    public function items()
     {
         return $this->hasMany("App\Item");
     }
