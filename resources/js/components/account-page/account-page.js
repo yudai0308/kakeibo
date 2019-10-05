@@ -77,7 +77,7 @@ function AccountPage() {
     }
     fetchSubCategories();
   }, [setSubCate])
-
+  
   return (
     <Container>
       <Row className="justify-content-center">

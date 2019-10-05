@@ -26,7 +26,6 @@ function ItemForm(props) {
     axios.post("/api/item", newItem)
       .then(res => {
         fetchItems();
-        console.log(res.data)
         // callBack();
       });
   }
@@ -47,14 +46,6 @@ function ItemForm(props) {
     })
     return options;
   }
-
-  // 項目名をボタンで入力した場合に input の中身も state と同じ値にする。
-  // useEffect(() => {
-  //   const newItemNameEle = document.getElementById("form-item-name");
-  //   if (newItem.name !== newItemNameEle.value) {
-  //     newItemNameEle.value = newItem.memo
-  //   }
-  // })
 
   return (
     <Form onSubmit={e => handleSubmit(e)}>
@@ -100,7 +91,7 @@ function ItemForm(props) {
               name="memo"
               placeholder="○○スーパー"
               className="mb-2"
-              onChange={e => handleNewItemChange("name", e.target.value)}
+              onChange={e => handleNewItemChange("memo", e.target.value)}
             />
           </Form.Group>
         </Col>

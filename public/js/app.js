@@ -87124,8 +87124,7 @@ function ItemForm(props) {
     e.preventDefault();
     setShowItemForm(false);
     _axios__WEBPACK_IMPORTED_MODULE_2__["axios"].post("/api/item", newItem).then(function (res) {
-      fetchItems();
-      console.log(res.data); // callBack();
+      fetchItems(); // callBack();
     });
   };
 
@@ -87142,14 +87141,7 @@ function ItemForm(props) {
       }
     });
     return options;
-  }; // 項目名をボタンで入力した場合に input の中身も state と同じ値にする。
-  // useEffect(() => {
-  //   const newItemNameEle = document.getElementById("form-item-name");
-  //   if (newItem.name !== newItemNameEle.value) {
-  //     newItemNameEle.value = newItem.memo
-  //   }
-  // })
-
+  };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
     onSubmit: function onSubmit(e) {
@@ -87190,7 +87182,7 @@ function ItemForm(props) {
     placeholder: "\u25CB\u25CB\u30B9\u30FC\u30D1\u30FC",
     className: "mb-2",
     onChange: function onChange(e) {
-      return handleNewItemChange("name", e.target.value);
+      return handleNewItemChange("memo", e.target.value);
     }
   })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
     controlId: "form-item-amount"
@@ -87270,23 +87262,21 @@ function ItemIndex(props) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              console.log(item);
               params = {
                 accountId: newItem.id,
                 itemId: item.id
               };
               url = "/api/item";
-              _context.next = 5;
+              _context.next = 4;
               return _axios__WEBPACK_IMPORTED_MODULE_3__["axios"]["delete"](url, {
                 data: params
               });
 
-            case 5:
+            case 4:
               res = _context.sent;
               fetchItems();
-              console.log(res.data);
 
-            case 8:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -87306,9 +87296,9 @@ function ItemIndex(props) {
     var trs = items[curDate].map(function (item, i) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
         key: item.id
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, item.name), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, item.sub_category), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
         className: item.isIncome ? "" : "text-danger"
-      }, Object(_libs__WEBPACK_IMPORTED_MODULE_4__["separate"])(item.amount)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+      }, Object(_libs__WEBPACK_IMPORTED_MODULE_4__["separate"])(item.amount)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, item.memo), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "button",
         className: "close",
         onClick: function onClick() {
@@ -87329,7 +87319,7 @@ function ItemIndex(props) {
         hover: true
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
         className: "bg-light"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u9805\u76EE"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u91D1\u984D"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, trs));
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u30AB\u30C6\u30B4\u30EA\u30FC"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u91D1\u984D"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null, "\u5099\u8003"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", null))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", null, trs));
     } else {
       component = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Alert"], {
         variant: "info",

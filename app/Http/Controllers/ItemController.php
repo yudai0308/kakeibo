@@ -9,23 +9,24 @@ use \Auth;
 use App\Item;
 use App\User;
 use App\Account;
+use App\SubCategory;
 use Carbon\Carbon;
-use Error;
 
 class ItemController extends Controller
 {
     public function store(Request $req)
     {
+        // TODO: memo の文字数制限 30 文字
         $userId = Auth::check() ? Auth::user()->id : null;
         try {
             Item::create([
-                "account_id"  => $req->id,
-                "user_id"     => $userId,
+                "user_id"         => $userId,
+                "account_id"      => $req->id,
                 "sub_category_id" => $req->subCateId,
-                "memo"        => $req->memo,
-                "amount"      => $req->amount,
-                "date"        => $req->date,
-                "isIncome"    => $req->isIncome,
+                "memo"            => $req->memo,
+                "amount"          => $req->amount,
+                "date"            => $req->date,
+                "isIncome"        => $req->isIncome,
             ]);
         } catch (Exception $e) {
             return json_encode(["error" => $e->getMessage()]);
@@ -64,15 +65,23 @@ class ItemController extends Controller
             // TODO: パラメータが取得できなかった場合の処理。
         }
 
-        $from = new Carbon("${year}-${month}-01");
-        $to = new Carbon("${year}-${month}-01");
-        $to->addMonth()->subDay();
-        $items = Item::where("account_id", $id)
-            ->where("date", ">=", $from->format("Y-m-d"))
-            ->where("date", "<=", $to->format("Y-m-d"))
-            ->get();
-        // $items = Item::whereMonth("date", $params->month)->get();
-        $itemGrp = $items->groupBy("date");
-        return $itemGrp;
+        try {
+            $from = new Carbon("${year}-${month}-01");
+            $to = new Carbon("${year}-${month}-01");
+            $to->addMonth()->subDay();
+            $items = Item::where("account_id", $id)
+                ->where("date", ">=", $from->format("Y-m-d"))
+                ->where("date", "<=", $to->format("Y-m-d"))
+                ->get();
+            $fmtItems = $items->map(function ($item, $key) {
+                $id = $item->sub_category_id;
+                $item["sub_category"] = SubCategory::find($id)->name;
+                return $item;
+            });
+            $itemGrp = $fmtItems->groupBy("date");
+            return $itemGrp;
+        } catch (Exception $e) {
+            return json_encode(["error" => $e->getMessage()]);
+        }
     }
 }

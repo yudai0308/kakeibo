@@ -15,7 +15,6 @@ function ItemIndex(props) {
   } = props;
 
   const deleteItem = async item => {
-    console.log(item)
     const params = {
       accountId: newItem.id,
       itemId: item.id
@@ -23,7 +22,6 @@ function ItemIndex(props) {
     const url = "/api/item";
     const res = await axios.delete(url, { data: params });
     fetchItems();
-    console.log(res.data)
   }
 
   const getTrs = () => {
@@ -33,9 +31,12 @@ function ItemIndex(props) {
     const trs = items[curDate].map((item, i) => {
       return (
         <tr key={item.id}>
-          <td>{item.name}</td>
+          <td>{item.sub_category}</td>
           <td className={item.isIncome ? "" : "text-danger"}>
             {separate(item.amount)}
+          </td>
+          <td>
+            {item.memo}
           </td>
           <td>
             <button
@@ -60,8 +61,9 @@ function ItemIndex(props) {
         <Table responsive hover>
           <thead>
             <tr className="bg-light">
-              <th>項目</th>
+              <th>カテゴリー</th>
               <th>金額</th>
+              <th>備考</th>
               <th></th>
             </tr>
           </thead>
