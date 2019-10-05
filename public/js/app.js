@@ -86955,9 +86955,16 @@ function MyCalendar(props) {
     });
   };
 
-  var setTileContent = function setTileContent(_ref) {
+  var setClassToSaturday = function setClassToSaturday(_ref) {
     var date = _ref.date,
         view = _ref.view;
+    var sat = "react-calendar__month-view__days__day--weekend--sat";
+    return view === 'month' && date.getDay() === 6 ? sat : null;
+  };
+
+  var setTileContent = function setTileContent(_ref2) {
+    var date = _ref2.date,
+        view = _ref2.view;
     if (items === null || view !== "month") return;
     var curDate = moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format("YYYY-MM-DD");
     var dates = Object.keys(items);
@@ -87067,6 +87074,7 @@ function MyCalendar(props) {
     onClickMonth: setTotalAmount,
     onDrillUp: clearTotalAmount,
     tileContent: setTileContent,
+    tileClassName: setClassToSaturday,
     showNeighboringMonth: false,
     minDetail: "decade"
   });

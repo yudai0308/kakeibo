@@ -21,6 +21,11 @@ function MyCalendar(props) {
     setNewItem(newItem => ({ ...newItem, date: clickedDate }));
   }
 
+  const setClassToSaturday = ({ date, view }) => {
+    const sat = "react-calendar__month-view__days__day--weekend--sat";
+    return view === 'month' && date.getDay() === 6 ? sat : null;
+  }
+
   const setTileContent = ({ date, view }) => {
     if (items === null || view !== "month") return;
     const curDate = moment(date).format("YYYY-MM-DD");
@@ -100,6 +105,7 @@ function MyCalendar(props) {
       onClickMonth={setTotalAmount}
       onDrillUp={clearTotalAmount}
       tileContent={setTileContent}
+      tileClassName={setClassToSaturday}
       showNeighboringMonth={false}
       minDetail="decade"
     >
