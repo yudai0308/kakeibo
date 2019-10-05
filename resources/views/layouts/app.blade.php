@@ -27,7 +27,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" class="flex-center position-ref full-height">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: lightsteelblue;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">

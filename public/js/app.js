@@ -87618,7 +87618,7 @@ function AccountDeck() {
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "bg-light rounded p-4"
+    className: "rounded p-4"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Mypage__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
     var accounts = _ref.accounts;
     return getCards(accounts);
