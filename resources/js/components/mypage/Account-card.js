@@ -17,8 +17,8 @@ function AccountCard(props) {
         </a>
         <a className="text-dark text-decoration-none" href={props.account.url}>
           <div className="card-body">
+            <img className="img-fluid" src="https://img.icons8.com/bubbles/100/000000/money-box.png" />
             <h5 className="card-title">{props.account.title}</h5>
-            <img className="img-fluid" src="https://img.icons8.com/bubbles/100/000000/money.png" />
           </div>
         </a>
       </div>

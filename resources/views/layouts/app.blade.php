@@ -28,10 +28,10 @@
 
 <body>
     <div id="app" class="flex-center position-ref full-height">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: lightsteelblue;">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm p-1" style="background-color: rgba(229,235,244,0.5);">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    <img class="img-fluid" src="/logo.png" width="150" height="50">
+                    <img class="img-fluid" src="https://img.icons8.com/bubbles/50/000000/money-box.png">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -81,6 +81,9 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer class="fixed-bottom text-right" style="background-color: rgba(51,51,51,1);">
+            <span class="text-light"><a target="_blank" href="https://icons8.com/icons/set/money-box">Money Box</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></span>
+        </footer>
     </div>
 </body>
 

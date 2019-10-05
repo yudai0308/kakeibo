@@ -87572,12 +87572,12 @@ function AccountCard(props) {
     href: props.account.url
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-    className: "card-title"
-  }, props.account.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "img-fluid",
-    src: "https://img.icons8.com/bubbles/100/000000/money.png"
-  })))));
+    src: "https://img.icons8.com/bubbles/100/000000/money-box.png"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+    className: "card-title"
+  }, props.account.title)))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (AccountCard);
