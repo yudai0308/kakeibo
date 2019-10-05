@@ -87345,7 +87345,7 @@ function ItemIndex(props) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
         key: item.id
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, item.sub_category), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
-        style: item.isIncome ? "" : {
+        style: item.isIncome ? null : {
           color: "#b33e5c"
         }
       }, "\xA5", Object(_libs__WEBPACK_IMPORTED_MODULE_4__["separate"])(item.amount)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, item.memo), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
