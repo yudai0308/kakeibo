@@ -17,7 +17,6 @@ function ShareForm () {
     } else {
       setEmail([input]);
     }
-    console.log(emails)
     return;
   }
 
