@@ -11,6 +11,7 @@ function AccountPage() {
   const [isShown, setModalState] = useState(false);
   const [showItemForm, setShowItemForm] = useState(false);
   const [items, setItems] = useState(null);
+  const [sumThisMonth, setSumThisMonth] = useState(null);
   const [subCate, setSubCate] = useState(null);
   const [yearMonth, setYearMonth] = useState({
     year: (new Date()).getFullYear(),
@@ -65,9 +66,32 @@ function AccountPage() {
     return pattern.test(text);
   }
 
+  const getSumThisMonth = () => {
+    if (items !== null) {
+      let sum = 0;
+      for (const date in items) {
+        for (const index in items[date]) {
+          const item = items[date][index];
+          if (item.isIncome) {
+            sum += item.amount;
+          } else {
+            sum -= item.amount;
+          }
+        }
+      }
+      setSumThisMonth(sum);
+    } else {
+      setSumThisMonth(null);
+    }
+  }
+
   useEffect(() => {
     fetchItems();
   }, [setItems, yearMonth])
+
+  useEffect(() => {
+    getSumThisMonth();
+  }, [items])
 
   useEffect(() => {
     const fetchSubCategories = async () => {
@@ -89,7 +113,10 @@ function AccountPage() {
       </Row>
       <Row className="justify-content-center">
         <Col md="8" className="mb-4">
-          <Overview items={items} />
+          <Overview
+            items={items}
+            sumThisMonth={sumThisMonth}
+          />
         </Col>
       </Row>
       <Row className="justify-content-center">
@@ -101,6 +128,7 @@ function AccountPage() {
             newItem={newItem}
             setNewItem={setNewItem}
             items={items}
+            setItems={setItems}
             yearMonth={yearMonth}
             setYearMonth={setYearMonth}
             setShowItemForm={setShowItemForm}

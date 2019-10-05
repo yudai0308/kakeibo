@@ -7,6 +7,7 @@ import { separate } from "../libs";
 function MyCalendar(props) {
   const {
     items,
+    setItems,
     setNewItem,
     showModal,
     yearMonth,
@@ -42,7 +43,7 @@ function MyCalendar(props) {
     }
     let style = { fontSize: "1.2vw" }
     style.color = sum >= 0 ? "#212529" : "#b33e5c";
-    return <p className="mt-2" style={style}>{separate(Math.abs(sum))}</p>;
+    return <p className="mt-2" style={style}>¥{separate(Math.abs(sum))}</p>;
   }
 
   const addOrSubMonth = (year, month, step) => {
@@ -61,9 +62,9 @@ function MyCalendar(props) {
     return yearMonth;
   }
 
+  // FIXME: DOMを操作するのではなく、item の中身を空にする
   const clearTotalAmount = () => {
-    const sumElem = document.getElementById("sum-this-month");
-    if (sumElem) sumElem.innerText = "- ";
+    setItems(null);
   }
 
   const setTotalAmount = date => {
@@ -71,6 +72,13 @@ function MyCalendar(props) {
     const m = date.getMonth() + 1;
     setYearMonth({ year: y, month: m });
   }
+
+  // const handleDrillDown = (activeStartDate, view) => {
+  //   if (view !== "month") return;
+  //   const y = activeStartDate.getFullYear();
+  //   const m = activeStartDate.getMonth() + 1;
+  //   setYearMonth({ year: y, month: m });
+  // }
 
   // month ビューページで月を前後に移動するボタンを押したときの処理
   const setYearMonthByClick = () => {
@@ -104,6 +112,7 @@ function MyCalendar(props) {
       onClickDay={handleClickDay}
       onClickMonth={setTotalAmount}
       onDrillUp={clearTotalAmount}
+      // onDrillDown={handleDrillDown}
       tileContent={setTileContent}
       tileClassName={setClassToSaturday}
       showNeighboringMonth={false}
