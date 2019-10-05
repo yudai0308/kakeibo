@@ -32,6 +32,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     <img class="img-fluid" src="https://img.icons8.com/bubbles/50/000000/money-box.png">
+                    <span style="color:　rgba(0,0,0,.5)；"></span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
