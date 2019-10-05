@@ -32,7 +32,7 @@ function ItemIndex(props) {
       return (
         <tr key={item.id}>
           <td>{item.sub_category}</td>
-          <td style={item.isIncome ? "" : {color: "#b33e5c"}}>
+          <td style={item.isIncome ? null : {color: "#b33e5c"}}>
             ¥{separate(item.amount)}
           </td>
           <td>

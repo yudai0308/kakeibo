@@ -87345,7 +87345,7 @@ function ItemIndex(props) {
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
         key: item.id
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, item.sub_category), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
-        style: item.isIncome ? "" : {
+        style: item.isIncome ? null : {
           color: "#b33e5c"
         }
       }, "\xA5", Object(_libs__WEBPACK_IMPORTED_MODULE_4__["separate"])(item.amount)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, item.memo), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
@@ -87469,7 +87469,7 @@ function Overview(props) {
   var sumThisMonth = props.sumThisMonth;
 
   var sumOrHyphen = function sumOrHyphen() {
-    return sumThisMonth ? Object(_libs__WEBPACK_IMPORTED_MODULE_1__["separate"])(sumThisMonth) : "- ";
+    return sumThisMonth !== null ? Object(_libs__WEBPACK_IMPORTED_MODULE_1__["separate"])(sumThisMonth) : "- ";
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "\u53CE\u652F\uFF1A ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
