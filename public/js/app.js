@@ -87469,7 +87469,7 @@ function Overview(props) {
   var sumThisMonth = props.sumThisMonth;
 
   var sumOrHyphen = function sumOrHyphen() {
-    return sumThisMonth ? Object(_libs__WEBPACK_IMPORTED_MODULE_1__["separate"])(sumThisMonth) : "- ";
+    return sumThisMonth !== null ? Object(_libs__WEBPACK_IMPORTED_MODULE_1__["separate"])(sumThisMonth) : "- ";
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "\u53CE\u652F\uFF1A ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {

@@ -4,7 +4,7 @@ import { separate } from "../libs";
 function Overview(props) {
   const { sumThisMonth } = props;
   const sumOrHyphen = () => {
-    return sumThisMonth
+    return sumThisMonth !== null
       ? separate(sumThisMonth)
       : "- ";
   }
