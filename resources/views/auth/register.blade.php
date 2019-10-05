@@ -15,7 +15,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">ニックネーム</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="半角英数字 4 文字以上" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="4 文字以上" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">パスワード（確認）</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  placeholder="もう一度入力" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  placeholder="パスワード再入力" required autocomplete="new-password">
                             </div>
                         </div>
 
