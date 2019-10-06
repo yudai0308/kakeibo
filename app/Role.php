@@ -9,6 +9,7 @@ class Role extends Model
     protected $table = 'roles';
     public $timestamps = false;
     protected $primaryKey = 'id';
+    public $incrementing = false;
 
     protected $fillable = [
         'name'
