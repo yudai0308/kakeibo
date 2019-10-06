@@ -9,7 +9,6 @@ class SubCategory extends Model
     protected $table = 'sub_categories';
     public $timestamps = false;
     protected $primaryKey = 'id';
-    public $incrementing = false;
 
     protected $fillable = [
         'category_id', 'name', 'image'
