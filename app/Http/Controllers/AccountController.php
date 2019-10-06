@@ -64,7 +64,7 @@ class AccountController extends Controller
                 "isPublic" => $account->isPublic,
             ];
         } else {
-            return redirect($url);
+            return redirect($url)->with("welcome", true);
         }
     }
 }

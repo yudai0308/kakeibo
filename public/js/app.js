@@ -82191,6 +82191,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./components/bundle */ "./resources/js/components/bundle.js");
 
+__webpack_require__(/*! ./modal-test */ "./resources/js/modal-test.js");
+
 /***/ }),
 
 /***/ "./resources/js/axios.js":
@@ -87937,6 +87939,24 @@ function Mypage() {
 if (document.getElementById("mypage")) {
   react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Mypage, null), document.getElementById("mypage"));
 }
+
+/***/ }),
+
+/***/ "./resources/js/modal-test.js":
+/*!************************************!*\
+  !*** ./resources/js/modal-test.js ***!
+  \************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#welcome-modal").modal("show");
+});
 
 /***/ }),
 
