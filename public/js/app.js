@@ -87548,9 +87548,10 @@ function AccountCard(props) {
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-    md: "4"
+    md: "4",
+    className: "mb-4 mb-md-0"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card text-center mb-4 mb-md-0"
+    className: "card text-center"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     onClick: test,
     className: "edit-account text-secondary position-absolute",

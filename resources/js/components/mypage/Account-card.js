@@ -6,8 +6,8 @@ function AccountCard(props) {
     window.alert("編集、削除、URL表示機能を追加予定")
   }
   return (
-    <Col md="4">
-      <div className="card text-center mb-4 mb-md-0">
+    <Col md="4" className="mb-4 mb-md-0">
+      <div className="card text-center">
         <a
           onClick={test}
           className="edit-account text-secondary position-absolute"
