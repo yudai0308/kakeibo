@@ -18,9 +18,9 @@ function AccountFormModal() {
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>新しい家計簿を作る</Modal.Title>
+          <Modal.Title className="text-muted">新しい家計簿を作る</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="text-muted">
           <AccountForm />
         </Modal.Body>
       </Modal>

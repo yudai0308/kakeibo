@@ -87684,7 +87684,11 @@ function AccountFormModal() {
     centered: true
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Header, {
     closeButton: true
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Title, null, "\u65B0\u3057\u3044\u5BB6\u8A08\u7C3F\u3092\u4F5C\u308B")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Account_form__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Title, {
+    className: "text-muted"
+  }, "\u65B0\u3057\u3044\u5BB6\u8A08\u7C3F\u3092\u4F5C\u308B")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, {
+    className: "text-muted"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Account_form__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (AccountFormModal);
