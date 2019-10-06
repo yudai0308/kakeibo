@@ -13,7 +13,7 @@ function AccountDeck() {
   }
 
   return (
-    <div className="bg-light rounded p-4">
+    <div className="rounded p-4">
       <Row>
         <AccountContext.Consumer>
           {({accounts}) => getCards(accounts)}

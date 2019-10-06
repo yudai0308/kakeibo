@@ -146,6 +146,6 @@ return [
 
     'attributes' => [
         "password" => "パスワード",
-        "name" => "ニックネーム",
+        "name" => "ユーザー名",
     ],
 ];

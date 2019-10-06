@@ -13,4 +13,5 @@ require('./bootstrap');
  */
 
 require('./components/bundle');
-// require('./modal');
+
+require('./welcome-modal');

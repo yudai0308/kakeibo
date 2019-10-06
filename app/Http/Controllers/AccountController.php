@@ -7,6 +7,7 @@ use App\Account;
 use App\User;
 use \Auth;
 use \DB;
+use Exception;
 
 class AccountController extends Controller
 {
@@ -30,29 +31,40 @@ class AccountController extends Controller
 
     public function store(Request $req)
     {
-        // ユーザーが持っている家計簿が最大数を超えた場合はエラーを返す。
-        $cnt = count(Auth::user()->accounts);
-        $kakeibo = env("KAKEIBO");
-        $max = env("MAX_ACCOUNT");
-        if ($cnt >= env("MAX_ACCOUNT")) {
-            $errorMsg = "${kakeibo}は 1 ユーザー最大 ${max} つまでとなっています。";
-            return ["error" => $errorMsg];
+        $user = Auth::check() ? Auth::User() : null;
+        if ($user != null) {
+            // ユーザーが持っている家計簿が最大数を超えた場合はエラーを返す。
+            $cnt = count($user->accounts);
+            $kakeibo = env("KAKEIBO");
+            $max = env("MAX_ACCOUNT");
+            if ($cnt >= env("MAX_ACCOUNT")) {
+                $errorMsg = "${kakeibo}は 1 ユーザー最大 ${max} つまでとなっています。";
+                return ["error" => $errorMsg];
+            }
         }
 
         $account = new Account();
-        DB::transaction(function () use ($req, &$account) {
+        $userId = $user != null ? $user->id : null;
+        $isPublic = $user != null ? $req->isPublic : true;
+        DB::transaction(function () use ($req, &$account, $userId, $isPublic) {
             $account->fill([
+                "user_id" => $userId,
                 "title" => $req->title,
                 "hash" => md5(uniqid(rand(), true)),
-                "isPublic" => $req->isPublic,
+                "isPublic" => $isPublic,
             ])->save();
-            $account->users()->attach(Auth::user());
         });
+
         $url = Account::getURL($account);
-        return [
-            "title" => $account->title,
-            "url" => $url,
-            "isPublic" => $account->isPublic,
-        ];
+        if ($user != null) {
+            return [
+                "userId" => $account->user_id,
+                "title" => $account->title,
+                "url" => $url,
+                "isPublic" => $account->isPublic,
+            ];
+        } else {
+            return redirect($url)->with("welcome", true);
+        }
     }
 }

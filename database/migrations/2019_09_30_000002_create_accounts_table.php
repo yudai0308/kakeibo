@@ -24,7 +24,7 @@ class CreateAccountsTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id')->nullable();
             $table->string('title', 45);
             $table->string('hash');
             $table->tinyInteger('isPublic');

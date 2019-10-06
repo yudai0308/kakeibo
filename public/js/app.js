@@ -82189,7 +82189,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  */
 
 
-__webpack_require__(/*! ./components/bundle */ "./resources/js/components/bundle.js"); // require('./modal');
+__webpack_require__(/*! ./components/bundle */ "./resources/js/components/bundle.js");
+
+__webpack_require__(/*! ./welcome-modal */ "./resources/js/welcome-modal.js");
 
 /***/ }),
 
@@ -87548,36 +87550,21 @@ function AccountCard(props) {
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-    md: "4"
+    md: "4",
+    className: "mb-4 mb-md-0"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card text-center mb-4 mb-md-0"
+    className: "card text-center"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    onClick: test,
-    className: "edit-account text-secondary position-absolute",
-    style: {
-      top: 2,
-      right: 2,
-      width: 24,
-      height: 24,
-      cursor: "pointer"
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fas fa-ellipsis-v position-absolute",
-    style: {
-      top: 4,
-      right: 9
-    }
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "text-dark text-decoration-none",
     href: props.account.url
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-    className: "card-title"
-  }, props.account.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "img-fluid",
-    src: "https://img.icons8.com/bubbles/100/000000/money.png"
-  })))));
+    src: "https://img.icons8.com/bubbles/100/000000/money-box.png"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+    className: "card-title"
+  }, props.account.title)))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (AccountCard);
@@ -87618,7 +87605,7 @@ function AccountDeck() {
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "bg-light rounded p-4"
+    className: "rounded p-4"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Mypage__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
     var accounts = _ref.accounts;
     return getCards(accounts);
@@ -87684,7 +87671,11 @@ function AccountFormModal() {
     centered: true
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Header, {
     closeButton: true
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Title, null, "\u65B0\u3057\u3044\u5BB6\u8A08\u7C3F\u3092\u4F5C\u308B")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Account_form__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Title, {
+    className: "text-muted"
+  }, "\u65B0\u3057\u3044\u5BB6\u8A08\u7C3F\u3092\u4F5C\u308B")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, {
+    className: "text-muted"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Account_form__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (AccountFormModal);
@@ -87781,7 +87772,9 @@ function AccountForm() {
         onClick: copyURL
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "far fa-copy"
-      }))))));
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
+        variant: "success"
+      }, createdAccount.isPublic && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "URL \u3092\u77E5\u3063\u3066\u3044\u308C\u3070\u8AB0\u3067\u3082\u30A2\u30AF\u30BB\u30B9\u3067\u304D\u307E\u3059\u3002", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u5171\u6709\u3057\u305F\u3044\u76F8\u624B\u306B URL \u3092\u77E5\u3089\u305B\u307E\u3057\u3087\u3046\uFF01"), !createdAccount.isPublic && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "\u81EA\u5206\u4EE5\u5916\u306F\u30A2\u30AF\u30BB\u30B9\u3067\u304D\u306A\u3044\u3088\u3046\u306B\u8A2D\u5B9A\u3055\u308C\u307E\u3057\u305F\u3002")));
     } else {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Mypage__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
         var changeHandler = _ref.changeHandler;
@@ -87930,6 +87923,24 @@ function Mypage() {
 if (document.getElementById("mypage")) {
   react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Mypage, null), document.getElementById("mypage"));
 }
+
+/***/ }),
+
+/***/ "./resources/js/welcome-modal.js":
+/*!***************************************!*\
+  !*** ./resources/js/welcome-modal.js ***!
+  \***************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#welcome-modal").modal("show");
+});
 
 /***/ }),
 
