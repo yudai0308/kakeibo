@@ -108,7 +108,7 @@ function MyCalendar(props) {
     <Calendar
       locale="ja-JP"
       calendarType="US"
-      className="color-primary"
+      className="color-primary mb-4"
       onClickDay={handleClickDay}
       onClickMonth={setTotalAmount}
       onDrillUp={clearTotalAmount}

@@ -87111,7 +87111,7 @@ function MyCalendar(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_calendar__WEBPACK_IMPORTED_MODULE_1___default.a, {
     locale: "ja-JP",
     calendarType: "US",
-    className: "color-primary",
+    className: "color-primary mb-4",
     onClickDay: handleClickDay,
     onClickMonth: setTotalAmount,
     onDrillUp: clearTotalAmount // onDrillDown={handleDrillDown}
