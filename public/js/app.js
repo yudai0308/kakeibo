@@ -82204,12 +82204,12 @@ __webpack_require__(/*! ./welcome-modal */ "./resources/js/welcome-modal.js");
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "axios", function() { return axios; });
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "axios", function() { return axios; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 var axios = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-  baseURL: "http://localhost:8000",
+  baseURL: process.env.MIX_APP_URL,
   headers: {
     "Content-Type": "application/json",
     "X-Requested-With": "XMLHttpRequest" // 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
@@ -82217,6 +82217,7 @@ var axios = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
   },
   responseType: "json"
 });
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
