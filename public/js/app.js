@@ -82189,7 +82189,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  */
 
 
-__webpack_require__(/*! ./components/bundle */ "./resources/js/components/bundle.js"); // require('./modal');
+__webpack_require__(/*! ./components/bundle */ "./resources/js/components/bundle.js");
 
 /***/ }),
 
