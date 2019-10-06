@@ -56,6 +56,11 @@ function AccountForm() {
               </OverlayTrigger>
             </InputGroup.Append>
           </InputGroup>
+          <Alert variant="success">
+            {createdAccount.isPublic &&
+              <small>URL を知っていれば誰でもアクセスできます。<br/>共有したい相手に URL を知らせましょう！</small>}
+            {!createdAccount.isPublic && <small>自分以外はアクセスできないように設定されました。</small>}
+          </Alert>
         </>
       )
     } else {

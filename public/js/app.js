@@ -87785,7 +87785,9 @@ function AccountForm() {
         onClick: copyURL
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "far fa-copy"
-      }))))));
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
+        variant: "success"
+      }, createdAccount.isPublic && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "URL \u3092\u77E5\u3063\u3066\u3044\u308C\u3070\u8AB0\u3067\u3082\u30A2\u30AF\u30BB\u30B9\u3067\u304D\u307E\u3059\u3002", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u5171\u6709\u3057\u305F\u3044\u76F8\u624B\u306B URL \u3092\u77E5\u3089\u305B\u307E\u3057\u3087\u3046\uFF01"), !createdAccount.isPublic && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "\u81EA\u5206\u4EE5\u5916\u306F\u30A2\u30AF\u30BB\u30B9\u3067\u304D\u306A\u3044\u3088\u3046\u306B\u8A2D\u5B9A\u3055\u308C\u307E\u3057\u305F\u3002")));
     } else {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Mypage__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
         var changeHandler = _ref.changeHandler;
