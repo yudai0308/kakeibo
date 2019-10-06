@@ -82191,7 +82191,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./components/bundle */ "./resources/js/components/bundle.js");
 
-__webpack_require__(/*! ./modal-test */ "./resources/js/modal-test.js");
+__webpack_require__(/*! ./welcome-modal */ "./resources/js/welcome-modal.js");
 
 /***/ }),
 
@@ -87942,10 +87942,10 @@ if (document.getElementById("mypage")) {
 
 /***/ }),
 
-/***/ "./resources/js/modal-test.js":
-/*!************************************!*\
-  !*** ./resources/js/modal-test.js ***!
-  \************************************/
+/***/ "./resources/js/welcome-modal.js":
+/*!***************************************!*\
+  !*** ./resources/js/welcome-modal.js ***!
+  \***************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 

@@ -14,4 +14,4 @@ require('./bootstrap');
 
 require('./components/bundle');
 
-require('./modal-test');
+require('./welcome-modal');
