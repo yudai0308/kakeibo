@@ -87317,7 +87317,8 @@ function ItemIndex(props) {
   var items = props.items,
       newItem = props.newItem,
       fetchItems = props.fetchItems,
-      setShowItemForm = props.setShowItemForm;
+      setShowItemForm = props.setShowItemForm,
+      resetNewItem = props.resetNewItem;
 
   var deleteItem =
   /*#__PURE__*/
@@ -87400,15 +87401,18 @@ function ItemIndex(props) {
     return component;
   };
 
+  var handleAddButton = function handleAddButton() {
+    resetNewItem();
+    setShowItemForm(true);
+  };
+
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "d-flex justify-content-between mb-4"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h6", {
     className: "mt-2"
   }, moment__WEBPACK_IMPORTED_MODULE_2___default()(newItem.date).format("YYYY年MM月DD日")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["ButtonToolbar"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Button"], {
     variant: "outline-primary",
-    onClick: function onClick() {
-      return setShowItemForm(true);
-    }
+    onClick: handleAddButton
   }, "\u8FFD\u52A0"))), getTable());
 }
 
@@ -87443,6 +87447,7 @@ function ItemModal(props) {
       items = props.items,
       newItem = props.newItem,
       setNewItem = props.setNewItem,
+      resetNewItem = props.resetNewItem,
       fetchItems = props.fetchItems,
       subCate = props.subCate;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
@@ -87454,6 +87459,7 @@ function ItemModal(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Title, null, "\u9805\u76EE\u4E00\u89A7")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, null, !showItemForm && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Item_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
     items: items,
     newItem: newItem,
+    resetNewItem: resetNewItem,
     fetchItems: fetchItems,
     setShowItemForm: setShowItemForm
   }), showItemForm && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Item_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -87563,15 +87569,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function AccountCard(props) {
-  var test = function test() {
-    window.alert("編集、削除、URL表示機能を追加予定");
-  };
-
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     md: "4",
     className: "mb-4 mb-md-0"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card text-center"
+    className: "card"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-right"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Toggle, {
+    variant: "secondary",
+    style: {
+      right: "0",
+      backgroundColor: "rgb(0,0,0,0)"
+    },
+    className: "position-absolute text-secondary border-0 rounded-circle"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Menu, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
+    onClick: function onClick() {
+      return alert("設定");
+    }
+  }, "\u8A2D\u5B9A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
+    onClick: function onClick() {
+      return dialog("削除");
+    }
+  }, "\u524A\u9664")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-center"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "text-dark text-decoration-none",
     href: props.account.url
@@ -87582,7 +87603,7 @@ function AccountCard(props) {
     src: "https://img.icons8.com/bubbles/100/000000/money-box.png"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "card-title"
-  }, props.account.title)))));
+  }, props.account.title))))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (AccountCard);

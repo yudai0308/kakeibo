@@ -39,6 +39,15 @@ function AccountPage() {
     isIncome: 0,
     subCateId: 4, // 「食費」が初期値
   });
+  const resetNewItem = () => {
+    setNewItem({
+      ...newItem,
+      memo: "",
+      amount: 0,
+      isIncome: 0,
+      subCateId: 4, // 「食費」が初期値
+    });
+  }
 
   const fetchItems = async () => {
     const id = newItem.id;
@@ -101,7 +110,7 @@ function AccountPage() {
     }
     fetchSubCategories();
   }, [setSubCate])
-  
+
   return (
     <Container>
       <Row className="justify-content-center">
@@ -141,6 +150,7 @@ function AccountPage() {
             items={items}
             newItem={newItem}
             setNewItem={setNewItem}
+            resetNewItem={resetNewItem}
             fetchItems={fetchItems}
             subCate={subCate}
           />
