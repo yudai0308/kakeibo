@@ -87546,15 +87546,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function AccountCard(props) {
-  var test = function test() {
-    window.alert("編集、削除、URL表示機能を追加予定");
-  };
-
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     md: "4",
     className: "mb-4 mb-md-0"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card text-center"
+    className: "card"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-right"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Toggle, {
+    variant: "secondary",
+    style: {
+      right: "0",
+      backgroundColor: "rgb(0,0,0,0)"
+    },
+    className: "position-absolute text-secondary border-0 rounded-circle"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Menu, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
+    onClick: function onClick() {
+      return alert("設定");
+    }
+  }, "\u8A2D\u5B9A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
+    onClick: function onClick() {
+      return dialog("削除");
+    }
+  }, "\u524A\u9664")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-center"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "text-dark text-decoration-none",
     href: props.account.url
@@ -87565,7 +87580,7 @@ function AccountCard(props) {
     src: "https://img.icons8.com/bubbles/100/000000/money-box.png"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "card-title"
-  }, props.account.title)))));
+  }, props.account.title))))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (AccountCard);
