@@ -11,7 +11,8 @@ import {
 
 function ItemIndex(props) {
   const {
-    items, newItem, fetchItems, setShowItemForm
+    items, newItem, fetchItems,
+    setShowItemForm, resetNewItem
   } = props;
 
   const deleteItem = async item => {
@@ -32,7 +33,7 @@ function ItemIndex(props) {
       return (
         <tr key={item.id}>
           <td>{item.sub_category}</td>
-          <td style={item.isIncome ? null : {color: "#b33e5c"}}>
+          <td style={item.isIncome ? null : { color: "#b33e5c" }}>
             ¥{separate(item.amount)}
           </td>
           <td>
@@ -82,6 +83,11 @@ function ItemIndex(props) {
     return component;
   }
 
+  const handleAddButton = () => {
+    resetNewItem();
+    setShowItemForm(true);
+  }
+
   return (
     <>
       <div className="d-flex justify-content-between mb-4">
@@ -89,7 +95,7 @@ function ItemIndex(props) {
         <ButtonToolbar>
           <Button
             variant="outline-primary"
-            onClick={() => setShowItemForm(true)}
+            onClick={handleAddButton}
           >
             追加
           </Button>

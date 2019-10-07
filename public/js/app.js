@@ -86687,6 +86687,12 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -86763,6 +86769,16 @@ function AccountPage() {
       _useState14 = _slicedToArray(_useState13, 2),
       newItem = _useState14[0],
       setNewItem = _useState14[1];
+
+  var resetNewItem = function resetNewItem() {
+    setNewItem(_objectSpread({}, newItem, {
+      memo: "",
+      amount: 0,
+      isIncome: 0,
+      subCateId: 4 // 「食費」が初期値
+
+    }));
+  };
 
   var fetchItems =
   /*#__PURE__*/
@@ -86931,6 +86947,7 @@ function AccountPage() {
     items: items,
     newItem: newItem,
     setNewItem: setNewItem,
+    resetNewItem: resetNewItem,
     fetchItems: fetchItems,
     subCate: subCate
   }))));
@@ -87300,7 +87317,8 @@ function ItemIndex(props) {
   var items = props.items,
       newItem = props.newItem,
       fetchItems = props.fetchItems,
-      setShowItemForm = props.setShowItemForm;
+      setShowItemForm = props.setShowItemForm,
+      resetNewItem = props.resetNewItem;
 
   var deleteItem =
   /*#__PURE__*/
@@ -87383,15 +87401,18 @@ function ItemIndex(props) {
     return component;
   };
 
+  var handleAddButton = function handleAddButton() {
+    resetNewItem();
+    setShowItemForm(true);
+  };
+
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "d-flex justify-content-between mb-4"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h6", {
     className: "mt-2"
   }, moment__WEBPACK_IMPORTED_MODULE_2___default()(newItem.date).format("YYYY年MM月DD日")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["ButtonToolbar"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Button"], {
     variant: "outline-primary",
-    onClick: function onClick() {
-      return setShowItemForm(true);
-    }
+    onClick: handleAddButton
   }, "\u8FFD\u52A0"))), getTable());
 }
 
@@ -87426,6 +87447,7 @@ function ItemModal(props) {
       items = props.items,
       newItem = props.newItem,
       setNewItem = props.setNewItem,
+      resetNewItem = props.resetNewItem,
       fetchItems = props.fetchItems,
       subCate = props.subCate;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
@@ -87437,6 +87459,7 @@ function ItemModal(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Title, null, "\u9805\u76EE\u4E00\u89A7")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, null, !showItemForm && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Item_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
     items: items,
     newItem: newItem,
+    resetNewItem: resetNewItem,
     fetchItems: fetchItems,
     setShowItemForm: setShowItemForm
   }), showItemForm && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Item_form__WEBPACK_IMPORTED_MODULE_2__["default"], {

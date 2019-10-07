@@ -6,7 +6,7 @@ import ItemIndex from "./Item-index"
 function ItemModal(props) {
   const {
     isShown, closeModal, showItemForm, setShowItemForm,
-    items, newItem, setNewItem, fetchItems, subCate,
+    items, newItem, setNewItem, resetNewItem, fetchItems, subCate,
   } = props;
 
   return (
@@ -21,6 +21,7 @@ function ItemModal(props) {
             <ItemIndex
               items={items}
               newItem={newItem}
+              resetNewItem={resetNewItem}
               fetchItems={fetchItems}
               setShowItemForm={setShowItemForm}
             />
