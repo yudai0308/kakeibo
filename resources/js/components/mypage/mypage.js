@@ -4,11 +4,17 @@ import { axios } from "../../axios";
 import { Container, Row, Col } from "react-bootstrap";
 import AccountForm from "./Account-form-modal";
 import AccountDeck from "./Account-deck";
+import MyModal from "./MyModal";
 import { AccountContext } from "./AccountContext";
 
 function Mypage() {
   const [accounts, setAccounts] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [modalContent, setModalContent] = useState({title: "", body: ""});
+
+  const setMyModal = (title, body) => {
+    return <MyModal title={title} body={body}/>
+  }
 
   const fetchAccounts = async () => {
     let res = await axios.get(`/api/user/accounts`)
@@ -33,10 +39,12 @@ function Mypage() {
               changeHandler: fetchAccounts,
               showModal: showModal,
               setShowModal: setShowModal,
+              setModalContent: setModalContent,
             }}
           >
             <AccountForm />
             <AccountDeck />
+            <MyModal title={modalContent.title} body={modalContent.body}/>
           </AccountContext.Provider>
         </Col>
       </Row>

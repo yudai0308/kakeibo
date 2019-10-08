@@ -87547,6 +87547,70 @@ var separate = function separate(num) {
 
 /***/ }),
 
+/***/ "./resources/js/components/mypage/Account-card-dropdown.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/mypage/Account-card-dropdown.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+/* harmony import */ var _AccountContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AccountContext */ "./resources/js/components/mypage/AccountContext.js");
+
+
+
+
+function AccountDropdown() {
+  var showUpdateModal = function showUpdateModal(setModalContent, setShowModal) {
+    setModalContent({
+      title: "家計簿の編集",
+      body: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "test")
+    });
+    setShowModal(true);
+  };
+
+  var showDeleteDialog = function showDeleteDialog(setModalContent, setShowModal) {
+    setModalContent({
+      title: "家計簿の削除",
+      body: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "test")
+    });
+    setShowModal(true);
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AccountContext__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
+    var setModalContent = _ref.setModalContent,
+        setShowModal = _ref.setShowModal;
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"], {
+      className: "text-right",
+      style: {
+        right: "35px"
+      }
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Toggle, {
+      variant: "secondary",
+      style: {
+        backgroundColor: "rgb(0,0,0,0)"
+      },
+      className: "position-absolute text-secondary border-0 rounded-circle"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Menu, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
+      onClick: function onClick() {
+        return showUpdateModal(setModalContent, setShowModal);
+      }
+    }, "\u8A2D\u5B9A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
+      onClick: function onClick() {
+        return showDeleteDialog(setModalContent, setShowModal);
+      }
+    }, "\u524A\u9664")));
+  });
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (AccountDropdown);
+
+/***/ }),
+
 /***/ "./resources/js/components/mypage/Account-card.js":
 /*!********************************************************!*\
   !*** ./resources/js/components/mypage/Account-card.js ***!
@@ -87559,7 +87623,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-/* harmony import */ var _MyModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MyModal */ "./resources/js/components/mypage/MyModal.js");
+/* harmony import */ var _Account_card_dropdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Account-card-dropdown */ "./resources/js/components/mypage/Account-card-dropdown.js");
 /* harmony import */ var _AccountContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AccountContext */ "./resources/js/components/mypage/AccountContext.js");
 
 
@@ -87578,7 +87642,8 @@ function AccountCard(props) {
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AccountContext__WEBPACK_IMPORTED_MODULE_3__["AccountContext"].Consumer, null, function (_ref) {
-    var setShowModal = _ref.setShowModal;
+    var setModalContent = _ref.setModalContent,
+        setShowModal = _ref.setShowModal;
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
       md: "4",
       className: "mb-4 mb-md-0"
@@ -87586,26 +87651,7 @@ function AccountCard(props) {
       className: "card"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "position-absolute m-1"
-    }, account.isPublic ? "公開" : "非公開"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"], {
-      className: "text-right",
-      style: {
-        right: "35px"
-      }
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Toggle, {
-      variant: "secondary",
-      style: {
-        backgroundColor: "rgb(0,0,0,0)"
-      },
-      className: "position-absolute text-secondary border-0 rounded-circle"
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Menu, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
-      onClick: function onClick() {
-        return showUpdateModal(setShowModal);
-      }
-    }, "\u8A2D\u5B9A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
-      onClick: function onClick() {
-        return showDeleteDialog(setShowModal);
-      }
-    }, "\u524A\u9664"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, account.isPublic ? "公開" : "非公開"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Account_card_dropdown__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "text-center"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       className: "text-dark text-decoration-none",
@@ -87684,29 +87730,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 /* harmony import */ var _AccountContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AccountContext */ "./resources/js/components/mypage/AccountContext.js");
 /* harmony import */ var _Account_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Account-form */ "./resources/js/components/mypage/Account-form.js");
-/* harmony import */ var _MyModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MyModal */ "./resources/js/components/mypage/MyModal.js");
-
 
 
 
 
 
 function AccountFormModal() {
+  var showCreateModal = function showCreateModal(setModalContent, setShowModal) {
+    setModalContent({
+      title: "新しい家計簿を作る",
+      body: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Account_form__WEBPACK_IMPORTED_MODULE_3__["default"], null)
+    });
+    setShowModal(true);
+  };
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AccountContext__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
-    var setShowModal = _ref.setShowModal;
+    var setModalContent = _ref.setModalContent,
+        setShowModal = _ref.setShowModal;
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "mb-4"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
       variant: "primary",
       onClick: function onClick() {
-        return setShowModal(true);
+        return showCreateModal(setModalContent, setShowModal);
       }
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
       className: "text-right fas fa-plus-circle"
-    }), " \u65B0\u3057\u3044\u5BB6\u8A08\u7C3F"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MyModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      title: "\u65B0\u3057\u3044\u5BB6\u8A08\u7C3F\u3092\u4F5C\u308B",
-      body: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Account_form__WEBPACK_IMPORTED_MODULE_3__["default"], null)
-    }));
+    }), " \u65B0\u3057\u3044\u5BB6\u8A08\u7C3F"));
   });
 }
 
@@ -87932,7 +87982,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 /* harmony import */ var _Account_form_modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Account-form-modal */ "./resources/js/components/mypage/Account-form-modal.js");
 /* harmony import */ var _Account_deck__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Account-deck */ "./resources/js/components/mypage/Account-deck.js");
-/* harmony import */ var _AccountContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AccountContext */ "./resources/js/components/mypage/AccountContext.js");
+/* harmony import */ var _MyModal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./MyModal */ "./resources/js/components/mypage/MyModal.js");
+/* harmony import */ var _AccountContext__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./AccountContext */ "./resources/js/components/mypage/AccountContext.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -87955,6 +88006,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function Mypage() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
       _useState2 = _slicedToArray(_useState, 2),
@@ -87965,6 +88017,21 @@ function Mypage() {
       _useState4 = _slicedToArray(_useState3, 2),
       showModal = _useState4[0],
       setShowModal = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+    title: "",
+    body: ""
+  }),
+      _useState6 = _slicedToArray(_useState5, 2),
+      modalContent = _useState6[0],
+      setModalContent = _useState6[1];
+
+  var setMyModal = function setMyModal(title, body) {
+    return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_MyModal__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      title: title,
+      body: body
+    });
+  };
 
   var fetchAccounts =
   /*#__PURE__*/
@@ -88009,14 +88076,18 @@ function Mypage() {
     className: "mb-4 border-bottom"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
     className: "font-weight-bold"
-  }, "\u3042\u306A\u305F\u304C\u4F5C\u6210\u3057\u305F\u5BB6\u8A08\u7C3F")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_AccountContext__WEBPACK_IMPORTED_MODULE_7__["AccountContext"].Provider, {
+  }, "\u3042\u306A\u305F\u304C\u4F5C\u6210\u3057\u305F\u5BB6\u8A08\u7C3F")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_AccountContext__WEBPACK_IMPORTED_MODULE_8__["AccountContext"].Provider, {
     value: {
       accounts: accounts,
       changeHandler: fetchAccounts,
       showModal: showModal,
-      setShowModal: setShowModal
+      setShowModal: setShowModal,
+      setModalContent: setModalContent
     }
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Account_form_modal__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Account_deck__WEBPACK_IMPORTED_MODULE_6__["default"], null)))));
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Account_form_modal__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Account_deck__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_MyModal__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    title: modalContent.title,
+    body: modalContent.body
+  })))));
 }
 
 if (document.getElementById("mypage")) {
