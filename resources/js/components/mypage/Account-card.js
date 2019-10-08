@@ -35,7 +35,7 @@ function AccountCard(props) {
 
                   <Dropdown.Menu>
                     <Dropdown.Item onClick={() => showUpdateModal(setShowModal)}>設定</Dropdown.Item>
-                    <Dropdown.Item onClick={() => setDelteDialog(setShowModal)}>削除</Dropdown.Item>
+                    <Dropdown.Item onClick={() => showDeleteDialog(setShowModal)}>削除</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
                 <div className="text-center">

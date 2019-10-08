@@ -87603,7 +87603,7 @@ function AccountCard(props) {
       }
     }, "\u8A2D\u5B9A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
       onClick: function onClick() {
-        return setDelteDialog(setShowModal);
+        return showDeleteDialog(setShowModal);
       }
     }, "\u524A\u9664"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "text-center"
