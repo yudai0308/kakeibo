@@ -3,7 +3,7 @@ import {
   Form, FormControl, InputGroup,
   Button, Alert, OverlayTrigger, Tooltip,
 } from "react-bootstrap";
-import { AccountContext } from "./Mypage";
+import { AccountContext } from "./AccountContext";
 // import ShareForm from "./Account-form-share";
 import { axios } from "../../axios";
 

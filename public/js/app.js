@@ -87559,45 +87559,66 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+/* harmony import */ var _MyModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MyModal */ "./resources/js/components/mypage/MyModal.js");
+/* harmony import */ var _AccountContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AccountContext */ "./resources/js/components/mypage/AccountContext.js");
+
+
 
 
 
 function AccountCard(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-    md: "4",
-    className: "mb-4 mb-md-0"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-right"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Toggle, {
-    variant: "secondary",
-    style: {
-      right: "0",
-      backgroundColor: "rgb(0,0,0,0)"
-    },
-    className: "position-absolute text-secondary border-0 rounded-circle"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Menu, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
-    onClick: function onClick() {
-      return alert("設定");
-    }
-  }, "\u8A2D\u5B9A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
-    onClick: function onClick() {
-      return dialog("削除");
-    }
-  }, "\u524A\u9664")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-center"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "text-dark text-decoration-none",
-    href: props.account.url
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card-body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "img-fluid",
-    src: "https://img.icons8.com/bubbles/100/000000/money-box.png"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-    className: "card-title"
-  }, props.account.title))))));
+  var account = props.account;
+
+  var showDeleteDialog = function showDeleteDialog(setShowModal) {
+    setShowModal(true);
+  };
+
+  var showUpdateModal = function showUpdateModal(setShowModal) {
+    setShowModal(true);
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AccountContext__WEBPACK_IMPORTED_MODULE_3__["AccountContext"].Consumer, null, function (_ref) {
+    var setShowModal = _ref.setShowModal;
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+      md: "4",
+      className: "mb-4 mb-md-0"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "card"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "position-absolute m-1"
+    }, account.isPublic ? "公開" : "非公開"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"], {
+      className: "text-right",
+      style: {
+        right: "35px"
+      }
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Toggle, {
+      variant: "secondary",
+      style: {
+        backgroundColor: "rgb(0,0,0,0)"
+      },
+      className: "position-absolute text-secondary border-0 rounded-circle"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Menu, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
+      onClick: function onClick() {
+        return showUpdateModal(setShowModal);
+      }
+    }, "\u8A2D\u5B9A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
+      onClick: function onClick() {
+        return setDelteDialog(setShowModal);
+      }
+    }, "\u524A\u9664"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "text-center"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      className: "text-dark text-decoration-none",
+      href: props.account.url
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "card-body"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      className: "img-fluid",
+      src: "https://img.icons8.com/bubbles/100/000000/money-box.png"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+      className: "card-title"
+    }, account.title))))));
+  });
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (AccountCard);
@@ -87616,7 +87637,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-/* harmony import */ var _Mypage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Mypage */ "./resources/js/components/mypage/Mypage.js");
+/* harmony import */ var _AccountContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AccountContext */ "./resources/js/components/mypage/AccountContext.js");
 /* harmony import */ var _Account_card__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Account-card */ "./resources/js/components/mypage/Account-card.js");
 /* harmony import */ var _User_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../User.js */ "./resources/js/User.js");
 
@@ -87639,7 +87660,7 @@ function AccountDeck() {
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "rounded p-4"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Mypage__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AccountContext__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
     var accounts = _ref.accounts;
     return getCards(accounts);
   })));
@@ -87661,16 +87682,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _AccountContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AccountContext */ "./resources/js/components/mypage/AccountContext.js");
 /* harmony import */ var _Account_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Account-form */ "./resources/js/components/mypage/Account-form.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+/* harmony import */ var _MyModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MyModal */ "./resources/js/components/mypage/MyModal.js");
 
 
 
@@ -87678,37 +87692,22 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function AccountFormModal() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      show = _useState2[0],
-      setShow = _useState2[1];
-
-  var handleClose = function handleClose() {
-    return setShow(false);
-  };
-
-  var handleShow = function handleShow() {
-    return setShow(true);
-  };
-
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "mb-4"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-    variant: "primary",
-    onClick: handleShow
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "text-right fas fa-plus-circle"
-  }), " \u65B0\u3057\u3044\u5BB6\u8A08\u7C3F")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
-    show: show,
-    onHide: handleClose,
-    centered: true
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Header, {
-    closeButton: true
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Title, {
-    className: "text-muted"
-  }, "\u65B0\u3057\u3044\u5BB6\u8A08\u7C3F\u3092\u4F5C\u308B")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, {
-    className: "text-muted"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Account_form__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AccountContext__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
+    var setShowModal = _ref.setShowModal;
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "mb-4"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      variant: "primary",
+      onClick: function onClick() {
+        return setShowModal(true);
+      }
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "text-right fas fa-plus-circle"
+    }), " \u65B0\u3057\u3044\u5BB6\u8A08\u7C3F"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MyModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      title: "\u65B0\u3057\u3044\u5BB6\u8A08\u7C3F\u3092\u4F5C\u308B",
+      body: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Account_form__WEBPACK_IMPORTED_MODULE_3__["default"], null)
+    }));
+  });
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (AccountFormModal);
@@ -87727,7 +87726,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-/* harmony import */ var _Mypage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Mypage */ "./resources/js/components/mypage/Mypage.js");
+/* harmony import */ var _AccountContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AccountContext */ "./resources/js/components/mypage/AccountContext.js");
 /* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../axios */ "./resources/js/axios.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -87809,7 +87808,7 @@ function AccountForm() {
         variant: "success"
       }, createdAccount.isPublic && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "URL \u3092\u77E5\u3063\u3066\u3044\u308C\u3070\u8AB0\u3067\u3082\u30A2\u30AF\u30BB\u30B9\u3067\u304D\u307E\u3059\u3002", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u5171\u6709\u3057\u305F\u3044\u76F8\u624B\u306B URL \u3092\u77E5\u3089\u305B\u307E\u3057\u3087\u3046\uFF01"), !createdAccount.isPublic && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "\u81EA\u5206\u4EE5\u5916\u306F\u30A2\u30AF\u30BB\u30B9\u3067\u304D\u306A\u3044\u3088\u3046\u306B\u8A2D\u5B9A\u3055\u308C\u307E\u3057\u305F\u3002")));
     } else {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Mypage__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AccountContext__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
         var changeHandler = _ref.changeHandler;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
           onSubmit: function onSubmit(e) {
@@ -87854,16 +87853,75 @@ function AccountForm() {
 
 /***/ }),
 
-/***/ "./resources/js/components/mypage/Mypage.js":
-/*!**************************************************!*\
-  !*** ./resources/js/components/mypage/Mypage.js ***!
-  \**************************************************/
+/***/ "./resources/js/components/mypage/AccountContext.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/mypage/AccountContext.js ***!
+  \**********************************************************/
 /*! exports provided: AccountContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountContext", function() { return AccountContext; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var AccountContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])();
+
+/***/ }),
+
+/***/ "./resources/js/components/mypage/MyModal.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/mypage/MyModal.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+/* harmony import */ var _AccountContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AccountContext */ "./resources/js/components/mypage/AccountContext.js");
+
+
+
+
+function MyModal(props) {
+  var title = props.title,
+      body = props.body;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AccountContext__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
+    var showModal = _ref.showModal,
+        setShowModal = _ref.setShowModal;
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
+      show: showModal,
+      onHide: function onHide() {
+        return setShowModal(false);
+      },
+      centered: true
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Header, {
+      closeButton: true
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Title, {
+      className: "text-muted"
+    }, title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, {
+      className: "text-muted"
+    }, body));
+  });
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (MyModal);
+
+/***/ }),
+
+/***/ "./resources/js/components/mypage/Mypage.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/mypage/Mypage.js ***!
+  \**************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -87874,6 +87932,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 /* harmony import */ var _Account_form_modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Account-form-modal */ "./resources/js/components/mypage/Account-form-modal.js");
 /* harmony import */ var _Account_deck__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Account-deck */ "./resources/js/components/mypage/Account-deck.js");
+/* harmony import */ var _AccountContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AccountContext */ "./resources/js/components/mypage/AccountContext.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -87894,13 +87953,18 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var AccountContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["createContext"])();
+
 
 function Mypage() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
       _useState2 = _slicedToArray(_useState, 2),
       accounts = _useState2[0],
       setAccounts = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      showModal = _useState4[0],
+      setShowModal = _useState4[1];
 
   var fetchAccounts =
   /*#__PURE__*/
@@ -87945,10 +88009,12 @@ function Mypage() {
     className: "mb-4 border-bottom"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
     className: "font-weight-bold"
-  }, "\u3042\u306A\u305F\u304C\u4F5C\u6210\u3057\u305F\u5BB6\u8A08\u7C3F")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(AccountContext.Provider, {
+  }, "\u3042\u306A\u305F\u304C\u4F5C\u6210\u3057\u305F\u5BB6\u8A08\u7C3F")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_AccountContext__WEBPACK_IMPORTED_MODULE_7__["AccountContext"].Provider, {
     value: {
       accounts: accounts,
-      changeHandler: fetchAccounts
+      changeHandler: fetchAccounts,
+      showModal: showModal,
+      setShowModal: setShowModal
     }
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Account_form_modal__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Account_deck__WEBPACK_IMPORTED_MODULE_6__["default"], null)))));
 }

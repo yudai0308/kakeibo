@@ -1,6 +1,6 @@
 import React from "react";
 import { Row } from "react-bootstrap";
-import { AccountContext } from "./Mypage";
+import { AccountContext } from "./AccountContext";
 import AccountCard from "./Account-card";
 import User from "../../User.js";
 
