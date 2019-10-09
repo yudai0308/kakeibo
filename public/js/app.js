@@ -87564,12 +87564,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function AccountDropdown() {
-  var completedCopy = function completedCopy(setModalContent, setShowModal) {
+
+function AccountDropdown(_ref) {
+  var account = _ref.account;
+
+  var copyUrl = function copyUrl(setModalContent, setShowModal) {
+    var body = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "URL \u3092\u30B3\u30D4\u30FC\u3057\u307E\u3057\u305F\uFF01"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+      type: "text",
+      value: account.url,
+      disabled: true
+    }));
     setModalContent({
-      title: "URL のコピー",
-      body: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "URL \u3092\u30B3\u30D4\u30FC\u3057\u307E\u3057\u305F\uFF01")
+      title: "URL コピー",
+      body: body
     });
+    var elem = document.getElementById("account-url-" + account.id);
+    elem.select();
+    document.execCommand("Copy");
     setShowModal(true);
   };
 
@@ -87589,9 +87600,9 @@ function AccountDropdown() {
     setShowModal(true);
   };
 
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AccountContext__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
-    var setModalContent = _ref.setModalContent,
-        setShowModal = _ref.setShowModal;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AccountContext__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref2) {
+    var setModalContent = _ref2.setModalContent,
+        setShowModal = _ref2.setShowModal;
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"], {
       className: "text-right",
       style: {
@@ -87605,7 +87616,7 @@ function AccountDropdown() {
       className: "position-absolute text-secondary border-0 rounded-circle"
     }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Menu, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
       onClick: function onClick() {
-        return completedCopy(setModalContent, setShowModal);
+        return copyUrl(setModalContent, setShowModal);
       }
     }, "URL \u3092\u30B3\u30D4\u30FC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
       onClick: function onClick() {
@@ -87636,47 +87647,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 /* harmony import */ var _Account_card_dropdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Account-card-dropdown */ "./resources/js/components/mypage/Account-card-dropdown.js");
-/* harmony import */ var _AccountContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AccountContext */ "./resources/js/components/mypage/AccountContext.js");
-
 
 
 
 
 function AccountCard(props) {
   var account = props.account;
-
-  var showDeleteDialog = function showDeleteDialog(setShowModal) {
-    setShowModal(true);
-  };
-
-  var showUpdateModal = function showUpdateModal(setShowModal) {
-    setShowModal(true);
-  };
-
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AccountContext__WEBPACK_IMPORTED_MODULE_3__["AccountContext"].Consumer, null, function (_ref) {
-    var setModalContent = _ref.setModalContent,
-        setShowModal = _ref.setShowModal;
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-      md: "4",
-      className: "mb-4 mb-md-0"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "card"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "position-absolute m-1"
-    }, account.isPublic ? "公開" : "非公開"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Account_card_dropdown__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "text-center"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-      className: "text-dark text-decoration-none",
-      href: props.account.url
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "card-body"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      className: "img-fluid",
-      src: "https://img.icons8.com/bubbles/100/000000/money-box.png"
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-      className: "card-title"
-    }, account.title))))));
-  });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+    md: "4",
+    className: "mb-4 mb-md-0"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "position-absolute m-1"
+  }, account.isPublic ? "公開" : "非公開"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Account_card_dropdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    account: account
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-center"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "text-dark text-decoration-none",
+    href: props.account.url
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "img-fluid",
+    src: "https://img.icons8.com/bubbles/100/000000/money-box.png"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+    className: "card-title"
+  }, account.title))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    id: "account-url-" + account.id,
+    type: "text",
+    value: account.url,
+    style: {
+      display: "none"
+    },
+    readOnly: true
+  }));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (AccountCard);

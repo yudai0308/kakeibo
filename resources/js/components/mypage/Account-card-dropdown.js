@@ -1,13 +1,23 @@
 import React from "react";
 import { Dropdown } from "react-bootstrap";
 import { AccountContext } from "./AccountContext";
+import { Form } from "react-bootstrap";
 
-function AccountDropdown() {
-  const completedCopy = (setModalContent, setShowModal) => {
+function AccountDropdown({ account }) {
+  const copyUrl = (setModalContent, setShowModal) => {
+    const body = (
+      <>
+        <p>URL をコピーしました！</p>
+        <Form.Control type="text" value={account.url} disabled />
+      </>
+    )
     setModalContent({
-      title: "URL のコピー",
-      body: <p>URL をコピーしました！</p>
+      title: "URL コピー",
+      body: body
     });
+    const elem = document.getElementById("account-url-" + account.id);
+    elem.select();
+    document.execCommand("Copy");
     setShowModal(true);
   }
 
@@ -45,7 +55,7 @@ function AccountDropdown() {
 
               <Dropdown.Menu>
                 <Dropdown.Item
-                  onClick={() => completedCopy(setModalContent, setShowModal)}
+                  onClick={() => copyUrl(setModalContent, setShowModal)}
                 >
                   URL をコピー
                 </Dropdown.Item>
