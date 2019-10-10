@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { axios } from "../../axios";
 import { Container, Row, Col } from "react-bootstrap";
-import AccountForm from "./Account-form-modal";
-import AccountDeck from "./Account-deck";
+import AccountForm from "./account-forms/Account-form-create-modal";
+import AccountDeck from "./account-deck/Account-deck";
 import MyModal from "./MyModal";
 import { AccountContext } from "./AccountContext";
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
-import { AccountContext } from "./AccountContext";
-import AccountForm from "./Account-create-form";
+import { AccountContext } from "../AccountContext";
+import AccountForm from "./Account-form-create-body";
 
 function AccountFormModal() {
   const showCreateModal = (setModalContent, setShowModal) => {
@@ -15,7 +15,7 @@ function AccountFormModal() {
   return (
     <AccountContext.Consumer>
       {
-        ({ setModalContent, setShowModal}) => {
+        ({ setModalContent, setShowModal }) => {
           return (
             <div className="mb-4">
               <Button
