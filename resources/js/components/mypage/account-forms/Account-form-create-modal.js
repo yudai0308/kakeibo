@@ -19,7 +19,9 @@ function AccountFormModal() {
           return (
             <div className="mb-4">
               <Button
+                size="sm"
                 variant="primary"
+                className="rounded-pill"
                 onClick={() => showCreateModal(setModalContent, setShowModal)}
               >
                 <i className="text-right fas fa-plus-circle"></i> 新しい家計簿

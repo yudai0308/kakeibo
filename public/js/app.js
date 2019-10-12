@@ -88055,7 +88055,9 @@ function AccountFormModal() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "mb-4"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+      size: "sm",
       variant: "primary",
+      className: "rounded-pill",
       onClick: function onClick() {
         return showCreateModal(setModalContent, setShowModal);
       }
