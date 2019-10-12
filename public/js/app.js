@@ -82138,37 +82138,6 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/js/User.js":
-/*!******************************!*\
-  !*** ./resources/js/User.js ***!
-  \******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./axios */ "./resources/js/axios.js");
- // class User {
-//   async auth () {
-//     const user = await axios.get("/auth_user")
-//       .then(res => {
-//         return res.data;
-//       });
-//     return user;
-//   }
-// }
-
-function getUser() {
-  var user = _axios__WEBPACK_IMPORTED_MODULE_0__["axios"].get("/api/auth_user").then(function (res) {
-    return res.data;
-  });
-  return user;
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (getUser);
-
-/***/ }),
-
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -82204,12 +82173,12 @@ __webpack_require__(/*! ./welcome-modal */ "./resources/js/welcome-modal.js");
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "axios", function() { return axios; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "axios", function() { return axios; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 var axios = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-  baseURL: process.env.MIX_APP_URL,
+  baseURL: "http://localhost:8000",
   headers: {
     "Content-Type": "application/json",
     "X-Requested-With": "XMLHttpRequest" // 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
@@ -82217,7 +82186,6 @@ var axios = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
   },
   responseType: "json"
 });
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -87553,310 +87521,25 @@ var separate = function separate(num) {
 
 /***/ }),
 
-/***/ "./resources/js/components/mypage/Account-card.js":
-/*!********************************************************!*\
-  !*** ./resources/js/components/mypage/Account-card.js ***!
-  \********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "./resources/js/components/mypage/AccountContext.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/mypage/AccountContext.js ***!
+  \**********************************************************/
+/*! exports provided: AccountContext */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-
-
-
-function AccountCard(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
-    md: "4",
-    className: "mb-4 mb-md-0"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-right"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Toggle, {
-    variant: "secondary",
-    style: {
-      right: "0",
-      backgroundColor: "rgb(0,0,0,0)"
-    },
-    className: "position-absolute text-secondary border-0 rounded-circle"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Menu, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
-    onClick: function onClick() {
-      return alert("設定");
-    }
-  }, "\u8A2D\u5B9A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
-    onClick: function onClick() {
-      return dialog("削除");
-    }
-  }, "\u524A\u9664")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "text-center"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "text-dark text-decoration-none",
-    href: props.account.url
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card-body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "img-fluid",
-    src: "https://img.icons8.com/bubbles/100/000000/money-box.png"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-    className: "card-title"
-  }, props.account.title))))));
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (AccountCard);
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/yudai/projects/kakeibo/resources/js/components/mypage/AccountContext.js'");
 
 /***/ }),
 
-/***/ "./resources/js/components/mypage/Account-deck.js":
-/*!********************************************************!*\
-  !*** ./resources/js/components/mypage/Account-deck.js ***!
-  \********************************************************/
+/***/ "./resources/js/components/mypage/MyModal.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/mypage/MyModal.js ***!
+  \***************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-/* harmony import */ var _Mypage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Mypage */ "./resources/js/components/mypage/Mypage.js");
-/* harmony import */ var _Account_card__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Account-card */ "./resources/js/components/mypage/Account-card.js");
-/* harmony import */ var _User_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../User.js */ "./resources/js/User.js");
-
-
-
-
-
-
-function AccountDeck() {
-  var getCards = function getCards(accounts) {
-    return accounts ? accounts.map(function (account, i) {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Account_card__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        account: account,
-        key: i
-      });
-    }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-      className: "m-0 text-center"
-    }, "\u307E\u305A\u306F\u65B0\u3057\u3044\u5BB6\u8A08\u7C3F\u3092\u4F5C\u6210\u3057\u307E\u3057\u3087\u3046\uFF01");
-  };
-
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "rounded p-4"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Mypage__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
-    var accounts = _ref.accounts;
-    return getCards(accounts);
-  })));
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (AccountDeck);
-
-/***/ }),
-
-/***/ "./resources/js/components/mypage/Account-form-modal.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/components/mypage/Account-form-modal.js ***!
-  \**************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Account_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Account-form */ "./resources/js/components/mypage/Account-form.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-function AccountFormModal() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      show = _useState2[0],
-      setShow = _useState2[1];
-
-  var handleClose = function handleClose() {
-    return setShow(false);
-  };
-
-  var handleShow = function handleShow() {
-    return setShow(true);
-  };
-
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "mb-4"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-    variant: "primary",
-    onClick: handleShow
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "text-right fas fa-plus-circle"
-  }), " \u65B0\u3057\u3044\u5BB6\u8A08\u7C3F")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
-    show: show,
-    onHide: handleClose,
-    centered: true
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Header, {
-    closeButton: true
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Title, {
-    className: "text-muted"
-  }, "\u65B0\u3057\u3044\u5BB6\u8A08\u7C3F\u3092\u4F5C\u308B")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"].Body, {
-    className: "text-muted"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Account_form__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (AccountFormModal);
-
-/***/ }),
-
-/***/ "./resources/js/components/mypage/Account-form.js":
-/*!********************************************************!*\
-  !*** ./resources/js/components/mypage/Account-form.js ***!
-  \********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-/* harmony import */ var _Mypage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Mypage */ "./resources/js/components/mypage/Mypage.js");
-/* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../axios */ "./resources/js/axios.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
- // import ShareForm from "./Account-form-share";
-
-
-
-function AccountForm() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    title: "",
-    isPublic: false
-  }),
-      _useState2 = _slicedToArray(_useState, 2),
-      newAccount = _useState2[0],
-      setNewAccount = _useState2[1];
-
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
-      _useState4 = _slicedToArray(_useState3, 2),
-      errorMsg = _useState4[0],
-      setErrorMsg = _useState4[1];
-
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
-      _useState6 = _slicedToArray(_useState5, 2),
-      createdAccount = _useState6[0],
-      setCreatedAccount = _useState6[1];
-
-  var handleChange = function handleChange(e) {
-    var key = e.target.name;
-    var val = key === "isPublic" ? e.target.checked : e.target.value;
-    var setVals = newAccount;
-    setVals[key] = val;
-    setNewAccount(setVals);
-  };
-
-  var handleSubmit = function handleSubmit(e, callback) {
-    e.preventDefault();
-    _axios__WEBPACK_IMPORTED_MODULE_3__["axios"].post("/account", newAccount).then(function (res) {
-      if (!res.data.error) {
-        setCreatedAccount(res.data);
-        callback();
-      } else {
-        setErrorMsg(res.data.error);
-      }
-    })["catch"](function (err) {// TODO: エラーハンドリング
-    });
-  };
-
-  var copyURL = function copyURL() {
-    var textarea = document.getElementById("new-account-url");
-    textarea.select();
-    document.execCommand("copy");
-  };
-
-  var getBody = function getBody() {
-    if (createdAccount) {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u5BB6\u8A08\u7C3F\u3092\u4F5C\u6210\u3057\u307E\u3057\u305F\uFF01"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"], {
-        className: "mb-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["FormControl"], {
-        id: "new-account-url",
-        readOnly: true,
-        defaultValue: createdAccount.url
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["InputGroup"].Append, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["OverlayTrigger"], {
-        placement: "top",
-        overlay: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Tooltip"], null, "\u30B3\u30D4\u30FC")
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        variant: "outline-secondary",
-        onClick: copyURL
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "far fa-copy"
-      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
-        variant: "success"
-      }, createdAccount.isPublic && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "URL \u3092\u77E5\u3063\u3066\u3044\u308C\u3070\u8AB0\u3067\u3082\u30A2\u30AF\u30BB\u30B9\u3067\u304D\u307E\u3059\u3002", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u5171\u6709\u3057\u305F\u3044\u76F8\u624B\u306B URL \u3092\u77E5\u3089\u305B\u307E\u3057\u3087\u3046\uFF01"), !createdAccount.isPublic && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "\u81EA\u5206\u4EE5\u5916\u306F\u30A2\u30AF\u30BB\u30B9\u3067\u304D\u306A\u3044\u3088\u3046\u306B\u8A2D\u5B9A\u3055\u308C\u307E\u3057\u305F\u3002")));
-    } else {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Mypage__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref) {
-        var changeHandler = _ref.changeHandler;
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], {
-          onSubmit: function onSubmit(e) {
-            return handleSubmit(e, changeHandler);
-          }
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-          controlId: "form-accout-name"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "\u5BB6\u8A08\u7C3F\u306B\u540D\u524D\u3092\u3064\u3051\u307E\u3057\u3087\u3046\uFF01"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
-          type: "text",
-          name: "title",
-          placeholder: "\u25CB\u25CB\u306E\u5BB6\u8A08\u7C3F",
-          className: "mb-2",
-          onChange: handleChange,
-          required: true
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Text, {
-          className: "text-muted mb-2"
-        }, "\u5BB6\u8A08\u7C3F\u306F\u500B\u4EBA\u7528\u3060\u3051\u3067\u306A\u304F\u3001\u8907\u6570\u4EBA\u3067\u30B7\u30A7\u30A2\u3057\u306A\u304C\u3089\u3054\u5229\u7528\u3067\u304D\u307E\u3059\u3002", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u6700\u5927\uFF13\u3064\u307E\u3067\u4F5C\u6210\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059\u306E\u3067\u3001\u533A\u5225\u3067\u304D\u308B\u3088\u3046\u306B\u540D\u524D\u3092\u3064\u3051\u3066\u304F\u3060\u3055\u3044\u3002")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
-          controlId: "form-accout-isPublic"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Check, {
-          type: "checkbox",
-          name: "isPublic",
-          label: "\u5BB6\u8A08\u7C3F\u3092\u5171\u6709\u3059\u308B",
-          onChange: handleChange
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Text, {
-          className: "text-muted mb-2"
-        }, "\u5BB6\u8A08\u7C3F\u306F\u3092\u5171\u6709\u3057\u305F\u3044\u5834\u5408\u306F\u30C1\u30A7\u30C3\u30AF\u3057\u3066\u304F\u3060\u3055\u3044\u3002")), errorMsg ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Alert"], {
-          variant: "danger"
-        }, errorMsg) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "text-right"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-          variant: "primary",
-          type: "submit"
-        }, "\u4F5C\u6210")));
-      });
-    }
-  };
-
-  return getBody();
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (AccountForm);
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/yudai/projects/kakeibo/resources/js/components/mypage/MyModal.js'");
 
 /***/ }),
 
@@ -87864,12 +87547,11 @@ function AccountForm() {
 /*!**************************************************!*\
   !*** ./resources/js/components/mypage/Mypage.js ***!
   \**************************************************/
-/*! exports provided: AccountContext */
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AccountContext", function() { return AccountContext; });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -87878,8 +87560,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../axios */ "./resources/js/axios.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
-/* harmony import */ var _Account_form_modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Account-form-modal */ "./resources/js/components/mypage/Account-form-modal.js");
-/* harmony import */ var _Account_deck__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Account-deck */ "./resources/js/components/mypage/Account-deck.js");
+/* harmony import */ var _account_forms_Account_form_create_modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./account-forms/Account-form-create-modal */ "./resources/js/components/mypage/account-forms/Account-form-create-modal.js");
+/* harmony import */ var _account_deck_Account_deck__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./account-deck/Account-deck */ "./resources/js/components/mypage/account-deck/Account-deck.js");
+/* harmony import */ var _MyModal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./MyModal */ "./resources/js/components/mypage/MyModal.js");
+/* harmony import */ var _AccountContext__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./AccountContext */ "./resources/js/components/mypage/AccountContext.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -87900,13 +87584,27 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var AccountContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["createContext"])();
+
+
 
 function Mypage() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
       _useState2 = _slicedToArray(_useState, 2),
       accounts = _useState2[0],
       setAccounts = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      showModal = _useState4[0],
+      setShowModal = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+    title: "",
+    body: ""
+  }),
+      _useState6 = _slicedToArray(_useState5, 2),
+      modalContent = _useState6[0],
+      setModalContent = _useState6[1];
 
   var fetchAccounts =
   /*#__PURE__*/
@@ -87951,17 +87649,46 @@ function Mypage() {
     className: "mb-4 border-bottom"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
     className: "font-weight-bold"
-  }, "\u3042\u306A\u305F\u304C\u4F5C\u6210\u3057\u305F\u5BB6\u8A08\u7C3F")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(AccountContext.Provider, {
+  }, "\u3042\u306A\u305F\u304C\u4F5C\u6210\u3057\u305F\u5BB6\u8A08\u7C3F")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_AccountContext__WEBPACK_IMPORTED_MODULE_8__["AccountContext"].Provider, {
     value: {
       accounts: accounts,
-      changeHandler: fetchAccounts
+      changeHandler: fetchAccounts,
+      showModal: showModal,
+      setShowModal: setShowModal,
+      setModalContent: setModalContent,
+      fetchAccounts: fetchAccounts
     }
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Account_form_modal__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Account_deck__WEBPACK_IMPORTED_MODULE_6__["default"], null)))));
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_account_forms_Account_form_create_modal__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_account_deck_Account_deck__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_MyModal__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    title: modalContent.title,
+    body: modalContent.body
+  })))));
 }
 
 if (document.getElementById("mypage")) {
   react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Mypage, null), document.getElementById("mypage"));
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/mypage/account-deck/Account-deck.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/mypage/account-deck/Account-deck.js ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/yudai/projects/kakeibo/resources/js/components/mypage/account-deck/Account-deck.js'");
+
+/***/ }),
+
+/***/ "./resources/js/components/mypage/account-forms/Account-form-create-modal.js":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/mypage/account-forms/Account-form-create-modal.js ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/yudai/projects/kakeibo/resources/js/components/mypage/account-forms/Account-form-create-modal.js'");
 
 /***/ }),
 
