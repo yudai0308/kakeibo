@@ -87803,8 +87803,11 @@ function AccountCard(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "position-absolute m-1"
-  }, account.isPublic ? "公開" : "非公開"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Account_card_dropdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    className: "position-absolute ml-1"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Badge"], {
+    pill: true,
+    variant: "info"
+  }, account.isPublic ? "公開" : "非公開")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Account_card_dropdown__WEBPACK_IMPORTED_MODULE_2__["default"], {
     account: account
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-center"

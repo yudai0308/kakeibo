@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Dropdown } from "react-bootstrap";
+import { Col, Badge } from "react-bootstrap";
 import AccountDropdown from "./Account-card-dropdown";
 
 function AccountCard(props) {
@@ -8,8 +8,10 @@ function AccountCard(props) {
   return (
     <Col md="4" className="mb-4 mb-md-0">
       <div className="card">
-        <div className="position-absolute m-1">
-          {account.isPublic ? "公開" : "非公開"}
+        <div className="position-absolute ml-1">
+          <Badge pill variant="info">
+            {account.isPublic ? "公開" : "非公開"}
+          </Badge>
         </div>
         <AccountDropdown account={account} />
         <div className="text-center">
