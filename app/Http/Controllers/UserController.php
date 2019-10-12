@@ -14,26 +14,29 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
-    public function getAuthUser () {
+    public function getAuthUser()
+    {
         $user = Auth::user();
         return $user;
     }
 
-    public function getAccounts () {
+    public function getAccounts()
+    {
         try {
             $user = Auth::user();
             $accounts = $user->accounts()->orderBy("id", "desc")->get();
             $returnVal = [];
-            foreach($accounts as $a) {
+            foreach ($accounts as $a) {
                 $url = Account::getURL($a);
                 array_push($returnVal, [
-                        "title" => $a->title,
-                        "url" => $url,
-                        "isPublic" => $a->isPublic,
-                    ]);
-                }
+                    "id"       => $a->id,
+                    "title"    => $a->title,
+                    "url"      => $url,
+                    "isPublic" => $a->isPublic,
+                ]);
+            }
             return $returnVal;
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             // dd($e->getMessage());
         }
     }

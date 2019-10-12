@@ -1,16 +1,19 @@
-import React, { useState, useEffect, createContext } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
 import { axios } from "../../axios";
-import { Container, Row, Col } from 'react-bootstrap';
-import AccountForm from './Account-form-modal';
-import AccountDeck from './Account-deck';
-
-export const AccountContext = createContext();
+import { Container, Row, Col } from "react-bootstrap";
+import AccountForm from "./account-forms/Account-form-create-modal";
+import AccountDeck from "./account-deck/Account-deck";
+import MyModal from "./MyModal";
+import { AccountContext } from "./AccountContext";
 
 function Mypage() {
   const [accounts, setAccounts] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [modalContent, setModalContent] = useState({title: "", body: ""});
+
   const fetchAccounts = async () => {
-    let res = await axios.get(`/api/user/accounts`)
+    let res = await axios.get("/api/user/accounts")
     const accounts = res.data;
     setAccounts(accounts);
   }
@@ -30,9 +33,15 @@ function Mypage() {
             value={{
               accounts: accounts,
               changeHandler: fetchAccounts,
-            }}>
+              showModal: showModal,
+              setShowModal: setShowModal,
+              setModalContent: setModalContent,
+              fetchAccounts,
+            }}
+          >
             <AccountForm />
             <AccountDeck />
+            <MyModal title={modalContent.title} body={modalContent.body}/>
           </AccountContext.Provider>
         </Col>
       </Row>
