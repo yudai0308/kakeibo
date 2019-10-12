@@ -9,9 +9,11 @@ function AccountCard(props) {
     <Col md="4" className="mb-4 mb-md-0">
       <div className="card">
         <div className="position-absolute ml-1">
-          <Badge pill variant="info">
-            {account.isPublic ? "公開" : "非公開"}
-          </Badge>
+          {
+            account.isPublic
+              ? <Badge pill variant="info">公開</Badge>
+              : <Badge pill variant="secondary">非公開</Badge>
+          }
         </div>
         <AccountDropdown account={account} />
         <div className="text-center">
