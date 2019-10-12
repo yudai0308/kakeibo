@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Dropdown } from "react-bootstrap";
 import { AccountContext } from "../AccountContext";
 import UpdateForm from "../account-forms/Account-form-update";
-// import showDeleteModal from "../account-forms/Account-form-delete";
+import DeleteDialog from "../account-forms/Account-form-delete";
 
 function AccountDropdown({ account }) {
   const copyUrl = (setModalContent, setShowModal) => {
@@ -23,7 +23,7 @@ function AccountDropdown({ account }) {
   }
 
   const showUpdateModal = (
-    account, setModalContent, setShowModal, fetchAccounts
+    setModalContent, setShowModal, fetchAccounts
   ) => {
     const body = (
       <UpdateForm
@@ -39,13 +39,20 @@ function AccountDropdown({ account }) {
     setShowModal(true);
   }
 
-  // const showDeleteDialog = (setModalContent, setShowModal) => {
-  //   setModalContent({
-  //     title: "家計簿の削除",
-  //     body: <p>test</p>
-  //   });
-  //   setShowModal(true);
-  // }
+  const showDeleteModal = (setModalContent, setShowModal, fetchAccounts) => {
+    const body = (
+      <DeleteDialog
+        account={account}
+        setShowModal={setShowModal}
+        fetchAccounts={fetchAccounts}
+      />
+    );
+    setModalContent({
+      title: "家計簿の削除",
+      body: body
+    });
+    setShowModal(true);
+  }
 
   return (
     <AccountContext.Consumer>
@@ -71,13 +78,16 @@ function AccountDropdown({ account }) {
                 </Dropdown.Item>
                 <Dropdown.Item
                   onClick={() => {
-                    showUpdateModal(account, setModalContent, setShowModal, fetchAccounts)
+                    showUpdateModal(setModalContent, setShowModal, fetchAccounts)
                   }}
                 >
                   設定
                 </Dropdown.Item>
                 <Dropdown.Item
-                  onClick={() => showDeleteModal(account, setModalContent, setShowModal)}
+                  onClick={() => {
+                    // console.log(fetchAccounts)
+                    showDeleteModal(setModalContent, setShowModal, fetchAccounts)
+                  }}
                 >
                   削除
                 </Dropdown.Item>

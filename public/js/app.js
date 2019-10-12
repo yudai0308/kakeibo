@@ -87699,10 +87699,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 /* harmony import */ var _AccountContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../AccountContext */ "./resources/js/components/mypage/AccountContext.js");
 /* harmony import */ var _account_forms_Account_form_update__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../account-forms/Account-form-update */ "./resources/js/components/mypage/account-forms/Account-form-update.js");
+/* harmony import */ var _account_forms_Account_form_delete__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../account-forms/Account-form-delete */ "./resources/js/components/mypage/account-forms/Account-form-delete.js");
 
 
 
- // import showDeleteModal from "../account-forms/Account-form-delete";
+
+
 
 function AccountDropdown(_ref) {
   var account = _ref.account;
@@ -87723,7 +87725,7 @@ function AccountDropdown(_ref) {
     setShowModal(true);
   };
 
-  var showUpdateModal = function showUpdateModal(account, setModalContent, setShowModal, fetchAccounts) {
+  var showUpdateModal = function showUpdateModal(setModalContent, setShowModal, fetchAccounts) {
     var body = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_account_forms_Account_form_update__WEBPACK_IMPORTED_MODULE_3__["default"], {
       account: account,
       setShowModal: setShowModal,
@@ -87734,14 +87736,20 @@ function AccountDropdown(_ref) {
       body: body
     });
     setShowModal(true);
-  }; // const showDeleteDialog = (setModalContent, setShowModal) => {
-  //   setModalContent({
-  //     title: "家計簿の削除",
-  //     body: <p>test</p>
-  //   });
-  //   setShowModal(true);
-  // }
+  };
 
+  var showDeleteModal = function showDeleteModal(setModalContent, setShowModal, fetchAccounts) {
+    var body = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_account_forms_Account_form_delete__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      account: account,
+      setShowModal: setShowModal,
+      fetchAccounts: fetchAccounts
+    });
+    setModalContent({
+      title: "家計簿の削除",
+      body: body
+    });
+    setShowModal(true);
+  };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AccountContext__WEBPACK_IMPORTED_MODULE_2__["AccountContext"].Consumer, null, function (_ref2) {
     var setModalContent = _ref2.setModalContent,
@@ -87764,11 +87772,12 @@ function AccountDropdown(_ref) {
       }
     }, "URL \u3092\u30B3\u30D4\u30FC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
       onClick: function onClick() {
-        showUpdateModal(account, setModalContent, setShowModal, fetchAccounts);
+        showUpdateModal(setModalContent, setShowModal, fetchAccounts);
       }
     }, "\u8A2D\u5B9A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Dropdown"].Item, {
       onClick: function onClick() {
-        return showDeleteModal(account, setModalContent, setShowModal);
+        // console.log(fetchAccounts)
+        showDeleteModal(setModalContent, setShowModal, fetchAccounts);
       }
     }, "\u524A\u9664")));
   });
@@ -88068,6 +88077,93 @@ function AccountFormModal() {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (AccountFormModal);
+
+/***/ }),
+
+/***/ "./resources/js/components/mypage/account-forms/Account-form-delete.js":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/mypage/account-forms/Account-form-delete.js ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+/* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../axios */ "./resources/js/axios.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+
+
+function AccountDeleteForm(_ref) {
+  var account = _ref.account,
+      setShowModal = _ref.setShowModal,
+      fetchAccounts = _ref.fetchAccounts;
+
+  var deleteAccount =
+  /*#__PURE__*/
+  function () {
+    var _ref2 = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var url, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              // console.log(setShowModal)
+              url = "/api/account/".concat(account.id);
+              _context.next = 3;
+              return _axios__WEBPACK_IMPORTED_MODULE_3__["axios"]["delete"](url);
+
+            case 3:
+              res = _context.sent;
+              fetchAccounts();
+              setShowModal(false);
+
+            case 6:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function deleteAccount() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  var cancel = function cancel() {
+    return setShowModal(false);
+  };
+
+  console.log(fetchAccounts);
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
+    className: "mb-4"
+  }, "\u524A\u9664\u3057\u3066\u3082\u3088\u308D\u3057\u3044\u3067\u3059\u304B\uFF1F"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "d-flex justify-content-end"
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+    variant: "secondary",
+    className: "mr-2",
+    onClick: cancel
+  }, "\u30AD\u30E3\u30F3\u30BB\u30EB"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+    variant: "danger",
+    onClick: deleteAccount
+  }, "\u524A\u9664")));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (AccountDeleteForm);
 
 /***/ }),
 

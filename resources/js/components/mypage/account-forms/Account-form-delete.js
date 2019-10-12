@@ -1,15 +1,37 @@
 import React from "react";
-import { Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { axios } from "../../../axios";
 
-function AccountDeleteForm(setModalContent, setShowModal) {
-  const showDeleteModal = (setModalContent, setShowModal) => {
-    setModalContent({
-      title: "家計簿の削除",
-      body: <p>test</p>
-    });
-    setShowModal(true);
+function AccountDeleteForm({ account, setShowModal, fetchAccounts }) {
+  const deleteAccount = async () => {
+    // console.log(setShowModal)
+    const url = `/api/account/${account.id}`;
+    const res = await axios.delete(url);
+    fetchAccounts();
+    setShowModal(false);
   }
-  showDeleteModal(setModalContent, setShowModal);
+  const cancel = () => setShowModal(false);
+console.log(fetchAccounts)
+  return (
+    <>
+      <p className="mb-4">削除してもよろしいですか？</p>
+      <div className="d-flex justify-content-end">
+        <Button
+          variant="secondary"
+          className="mr-2"
+          onClick={cancel}
+        >
+          キャンセル
+        </Button>
+        <Button
+          variant="danger"
+          onClick={deleteAccount}
+        >
+          削除
+        </Button>
+      </div>
+    </>
+  );
 }
 
 export default AccountDeleteForm;
