@@ -67,4 +67,34 @@ class AccountController extends Controller
             return redirect($url)->with("welcome", true);
         }
     }
+
+    public function update(Request $req, $id)
+    {
+        if (!Auth::check()) {
+            return json_encode(["error" => "ログインしてください。"]);
+        }
+
+        $account = Account::find($id);
+        if ($account->user->id != Auth::user()->id) {
+            abort(403);
+        }
+        $account->title = $req->title;
+        $account->isPublic = $req->isPublic;
+        $account->save();
+        return;
+    }
+
+    public function destroy($id)
+    {
+        if (!Auth::check()) {
+            return json_encode(["error" => "ログインしてください。"]);
+        }
+
+        $account = Account::find($id);
+        if ($account->user->id != Auth::user()->id) {
+            abort(403);
+        }
+        $account->delete();
+        return;
+    }
 }
