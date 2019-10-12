@@ -8,6 +8,7 @@ import { axios } from "../../axios";
 import { networkInterfaces } from "os";
 
 function AccountPage() {
+  const [viewType, setViewType] = useState(1);
   const [isShown, setModalState] = useState(false);
   const [showItemForm, setShowItemForm] = useState(false);
   const [items, setItems] = useState(null);
@@ -123,7 +124,8 @@ function AccountPage() {
       <Row className="justify-content-center">
         <Col md="8" className="mb-4">
           <Overview
-            items={items}
+            viewType={viewType}
+            setViewType={setViewType}
             sumThisMonth={sumThisMonth}
           />
         </Col>

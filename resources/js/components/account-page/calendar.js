@@ -3,6 +3,7 @@ import Calendar from "react-calendar";
 import { axios } from "../../axios";
 import moment from "moment";
 import { separate } from "../libs";
+import { Dropdown } from "react-bootstrap";
 
 function MyCalendar(props) {
   const {
@@ -72,13 +73,6 @@ function MyCalendar(props) {
     const m = date.getMonth() + 1;
     setYearMonth({ year: y, month: m });
   }
-
-  // const handleDrillDown = (activeStartDate, view) => {
-  //   if (view !== "month") return;
-  //   const y = activeStartDate.getFullYear();
-  //   const m = activeStartDate.getMonth() + 1;
-  //   setYearMonth({ year: y, month: m });
-  // }
 
   // month ビューページで月を前後に移動するボタンを押したときの処理
   const setYearMonthByClick = () => {
