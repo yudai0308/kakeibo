@@ -12,12 +12,8 @@ function Mypage() {
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState({title: "", body: ""});
 
-  const setMyModal = (title, body) => {
-    return <MyModal title={title} body={body}/>
-  }
-
   const fetchAccounts = async () => {
-    let res = await axios.get(`/api/user/accounts`)
+    let res = await axios.get("/api/user/accounts")
     const accounts = res.data;
     setAccounts(accounts);
   }
@@ -40,6 +36,7 @@ function Mypage() {
               showModal: showModal,
               setShowModal: setShowModal,
               setModalContent: setModalContent,
+              fetchAccounts,
             }}
           >
             <AccountForm />
