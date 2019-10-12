@@ -73,7 +73,7 @@ class AccountController extends Controller
         if (!Auth::check()) {
             return json_encode(["error" => "ログインしてください。"]);
         }
-        
+
         $account = Account::find($id);
         if ($account->user->id != Auth::user()->id) {
             abort(403);
@@ -81,6 +81,20 @@ class AccountController extends Controller
         $account->title = $req->title;
         $account->isPublic = $req->isPublic;
         $account->save();
+        return;
+    }
+
+    public function destroy($id)
+    {
+        if (!Auth::check()) {
+            return json_encode(["error" => "ログインしてください。"]);
+        }
+
+        $account = Account::find($id);
+        if ($account->user->id != Auth::user()->id) {
+            abort(403);
+        }
+        $account->delete();
         return;
     }
 }
