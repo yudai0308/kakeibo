@@ -60,6 +60,7 @@ class ItemController extends Controller
         try {
             $year = $query["year"];
             $month = $query["month"];
+            $base = isset($query["base"]) ? $query["base"] : "date";
             // TODO: year、month のバリデーション
         } catch (Exception $e) {
             // TODO: パラメータが取得できなかった場合の処理。
@@ -78,7 +79,7 @@ class ItemController extends Controller
                 $item["sub_category"] = SubCategory::find($id)->name;
                 return $item;
             });
-            $itemGrp = $fmtItems->groupBy("date");
+            $itemGrp = $fmtItems->groupBy($base);
             return $itemGrp;
         } catch (Exception $e) {
             return json_encode(["error" => $e->getMessage()]);
