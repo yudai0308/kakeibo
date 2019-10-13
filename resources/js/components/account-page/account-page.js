@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { Container, Row, Col, Modal } from "react-bootstrap";
 import MyCalendar from "./Calendar";
 import Overview from "./Overview";
+import CategoryChart from "./Chart-category";
+import MemberChart from "./Chart-member";
 import ItemModal from "./Item-modal"
 import { axios } from "../../axios";
 import { networkInterfaces } from "os";
@@ -132,18 +134,29 @@ function AccountPage() {
       </Row>
       <Row className="justify-content-center">
         <Col md="8">
-          <MyCalendar
-            showModal={() => setModalState(true)}
-            fetchItems={fetchItems}
-            updateYearMonth={updateYearMonth}
-            newItem={newItem}
-            setNewItem={setNewItem}
-            items={items}
-            setItems={setItems}
-            yearMonth={yearMonth}
-            setYearMonth={setYearMonth}
-            setShowItemForm={setShowItemForm}
-          />
+          {
+            viewType === 1 &&
+            <MyCalendar
+              showModal={() => setModalState(true)}
+              fetchItems={fetchItems}
+              updateYearMonth={updateYearMonth}
+              newItem={newItem}
+              setNewItem={setNewItem}
+              items={items}
+              setItems={setItems}
+              yearMonth={yearMonth}
+              setYearMonth={setYearMonth}
+              setShowItemForm={setShowItemForm}
+            />
+          }
+          {
+            viewType === 2 &&
+            <CategoryChart />
+          }
+          {
+            viewType === 3 &&
+            <MemberChart />
+          }
           <ItemModal
             isShown={isShown}
             showItemForm={showItemForm}

@@ -86645,10 +86645,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 /* harmony import */ var _Calendar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Calendar */ "./resources/js/components/account-page/Calendar.js");
 /* harmony import */ var _Overview__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Overview */ "./resources/js/components/account-page/Overview.js");
-/* harmony import */ var _Item_modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Item-modal */ "./resources/js/components/account-page/Item-modal.js");
-/* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../axios */ "./resources/js/axios.js");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _Chart_category__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Chart-category */ "./resources/js/components/account-page/Chart-category.js");
+/* harmony import */ var _Chart_member__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Chart-member */ "./resources/js/components/account-page/Chart-member.js");
+/* harmony import */ var _Item_modal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Item-modal */ "./resources/js/components/account-page/Item-modal.js");
+/* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../axios */ "./resources/js/axios.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_10__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -86668,6 +86670,8 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -86768,7 +86772,7 @@ function AccountPage() {
               url = "/api/account/".concat(id, "/items?year=").concat(yearMonth.year, "&month=").concat(yearMonth.month); // TODO: エラーハンドリング
 
               _context.next = 4;
-              return _axios__WEBPACK_IMPORTED_MODULE_7__["axios"].get(url);
+              return _axios__WEBPACK_IMPORTED_MODULE_9__["axios"].get(url);
 
             case 4:
               res = _context.sent;
@@ -86856,7 +86860,7 @@ function AccountPage() {
               case 0:
                 url = "/api/sub_category";
                 _context2.next = 3;
-                return _axios__WEBPACK_IMPORTED_MODULE_7__["axios"].get(url);
+                return _axios__WEBPACK_IMPORTED_MODULE_9__["axios"].get(url);
 
               case 3:
                 res = _context2.sent;
@@ -86898,7 +86902,7 @@ function AccountPage() {
     className: "justify-content-center"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     md: "8"
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Calendar__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, viewType === 1 && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Calendar__WEBPACK_IMPORTED_MODULE_4__["default"], {
     showModal: function showModal() {
       return setModalState(true);
     },
@@ -86911,7 +86915,7 @@ function AccountPage() {
     yearMonth: yearMonth,
     setYearMonth: setYearMonth,
     setShowItemForm: setShowItemForm
-  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Item_modal__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }), viewType === 2 && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Chart_category__WEBPACK_IMPORTED_MODULE_6__["default"], null), viewType === 3 && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Chart_member__WEBPACK_IMPORTED_MODULE_7__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Item_modal__WEBPACK_IMPORTED_MODULE_8__["default"], {
     isShown: isShown,
     showItemForm: showItemForm,
     setShowItemForm: setShowItemForm,
@@ -87111,6 +87115,48 @@ function MyCalendar(props) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (MyCalendar);
+
+/***/ }),
+
+/***/ "./resources/js/components/account-page/Chart-category.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/account-page/Chart-category.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function CategoryChart() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Category Chart");
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (CategoryChart);
+
+/***/ }),
+
+/***/ "./resources/js/components/account-page/Chart-member.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/account-page/Chart-member.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function MemberChart() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Member Chart");
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (MemberChart);
 
 /***/ }),
 
