@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import Calendar from "react-calendar";
-import { axios } from "../../axios";
 import moment from "moment";
 import { separate } from "../libs";
-import { Dropdown } from "react-bootstrap";
 
 function MyCalendar(props) {
   const {
@@ -14,6 +12,7 @@ function MyCalendar(props) {
     yearMonth,
     setYearMonth,
     setShowItemForm,
+    isMonthView,
   } = props;
 
   const handleClickDay = e => {
@@ -63,7 +62,6 @@ function MyCalendar(props) {
     return yearMonth;
   }
 
-  // FIXME: DOMを操作するのではなく、item の中身を空にする
   const clearTotalAmount = () => {
     setItems(null);
   }
@@ -72,6 +70,14 @@ function MyCalendar(props) {
     const y = date.getFullYear();
     const m = date.getMonth() + 1;
     setYearMonth({ year: y, month: m });
+  }
+
+  // FIXME: グラフからカレンダーに戻ったとき、常に今日の日付に戻ってしまうのを防ぐ（修正途中）
+  const controlStartDate = () => {
+    const y = yearMonth.year;
+    const m = yearMonth.month;
+    const date = new Date(y, m - 1, 1);
+    return date;
   }
 
   // month ビューページで月を前後に移動するボタンを押したときの処理
@@ -91,22 +97,28 @@ function MyCalendar(props) {
     for (const button of buttons) {
       if (!button.elem) continue;
       button.elem.onclick = () => {
+        if (!isMonthView()) return;
         const ym = addOrSubMonth(y, m, button.step);
         setYearMonth(ym);
       }
     }
   }
-  setYearMonthByClick();
+
+  // カレンダー -> 円グラフ -> カレンダーで表示したとき、setYearMonthByClick の
+  // クリックイベントが消えないように、レンダーのたび呼び出す
+  useEffect(()=>{
+    setYearMonthByClick();
+  })
 
   return (
     <Calendar
       locale="ja-JP"
       calendarType="US"
+      // activeStartDate={controlStartDate()}
       className="color-primary mb-4"
       onClickDay={handleClickDay}
       onClickMonth={setTotalAmount}
       onDrillUp={clearTotalAmount}
-      // onDrillDown={handleDrillDown}
       tileContent={setTileContent}
       tileClassName={setClassToSaturday}
       showNeighboringMonth={false}

@@ -62,10 +62,9 @@ function AccountPage() {
 
   // FIXME: 無理やりなやり方のため、年月の取得方法については要検討。
   const updateYearMonth = () => {
+    if (!isMonthView()) return;
     const elem = document.getElementsByClassName("react-calendar__navigation__label");
-    if (!elem[0]) return null;
     let text = elem[0].innerText;
-    if (!isYearMonth(text)) return null; // view = "month" が確認できるなら不要？
     text = text.replace("月", "");
     const [year, month] = text.split("年");
     if (Number(year) !== yearMonth.year || Number(month) !== yearMonth.month) {
@@ -73,7 +72,10 @@ function AccountPage() {
     }
   }
 
-  const isYearMonth = text => {
+  const isMonthView = () => {
+    const elem = document.getElementsByClassName("react-calendar__navigation__label");
+    if (!elem[0]) return false;
+    let text = elem[0].innerText;
     const pattern = /^\d{4}年\d{1,2}月$/;
     return pattern.test(text);
   }
@@ -147,6 +149,7 @@ function AccountPage() {
               yearMonth={yearMonth}
               setYearMonth={setYearMonth}
               setShowItemForm={setShowItemForm}
+              isMonthView={isMonthView}
             />
           }
           {
