@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import { Container, Row, Col, Modal } from "react-bootstrap";
 import MyCalendar from "./Calendar";
 import Overview from "./Overview";
-import CategoryChart from "./Chart-category";
-import MemberChart from "./Chart-member";
+import CategoryChart from "./charts/Chart-category";
+import MemberChart from "./charts/Chart-member";
 import ItemModal from "./Item-modal"
 import { axios } from "../../axios";
 import { networkInterfaces } from "os";

@@ -2,7 +2,7 @@ import React from 'react';
 import {
   PieChart, Pie, Cell, Label, Legend, Tooltip, ResponsiveContainer,
 } from 'recharts';
-import { separate } from "../libs";
+import { separate } from "../../libs";
 
 function CategoryChart({ items }) {
   // グループ化されている items を配列に戻す
