@@ -28,7 +28,7 @@ function CategoryChart({ items }) {
           <Label value={displayExpensesTotal(items)} position="center" fill="#6c757d" />
         </Pie>
         <Legend />
-        <Tooltip />
+        <Tooltip offset={20} />
       </PieChart>
     </ResponsiveContainer>
   );
