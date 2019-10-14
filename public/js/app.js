@@ -86645,10 +86645,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 /* harmony import */ var _Calendar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Calendar */ "./resources/js/components/account-page/Calendar.js");
 /* harmony import */ var _Overview__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Overview */ "./resources/js/components/account-page/Overview.js");
-/* harmony import */ var _Item_modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Item-modal */ "./resources/js/components/account-page/Item-modal.js");
-/* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../axios */ "./resources/js/axios.js");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _charts_Chart_category__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./charts/Chart-category */ "./resources/js/components/account-page/charts/Chart-category.js");
+/* harmony import */ var _charts_Chart_member__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./charts/Chart-member */ "./resources/js/components/account-page/charts/Chart-member.js");
+/* harmony import */ var _Item_modal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Item-modal */ "./resources/js/components/account-page/Item-modal.js");
+/* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../axios */ "./resources/js/axios.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_10__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -86678,39 +86680,46 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 function AccountPage() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(1),
       _useState2 = _slicedToArray(_useState, 2),
-      isShown = _useState2[0],
-      setModalState = _useState2[1];
+      viewType = _useState2[0],
+      setViewType = _useState2[1];
 
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState4 = _slicedToArray(_useState3, 2),
-      showItemForm = _useState4[0],
-      setShowItemForm = _useState4[1];
+      isShown = _useState4[0],
+      setModalState = _useState4[1];
 
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
       _useState6 = _slicedToArray(_useState5, 2),
-      items = _useState6[0],
-      setItems = _useState6[1];
+      showItemForm = _useState6[0],
+      setShowItemForm = _useState6[1];
 
   var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
       _useState8 = _slicedToArray(_useState7, 2),
-      sumThisMonth = _useState8[0],
-      setSumThisMonth = _useState8[1];
+      items = _useState8[0],
+      setItems = _useState8[1];
 
   var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
       _useState10 = _slicedToArray(_useState9, 2),
-      subCate = _useState10[0],
-      setSubCate = _useState10[1];
+      sumThisMonth = _useState10[0],
+      setSumThisMonth = _useState10[1];
 
-  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(null),
+      _useState12 = _slicedToArray(_useState11, 2),
+      subCate = _useState12[0],
+      setSubCate = _useState12[1];
+
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
     year: new Date().getFullYear(),
     month: new Date().getMonth() + 1
   }),
-      _useState12 = _slicedToArray(_useState11, 2),
-      yearMonth = _useState12[0],
-      setYearMonth = _useState12[1];
+      _useState14 = _slicedToArray(_useState13, 2),
+      yearMonth = _useState14[0],
+      setYearMonth = _useState14[1];
 
   var getAccountId = function getAccountId() {
     var div = document.getElementById("account-page");
@@ -86725,7 +86734,7 @@ function AccountPage() {
     return title;
   };
 
-  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])({
     id: getAccountId(),
     memo: "",
     amount: 0,
@@ -86734,9 +86743,9 @@ function AccountPage() {
     subCateId: 4 // 「食費」が初期値
 
   }),
-      _useState14 = _slicedToArray(_useState13, 2),
-      newItem = _useState14[0],
-      setNewItem = _useState14[1];
+      _useState16 = _slicedToArray(_useState15, 2),
+      newItem = _useState16[0],
+      setNewItem = _useState16[1];
 
   var resetNewItem = function resetNewItem() {
     setNewItem(_objectSpread({}, newItem, {
@@ -86754,22 +86763,27 @@ function AccountPage() {
     var _ref = _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var id, url, res;
+      var base,
+          id,
+          url,
+          res,
+          _args = arguments;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              base = _args.length > 0 && _args[0] !== undefined ? _args[0] : "";
               id = newItem.id;
-              url = "/api/account/".concat(id, "/items?year=").concat(yearMonth.year, "&month=").concat(yearMonth.month); // TODO: エラーハンドリング
+              url = "/api/account/".concat(id, "/items?year=").concat(yearMonth.year, "&month=").concat(yearMonth.month, "&base=").concat(base); // TODO: エラーハンドリング
 
-              _context.next = 4;
-              return _axios__WEBPACK_IMPORTED_MODULE_7__["axios"].get(url);
+              _context.next = 5;
+              return _axios__WEBPACK_IMPORTED_MODULE_9__["axios"].get(url);
 
-            case 4:
+            case 5:
               res = _context.sent;
               setItems(res.data);
 
-            case 6:
+            case 7:
             case "end":
               return _context.stop();
           }
@@ -86851,7 +86865,7 @@ function AccountPage() {
               case 0:
                 url = "/api/sub_category";
                 _context2.next = 3;
-                return _axios__WEBPACK_IMPORTED_MODULE_7__["axios"].get(url);
+                return _axios__WEBPACK_IMPORTED_MODULE_9__["axios"].get(url);
 
               case 3:
                 res = _context2.sent;
@@ -86886,13 +86900,14 @@ function AccountPage() {
     md: "8",
     className: "mb-4"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Overview__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    items: items,
+    viewType: viewType,
+    setViewType: setViewType,
     sumThisMonth: sumThisMonth
   }))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     className: "justify-content-center"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     md: "8"
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Calendar__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, viewType === 1 && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Calendar__WEBPACK_IMPORTED_MODULE_4__["default"], {
     showModal: function showModal() {
       return setModalState(true);
     },
@@ -86905,7 +86920,9 @@ function AccountPage() {
     yearMonth: yearMonth,
     setYearMonth: setYearMonth,
     setShowItemForm: setShowItemForm
-  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Item_modal__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }), viewType === 2 && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_charts_Chart_category__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    items: items
+  }), viewType === 3 && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_charts_Chart_member__WEBPACK_IMPORTED_MODULE_7__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_Item_modal__WEBPACK_IMPORTED_MODULE_8__["default"], {
     isShown: isShown,
     showItemForm: showItemForm,
     setShowItemForm: setShowItemForm,
@@ -86944,11 +86961,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _libs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../libs */ "./resources/js/components/libs.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -87045,13 +87064,7 @@ function MyCalendar(props) {
       year: y,
       month: m
     });
-  }; // const handleDrillDown = (activeStartDate, view) => {
-  //   if (view !== "month") return;
-  //   const y = activeStartDate.getFullYear();
-  //   const m = activeStartDate.getMonth() + 1;
-  //   setYearMonth({ year: y, month: m });
-  // }
-  // month ビューページで月を前後に移動するボタンを押したときの処理
+  }; // month ビューページで月を前後に移動するボタンを押したときの処理
 
 
   var setYearMonthByClick = function setYearMonthByClick() {
@@ -87456,22 +87469,84 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _libs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../libs */ "./resources/js/components/libs.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/es/index.js");
+
 
 
 
 function Overview(props) {
-  var sumThisMonth = props.sumThisMonth;
+  var sumThisMonth = props.sumThisMonth,
+      viewType = props.viewType,
+      setViewType = props.setViewType;
 
   var sumOrHyphen = function sumOrHyphen() {
     return sumThisMonth !== null ? Object(_libs__WEBPACK_IMPORTED_MODULE_1__["separate"])(sumThisMonth) : "- ";
   };
 
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "\u53CE\u652F\uFF1A ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  var currentViewName = function currentViewName() {
+    switch (viewType) {
+      case 1:
+        return "カレンダー";
+
+      case 2:
+        return "カテゴリー別";
+
+      case 3:
+        return "メンバー別";
+
+      default:
+        return;
+    }
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-between"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "\u53CE\u652F\uFF1A ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     id: "sum-this-month"
-  }, sumOrHyphen()), "\u5186"));
+  }, sumOrHyphen()), "\u5186"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Dropdown"], {
+    className: "mb-2"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Dropdown"].Toggle, {
+    variant: "info",
+    id: "dropdown-basic",
+    size: "sm"
+  }, currentViewName()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Dropdown"].Menu, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Dropdown"].Item, {
+    onClick: function onClick() {
+      return setViewType(1);
+    }
+  }, "\u30AB\u30EC\u30F3\u30C0\u30FC"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Dropdown"].Item, {
+    onClick: function onClick() {
+      return setViewType(2);
+    }
+  }, "\u30AB\u30C6\u30B4\u30EA\u30FC\u5225"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Dropdown"].Item, {
+    onClick: function onClick() {
+      return setViewType(3);
+    }
+  }, "\u30E1\u30F3\u30D0\u30FC\u5225"))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Overview);
+
+/***/ }),
+
+/***/ "./resources/js/components/account-page/charts/Chart-category.js":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/account-page/charts/Chart-category.js ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/yudai/projects/kakeibo/resources/js/components/account-page/charts/Chart-category.js'");
+
+/***/ }),
+
+/***/ "./resources/js/components/account-page/charts/Chart-member.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/account-page/charts/Chart-member.js ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/yudai/projects/kakeibo/resources/js/components/account-page/charts/Chart-member.js'");
 
 /***/ }),
 
