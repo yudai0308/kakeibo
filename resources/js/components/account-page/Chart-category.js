@@ -1,7 +1,8 @@
 import React from 'react';
 import {
-  PieChart, Pie, Cell, Legend, Tooltip, ResponsiveContainer,
+  PieChart, Pie, Cell, Label, Legend, Tooltip, ResponsiveContainer,
 } from 'recharts';
+import { separate } from "../libs";
 
 function CategoryChart({ items }) {
   // グループ化されている items を配列に戻す
@@ -54,8 +55,22 @@ function CategoryChart({ items }) {
     }
     return aggregationData;
   }
+  const sumUpExpenses = items => {
+    const itemsArr = alignItems(items);
+    let sum = 0;
+    for (let item of itemsArr) {
+      if (item.isIncome) continue;
+      sum += item.amount;
+    }
+    return sum;
+  }
+  const displayExpensesTotal = items => {
+    const sum = sumUpExpenses(items);
+    const separated = separate(sum);
+    return `¥ ${separated}`;
+  }
 
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#9b59b6"];
   const data = aggregateDataBy("sub_category");
 
   return (
@@ -64,7 +79,9 @@ function CategoryChart({ items }) {
         <Pie
           dataKey="value"
           data={data}
+          innerRadius={90}
           outerRadius={120}
+          paddingAngle={3}
           fill="#8884d8"
           label
         >
@@ -73,7 +90,9 @@ function CategoryChart({ items }) {
               return <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             })
           }
+          <Label value={displayExpensesTotal(items)} position="center" fill="#6c757d" />
         </Pie>
+        <Legend />
         <Tooltip />
       </PieChart>
     </ResponsiveContainer>
