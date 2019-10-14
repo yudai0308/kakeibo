@@ -52,9 +52,9 @@ function AccountPage() {
     });
   }
 
-  const fetchItems = async () => {
+  const fetchItems = async (base = "") => {
     const id = newItem.id;
-    const url = `/api/account/${id}/items?year=${yearMonth.year}&month=${yearMonth.month}`;
+    const url = `/api/account/${id}/items?year=${yearMonth.year}&month=${yearMonth.month}&base=${base}`;
     // TODO: エラーハンドリング
     const res = await axios.get(url);
     setItems(res.data);
@@ -151,7 +151,7 @@ function AccountPage() {
           }
           {
             viewType === 2 &&
-            <CategoryChart />
+            <CategoryChart items={items} />
           }
           {
             viewType === 3 &&
