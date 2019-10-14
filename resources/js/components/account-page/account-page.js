@@ -3,11 +3,14 @@ import ReactDOM from "react-dom";
 import { Container, Row, Col, Modal } from "react-bootstrap";
 import MyCalendar from "./Calendar";
 import Overview from "./Overview";
+import CategoryChart from "./charts/Chart-category";
+import MemberChart from "./charts/Chart-member";
 import ItemModal from "./Item-modal"
 import { axios } from "../../axios";
 import { networkInterfaces } from "os";
 
 function AccountPage() {
+  const [viewType, setViewType] = useState(1);
   const [isShown, setModalState] = useState(false);
   const [showItemForm, setShowItemForm] = useState(false);
   const [items, setItems] = useState(null);
@@ -49,9 +52,9 @@ function AccountPage() {
     });
   }
 
-  const fetchItems = async () => {
+  const fetchItems = async (base = "") => {
     const id = newItem.id;
-    const url = `/api/account/${id}/items?year=${yearMonth.year}&month=${yearMonth.month}`;
+    const url = `/api/account/${id}/items?year=${yearMonth.year}&month=${yearMonth.month}&base=${base}`;
     // TODO: エラーハンドリング
     const res = await axios.get(url);
     setItems(res.data);
@@ -123,25 +126,37 @@ function AccountPage() {
       <Row className="justify-content-center">
         <Col md="8" className="mb-4">
           <Overview
-            items={items}
+            viewType={viewType}
+            setViewType={setViewType}
             sumThisMonth={sumThisMonth}
           />
         </Col>
       </Row>
       <Row className="justify-content-center">
         <Col md="8">
-          <MyCalendar
-            showModal={() => setModalState(true)}
-            fetchItems={fetchItems}
-            updateYearMonth={updateYearMonth}
-            newItem={newItem}
-            setNewItem={setNewItem}
-            items={items}
-            setItems={setItems}
-            yearMonth={yearMonth}
-            setYearMonth={setYearMonth}
-            setShowItemForm={setShowItemForm}
-          />
+          {
+            viewType === 1 &&
+            <MyCalendar
+              showModal={() => setModalState(true)}
+              fetchItems={fetchItems}
+              updateYearMonth={updateYearMonth}
+              newItem={newItem}
+              setNewItem={setNewItem}
+              items={items}
+              setItems={setItems}
+              yearMonth={yearMonth}
+              setYearMonth={setYearMonth}
+              setShowItemForm={setShowItemForm}
+            />
+          }
+          {
+            viewType === 2 &&
+            <CategoryChart items={items} />
+          }
+          {
+            viewType === 3 &&
+            <MemberChart />
+          }
           <ItemModal
             isShown={isShown}
             showItemForm={showItemForm}
