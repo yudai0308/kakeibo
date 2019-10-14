@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Container, Row, Col, Modal } from "react-bootstrap";
 import MyCalendar from "./Calendar";
 import Overview from "./Overview";
+import FixedCostForm from "./Fixed-cost-form"
 import CategoryChart from "./charts/Chart-category";
 import MemberChart from "./charts/Chart-member";
 import ItemModal from "./Item-modal"
@@ -154,10 +155,14 @@ function AccountPage() {
           }
           {
             viewType === 2 &&
-            <CategoryChart items={items} />
+            <FixedCostForm />
           }
           {
             viewType === 3 &&
+            <CategoryChart items={items} />
+          }
+          {
+            viewType === 4 &&
             <MemberChart />
           }
           <ItemModal

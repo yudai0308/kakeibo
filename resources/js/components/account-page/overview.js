@@ -16,8 +16,10 @@ function Overview(props) {
       case 1:
         return "カレンダー"
       case 2:
-        return "カテゴリー別";
+        return "固定費入力";
       case 3:
+        return "カテゴリー別";
+      case 4:
         return "メンバー別";
       default:
         return;
@@ -34,8 +36,9 @@ function Overview(props) {
 
         <Dropdown.Menu>
           <Dropdown.Item onClick={() => setViewType(1)}>カレンダー</Dropdown.Item>
-          <Dropdown.Item onClick={() => setViewType(2)}>カテゴリー別</Dropdown.Item>
-          <Dropdown.Item onClick={() => setViewType(3)}>メンバー別</Dropdown.Item>
+          <Dropdown.Item onClick={() => setViewType(2)}>固定費入力</Dropdown.Item>
+          <Dropdown.Item onClick={() => setViewType(3)}>カテゴリー別</Dropdown.Item>
+          <Dropdown.Item onClick={() => setViewType(4)}>メンバー別</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </div>
