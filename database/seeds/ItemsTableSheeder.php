@@ -85,6 +85,52 @@ class ItemsTableSheeder extends Seeder
                     "date" => "2019/10/25",
                     "isIncome" => 1,
                 ],
+                // ↓↓↓ 固定費 ↓↓↓
+                [
+                    "account_id" => 1,
+                    "user_id" => 1,
+                    "sub_category_id" => 14,
+                    "memo" => null,
+                    "amount" => 70000,
+                    "date" => "2019/10/1",
+                    "isIncome" => 0,
+                ],
+                [
+                    "account_id" => 1,
+                    "user_id" => 1,
+                    "sub_category_id" => 15,
+                    "memo" => null,
+                    "amount" => 3000,
+                    "date" => "2019/10/1",
+                    "isIncome" => 0,
+                ],
+                [
+                    "account_id" => 1,
+                    "user_id" => 1,
+                    "sub_category_id" => 16,
+                    "memo" => null,
+                    "amount" => 2500,
+                    "date" => "2019/10/1",
+                    "isIncome" => 0,
+                ],
+                [
+                    "account_id" => 1,
+                    "user_id" => 1,
+                    "sub_category_id" => 17,
+                    "memo" => null,
+                    "amount" => 2000,
+                    "date" => "2019/10/1",
+                    "isIncome" => 0,
+                ],
+                [
+                    "account_id" => 1,
+                    "user_id" => 1,
+                    "sub_category_id" => 18,
+                    "memo" => null,
+                    "amount" => 5000,
+                    "date" => "2019/10/1",
+                    "isIncome" => 0,
+                ],
             ]
         );
     }
