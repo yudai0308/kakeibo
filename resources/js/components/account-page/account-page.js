@@ -132,6 +132,7 @@ function AccountPage() {
             viewType={viewType}
             setViewType={setViewType}
             sumThisMonth={sumThisMonth}
+            yearMonth={yearMonth}
           />
         </Col>
       </Row>
