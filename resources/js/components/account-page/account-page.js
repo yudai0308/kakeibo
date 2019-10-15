@@ -3,10 +3,11 @@ import ReactDOM from "react-dom";
 import { Container, Row, Col, Modal } from "react-bootstrap";
 import MyCalendar from "./Calendar";
 import Overview from "./Overview";
-import FixedCostForm from "./Fixed-cost-form"
+import FixedCostForm from "./fixed-cost/Fixed-cost-form"
+import FixedCostModal from "./fixed-cost/Fixed-cost-modal"
 import CategoryChart from "./charts/Chart-category";
 import MemberChart from "./charts/Chart-member";
-import ItemModal from "./Item-modal"
+import ItemModal from "./items/Item-modal"
 import { axios } from "../../axios";
 import { networkInterfaces } from "os";
 
@@ -14,6 +15,7 @@ function AccountPage() {
   const [viewType, setViewType] = useState(1);
   const [isShown, setModalState] = useState(false);
   const [showItemForm, setShowItemForm] = useState(false);
+  const [showFixedCost, setShowFixedCost] = useState(false);
   const [items, setItems] = useState(null);
   const [sumThisMonth, setSumThisMonth] = useState(null);
   const [subCate, setSubCate] = useState(null);
@@ -133,6 +135,12 @@ function AccountPage() {
             setViewType={setViewType}
             sumThisMonth={sumThisMonth}
             yearMonth={yearMonth}
+            showFixedCost={showFixedCost}
+            setShowFixedCost={setShowFixedCost}
+          />
+          <FixedCostModal
+            showFixedCost={showFixedCost}
+            setShowFixedCost={setShowFixedCost}
           />
         </Col>
       </Row>

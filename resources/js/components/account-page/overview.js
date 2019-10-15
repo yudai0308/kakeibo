@@ -1,11 +1,13 @@
 import React from "react";
 import { separate } from "../libs";
 import { Dropdown } from "react-bootstrap";
+import MenuIcons from "./Menu-icons";
 
 function Overview(props) {
   const {
     sumThisMonth, viewType,
     setViewType, yearMonth,
+    showFixedCost, setShowFixedCost,
   } = props;
 
   const sumOrHyphen = () => {
@@ -40,7 +42,13 @@ function Overview(props) {
       <h6>{currentYearMonth()}</h6>
       <div className="d-flex justify-content-between">
         <h4>収支： <span id="sum-this-month">{sumOrHyphen()}</span>円</h4>
-        <Dropdown className="mb-2">
+        <MenuIcons
+          showFixedCost={showFixedCost}
+          setShowFixedCost={setShowFixedCost}
+        >
+
+        </MenuIcons>
+        {/* <Dropdown className="mb-2">
           <Dropdown.Toggle variant="info" id="dropdown-basic" size="sm">
             {currentViewName()}
           </Dropdown.Toggle>
@@ -51,7 +59,7 @@ function Overview(props) {
             <Dropdown.Item onClick={() => setViewType(3)}>カテゴリー別</Dropdown.Item>
             <Dropdown.Item onClick={() => setViewType(4)}>メンバー別</Dropdown.Item>
           </Dropdown.Menu>
-        </Dropdown>
+        </Dropdown> */}
       </div>
     </>
   )
