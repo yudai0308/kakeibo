@@ -29,7 +29,7 @@ function MyCalendar(props) {
   }
 
   const excludeFixedCost = items => {
-    return items.filter(item => item.sub_category_id <= 13)
+    return items.filter(item => item.category_id !== 12);
   }
 
   const setTileContent = ({ date, view }) => {
