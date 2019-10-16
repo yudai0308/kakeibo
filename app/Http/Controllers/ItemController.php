@@ -51,7 +51,7 @@ class ItemController extends Controller
         }
     }
 
-    public function getItemsByMonth($id)
+    public function getItems($id)
     {
         $account = Account::find($id);
         // TODO: account の作成者が自分、もしくは公開されている account であることを確認。
@@ -79,8 +79,9 @@ class ItemController extends Controller
                 $item["sub_category"] = SubCategory::find($id)->name;
                 return $item;
             });
-            $itemGrp = $fmtItems->groupBy($base);
-            return $itemGrp;
+            // $itemGrp = $fmtItems->groupBy($base);
+            // return $itemGrp;
+            return $fmtItems;
         } catch (Exception $e) {
             return json_encode(["error" => $e->getMessage()]);
         }

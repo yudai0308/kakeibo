@@ -27,7 +27,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'api'], function () {
     Route::put('/account/{id}', 'AccountController@update');
     Route::delete('/account/{id}', 'AccountController@destroy');
     // Route::get('/account/{id}/{year}/{month}', 'ItemController@getItemsByMonth');
-    Route::get('/account/{id}/items', 'ItemController@getItemsByMonth');
+    Route::get('/account/{id}/items', 'ItemController@getItems');
     Route::post('/item', 'ItemController@store')->name('item.store');
     Route::delete('/item', 'ItemController@delete')->name('item.delete');
     Route::get('/sub_category', 'SubCategoryController@getSubCategories');

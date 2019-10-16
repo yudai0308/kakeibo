@@ -86,15 +86,8 @@ function AccountPage() {
   const getSumThisMonth = () => {
     if (items !== null) {
       let sum = 0;
-      for (const date in items) {
-        for (const index in items[date]) {
-          const item = items[date][index];
-          if (item.isIncome) {
-            sum += item.amount;
-          } else {
-            sum -= item.amount;
-          }
-        }
+      for (const item of items) {
+        sum += item.isIncome ? item.amount : item.amount * (-1);
       }
       setSumThisMonth(sum);
     } else {
@@ -141,6 +134,7 @@ function AccountPage() {
           <FixedCostModal
             showFixedCost={showFixedCost}
             setShowFixedCost={setShowFixedCost}
+            yearMonth={yearMonth}
           />
         </Col>
       </Row>
