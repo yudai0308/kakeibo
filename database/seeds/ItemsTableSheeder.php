@@ -16,7 +16,7 @@ class ItemsTableSheeder extends Seeder
                 [
                     "account_id" => 1,
                     "user_id" => 1,
-                    "sub_category_id" => 3,
+                    "sub_category_id" => 4,
                     "memo" => "○○スーパー",
                     "amount" => 1000,
                     "date" => "2019/10/3",
@@ -25,7 +25,7 @@ class ItemsTableSheeder extends Seeder
                 [
                     "account_id" => 1,
                     "user_id" => 1,
-                    "sub_category_id" => 3,
+                    "sub_category_id" => 4,
                     "memo" => "ファミマ",
                     "amount" => 1500,
                     "date" => "2019/10/3",
