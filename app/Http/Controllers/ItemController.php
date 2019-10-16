@@ -10,6 +10,7 @@ use App\Item;
 use App\User;
 use App\Account;
 use App\SubCategory;
+use App\Category;
 use Carbon\Carbon;
 
 class ItemController extends Controller
@@ -76,7 +77,11 @@ class ItemController extends Controller
                 ->get();
             $fmtItems = $items->map(function ($item, $key) {
                 $id = $item->sub_category_id;
-                $item["sub_category"] = SubCategory::find($id)->name;
+                $subCategory = SubCategory::find($id);
+                $category = Category::find($subCategory->category->id);
+                $item["sub_category"] = $subCategory->name;
+                $item["category_id"] = $category->id;
+                $item["category"] = $category->name;
                 return $item;
             });
             // $itemGrp = $fmtItems->groupBy($base);
