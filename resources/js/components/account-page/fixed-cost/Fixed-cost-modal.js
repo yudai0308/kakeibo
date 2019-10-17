@@ -6,12 +6,13 @@ function FixedCostModal(props) {
   const {
     showFixedCost,
     setShowFixedCost,
+    yearMonth,
+    items,
   } = props;
 
   return (
     <>
       <Modal
-        // size="lg"
         show={showFixedCost}
         onHide={() => setShowFixedCost(false)}
         centered
@@ -22,7 +23,10 @@ function FixedCostModal(props) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <FixedCostForm/>
+          <FixedCostForm
+            items={items}
+            yearMonth={yearMonth}
+          />
         </Modal.Body>
       </Modal>
     </>

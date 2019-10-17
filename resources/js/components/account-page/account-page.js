@@ -135,6 +135,7 @@ function AccountPage() {
             showFixedCost={showFixedCost}
             setShowFixedCost={setShowFixedCost}
             yearMonth={yearMonth}
+            items={items}
           />
         </Col>
       </Row>

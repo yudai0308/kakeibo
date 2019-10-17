@@ -1,18 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
+import { axios } from "../../../axios";
 import { Form, Row, Col, Button } from "react-bootstrap";
 
-function FixedCostForm() {
-  const forms = [
-    { id: "rent-form", title: "居住費" },
-    { id: "electricity-bill-form", title: "電気代" },
-    { id: "water-bill-form", title: "水道代" },
-    { id: "gas-bill-form", title: "ガス代" },
-    { id: "cell-phone-bill", title: "通信費" },
+function FixedCostForm({ items, yearMonth }) {
+  const handleChange = e => {
+    const id = e.target.id;
+    const val = e.target.value;
+    setFixedCosts({
+      ...fixedCosts,
+      [id]: Number(val),
+    })
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault();
+  }
+
+  const baseForms = [
+    { id: "rent", subCategoryId: 14, title: "居住費", defaultValue: null },
+    { id: "electricityBill", subCategoryId: 15, title: "電気代", defaultValue: null },
+    { id: "waterBill", subCategoryId: 16, title: "水道代", defaultValue: null },
+    { id: "gasBill", subCategoryId: 17, title: "ガス代", defaultValue: null },
+    { id: "cellphoneBill", subCategoryId: 18, title: "通信費", defaultValue: null },
   ]
+
+  const findFixedCosts = items => {
+    return items.filter(item => item.category_id === 12);
+  }
+
+  const makeFormHash = (items, baseForms) => {
+    const fixedCosts = findFixedCosts(items);
+    let formHash = baseForms;
+    for (const item of fixedCosts) {
+      const id = item.sub_category_id;
+      const i = formHash.findIndex(form => form.subCategoryId === id);
+      if (i >= 0) formHash[i].defaultValue = item.amount;
+    }
+    return formHash;
+  }
+
+  const findDefaultCost = id => {
+    const formHash = makeFormHash(items, baseForms);
+    for (const hash of formHash) {
+      if (hash.id === id) return hash.defaultValue;
+    }
+    return null;
+  }
+
+  const [fixedCosts, setFixedCosts] = useState({
+    rent: findDefaultCost("rent"),
+    electricityBill: findDefaultCost("electricityBill"),
+    waterBill: findDefaultCost("waterBill"),
+    gasBill: findDefaultCost("gasBill"),
+    cellphoneBill: findDefaultCost("cellphoneBill"),
+  });
+
+  console.log(fixedCosts)
+
   return (
-    <Form>
+    <Form onSubmit={e => handleSubmit(e)}>
       {
-        forms.map((f, i) => {
+        makeFormHash(items, baseForms).map((f, i) => {
           return (
             <Form.Group key={i} as={Row} controlId={f.id}>
               <Form.Label className="text-right" xs="4" column>{f.title}</Form.Label>
@@ -21,8 +69,9 @@ function FixedCostForm() {
                   <Col xs="8">
                     <Form.Control
                       type="number"
+                      defaultValue={f.defaultValue}
                       min={0}
-                      step={1000}
+                      onChange={e => handleChange(e)}
                     />
                   </Col>
                   <Col className="text-left" xs="4">円</Col>
