@@ -104,7 +104,6 @@ function ItemForm(props) {
           placeholder="半角数字のみ"
           className="mb-2"
           min="0"
-          step="100"
           required
           onChange={e => handleNewItemChange("amount", e.target.value)}
         />
