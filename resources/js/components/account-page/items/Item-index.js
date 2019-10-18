@@ -2,6 +2,7 @@ import React from "react";
 import moment from "moment";
 import { axios } from "../../../axios";
 import { separate } from "../../libs";
+import { groupBy } from "../../item-libs";
 import {
   ButtonToolbar,
   Button,
@@ -27,9 +28,10 @@ function ItemIndex(props) {
 
   const getTrs = () => {
     const curDate = moment(newItem.date).format("YYYY-MM-DD");
-    const dates = Object.keys(items);
+    const groupedItems = groupBy(items, "date");
+    const dates = Object.keys(groupedItems);
     if (!dates.includes(curDate)) return null;
-    const trs = items[curDate].map((item, i) => {
+    const trs = groupedItems[curDate].map((item, i) => {
       return (
         <tr key={item.id}>
           <td>{item.sub_category}</td>

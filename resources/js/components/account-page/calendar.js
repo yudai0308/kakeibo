@@ -28,14 +28,9 @@ function MyCalendar(props) {
     return view === 'month' && date.getDay() === 6 ? sat : null;
   }
 
-  const excludeFixedCost = items => {
-    return items.filter(item => item.category_id !== 12);
-  }
-
   const setTileContent = ({ date, view }) => {
     if (items === null || view !== "month") return;
-    const excludedItems = excludeFixedCost(items);
-    const dateItems = groupBy(excludedItems, "date")
+    const dateItems = groupBy(items, "date")
     const curDate = moment(date).format("YYYY-MM-DD");
     const dates = Object.keys(dateItems);
     if (!dates.includes(curDate)) return;

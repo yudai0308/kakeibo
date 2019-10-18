@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Container, Row, Col, Modal } from "react-bootstrap";
 import MyCalendar from "./Calendar";
@@ -95,6 +95,11 @@ function AccountPage() {
     }
   }
 
+  const excludeFixedCost = items => {
+    return items.filter(item => item.category_id !== 12);
+  }
+  const excludedItems = items ? excludeFixedCost(items) : null;
+
   useEffect(() => {
     fetchItems();
   }, [setItems, yearMonth])
@@ -150,7 +155,7 @@ function AccountPage() {
               updateYearMonth={updateYearMonth}
               newItem={newItem}
               setNewItem={setNewItem}
-              items={items}
+              items={excludedItems}
               setItems={setItems}
               yearMonth={yearMonth}
               setYearMonth={setYearMonth}
@@ -175,7 +180,7 @@ function AccountPage() {
             showItemForm={showItemForm}
             setShowItemForm={setShowItemForm}
             closeModal={() => setModalState(false)}
-            items={items}
+            items={excludedItems}
             newItem={newItem}
             setNewItem={setNewItem}
             resetNewItem={resetNewItem}
