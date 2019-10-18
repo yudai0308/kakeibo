@@ -29,6 +29,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'api'], function () {
     // Route::get('/account/{id}/{year}/{month}', 'ItemController@getItemsByMonth');
     Route::get('/account/{id}/items', 'ItemController@getItems');
     Route::post('/item', 'ItemController@store')->name('item.store');
+    Route::post('/item_fixed_cost', 'ItemController@storeFixedCost');
     Route::delete('/item', 'ItemController@delete')->name('item.delete');
     Route::get('/sub_category', 'SubCategoryController@getSubCategories');
 });

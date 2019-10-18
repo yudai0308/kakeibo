@@ -7,6 +7,7 @@ function FixedCostModal(props) {
     showFixedCost,
     setShowFixedCost,
     yearMonth,
+    newItem,
     items,
   } = props;
 
@@ -25,6 +26,7 @@ function FixedCostModal(props) {
         <Modal.Body>
           <FixedCostForm
             items={items}
+            newItem={newItem}
             yearMonth={yearMonth}
           />
         </Modal.Body>

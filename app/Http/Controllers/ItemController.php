@@ -18,6 +18,7 @@ class ItemController extends Controller
     public function store(Request $req)
     {
         // TODO: memo の文字数制限 30 文字
+        // TODO: 非公開の場合、登録できない
         $userId = Auth::check() ? Auth::user()->id : null;
         try {
             Item::create([
@@ -33,6 +34,40 @@ class ItemController extends Controller
             return json_encode(["error" => $e->getMessage()]);
         }
         return;
+    }
+
+    public function storeFixedCost(Request $req)
+    {
+        try {
+            $userId = Auth::check() ? Auth::user()->id : null;
+            $accountId = $req->id;
+            $account = Account::find($accountId);
+            if (!$account->isPublic && $account->user_id != $userId) {
+                abort(403);
+            }
+            $date = $req->date;
+            $costs = $req->fixedCosts;
+            // return json_encode(["test"=>$req->fixedCosts]);
+            foreach ($costs as $subCategoryId => $amount) {
+                if ($amount == null) continue;
+                Item::updateOrCreate(
+                    [
+                        "account_id" => $accountId,
+                        "sub_category_id" => $subCategoryId,
+                        "date" => $date,
+                    ],
+                    [
+                        "user_id" => $userId,
+                        "memo" => null,
+                        "amount" => $amount,
+                        "isIncome" => 0,
+                    ]
+                );
+            }
+            return json_encode(["success" => "登録完了"]);
+        } catch (Exception $e) {
+            return json_encode(["error" => $e->getMessage()]);
+        }
     }
 
     public function delete(Request $req)
