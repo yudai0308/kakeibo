@@ -5,6 +5,7 @@ import AccountForm from "./Account-form-create-body";
 
 function AccountFormModal() {
   const showCreateModal = (setModalContent, setShowModal) => {
+    console.log("test")
     setModalContent({
       title: "新しい家計簿を作る",
       body: <AccountForm />,
