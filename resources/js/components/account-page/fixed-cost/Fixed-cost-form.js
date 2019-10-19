@@ -17,7 +17,7 @@ function FixedCostForm(props) {
     })
   }
 
-  // const handleClick = async hash => {
+  const sleep = ms => new Promise(res => setTimeout(res, ms));
   const handleSubmit = async (e, hash) => {
     e.preventDefault();
     const url = "/api/item_fixed_cost";
@@ -28,8 +28,11 @@ function FixedCostForm(props) {
       date: `${yearMonth.year}-${yearMonth.month}-1`,
       cost: fixedCosts[hash.id],
     }
-    const res = await axios.post(url, data);
+    setSuccess({ ...success, [hash.id]: true });
+    await axios.post(url, data);
     fetchItems();
+    await sleep(1500);
+    setSuccess({ ...success, [hash.id]: false });
   }
 
   const baseForms = [
@@ -90,14 +93,27 @@ function FixedCostForm(props) {
                     onChange={e => handleChange(e, hash)}
                   />
                 </Col>
-                <Col className="text-left" xs="2">
-                  <Button
-                    type="submit"
-                    variant="outline-primary"
-                    className="rounded-pill"
-                  >
-                    OK
-                    </Button>
+                <Col className="text-left p-1" xs="2">
+                  {
+                    !success[hash.id]
+                    ?
+                      <Button
+                        size="sm"
+                        type="submit"
+                        variant="outline-primary"
+                        className="rounded-pill"
+                      >
+                        登録
+                      </Button>
+                    :
+                      <Button
+                        size="sm"
+                        variant="success"
+                        className="rounded-pill"
+                      >
+                        完了
+                      </Button>
+                  }
                 </Col>
               </Row>
             </Col>
