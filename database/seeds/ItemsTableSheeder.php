@@ -14,6 +14,7 @@ class ItemsTableSheeder extends Seeder
         DB::table("items")->insert(
             [
                 [
+                    "id" => 1,
                     "account_id" => 1,
                     "user_id" => 1,
                     "sub_category_id" => 4,
@@ -23,6 +24,7 @@ class ItemsTableSheeder extends Seeder
                     "isIncome" => 0,
                 ],
                 [
+                    "id" => 2,
                     "account_id" => 1,
                     "user_id" => 1,
                     "sub_category_id" => 4,
@@ -32,6 +34,7 @@ class ItemsTableSheeder extends Seeder
                     "isIncome" => 0,
                 ],
                 [
+                    "id" => 3,
                     "account_id" => 1,
                     "user_id" => 1,
                     "sub_category_id" => 5,
@@ -41,6 +44,7 @@ class ItemsTableSheeder extends Seeder
                     "isIncome" => 0,
                 ],
                 [
+                    "id" => 4,
                     "account_id" => 1,
                     "user_id" => 1,
                     "sub_category_id" => 11,
@@ -50,6 +54,7 @@ class ItemsTableSheeder extends Seeder
                     "isIncome" => 0,
                 ],
                 [
+                    "id" => 5,
                     "account_id" => 1,
                     "user_id" => 1,
                     "sub_category_id" => 6,
@@ -59,6 +64,7 @@ class ItemsTableSheeder extends Seeder
                     "isIncome" => 0,
                 ],
                 [
+                    "id" => 6,
                     "account_id" => 1,
                     "user_id" => 1,
                     "sub_category_id" => 8,
@@ -68,6 +74,7 @@ class ItemsTableSheeder extends Seeder
                     "isIncome" => 0,
                 ],
                 [
+                    "id" => 7,
                     "account_id" => 1,
                     "user_id" => 1,
                     "sub_category_id" => 11,
@@ -77,6 +84,7 @@ class ItemsTableSheeder extends Seeder
                     "isIncome" => 0,
                 ],
                 [
+                    "id" => 8,
                     "account_id" => 1,
                     "user_id" => 1,
                     "sub_category_id" => 1,
@@ -87,6 +95,7 @@ class ItemsTableSheeder extends Seeder
                 ],
                 // ↓↓↓ 固定費 ↓↓↓
                 [
+                    "id" => 9,
                     "account_id" => 1,
                     "user_id" => 1,
                     "sub_category_id" => 14,
@@ -96,6 +105,7 @@ class ItemsTableSheeder extends Seeder
                     "isIncome" => 0,
                 ],
                 [
+                    "id" => 10,
                     "account_id" => 1,
                     "user_id" => 1,
                     "sub_category_id" => 15,
@@ -105,6 +115,7 @@ class ItemsTableSheeder extends Seeder
                     "isIncome" => 0,
                 ],
                 [
+                    "id" => 11,
                     "account_id" => 1,
                     "user_id" => 1,
                     "sub_category_id" => 16,
@@ -114,6 +125,7 @@ class ItemsTableSheeder extends Seeder
                     "isIncome" => 0,
                 ],
                 [
+                    "id" => 12,
                     "account_id" => 1,
                     "user_id" => 1,
                     "sub_category_id" => 17,
@@ -123,6 +135,7 @@ class ItemsTableSheeder extends Seeder
                     "isIncome" => 0,
                 ],
                 [
+                    "id" => 13,
                     "account_id" => 1,
                     "user_id" => 1,
                     "sub_category_id" => 18,
