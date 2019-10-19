@@ -22,6 +22,7 @@ function Mypage() {
     fetchAccounts();
   }, [setAccounts]);
   console.log(accounts)
+  console.log(process.env.MIX_APP_URL)
   return (
     <Container>
       <Row className="justify-content-center">
