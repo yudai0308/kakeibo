@@ -2,17 +2,12 @@ import React, { useEffect } from "react";
 import Calendar from "react-calendar";
 import moment from "moment";
 import { separate } from "../libs";
+import { groupBy } from "../item-libs";
 
 function MyCalendar(props) {
   const {
-    items,
-    setItems,
-    setNewItem,
-    showModal,
-    yearMonth,
-    setYearMonth,
-    setShowItemForm,
-    isMonthView,
+    items,　setItems,　setNewItem,　showModal,　yearMonth,
+    setYearMonth,　setShowItemForm,　isMonthView,
   } = props;
 
   const handleClickDay = e => {
@@ -29,17 +24,15 @@ function MyCalendar(props) {
 
   const setTileContent = ({ date, view }) => {
     if (items === null || view !== "month") return;
+    const dateItems = groupBy(items, "date")
     const curDate = moment(date).format("YYYY-MM-DD");
-    const dates = Object.keys(items);
+    const dates = Object.keys(dateItems);
     if (!dates.includes(curDate)) return;
     let sum = 0;
-    for (let i = 0; i < items[curDate].length; ++i) {
-      const itemGrp = items[curDate];
-      if (itemGrp[i].isIncome) {
-        sum += itemGrp[i].amount;
-      } else {
-        sum -= itemGrp[i].amount
-      }
+    for (let i = 0; i < dateItems[curDate].length; ++i) {
+      const itemGrp = dateItems[curDate];
+      const amount = itemGrp[i].amount;
+      sum += itemGrp[i].isIncome ? amount : amount * (-1);
     }
     let style = { fontSize: "1.2vw" }
     style.color = sum >= 0 ? "#212529" : "#b33e5c";
@@ -106,7 +99,7 @@ function MyCalendar(props) {
 
   // カレンダー -> 円グラフ -> カレンダーで表示したとき、setYearMonthByClick の
   // クリックイベントが消えないように、レンダーのたび呼び出す
-  useEffect(()=>{
+  useEffect(() => {
     setYearMonthByClick();
   })
 
@@ -114,7 +107,6 @@ function MyCalendar(props) {
     <Calendar
       locale="ja-JP"
       calendarType="US"
-      // activeStartDate={controlStartDate()}
       className="color-primary mb-4"
       onClickDay={handleClickDay}
       onClickMonth={setTotalAmount}

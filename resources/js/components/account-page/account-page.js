@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Container, Row, Col, Modal } from "react-bootstrap";
 import MyCalendar from "./Calendar";
 import Overview from "./Overview";
-import FixedCostForm from "./Fixed-cost-form"
+import FixedCostModal from "./fixed-cost/Fixed-cost-modal"
 import CategoryChart from "./charts/Chart-category";
 import MemberChart from "./charts/Chart-member";
-import ItemModal from "./Item-modal"
+import ItemModal from "./items/Item-modal"
 import { axios } from "../../axios";
 import { networkInterfaces } from "os";
 
 function AccountPage() {
-  const [viewType, setViewType] = useState(1);
   const [isShown, setModalState] = useState(false);
   const [showItemForm, setShowItemForm] = useState(false);
+  const [showFixedCost, setShowFixedCost] = useState(false);
   const [items, setItems] = useState(null);
   const [sumThisMonth, setSumThisMonth] = useState(null);
   const [subCate, setSubCate] = useState(null);
@@ -84,21 +84,19 @@ function AccountPage() {
   const getSumThisMonth = () => {
     if (items !== null) {
       let sum = 0;
-      for (const date in items) {
-        for (const index in items[date]) {
-          const item = items[date][index];
-          if (item.isIncome) {
-            sum += item.amount;
-          } else {
-            sum -= item.amount;
-          }
-        }
+      for (const item of items) {
+        sum += item.isIncome ? item.amount : item.amount * (-1);
       }
       setSumThisMonth(sum);
     } else {
       setSumThisMonth(null);
     }
   }
+
+  const excludeFixedCost = items => {
+    return items.filter(item => item.category_id !== 12);
+  }
+  const excludedItems = items ? excludeFixedCost(items) : null;
 
   useEffect(() => {
     fetchItems();
@@ -129,49 +127,43 @@ function AccountPage() {
       <Row className="justify-content-center">
         <Col md="8" className="mb-4">
           <Overview
-            viewType={viewType}
-            setViewType={setViewType}
             sumThisMonth={sumThisMonth}
             yearMonth={yearMonth}
+            showFixedCost={showFixedCost}
+            setShowFixedCost={setShowFixedCost}
           />
+          <FixedCostModal
+            showFixedCost={showFixedCost}
+            setShowFixedCost={setShowFixedCost}
+            yearMonth={yearMonth}
+            newItem={newItem}
+            items={items}
+            fetchItems={fetchItems}
+          />
+          {/* <CategoryChart items={items} /> */}
         </Col>
       </Row>
       <Row className="justify-content-center">
         <Col md="8">
-          {
-            viewType === 1 &&
-            <MyCalendar
-              showModal={() => setModalState(true)}
-              fetchItems={fetchItems}
-              updateYearMonth={updateYearMonth}
-              newItem={newItem}
-              setNewItem={setNewItem}
-              items={items}
-              setItems={setItems}
-              yearMonth={yearMonth}
-              setYearMonth={setYearMonth}
-              setShowItemForm={setShowItemForm}
-              isMonthView={isMonthView}
-            />
-          }
-          {
-            viewType === 2 &&
-            <FixedCostForm />
-          }
-          {
-            viewType === 3 &&
-            <CategoryChart items={items} />
-          }
-          {
-            viewType === 4 &&
-            <MemberChart />
-          }
+          <MyCalendar
+            showModal={() => setModalState(true)}
+            fetchItems={fetchItems}
+            updateYearMonth={updateYearMonth}
+            newItem={newItem}
+            setNewItem={setNewItem}
+            items={excludedItems}
+            setItems={setItems}
+            yearMonth={yearMonth}
+            setYearMonth={setYearMonth}
+            setShowItemForm={setShowItemForm}
+            isMonthView={isMonthView}
+          />
           <ItemModal
             isShown={isShown}
             showItemForm={showItemForm}
             setShowItemForm={setShowItemForm}
             closeModal={() => setModalState(false)}
-            items={items}
+            items={excludedItems}
             newItem={newItem}
             setNewItem={setNewItem}
             resetNewItem={resetNewItem}

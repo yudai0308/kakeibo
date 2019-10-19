@@ -10,6 +10,7 @@ use App\Item;
 use App\User;
 use App\Account;
 use App\SubCategory;
+use App\Category;
 use Carbon\Carbon;
 
 class ItemController extends Controller
@@ -17,6 +18,7 @@ class ItemController extends Controller
     public function store(Request $req)
     {
         // TODO: memo の文字数制限 30 文字
+        // TODO: 非公開の場合、登録できない
         $userId = Auth::check() ? Auth::user()->id : null;
         try {
             Item::create([
@@ -32,6 +34,34 @@ class ItemController extends Controller
             return json_encode(["error" => $e->getMessage()]);
         }
         return;
+    }
+
+    public function storeFixedCost(Request $req)
+    {
+        try {
+            $userId = Auth::check() ? Auth::user()->id : null;
+            $account = Account::find($req->accountId);
+            if (!$account->isPublic && $account->user_id != $userId) {
+                abort(403);
+            }
+
+            Item::updateOrCreate(
+                [
+                    "account_id" => $req->accountId,
+                    "sub_category_id" => $req->subCategoryId,
+                    "date" => $req->date,
+                ],
+                [
+                    "user_id" => $userId,
+                    "memo" => null,
+                    "amount" => $req->cost,
+                    "isIncome" => 0,
+                ]
+            );
+            return json_encode(["success" => "登録完了"]);
+        } catch (Exception $e) {
+            return json_encode(["error" => $e->getMessage()]);
+        }
     }
 
     public function delete(Request $req)
@@ -51,7 +81,7 @@ class ItemController extends Controller
         }
     }
 
-    public function getItemsByMonth($id)
+    public function getItems($id)
     {
         $account = Account::find($id);
         // TODO: account の作成者が自分、もしくは公開されている account であることを確認。
@@ -76,11 +106,14 @@ class ItemController extends Controller
                 ->get();
             $fmtItems = $items->map(function ($item, $key) {
                 $id = $item->sub_category_id;
-                $item["sub_category"] = SubCategory::find($id)->name;
+                $subCategory = SubCategory::find($id);
+                $category = Category::find($subCategory->category->id);
+                $item["sub_category"] = $subCategory->name;
+                $item["category_id"] = $category->id;
+                $item["category"] = $category->name;
                 return $item;
             });
-            $itemGrp = $fmtItems->groupBy($base);
-            return $itemGrp;
+            return $fmtItems;
         } catch (Exception $e) {
             return json_encode(["error" => $e->getMessage()]);
         }
