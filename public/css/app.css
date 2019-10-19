@@ -1,1 +1,31 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);div.card{height:100%}div.react-calendar{width:100%}button.react-calendar__tile{height:5em;align-items:center;flex-direction:column}button.react-calendar__month-view__days__day--weekend--sat abbr{color:#0075c2}body,div#app,html{height:100%}div#app{background-image:url(/images/dot-grid.png)}
+@import url(https://fonts.googleapis.com/css?family=Nunito);div.card {
+  height: 100%;
+}
+
+div.react-calendar {
+  width: 100%;
+}
+
+button.react-calendar__tile {
+  height: 5em;
+  align-items: center;
+  flex-direction: column;
+}
+
+button.react-calendar__month-view__days__day--weekend--sat abbr {
+  color: #0075c2;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+div#app {
+  height: 100%;
+  background-image: url("/images/dot-grid.png");
+}
+

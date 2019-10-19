@@ -21,7 +21,7 @@ function Mypage() {
   useEffect(() => {
     fetchAccounts();
   }, [setAccounts]);
-
+  console.log(accounts)
   return (
     <Container>
       <Row className="justify-content-center">
