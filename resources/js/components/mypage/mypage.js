@@ -4,7 +4,7 @@ import { axios } from "../../axios";
 import { Container, Row, Col } from "react-bootstrap";
 import AccountForm from "./account-forms/Account-form-create-modal";
 import AccountDeck from "./account-deck/Account-deck";
-import MyModal from "./MyModal";
+import MyModal from "./mymodal";
 import { AccountContext } from "./AccountContext";
 
 function Mypage() {
