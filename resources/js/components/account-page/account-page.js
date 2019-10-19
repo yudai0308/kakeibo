@@ -5,8 +5,6 @@ import MyCalendar from "./Calendar";
 import Overview from "./Overview";
 import FixedCostModal from "./fixed-cost/Fixed-cost-modal"
 import ChartModal from "./charts/Chart-modal";
-import CategoryChart from "./charts/Chart-category";
-import MemberChart from "./charts/Chart-member";
 import ItemModal from "./items/Item-modal"
 import { axios } from "../../axios";
 import { networkInterfaces } from "os";
