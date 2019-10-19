@@ -9,6 +9,7 @@ function FixedCostModal(props) {
     yearMonth,
     newItem,
     items,
+    fetchItems,
   } = props;
 
   return (
@@ -28,6 +29,7 @@ function FixedCostModal(props) {
             items={items}
             newItem={newItem}
             yearMonth={yearMonth}
+            fetchItems={fetchItems}
           />
         </Modal.Body>
       </Modal>

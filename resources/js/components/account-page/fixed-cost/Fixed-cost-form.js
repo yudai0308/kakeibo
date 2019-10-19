@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import { axios } from "../../../axios";
 import { Form, Row, Col, Button } from "react-bootstrap";
 
-function FixedCostForm({ items, newItem, yearMonth }) {
-  const handleChange = e => {
-    const id = e.target.id;
+function FixedCostForm(props) {
+  const {
+    items, newItem,
+    yearMonth, fetchItems
+  } = props;
+
+  const handleChange = (e, hash) => {
+    const id = hash.id;
     const val = e.target.value;
     setFixedCosts({
       ...fixedCosts,
@@ -12,17 +17,17 @@ function FixedCostForm({ items, newItem, yearMonth }) {
     })
   }
 
-  const handleSubmit = async e => {
-    e.preventDefault();
+  const handleClick = async hash => {
     const url = "/api/item_fixed_cost";
     const accountId = newItem.id;
     const data = {
-      id: accountId,
+      accountId: accountId,
+      subCategoryId: hash.id,
       date: `${yearMonth.year}-${yearMonth.month}-1`,
-      fixedCosts: fixedCosts,
+      cost: fixedCosts[hash.id],
     }
     const res = await axios.post(url, data);
-    console.log(res.data)
+    fetchItems();
   }
 
   const baseForms = [
@@ -67,23 +72,28 @@ function FixedCostForm({ items, newItem, yearMonth }) {
   return (
     <Form onSubmit={e => handleSubmit(e)}>
       {
-        makeFormHash(items, baseForms).map((f, i) => {
+        makeFormHash(items, baseForms).map((hash, i) => {
           return (
-            <Form.Group key={i} as={Row} controlId={f.subCategoryId}>
-              <Form.Label className="text-right" xs="4" column>{f.title}</Form.Label>
+            <Form.Group key={i} as={Row} controlId={hash.subCategoryId}>
+              <Form.Label className="text-right" xs="4" column>{hash.title}</Form.Label>
               <Col xs="8">
                 <Row>
                   <Col xs="8">
                     <Form.Control
                       className="pr-0"
                       type="number"
-                      defaultValue={f.amount}
-                      min={0}
-                      onChange={e => handleChange(e)}
+                      defaultValue={hash.amount}
+                      min={1}
+                      onChange={e => handleChange(e, hash)}
                     />
                   </Col>
                   <Col className="text-left" xs="2">
-                    <Button size="sm" variant="outline-primary" type="submit" className="rounded-pill">
+                    <Button
+                      size="sm"
+                      variant="outline-primary"
+                      className="rounded-pill"
+                      onClick={() => handleClick(hash)}
+                    >
                       OK
                     </Button>
                   </Col>

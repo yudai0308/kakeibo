@@ -142,6 +142,7 @@ function AccountPage() {
             yearMonth={yearMonth}
             newItem={newItem}
             items={items}
+            fetchItems={fetchItems}
           />
         </Col>
       </Row>

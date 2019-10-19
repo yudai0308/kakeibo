@@ -40,30 +40,24 @@ class ItemController extends Controller
     {
         try {
             $userId = Auth::check() ? Auth::user()->id : null;
-            $accountId = $req->id;
-            $account = Account::find($accountId);
+            $account = Account::find($req->accountId);
             if (!$account->isPublic && $account->user_id != $userId) {
                 abort(403);
             }
-            $date = $req->date;
-            $costs = $req->fixedCosts;
-            // return json_encode(["test"=>$req->fixedCosts]);
-            foreach ($costs as $subCategoryId => $amount) {
-                if ($amount == null) continue;
-                Item::updateOrCreate(
-                    [
-                        "account_id" => $accountId,
-                        "sub_category_id" => $subCategoryId,
-                        "date" => $date,
-                    ],
-                    [
-                        "user_id" => $userId,
-                        "memo" => null,
-                        "amount" => $amount,
-                        "isIncome" => 0,
-                    ]
-                );
-            }
+
+            Item::updateOrCreate(
+                [
+                    "account_id" => $req->accountId,
+                    "sub_category_id" => $req->subCategoryId,
+                    "date" => $req->date,
+                ],
+                [
+                    "user_id" => $userId,
+                    "memo" => null,
+                    "amount" => $req->cost,
+                    "isIncome" => 0,
+                ]
+            );
             return json_encode(["success" => "登録完了"]);
         } catch (Exception $e) {
             return json_encode(["error" => $e->getMessage()]);
