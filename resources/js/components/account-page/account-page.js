@@ -4,8 +4,7 @@ import { Container, Row, Col, Modal } from "react-bootstrap";
 import MyCalendar from "./Calendar";
 import Overview from "./Overview";
 import FixedCostModal from "./fixed-cost/Fixed-cost-modal"
-import CategoryChart from "./charts/Chart-category";
-import MemberChart from "./charts/Chart-member";
+import ChartModal from "./charts/Chart-modal";
 import ItemModal from "./items/Item-modal"
 import { axios } from "../../axios";
 import { networkInterfaces } from "os";
@@ -14,6 +13,7 @@ function AccountPage() {
   const [isShown, setModalState] = useState(false);
   const [showItemForm, setShowItemForm] = useState(false);
   const [showFixedCost, setShowFixedCost] = useState(false);
+  const [showChart, setShowChart] = useState({swith: false, type: 1});
   const [items, setItems] = useState(null);
   const [sumThisMonth, setSumThisMonth] = useState(null);
   const [subCate, setSubCate] = useState(null);
@@ -131,6 +131,8 @@ function AccountPage() {
             yearMonth={yearMonth}
             showFixedCost={showFixedCost}
             setShowFixedCost={setShowFixedCost}
+            showChart={showChart}
+            setShowChart={setShowChart}
           />
           <FixedCostModal
             showFixedCost={showFixedCost}
@@ -140,7 +142,11 @@ function AccountPage() {
             items={items}
             fetchItems={fetchItems}
           />
-          {/* <CategoryChart items={items} /> */}
+          <ChartModal
+            items={items}
+            showChart={showChart}
+            setShowChart={setShowChart}
+          />
         </Col>
       </Row>
       <Row className="justify-content-center">

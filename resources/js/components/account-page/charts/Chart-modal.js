@@ -1,38 +1,49 @@
-import React, { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
+import React from "react";
+import CategoryChart from "./Chart-category";
+import MemberChart from "./Chart-member";
+import { Modal } from "react-bootstrap";
 
-function Example1() {
-  const [showChart, setShowChart] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+function ChartModal(props) {
+  const { items, showChart, setShowChart } = props;
+  let title = "";
+  switch (showChart.type) {
+    case 1:
+      title = "支出集計（カテゴリー別）";
+      break;
+    case 2:
+      title = "支出集計（メンバー別）";
+      break;
+    default:
+      break;
+  }
 
   return (
     <>
       <Modal
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
+        show={showChart.switch}
+        onHide={() => setShowChart({ switch: false, type: 1 })}
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
-        </Modal.Title>
+          <Modal.Title>
+            {title}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Centered Modal</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.
-        </p>
+          {
+            showChart.type === 1 &&
+            <CategoryChart items={items} />
+
+          }
+          {
+            showChart.type === 2 &&
+            <MemberChart items={items} />
+
+          }
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
       </Modal>
     </>
   );
 }
 
-export default Example1;
+export default ChartModal;

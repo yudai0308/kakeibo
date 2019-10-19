@@ -79,7 +79,9 @@ function FixedCostForm(props) {
       return (
         <Form key={hash.id} onSubmit={e => handleSubmit(e, hash)}>
           <Form.Group as={Row} controlId={hash.subCategoryId}>
-            <Form.Label className="text-right" xs="4" column>{hash.title}</Form.Label>
+            <Form.Label className="text-right" xs="4" column>
+              {hash.title}
+            </Form.Label>
             <Col xs="8">
               <Row>
                 <Col xs="8">
@@ -91,7 +93,7 @@ function FixedCostForm(props) {
                     onChange={e => handleChange(e, hash)}
                   />
                 </Col>
-                <Col className="text-left p-1" xs="2">
+                <Col className="text-left p-1" xs="4">
                   {
                     !success[hash.id]
                       ?

@@ -47,8 +47,8 @@ export const sumUpByKey = (items, key) => {
  * 指定したキーの値を合計してグラフ表示用にフォーマットする
  */
 export const aggregateDataBy = (items, key) => {
-  const itemsArr = alignItems(items, "date");
-  const groupedItems = groupBy(itemsArr, key);
+  // const itemsArr = alignItems(items, "date");
+  const groupedItems = groupBy(items, key);
   const aggregationData = [];
   for (const groupName in groupedItems) {
     const groupedItemsArr = groupedItems[groupName];
@@ -67,9 +67,9 @@ export const aggregateDataBy = (items, key) => {
  * 費用を合計する
  */
 export const sumUpExpenses = items => {
-  const itemsArr = alignItems(items);
+  // const itemsArr = alignItems(items);
   let sum = 0;
-  for (let item of itemsArr) {
+  for (let item of items) {
     if (item.isIncome) continue;
     sum += item.amount;
   }
