@@ -106,8 +106,10 @@ class ItemController extends Controller
                 ->get();
             $fmtItems = $items->map(function ($item, $key) {
                 $id = $item->sub_category_id;
+                $userName = isset($item->user_id) ? User::find($item->user_id)->name : "ゲスト";
                 $subCategory = SubCategory::find($id);
                 $category = Category::find($subCategory->category->id);
+                $item["user_name"] = $userName;
                 $item["sub_category"] = $subCategory->name;
                 $item["category_id"] = $category->id;
                 $item["category"] = $category->name;

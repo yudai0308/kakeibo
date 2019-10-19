@@ -15,7 +15,7 @@ function AccountPage() {
   const [isShown, setModalState] = useState(false);
   const [showItemForm, setShowItemForm] = useState(false);
   const [showFixedCost, setShowFixedCost] = useState(false);
-  const [showChart, setShowChart] = useState(false);
+  const [showChart, setShowChart] = useState({swith: false, type: 1});
   const [items, setItems] = useState(null);
   const [sumThisMonth, setSumThisMonth] = useState(null);
   const [subCate, setSubCate] = useState(null);
