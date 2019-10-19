@@ -57,6 +57,7 @@ function FixedCostForm(props) {
   }
 
   const findDefaultCost = id => {
+    if (!item.length) return null;
     const formHash = makeFormHash(items, baseForms);
     for (const hash of formHash) {
       if (hash.id === id) return hash.amount;
