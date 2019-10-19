@@ -1,5 +1,5 @@
 import React from "react";
-import ChartBase from "./Chart-base";
+import ChartBase from "./chart-base";
 import { aggregateDataBy } from "../../item-libs";
 
 function CategoryChart({ items }) {

@@ -1,6 +1,6 @@
 import React from "react";
 import { separate } from "../libs";
-import MenuIcons from "./Menu-icons";
+import MenuIcons from "./menu-icons";
 
 function Overview(props) {
   const {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
-import ItemForm from "./Item-form";
-import ItemIndex from "./Item-index"
+import ItemForm from "./item-form";
+import ItemIndex from "./item-index"
 
 function ItemModal(props) {
   const {

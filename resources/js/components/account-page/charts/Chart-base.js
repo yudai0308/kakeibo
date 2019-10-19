@@ -1,11 +1,19 @@
-import React from 'react';
+import React from "react";
+import { Alert } from "react-bootstrap"
 import {
   PieChart, Pie, Cell, Label, Legend, Tooltip, ResponsiveContainer,
-} from 'recharts';
-// import { displayExpensesTotal } from "../../item-libs";
+} from "recharts";
 import { separate } from "../../libs";
 
 function ChartBase({ data }) {
+  if (!data.length) {
+    return (
+      <Alert variant="info" className="text-center">
+        支出の集計を見ることができます。
+      </Alert>
+    );
+  }
+
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#9b59b6"];
   const vals = data.map(d => d.value);
   const sum = vals.reduce((sum, val) => sum + val);

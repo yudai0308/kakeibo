@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
-import FixedCostForm from "./Fixed-cost-form";
+import FixedCostForm from "./fixed-cost-form";
 
 function FixedCostModal(props) {
   const {

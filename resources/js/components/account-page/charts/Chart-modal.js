@@ -1,6 +1,6 @@
 import React from "react";
-import CategoryChart from "./Chart-category";
-import MemberChart from "./Chart-member";
+import CategoryChart from "./chart-category";
+import MemberChart from "./chart-member";
 import { Modal } from "react-bootstrap";
 
 function ChartModal(props) {
@@ -21,7 +21,7 @@ function ChartModal(props) {
     <>
       <Modal
         show={showChart.switch}
-        onHide={() => setShowChart({ switch: false, type: 1 })}
+        onHide={() => setShowChart({...showChart, switch: false})}
         centered
       >
         <Modal.Header closeButton>
@@ -33,12 +33,10 @@ function ChartModal(props) {
           {
             showChart.type === 1 &&
             <CategoryChart items={items} />
-
           }
           {
             showChart.type === 2 &&
             <MemberChart items={items} />
-
           }
         </Modal.Body>
       </Modal>

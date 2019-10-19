@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Container, Row, Col, Modal } from "react-bootstrap";
-import MyCalendar from "./Calendar";
-import Overview from "./Overview";
-import FixedCostModal from "./fixed-cost/Fixed-cost-modal"
-import ChartModal from "./charts/Chart-modal";
-import ItemModal from "./items/Item-modal"
+import MyCalendar from "./calendar";
+import Overview from "./overview";
+import FixedCostModal from "./fixed-cost/fixed-cost-modal"
+import ChartModal from "./charts/chart-modal";
+import ItemModal from "./items/item-modal"
 import { axios } from "../../axios";
 import { networkInterfaces } from "os";
 
