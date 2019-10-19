@@ -17,7 +17,9 @@ function FixedCostForm(props) {
     })
   }
 
-  const handleClick = async hash => {
+  // const handleClick = async hash => {
+  const handleSubmit = async (e, hash) => {
+    e.preventDefault();
     const url = "/api/item_fixed_cost";
     const accountId = newItem.id;
     const data = {
@@ -62,54 +64,47 @@ function FixedCostForm(props) {
   }
 
   const [fixedCosts, setFixedCosts] = useState({
-    14: findDefaultCost(14),
-    15: findDefaultCost(15),
-    16: findDefaultCost(16),
-    17: findDefaultCost(17),
+    14: findDefaultCost(14), 15: findDefaultCost(15),
+    16: findDefaultCost(16), 17: findDefaultCost(17),
     18: findDefaultCost(18),
   });
 
-  return (
-    <Form onSubmit={e => handleSubmit(e)}>
-      {
-        makeFormHash(items, baseForms).map((hash, i) => {
-          return (
-            <Form.Group key={i} as={Row} controlId={hash.subCategoryId}>
-              <Form.Label className="text-right" xs="4" column>{hash.title}</Form.Label>
-              <Col xs="8">
-                <Row>
-                  <Col xs="8">
-                    <Form.Control
-                      className="pr-0"
-                      type="number"
-                      defaultValue={hash.amount}
-                      min={1}
-                      onChange={e => handleChange(e, hash)}
-                    />
-                  </Col>
-                  <Col className="text-left" xs="2">
-                    <Button
-                      size="sm"
-                      variant="outline-primary"
-                      className="rounded-pill"
-                      onClick={() => handleClick(hash)}
-                    >
-                      OK
-                    </Button>
-                  </Col>
-                </Row>
-              </Col>
-            </Form.Group>
-          )
-        })
-      }
+  const [success, setSuccess] = useState({
+    14: false, 15: false, 16: false, 17: false, 18: false,
+  })
 
-      {/* <div className="text-right">
-        <Button variant="primary" type="submit">
-          登録
-        </Button>
-      </div> */}
-    </Form>
+  return (
+    makeFormHash(items, baseForms).map((hash, i) => {
+      return (
+        <Form key={hash.id} onSubmit={e => handleSubmit(e, hash)}>
+          <Form.Group as={Row} controlId={hash.subCategoryId}>
+            <Form.Label className="text-right" xs="4" column>{hash.title}</Form.Label>
+            <Col xs="8">
+              <Row>
+                <Col xs="8">
+                  <Form.Control
+                    className="pr-0"
+                    type="number"
+                    defaultValue={hash.amount}
+                    min={1}
+                    onChange={e => handleChange(e, hash)}
+                  />
+                </Col>
+                <Col className="text-left" xs="2">
+                  <Button
+                    type="submit"
+                    variant="outline-primary"
+                    className="rounded-pill"
+                  >
+                    OK
+                    </Button>
+                </Col>
+              </Row>
+            </Col>
+          </Form.Group>
+        </Form>
+      )
+    })
   );
 }
 
