@@ -4,8 +4,7 @@ import MenuIcons from "./Menu-icons";
 
 function Overview(props) {
   const {
-    sumThisMonth, viewType,
-    setViewType, yearMonth,
+    sumThisMonth, yearMonth,
     showFixedCost, setShowFixedCost,
   } = props;
 
@@ -13,21 +12,6 @@ function Overview(props) {
     return sumThisMonth !== null
       ? separate(sumThisMonth)
       : "- ";
-  }
-
-  const currentViewName = () => {
-    switch (viewType) {
-      case 1:
-        return "カレンダー"
-      case 2:
-        return "固定費入力";
-      case 3:
-        return "カテゴリー別";
-      case 4:
-        return "メンバー別";
-      default:
-        return;
-    }
   }
 
   const currentYearMonth = () => {

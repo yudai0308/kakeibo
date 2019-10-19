@@ -11,7 +11,6 @@ import { axios } from "../../axios";
 import { networkInterfaces } from "os";
 
 function AccountPage() {
-  const [viewType, setViewType] = useState(1);
   const [isShown, setModalState] = useState(false);
   const [showItemForm, setShowItemForm] = useState(false);
   const [showFixedCost, setShowFixedCost] = useState(false);
@@ -128,8 +127,6 @@ function AccountPage() {
       <Row className="justify-content-center">
         <Col md="8" className="mb-4">
           <Overview
-            viewType={viewType}
-            setViewType={setViewType}
             sumThisMonth={sumThisMonth}
             yearMonth={yearMonth}
             showFixedCost={showFixedCost}
@@ -143,6 +140,7 @@ function AccountPage() {
             items={items}
             fetchItems={fetchItems}
           />
+          {/* <CategoryChart items={items} /> */}
         </Col>
       </Row>
       <Row className="justify-content-center">
