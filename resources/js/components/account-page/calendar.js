@@ -6,14 +6,8 @@ import { groupBy } from "../item-libs";
 
 function MyCalendar(props) {
   const {
-    items,
-    setItems,
-    setNewItem,
-    showModal,
-    yearMonth,
-    setYearMonth,
-    setShowItemForm,
-    isMonthView,
+    items,　setItems,　setNewItem,　showModal,　yearMonth,
+    setYearMonth,　setShowItemForm,　isMonthView,
   } = props;
 
   const handleClickDay = e => {
@@ -113,7 +107,6 @@ function MyCalendar(props) {
     <Calendar
       locale="ja-JP"
       calendarType="US"
-      // activeStartDate={controlStartDate()}
       className="color-primary mb-4"
       onClickDay={handleClickDay}
       onClickMonth={setTotalAmount}

@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import { Container, Row, Col, Modal } from "react-bootstrap";
 import MyCalendar from "./Calendar";
 import Overview from "./Overview";
-import FixedCostForm from "./fixed-cost/Fixed-cost-form"
 import FixedCostModal from "./fixed-cost/Fixed-cost-modal"
 import CategoryChart from "./charts/Chart-category";
 import MemberChart from "./charts/Chart-member";
@@ -148,34 +147,19 @@ function AccountPage() {
       </Row>
       <Row className="justify-content-center">
         <Col md="8">
-          {
-            viewType === 1 &&
-            <MyCalendar
-              showModal={() => setModalState(true)}
-              fetchItems={fetchItems}
-              updateYearMonth={updateYearMonth}
-              newItem={newItem}
-              setNewItem={setNewItem}
-              items={excludedItems}
-              setItems={setItems}
-              yearMonth={yearMonth}
-              setYearMonth={setYearMonth}
-              setShowItemForm={setShowItemForm}
-              isMonthView={isMonthView}
-            />
-          }
-          {
-            viewType === 2 &&
-            <FixedCostForm />
-          }
-          {
-            viewType === 3 &&
-            <CategoryChart items={items} />
-          }
-          {
-            viewType === 4 &&
-            <MemberChart />
-          }
+          <MyCalendar
+            showModal={() => setModalState(true)}
+            fetchItems={fetchItems}
+            updateYearMonth={updateYearMonth}
+            newItem={newItem}
+            setNewItem={setNewItem}
+            items={excludedItems}
+            setItems={setItems}
+            yearMonth={yearMonth}
+            setYearMonth={setYearMonth}
+            setShowItemForm={setShowItemForm}
+            isMonthView={isMonthView}
+          />
           <ItemModal
             isShown={isShown}
             showItemForm={showItemForm}

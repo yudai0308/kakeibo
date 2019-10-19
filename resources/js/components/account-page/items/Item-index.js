@@ -4,10 +4,7 @@ import { axios } from "../../../axios";
 import { separate } from "../../libs";
 import { groupBy } from "../../item-libs";
 import {
-  ButtonToolbar,
-  Button,
-  Table,
-  Alert,
+  ButtonToolbar,　Button,　Table,　Alert,
 } from "react-bootstrap";
 
 function ItemIndex(props) {

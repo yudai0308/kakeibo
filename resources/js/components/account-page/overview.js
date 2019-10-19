@@ -1,6 +1,5 @@
 import React from "react";
 import { separate } from "../libs";
-import { Dropdown } from "react-bootstrap";
 import MenuIcons from "./Menu-icons";
 
 function Overview(props) {
@@ -46,20 +45,7 @@ function Overview(props) {
           showFixedCost={showFixedCost}
           setShowFixedCost={setShowFixedCost}
         >
-
         </MenuIcons>
-        {/* <Dropdown className="mb-2">
-          <Dropdown.Toggle variant="info" id="dropdown-basic" size="sm">
-            {currentViewName()}
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            <Dropdown.Item onClick={() => setViewType(1)}>カレンダー</Dropdown.Item>
-            <Dropdown.Item onClick={() => setViewType(2)}>固定費入力</Dropdown.Item>
-            <Dropdown.Item onClick={() => setViewType(3)}>カテゴリー別</Dropdown.Item>
-            <Dropdown.Item onClick={() => setViewType(4)}>メンバー別</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown> */}
       </div>
     </>
   )

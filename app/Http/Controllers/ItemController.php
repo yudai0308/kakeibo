@@ -113,8 +113,6 @@ class ItemController extends Controller
                 $item["category"] = $category->name;
                 return $item;
             });
-            // $itemGrp = $fmtItems->groupBy($base);
-            // return $itemGrp;
             return $fmtItems;
         } catch (Exception $e) {
             return json_encode(["error" => $e->getMessage()]);

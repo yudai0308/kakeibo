@@ -4,12 +4,8 @@ import FixedCostForm from "./Fixed-cost-form";
 
 function FixedCostModal(props) {
   const {
-    showFixedCost,
-    setShowFixedCost,
-    yearMonth,
-    newItem,
-    items,
-    fetchItems,
+    showFixedCost,　setShowFixedCost,　yearMonth,
+    newItem,　items,　fetchItems,
   } = props;
 
   return (

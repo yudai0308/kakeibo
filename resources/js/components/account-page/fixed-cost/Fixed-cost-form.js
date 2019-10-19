@@ -3,10 +3,7 @@ import { axios } from "../../../axios";
 import { Form, Row, Col, Button } from "react-bootstrap";
 
 function FixedCostForm(props) {
-  const {
-    items, newItem,
-    yearMonth, fetchItems
-  } = props;
+  const { items, newItem, yearMonth, fetchItems } = props;
 
   const handleChange = (e, hash) => {
     const id = hash.id;
@@ -96,7 +93,7 @@ function FixedCostForm(props) {
                 <Col className="text-left p-1" xs="2">
                   {
                     !success[hash.id]
-                    ?
+                      ?
                       <Button
                         size="sm"
                         type="submit"
@@ -105,7 +102,7 @@ function FixedCostForm(props) {
                       >
                         登録
                       </Button>
-                    :
+                      :
                       <Button
                         size="sm"
                         variant="success"
