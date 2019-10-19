@@ -28,6 +28,7 @@ function FixedCostForm(props) {
     setSuccess({ ...success, [hash.id]: true });
     await axios.post(url, data);
     fetchItems();
+    // FIXME: setSuccess が終わる前にモーダルを閉じるとエラーが発生
     await sleep(1500);
     setSuccess({ ...success, [hash.id]: false });
   }
