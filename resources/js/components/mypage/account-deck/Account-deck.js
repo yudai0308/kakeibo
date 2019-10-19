@@ -1,13 +1,15 @@
 import React from "react";
-import { Row } from "react-bootstrap";
+import { Row, Alert } from "react-bootstrap";
 import { AccountContext } from "../AccountContext";
 import AccountCard from "./Account-card";
 
 function AccountDeck() {
   const getCards = (accounts) => {
     return (accounts)
-        ? accounts.map((account, i) => <AccountCard account={account} key={i} />)
-        : <p className="m-0 text-center">まずは新しい家計簿を作成しましょう！</p>
+      ? accounts.map((account, i) => <AccountCard account={account} key={i} />)
+      : <Alert variant="info" className="text-center">
+          まずは新しい家計簿を作成しましょう！
+        </Alert>
       ;
   }
 
@@ -15,7 +17,7 @@ function AccountDeck() {
     <div className="rounded p-4">
       <Row>
         <AccountContext.Consumer>
-          {({accounts}) => getCards(accounts)}
+          {({ accounts }) => getCards(accounts)}
         </AccountContext.Consumer>
       </Row>
     </div>
