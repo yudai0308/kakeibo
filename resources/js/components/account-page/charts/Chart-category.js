@@ -2,7 +2,7 @@ import React from 'react';
 import {
   PieChart, Pie, Cell, Label, Legend, Tooltip, ResponsiveContainer,
 } from 'recharts';
-import {aggregateDataBy, displayExpensesTotal} from "../../item-libs";
+import { aggregateDataBy, displayExpensesTotal } from "../../item-libs";
 
 function CategoryChart({ items }) {
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#9b59b6"];
@@ -14,9 +14,9 @@ function CategoryChart({ items }) {
         <Pie
           dataKey="value"
           data={data}
-          innerRadius={90}
-          outerRadius={120}
-          paddingAngle={3}
+          innerRadius={70}
+          outerRadius={100}
+          paddingAngle={1}
           fill="#8884d8"
           label
         >

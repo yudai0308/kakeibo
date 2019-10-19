@@ -3,8 +3,8 @@ import { Button } from "react-bootstrap";
 
 function MenuIcons(props) {
   const {
-    showFixedCost,
     setShowFixedCost,
+    setShowChart,
   } = props;
 
   return (
@@ -13,7 +13,7 @@ function MenuIcons(props) {
         size="sm"
         variant="secondary"
         className="rounded-circle ml-2"
-        //onClick={}
+        onClick={() => setShowChart(true)}
       >
         <i className="fas fa-calculator"></i>
       </Button>

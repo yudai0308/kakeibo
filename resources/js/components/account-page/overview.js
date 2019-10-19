@@ -5,7 +5,7 @@ import MenuIcons from "./Menu-icons";
 function Overview(props) {
   const {
     sumThisMonth, yearMonth,
-    showFixedCost, setShowFixedCost,
+    setShowFixedCost, setShowChart,
   } = props;
 
   const sumOrHyphen = () => {
@@ -26,8 +26,8 @@ function Overview(props) {
       <div className="d-flex justify-content-between">
         <h4>収支： <span id="sum-this-month">{sumOrHyphen()}</span>円</h4>
         <MenuIcons
-          showFixedCost={showFixedCost}
           setShowFixedCost={setShowFixedCost}
+          setShowChart={setShowChart}
         >
         </MenuIcons>
       </div>
