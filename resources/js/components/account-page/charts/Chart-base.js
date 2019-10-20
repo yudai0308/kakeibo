@@ -6,7 +6,7 @@ import {
 import { separate } from "../../libs";
 
 function ChartBase({ data }) {
-  if (!data.length) {
+  if (data.length === 0) {
     return (
       <Alert variant="info" className="text-center">
         支出の集計を見ることができます。

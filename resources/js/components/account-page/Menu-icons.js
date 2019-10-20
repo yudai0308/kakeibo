@@ -12,7 +12,7 @@ function MenuIcons(props) {
       <Button
         size="sm"
         variant="info"
-        className="rounded-pill ml-2"
+        className="rounded-circle ml-2"
         onClick={() => setShowChart({ switch: true, type: 1 })}
       >
         <i className="fas fa-tags"></i>
@@ -20,10 +20,10 @@ function MenuIcons(props) {
       <Button
         size="sm"
         variant="info"
-        className="rounded-pill ml-2"
+        className="rounded-circle ml-2"
         onClick={() => setShowChart({ switch: true, type: 2 })}
       >
-        <i className="fas fa-users"></i>
+        <i className="fas fa-user-tag"></i>
       </Button>
       <Button
         size="sm"

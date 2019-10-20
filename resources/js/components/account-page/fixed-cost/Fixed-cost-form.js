@@ -29,7 +29,7 @@ function FixedCostForm(props) {
     await axios.post(url, data);
     fetchItems();
     // FIXME: setSuccess が終わる前にモーダルを閉じるとエラーが発生
-    await sleep(1500);
+    await sleep(800);
     setSuccess({ ...success, [hash.id]: false });
   }
 
@@ -57,7 +57,7 @@ function FixedCostForm(props) {
   }
 
   const findDefaultCost = id => {
-    if (!items.length) return null;
+    if (items.length === 0) return null;
     const formHash = makeFormHash(items, baseForms);
     for (const hash of formHash) {
       if (hash.id === id) return hash.amount;
@@ -90,7 +90,7 @@ function FixedCostForm(props) {
                     className="pr-0"
                     type="number"
                     defaultValue={hash.amount}
-                    min={1}
+                    min={0}
                     onChange={e => handleChange(e, hash)}
                   />
                 </Col>
