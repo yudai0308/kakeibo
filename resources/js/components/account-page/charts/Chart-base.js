@@ -6,6 +6,7 @@ import {
 import { separate } from "../../libs";
 
 function ChartBase({ data }) {
+  console.log(data)
   if (!data.length) {
     return (
       <Alert variant="info" className="text-center">
