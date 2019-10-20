@@ -90,7 +90,7 @@ function FixedCostForm(props) {
                     className="pr-0"
                     type="number"
                     defaultValue={hash.amount}
-                    min={1}
+                    min={0}
                     onChange={e => handleChange(e, hash)}
                   />
                 </Col>
