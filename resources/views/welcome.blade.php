@@ -104,8 +104,8 @@
                     もちろん自分用としても使えます！
                 </div>
                 <div>
-                    <button type="button" class="btn btn-success rounded-pill mb-2" data-toggle="modal" data-target="#use-now-modal">今すぐ使ってみる</button>
-                    <a href="#" role="button" class="btn btn-info rounded-pill mb-2">サンプルを見る</a>
+                    <button type="button" class="btn btn-success rounded-pill mb-2 mx-2" data-toggle="modal" data-target="#use-now-modal">今すぐ使ってみる</button>
+                    <a href="#" role="button" class="btn btn-info rounded-pill mb-2 mx-2">サンプルを見る</a>
                 </div>
                 @include('use-now-modal.main')
             </div>
