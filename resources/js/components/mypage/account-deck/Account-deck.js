@@ -5,9 +5,9 @@ import AccountCard from "./Account-card";
 
 function AccountDeck() {
   const getCards = (accounts) => {
-    return (accounts)
+    return (accounts && accounts.length > 0)
       ? accounts.map((account, i) => <AccountCard account={account} key={i} />)
-      : <Alert variant="info" className="text-center">
+      : <Alert variant="info" className="text-center" style={{width: "100%"}}>
           まずは新しい家計簿を作成しましょう！
         </Alert>
       ;
