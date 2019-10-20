@@ -61,7 +61,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 64px;
             }
 
             .links > a {
@@ -80,7 +80,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height" style="background-image: url('/images/dot-grid.png')">
+        <div class="flex-center position-ref full-height p-4" style="background-image: url('/images/dot-grid.png')">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -104,8 +104,8 @@
                     もちろん自分用としても使えます！
                 </div>
                 <div>
-                    <!-- <a class="btn btn-primary rounded-pill mx-2" href="/login" role="button">ログイン</a> -->
-                    <button type="button" class="btn btn-success rounded-pill mx-2" data-toggle="modal" data-target="#use-now-modal">今すぐ使ってみる</button>
+                    <button type="button" class="btn btn-success rounded-pill mb-2 mx-2" data-toggle="modal" data-target="#use-now-modal">今すぐ使ってみる</button>
+                    <a href="/account/1/sample-kakeibo" role="button" class="btn btn-info rounded-pill mb-2 mx-2">サンプルを見る</a>
                 </div>
                 @include('use-now-modal.main')
             </div>
