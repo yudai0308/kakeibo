@@ -61,7 +61,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 64px;
             }
 
             .links > a {
@@ -80,7 +80,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height" style="background-image: url('/images/dot-grid.png')">
+        <div class="flex-center position-ref full-height p-4" style="background-image: url('/images/dot-grid.png')">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
