@@ -104,8 +104,8 @@
                     もちろん自分用としても使えます！
                 </div>
                 <div>
-                    <!-- <a class="btn btn-primary rounded-pill mx-2" href="/login" role="button">ログイン</a> -->
-                    <button type="button" class="btn btn-success rounded-pill mx-2" data-toggle="modal" data-target="#use-now-modal">今すぐ使ってみる</button>
+                    <button type="button" class="btn btn-success rounded-pill mb-2" data-toggle="modal" data-target="#use-now-modal">今すぐ使ってみる</button>
+                    <a href="#" role="button" class="btn btn-info rounded-pill mb-2">サンプルを見る</a>
                 </div>
                 @include('use-now-modal.main')
             </div>
