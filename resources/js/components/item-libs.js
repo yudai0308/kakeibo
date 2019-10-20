@@ -53,8 +53,8 @@ export const aggregateExpensesBy = (items, key) => {
   const aggregationData = [];
   for (const groupName in groupedItems) {
     const groupedItemsArr = groupedItems[groupName];
-    if (groupedItemsArr[0].isIncome) continue;
     const sum = sumUpByKey(groupedItemsArr, "amount");
+    if (sum === 0) continue;
     const data = {
       name: groupName,
       value: sum,
