@@ -1,9 +1,9 @@
 import React from "react";
 import ChartBase from "./chart-base";
-import { aggregateDataBy } from "../../item-libs";
+import { aggregateExpensesBy } from "../../item-libs";
 
 function CategoryChart({ items }) {
-  const data = aggregateDataBy(items, "user_name");
+  const data = aggregateExpensesBy(items, "user_name");
   return <ChartBase data={data} />
 }
 

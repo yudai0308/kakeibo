@@ -85,7 +85,6 @@ function AccountDropdown({ account }) {
                 </Dropdown.Item>
                 <Dropdown.Item
                   onClick={() => {
-                    // console.log(fetchAccounts)
                     showDeleteModal(setModalContent, setShowModal, fetchAccounts)
                   }}
                 >
