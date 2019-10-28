@@ -28,6 +28,7 @@ https://kakeibo-sharing.herokuapp.com/
 - Laravel 6.0
 - React.js(hooks) 16.2
 - Bootstrap 4.3
+- Recharts 1.7
 - React-Calendar 2.19
 - axios 0.19
 - heroku
