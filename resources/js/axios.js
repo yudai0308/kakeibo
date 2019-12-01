@@ -3,6 +3,7 @@ import axiosBase from "axios"
 const host = window.location.hostname;
 const url = host === "localhost" ? "http://localhost:8000" : process.env.MIX_APP_URL;
 console.log(host)
+console.log(host === "localhost")
 console.log(url)
 export const axios = axiosBase.create({
   // baseURL: process.env.MIX_APP_URL,
