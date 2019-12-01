@@ -1,7 +1,7 @@
 import axiosBase from "axios"
 
 const host = window.location.hostname;
-const url = host === "localhost" ? "http://localhost:8000" : "https://kakeibo-sharing.herokuapp.com";
+const url = host === "localhost" ? "http://localhost:8000" : process.env.MIX_APP_URL;
 export const axios = axiosBase.create({
   // baseURL: process.env.MIX_APP_URL,
   baseURL: url,
