@@ -1,7 +1,7 @@
 import axiosBase from "axios"
 
 const host = window.location.hostname;
-const url = (host === "localhosto") ? "http://localhost:8000" : "http://kakeibosharing-env.mdnhj7hqvm.ap-northeast-1.elasticbeanstalk.com/account/1/sample-kakeibo";
+const url = (host === "localhosto") ? "http://localhost:8000" : "http://kakeibosharing-env.mdnhj7hqvm.ap-northeast-1.elasticbeanstalk.com/";
 console.log(url)
 export const axios = axiosBase.create({
   // baseURL: process.env.MIX_APP_URL,
