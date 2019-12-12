@@ -11,15 +11,26 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        @if(app('env') == 'local')
+            <script src="{{ asset('js/app.js') }}" defer></script>
+        @endif
+        @if(app('env') == 'production')
+            <script src="{{ secure_asset('js/app.js') }}" defer></script>
+        @endif
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
         <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+        @if(app('env') == 'local')
+            <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+        @endif
+        @if(app('env') == 'production')
+            <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+            <link href="{{ secure_asset('css/bootstrap.min.css') }}" rel="stylesheet">
+        @endif
 
         <title>家計簿</title>
 
