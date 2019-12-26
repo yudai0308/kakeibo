@@ -35,8 +35,10 @@ class AccountController extends Controller
         if ($user != null) {
             // ユーザーが持っている家計簿が最大数を超えた場合はエラーを返す。
             $cnt = count($user->accounts);
-            $kakeibo = env("KAKEIBO", "家計簿");
-            $max = env("MAX_ACCOUNT", 3);
+            // $kakeibo = env("KAKEIBO", "家計簿");
+            $kakeibo = config("env-var.kakeibo");
+            // $max = env("MAX_ACCOUNT", 3);
+            $max = config("env-var.max_account");
             if ($cnt >= $max) {
                 $errorMsg = "${kakeibo}は 1 ユーザー最大 ${max} つまでとなっています。";
                 return ["error" => $errorMsg];
