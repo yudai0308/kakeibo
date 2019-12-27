@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { axios } from "../../axios";
 import { Container, Row, Col } from "react-bootstrap";
-import AccountForm from "./account-forms/Account-form-create-modal";
-import AccountDeck from "./account-deck/Account-deck";
+import AccountForm from "./account-forms/account-form-create-modal";
+import AccountDeck from "./account-deck/account-deck";
 import MyModal from "./mymodal";
-import { AccountContext } from "./AccountContext";
+import { AccountContext } from "./account-context";
 
 function Mypage() {
   const [accounts, setAccounts] = useState(null);

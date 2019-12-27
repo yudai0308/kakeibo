@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Alert } from "react-bootstrap";
-import { AccountContext } from "../AccountContext";
-import AccountCard from "./Account-card";
+import { AccountContext } from "../account-context";
+import AccountCard from "./account-card";
 
 function AccountDeck() {
   const getCards = (accounts) => {

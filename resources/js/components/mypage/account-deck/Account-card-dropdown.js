@@ -1,8 +1,8 @@
 import React from "react";
 import { Form, Dropdown } from "react-bootstrap";
-import { AccountContext } from "../AccountContext";
-import UpdateForm from "../account-forms/Account-form-update";
-import DeleteDialog from "../account-forms/Account-form-delete";
+import { AccountContext } from "../account-context";
+import UpdateForm from "../account-forms/account-form-update";
+import DeleteDialog from "../account-forms/account-form-delete";
 
 function AccountDropdown({ account }) {
   const copyUrl = (setModalContent, setShowModal) => {
