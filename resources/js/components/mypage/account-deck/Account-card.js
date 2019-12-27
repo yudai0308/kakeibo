@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Badge } from "react-bootstrap";
-import AccountDropdown from "./Account-card-dropdown";
+import AccountDropdown from "./account-card-dropdown";
 
 function AccountCard(props) {
   const { account } = props;

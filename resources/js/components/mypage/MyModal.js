@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
-import { AccountContext } from "./AccountContext";
+import { AccountContext } from "./account-context";
 
 function MyModal(props) {
   const { title, body } = props;
