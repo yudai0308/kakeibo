@@ -6,7 +6,7 @@ URL を共有することで誰でもアクセスでき、収支をつけるこ�
 
 ## URL
 
-https://kakeibo-sharing.herokuapp.com/
+https://kakeibo.u-tech38.com/
 
 ## DEMO
 
