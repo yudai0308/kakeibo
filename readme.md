@@ -31,5 +31,4 @@ https://kakeibo.u-tech38.com/
 - Recharts 1.7
 - React-Calendar 2.19
 - axios 0.19
-- heroku
 - MySQL
